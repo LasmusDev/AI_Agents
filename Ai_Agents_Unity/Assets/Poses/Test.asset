@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  enforceTolerance: 0
+  tolerance: 0
+  limbRequirements:
+  - limb: 0
+    tolerance: 0.3
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: 0, y: 3.2, z: 0}
+  - limb: 1
+    tolerance: 0.3
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: 1, y: 1.8, z: 0}
+  - limb: 2
+    tolerance: 0.3
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: -1, y: 1.8, z: 0}
+  positioningMode: 0
+  intendedHeight: 0
