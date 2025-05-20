@@ -1,3 +1,4 @@
+using UMA;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class PlayerPoseRecorder : MonoBehaviour
     public GameObject rHandObject;
     public GameObject lFootObject;
     public GameObject rFootObject;
+
+    public GameObject UMABase;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,6 +27,15 @@ public class PlayerPoseRecorder : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AutoSetupForUMA()
+    {
+        headObject = UMABase.transform.FindRecursive("Head").gameObject;
+        lHandObject = UMABase.transform.FindRecursive("LeftHand").gameObject;
+        rHandObject = UMABase.transform.FindRecursive("RightHand").gameObject;
+        lFootObject = UMABase.transform.FindRecursive("LeftFoot").gameObject;
+        rFootObject = UMABase.transform.FindRecursive("RightFoot").gameObject;
     }
 
     public void RecordPoseSnapshot()
@@ -63,6 +76,7 @@ public class PlayerPoseRecorder : MonoBehaviour
             lFootReq.tolerance = poseTolerance;
             playerPose.limbRequirements.Add(lFootReq);
         }
+        //Ignore asset database warning. It wont work outside of the editor, but it wont need to.
         if(AssetDatabase.AssetPathExists("Assets/Poses/" + poseName + ".asset"))
         {
             poseName += "_";

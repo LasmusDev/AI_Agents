@@ -12,5 +12,10 @@ public class PlayerPoseRecorderEditor : Editor
             PlayerPoseRecorder ppr = (PlayerPoseRecorder)target;
             ppr.RecordPoseSnapshot();
         }
+        if (GUILayout.Button("Setup for UMA"))
+        {
+            PlayerPoseRecorder ppr = (PlayerPoseRecorder)target;
+            ppr.AutoSetupForUMA();
+        }
     }
 }
