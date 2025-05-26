@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class ReadyPlayerMeRigCreator : MonoBehaviour
 {
@@ -483,14 +484,14 @@ public class ReadyPlayerMeRigCreator : MonoBehaviour
         {
             rightHand = rightArmConstraint.gameObject.AddComponent<FollowObject>();
         }
-        rightHand.transformToFollow = FindObjectsByType<ActionBasedController>(FindObjectsSortMode.None).Where(x => x.gameObject.name.Contains("Right")).First().transform;
+        rightHand.transformToFollow = FindObjectsByType<ControllerInputActionManager>(FindObjectsSortMode.None).Where(x => x.gameObject.name.Contains("Right")).First().transform;
 
         FollowObject leftHand = leftArmConstraint.gameObject.GetComponent<FollowObject>();
         if (leftHand == null)
         {
             leftHand = leftArmConstraint.gameObject.AddComponent<FollowObject>();
         }
-        leftHand.transformToFollow = FindObjectsByType<ActionBasedController>(FindObjectsSortMode.None).Where(x => x.gameObject.name.Contains("Left")).First().transform;
+        leftHand.transformToFollow = FindObjectsByType<ControllerInputActionManager>(FindObjectsSortMode.None).Where(x => x.gameObject.name.Contains("Left")).First().transform;
         FollowObject headFollow = headConstraint.data.sourceObjects[0].transform.GetComponent<FollowObject>();
         if (headFollow == null)
         {
