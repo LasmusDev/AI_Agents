@@ -975,7 +975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.516
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1007,6 +1007,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232745470614056090, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2138,7 +2142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localSpace: 0
-  transformToFollow: {fileID: 1309009941}
+  transformToFollow: {fileID: 196292991}
   autoCalcOffset: 0
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
@@ -13556,6 +13560,7 @@ GameObject:
   - component: {fileID: 2026570190}
   - component: {fileID: 2026570189}
   - component: {fileID: 2026570188}
+  - component: {fileID: 2026570197}
   m_Layer: 0
   m_Name: UMADynamicCharacterAvatar
   m_TagString: Untagged
@@ -13578,7 +13583,7 @@ MonoBehaviour:
   localSpace: 0
   transformToFollow: {fileID: 196292991}
   autoCalcOffset: 0
-  positionOffset: {x: -0.005368075, y: 1.7777929, z: 0.001693964}
+  positionOffset: {x: -0.005387486, y: 1.778413, z: 0.008040309}
   rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2026570189
 MonoBehaviour:
@@ -14940,6 +14945,18 @@ Transform:
   - {fileID: 3403296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &2026570197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026570187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638cd67715dbc9e42862721de69e1c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2028559665
 GameObject:
   m_ObjectHideFlags: 0
