@@ -8,7 +8,7 @@ using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
-public class ReadyPlayerMeRigCreator : MonoBehaviour
+public class UMARigCreator : MonoBehaviour
 {
 
     public RigBuilder rigBuilder;

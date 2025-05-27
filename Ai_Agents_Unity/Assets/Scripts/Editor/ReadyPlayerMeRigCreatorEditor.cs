@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-[CustomEditor(typeof(ReadyPlayerMeRigCreator))]
+[CustomEditor(typeof(UMARigCreator))]
 public class ReadyPlayerMeRigCreatorEditor : Editor
 {
     bool showOriginalUI = false;
@@ -32,7 +32,7 @@ public class ReadyPlayerMeRigCreatorEditor : Editor
             base.OnInspectorGUI();
             return;
         }
-        ReadyPlayerMeRigCreator creator = (ReadyPlayerMeRigCreator)target;
+        UMARigCreator creator = (UMARigCreator)target;
         PaintHead(creator);
         PaintArms(creator);
         PaintLegs(creator);       
@@ -42,7 +42,7 @@ public class ReadyPlayerMeRigCreatorEditor : Editor
         }
     }
 
-    public void PaintArms(ReadyPlayerMeRigCreator creator)
+    public void PaintArms(UMARigCreator creator)
     {
         List<MissingBodyRigObjects> missingRigs = creator.CheckForValidArmRig();
         EditorGUILayout.LabelField(creator.FindArmParts());
@@ -85,7 +85,7 @@ public class ReadyPlayerMeRigCreatorEditor : Editor
             creator.AlignArmObjects();
         }
     }
-    public void PaintLegs(ReadyPlayerMeRigCreator creator)
+    public void PaintLegs(UMARigCreator creator)
     {
         EditorGUILayout.LabelField(creator.FindLegParts());
         List<MissingBodyRigObjects> missingRigs = creator.CheckForValidLegRig();
@@ -129,7 +129,7 @@ public class ReadyPlayerMeRigCreatorEditor : Editor
         }
     }
 
-    public void PaintHead(ReadyPlayerMeRigCreator creator)
+    public void PaintHead(UMARigCreator creator)
     {
         EditorGUILayout.LabelField(creator.FindHead());
         List<MissingBodyRigObjects> missingRigs = creator.CheckForValidHeadRig();
