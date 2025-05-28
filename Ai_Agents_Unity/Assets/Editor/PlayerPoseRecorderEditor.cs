@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(PlayerPoseRecorder))]
-public class PlayerPoseRecorderEditor : Editor
+public class PlayerPoseRecorderEditor : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
     {

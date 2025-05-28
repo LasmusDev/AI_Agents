@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
 [CustomEditor(typeof(UMARigCreator))]
-public class ReadyPlayerMeRigCreatorEditor : Editor
+public class ReadyPlayerMeRigCreatorEditor : UnityEditor.Editor
 {
     bool showOriginalUI = false;
     private Dictionary<MissingBodyRigObjects, string> errorMessagesObjects = new Dictionary<MissingBodyRigObjects, string>()
