@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace NormcoreAvatars {
@@ -17,8 +19,10 @@ namespace NormcoreAvatars {
         {
             if (!isLocalAvatar)
             {
-                avatar.GetComponentsInChildren<IK_Feet>().Select(x => x.enabled = false);
-                avatar.GetComponentsInChildren<FollowObject>().Select(x => x.enabled = false);
+                List<IK_Feet> feetComponents = avatar.GetComponentsInChildren<IK_Feet>(true).ToList();
+                feetComponents.ForEach(x => x.enabled = false);
+                List<FollowObject> follows = avatar.GetComponentsInChildren<FollowObject>(true).ToList();
+                follows.ForEach(x => x.enabled = false);
             }
         }
     }
