@@ -12,6 +12,8 @@ namespace NormcoreAvatars
         [RealtimeProperty(4, true, true)] private bool _headActive;
         [RealtimeProperty(5, true, true)] private bool _leftHandActive;
         [RealtimeProperty(6, true, true)] private bool _rightHandActive;
+        [RealtimeProperty(7, true, true)] private bool _leftFootActive;
+        [RealtimeProperty(8, true, true)] private bool _rightFootActive;
     }
 }
 
