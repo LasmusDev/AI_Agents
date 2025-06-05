@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using Normal.Utility;
 using Normal.Realtime;
+using UnityEditor.Animations;
 
 namespace NormcoreAvatars {
     [DefaultExecutionOrder(RealtimeAvatar.ExecutionOrder)] // Make sure our Update() runs before the default to so that the avatar positions are as up to date as possible when everyone else's Update() runs.
@@ -58,6 +59,8 @@ namespace NormcoreAvatars {
         public Transform rightHand => _rightHand;
         public Transform leftFoot => _leftFoot;
         public Transform rightFoot => _rightFoot;
+
+        public AnimatorController toAutoSetAnimatorController;
 
 
 #pragma warning disable 0649 // Disable variable is never assigned to warning.
@@ -156,6 +159,12 @@ namespace NormcoreAvatars {
             // Make sure this avatar is a local player
             if (_localPlayer == null)
                 return;
+
+            if(GetComponent<Animator>().runtimeAnimatorController != toAutoSetAnimatorController)
+            {
+                Debug.LogWarning("Exchanged Animator controller on avatar");
+                GetComponent<Animator>().runtimeAnimatorController = toAutoSetAnimatorController;
+            }
 
             // Flags to fetch XRNode position/rotation state
             bool updateHeadWithXRNode      = false;
