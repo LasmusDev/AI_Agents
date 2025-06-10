@@ -42,7 +42,7 @@ public class IK_Feet : MonoBehaviour
         }
         
 
-        Ray groundRay = new Ray(body.position + body.right * _footSpacing + Vector3.up * 2, Vector3.down);
+        Ray groundRay = new Ray(body.position + (body.right *-1) * _footSpacing + Vector3.up * 2, Vector3.down);
         if(!otherFoot.IsMoving() && !IsMoving() && Physics.Raycast(groundRay, out RaycastHit hit, 10))
         {
             if(Vector3.Distance(_nextPos, hit.point) > stepDistance)

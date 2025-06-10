@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using Normal.Utility;
 using Normal.Realtime;
+using UnityEditor.Animations;
 
 namespace NormcoreAvatars {
     [DefaultExecutionOrder(RealtimeAvatar.ExecutionOrder)] // Make sure our Update() runs before the default to so that the avatar positions are as up to date as possible when everyone else's Update() runs.
@@ -17,6 +18,8 @@ namespace NormcoreAvatars {
             public Transform head;
             public Transform leftHand;
             public Transform rightHand;
+            public Transform leftFoot;
+            public Transform rightFoot;
         }
 
         public  LocalPlayer  localPlayer => _localPlayer;
@@ -54,11 +57,18 @@ namespace NormcoreAvatars {
         public Transform head      => _head;
         public Transform leftHand  => _leftHand;
         public Transform rightHand => _rightHand;
+        public Transform leftFoot => _leftFoot;
+        public Transform rightFoot => _rightFoot;
+
+        public AnimatorController toAutoSetAnimatorController;
+
 
 #pragma warning disable 0649 // Disable variable is never assigned to warning.
         [SerializeField] private Transform _head;
         [SerializeField] private Transform _leftHand;
         [SerializeField] private Transform _rightHand;
+        [SerializeField] private Transform _leftFoot;
+        [SerializeField] private Transform _rightFoot;
 #pragma warning restore 0649
 
         private RealtimeAvatarManager _realtimeAvatarManager;
@@ -128,10 +138,14 @@ namespace NormcoreAvatars {
                 RealtimeTransform      headRealtimeTransform =      _head != null ?      _head.GetComponent<RealtimeTransform>() : null;
                 RealtimeTransform  leftHandRealtimeTransform =  _leftHand != null ?  _leftHand.GetComponent<RealtimeTransform>() : null;
                 RealtimeTransform rightHandRealtimeTransform = _rightHand != null ? _rightHand.GetComponent<RealtimeTransform>() : null;
+                RealtimeTransform lFRealtimeTransform = _leftFoot != null ? _leftFoot.GetComponent<RealtimeTransform>() : null;
+                RealtimeTransform rFRealtimeTransform = _rightFoot != null ? _rightFoot.GetComponent<RealtimeTransform>() : null;
                 if (rootRealtimeTransform != null)           rootRealtimeTransform.RequestOwnership();
                 if (headRealtimeTransform != null)           headRealtimeTransform.RequestOwnership();
                 if (leftHandRealtimeTransform != null)   leftHandRealtimeTransform.RequestOwnership();
                 if (rightHandRealtimeTransform != null) rightHandRealtimeTransform.RequestOwnership();
+                if (lFRealtimeTransform != null) leftHandRealtimeTransform.RequestOwnership();
+                if (rFRealtimeTransform != null) rightHandRealtimeTransform.RequestOwnership();
             }
         }
 
@@ -145,6 +159,12 @@ namespace NormcoreAvatars {
             // Make sure this avatar is a local player
             if (_localPlayer == null)
                 return;
+
+            if(GetComponent<Animator>().runtimeAnimatorController != toAutoSetAnimatorController)
+            {
+                Debug.LogWarning("Exchanged Animator controller on avatar");
+                GetComponent<Animator>().runtimeAnimatorController = toAutoSetAnimatorController;
+            }
 
             // Flags to fetch XRNode position/rotation state
             bool updateHeadWithXRNode      = false;
