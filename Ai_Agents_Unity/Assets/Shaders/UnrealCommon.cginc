@@ -502,7 +502,12 @@ inline fixed3 UnpackNormal( fixed4 packednormal )
 	return UnpackNormalmapRGorAG( packednormal );
 #endif
 }*/
-void swap( inout float x, inout float y ){	float temp = x;	x = y;	y = temp;}
+void swap( inout float x, inout float y )
+{
+	float temp = x;
+	x = y;
+	y = temp;
+}
 MaterialFloat4 UnpackNormalMap( MaterialFloat4 TextureSample )
 {
 	float3 Unpacked = UnpackNormal( TextureSample );
@@ -1974,7 +1979,7 @@ MaterialFloat2 GetDefaultSceneTextureUV( FMaterialPixelParameters Parameters, ui
 float4 SceneTextureLookup( float2 UV, int SceneTextureIndex, bool bFiltered )
 {
 #if HDRP || URP
-	return SAMPLE_TEXTURE2D(_BlitTexture, SamplerState_Linear_Clamp, UV);
+	return float4( 0, 0, 0, 0 );
 #else
 	return float4( 0, 0, 0, 0 );
 #endif
