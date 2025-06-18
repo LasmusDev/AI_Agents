@@ -12580,6 +12580,7 @@ GameObject:
   - component: {fileID: 1863651266}
   - component: {fileID: 1863651268}
   - component: {fileID: 1863651269}
+  - component: {fileID: 1863651270}
   m_Layer: 0
   m_Name: Normcore Components
   m_TagString: Untagged
@@ -12652,6 +12653,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e0ad822ed4afd44a059f7830b7b1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1863651270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863651264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c67c57eb6af4aff9f166ed543e67f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maleAvatarPrefab: {fileID: 6717237054586633209, guid: 61d9ca151ac97437a85a7016fe077d47, type: 3}
+  femaleAvatarPrefab: {fileID: 6717237054586633209, guid: 39cfd82753b064caa872c89d1eaed357, type: 3}
 --- !u!1 &1872377545
 GameObject:
   m_ObjectHideFlags: 0
@@ -13285,10 +13300,10 @@ MonoBehaviour:
     dnaValues:
     - dnaTypeHash: 815443803
     slotDataList:
-    - asset: {fileID: 11400000, guid: f44f393c2761113499160bf3976bea56, type: 2}
+    - asset: {fileID: 11400000, guid: fa24076dd31d7334bb7741205a3b439c, type: 2}
       overlayScale: 1
       tags:
-      - Torso
+      - Hands
       Races: []
       meshModifiers: []
       blendShapeTargetSlot: 
@@ -13318,45 +13333,7 @@ MonoBehaviour:
       tempHidden: 0
       isDisabled: 0
       UVSet: 0
-      altMaterial: {fileID: 11400000, guid: 9baec5f7e5dc828408f9350562791968, type: 2}
-      BlendshapeSlotNames: []
-      Suppressed: 0
-      dontSerialize: 0
-      rendererAsset: {fileID: 0}
-    - asset: {fileID: 11400000, guid: fa24076dd31d7334bb7741205a3b439c, type: 2}
-      overlayScale: 1
-      tags:
-      - Hands
-      Races: []
-      meshModifiers: []
-      blendShapeTargetSlot: 
-      BlendshapeFoldout: 0
-      ClipPlaneFoldout: 0
-      isDeleted: 0
-      expandAlongNormal: 0
-      overSmoosh: 0
-      smooshDistance: 0
-      smooshInvertX: 0
-      smooshInvertY: 0
-      smooshInvertZ: 0
-      smooshInvertDist: 0
-      smooshTargetTag: 
-      smooshableTag: 
-      isSwapSlot: 0
-      swapTag: 
-      skinnedMeshRenderer: 0
-      submeshIndex: 0
-      vertexOffset: 758
-      UVArea:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1
-        height: 1
-      tempHidden: 0
-      isDisabled: 0
-      UVSet: 0
-      altMaterial: {fileID: 11400000, guid: 9baec5f7e5dc828408f9350562791968, type: 2}
+      altMaterial: {fileID: 0}
       BlendshapeSlotNames: []
       Suppressed: 0
       dontSerialize: 0
@@ -13386,7 +13363,7 @@ MonoBehaviour:
       swapTag: 
       skinnedMeshRenderer: 0
       submeshIndex: 1
-      vertexOffset: 1480
+      vertexOffset: 722
       UVArea:
         serializedVersion: 2
         x: 0
@@ -13424,7 +13401,7 @@ MonoBehaviour:
       swapTag: 
       skinnedMeshRenderer: 0
       submeshIndex: 2
-      vertexOffset: 4680
+      vertexOffset: 3922
       UVArea:
         serializedVersion: 2
         x: 0
@@ -13464,7 +13441,7 @@ MonoBehaviour:
       swapTag: 
       skinnedMeshRenderer: 0
       submeshIndex: 3
-      vertexOffset: 4874
+      vertexOffset: 4116
       UVArea:
         serializedVersion: 2
         x: 0
@@ -13502,7 +13479,7 @@ MonoBehaviour:
       swapTag: 
       skinnedMeshRenderer: 0
       submeshIndex: 4
-      vertexOffset: 5250
+      vertexOffset: 4492
       UVArea:
         serializedVersion: 2
         x: 0
@@ -13541,7 +13518,7 @@ MonoBehaviour:
       swapTag: LongHair
       skinnedMeshRenderer: 0
       submeshIndex: 5
-      vertexOffset: 5280
+      vertexOffset: 4522
       UVArea:
         serializedVersion: 2
         x: 0
@@ -13616,7 +13593,44 @@ MonoBehaviour:
       swapTag: 
       skinnedMeshRenderer: 0
       submeshIndex: 6
-      vertexOffset: 5368
+      vertexOffset: 4610
+      UVArea:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1
+        height: 1
+      tempHidden: 0
+      isDisabled: 0
+      UVSet: 0
+      altMaterial: {fileID: 0}
+      BlendshapeSlotNames: []
+      Suppressed: 0
+      dontSerialize: 0
+      rendererAsset: {fileID: 0}
+    - asset: {fileID: 11400000, guid: 049023c663609fb4b995c6206aa43ca7, type: 2}
+      overlayScale: 1
+      tags: []
+      Races: []
+      meshModifiers: []
+      blendShapeTargetSlot: 
+      BlendshapeFoldout: 0
+      ClipPlaneFoldout: 0
+      isDeleted: 0
+      expandAlongNormal: 0
+      overSmoosh: 0
+      smooshDistance: 0
+      smooshInvertX: 0
+      smooshInvertY: 0
+      smooshInvertZ: 0
+      smooshInvertDist: 0
+      smooshTargetTag: 
+      smooshableTag: 
+      isSwapSlot: 0
+      swapTag: 
+      skinnedMeshRenderer: 0
+      submeshIndex: 8
+      vertexOffset: 7886
       UVArea:
         serializedVersion: 2
         x: 0
@@ -13652,8 +13666,8 @@ MonoBehaviour:
       isSwapSlot: 0
       swapTag: 
       skinnedMeshRenderer: 0
-      submeshIndex: 8
-      vertexOffset: 8644
+      submeshIndex: 9
+      vertexOffset: 11480
       UVArea:
         serializedVersion: 2
         x: 0
@@ -13689,8 +13703,8 @@ MonoBehaviour:
       isSwapSlot: 0
       swapTag: 
       skinnedMeshRenderer: 0
-      submeshIndex: 9
-      vertexOffset: 10874
+      submeshIndex: 10
+      vertexOffset: 13710
       UVArea:
         serializedVersion: 2
         x: 0
@@ -13948,26 +13962,6 @@ MonoBehaviour:
       colorsExpanded: 0
       propertiesExpanded: 0
       displayColor: {r: 0, g: 0, b: 0, a: 0}
-    - name: ShirtAccent
-      channelMask:
-      - {r: 0.9098039, g: 0.03137255, b: 0.03137255, a: 1}
-      - {r: 1, g: 1, b: 1, a: 1}
-      - {r: 1, g: 1, b: 1, a: 1}
-      channelAdditiveMask:
-      - {r: 0, g: 0, b: 0, a: 0}
-      - {r: 0, g: 0, b: 0, a: 0}
-      - {r: 0, g: 0, b: 0, a: 0}
-      PropertyBlock:
-        alwaysUpdate: 0
-        alwaysUpdateParms: 0
-        serializedProperties: []
-      foldout: 0
-      showAdvanced: 0
-      isBaseColor: 0
-      deleteThis: 0
-      colorsExpanded: 0
-      propertiesExpanded: 0
-      displayColor: {r: 0.9098039, g: 0.03137255, b: 0.03137255, a: 1}
     - name: Pants1
       channelMask:
       - {r: 0.3529412, g: 0.4156863, b: 0.6392157, a: 1}
