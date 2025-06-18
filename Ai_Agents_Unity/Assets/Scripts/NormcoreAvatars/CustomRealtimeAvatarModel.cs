@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using Normal.Realtime;
 using Normal.Realtime.Serialization;
 
 namespace NormcoreAvatars
 {
     [RealtimeModel]
-    public partial class RealtimeAvatarModel {
+    public partial class CustomRealtimeAvatarModel {
         // Property 1 bitflag transitioned to 4/5/6 bools
         [RealtimeProperty(2, true)] private RealtimeAvatar.DeviceType _deviceType;
         [RealtimeProperty(3, true)] private string _deviceModel;

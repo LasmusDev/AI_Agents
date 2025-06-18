@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace NormcoreAvatars {
+namespace NormcoreAvatars{
     
     public class DisableRemoteIKFollow : MonoBehaviour
     {
-        RealtimeAvatarManager manager;
+        CustomRealtimeAvatarManager manager;
 
         public void Awake()
         {
-            manager = GetComponent<RealtimeAvatarManager>();
+            manager = GetComponent<CustomRealtimeAvatarManager>();
             manager.avatarCreated += DisableIKFollows;
         }
 
-        private void DisableIKFollows(RealtimeAvatarManager avatarManager, RealtimeAvatar avatar, bool isLocalAvatar)
+        private void DisableIKFollows(CustomRealtimeAvatarManager avatarManager, RealtimeAvatar avatar, bool isLocalAvatar)
         {
             if (!isLocalAvatar)
             {

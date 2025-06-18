@@ -11,13 +11,13 @@ public class AvatarPrefabAssigner : MonoBehaviour
     public GameObject femaleAvatarPrefab;
 
     private Realtime _realtime;
-    private NormcoreAvatars.RealtimeAvatarManager _realtimeAvatarManager;
+    private NormcoreAvatars.CustomRealtimeAvatarManager _realtimeAvatarManager;
 
     private void Awake()
     {
-        // Get the Realtime and RealtimeAvatarManager components on this GameObject.
+        // Get the Realtime and CustomRealtimeAvatarManager components on this GameObject.
         _realtime = GetComponent<Realtime>();
-        _realtimeAvatarManager = GetComponent<NormcoreAvatars.RealtimeAvatarManager>();
+        _realtimeAvatarManager = GetComponent<NormcoreAvatars.CustomRealtimeAvatarManager>();
 
         if (_realtime == null || _realtimeAvatarManager == null)
         {

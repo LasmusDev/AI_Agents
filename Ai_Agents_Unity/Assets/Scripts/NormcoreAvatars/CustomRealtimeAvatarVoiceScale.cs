@@ -3,13 +3,13 @@ using Normal.Realtime;
 
 namespace NormcoreAvatars
 {
-    [RequireComponent(typeof(RealtimeAvatarVoice))]
-    public class RealtimeAvatarVoiceScale : MonoBehaviour {
-        private RealtimeAvatarVoice _voice;
+    [RequireComponent(typeof(CustomRealtimeAvatarVoice))]
+    public class CustomRealtimeAvatarVoiceScale : MonoBehaviour {
+        private CustomRealtimeAvatarVoice _voice;
 
         void Awake() {
-            // Get a reference to the RealtimeAvatarVoice component
-            _voice = GetComponent<RealtimeAvatarVoice>();
+            // Get a reference to the CustomRealtimeAvatarVoice component
+            _voice = GetComponent<CustomRealtimeAvatarVoice>();
         }
 
         void Update() {

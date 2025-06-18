@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
@@ -6,9 +6,9 @@ using Normal.Utility;
 using Normal.Realtime;
 using UnityEditor.Animations;
 
-namespace NormcoreAvatars {
+namespace NormcoreAvatars{
     [DefaultExecutionOrder(RealtimeAvatar.ExecutionOrder)] // Make sure our Update() runs before the default to so that the avatar positions are as up to date as possible when everyone else's Update() runs.
-    public class RealtimeAvatar : RealtimeComponent<RealtimeAvatarModel> {
+    public class RealtimeAvatar : RealtimeComponent<CustomRealtimeAvatarModel> {
         public const int ExecutionOrder = -90;
 
         // Local Player
@@ -38,7 +38,7 @@ namespace NormcoreAvatars {
         }
 
         /// <summary>
-        /// The XR device type of the client that owns this avatar. See RealtimeAvatar#DeviceType for values.
+        /// The XR device type of the client that owns this avatar. See CustomRealtimeAvatar#DeviceType for values.
         /// </summary>
         public DeviceType deviceType {
             get => model.deviceType;
@@ -71,14 +71,14 @@ namespace NormcoreAvatars {
         [SerializeField] private Transform _rightFoot;
 #pragma warning restore 0649
 
-        private RealtimeAvatarManager _realtimeAvatarManager;
+        private CustomRealtimeAvatarManager _realtimeAvatarManager;
 
         private static List<XRNodeState> _nodeStates = new List<XRNodeState>();
 
         void Start() {
-            // Register with RealtimeAvatarManager
+            // Register with CustomRealtimeAvatarManager
             try {
-                _realtimeAvatarManager = realtime.GetComponent<RealtimeAvatarManager>();
+                _realtimeAvatarManager = realtime.GetComponent<CustomRealtimeAvatarManager>();
                 _realtimeAvatarManager._RegisterAvatar(realtimeView.ownerIDSelf, this);
             } catch (NullReferenceException) {
                 Debug.LogError("RealtimeAvatar failed to register with RealtimeAvatarManager component. Was this avatar prefab instantiated by RealtimeAvatarManager?");
@@ -86,7 +86,7 @@ namespace NormcoreAvatars {
         }
 
         void OnDestroy() {
-            // Unregister with RealtimeAvatarManager
+            // Unregister with CustomRealtimeAvatarManager
             if (_realtimeAvatarManager != null)
                 _realtimeAvatarManager._UnregisterAvatar(this);
 
@@ -106,7 +106,7 @@ namespace NormcoreAvatars {
             UpdateAvatarTransformsForLocalPlayer();
         }
 
-        protected override void OnRealtimeModelReplaced(RealtimeAvatarModel previousModel, RealtimeAvatarModel currentModel) {
+        protected override void OnRealtimeModelReplaced(CustomRealtimeAvatarModel previousModel, CustomRealtimeAvatarModel currentModel) {
             if (previousModel != null) {
                 previousModel.headActiveDidChange      -= ActiveStateChanged;
                 previousModel.leftHandActiveDidChange  -= ActiveStateChanged;
@@ -149,8 +149,8 @@ namespace NormcoreAvatars {
             }
         }
 
-        void ActiveStateChanged(RealtimeAvatarModel model, bool nodeIsActive) {
-            // Leave the head active so RealtimeAvatarVoice runs even when the head isn't tracking.
+        void ActiveStateChanged(CustomRealtimeAvatarModel model, bool nodeIsActive) {
+            // Leave the head active so CustomRealtimeAvatarVoice runs even when the head isn't tracking.
             if (_leftHand != null)  _leftHand.gameObject.SetActive(model.leftHandActive);
             if (_rightHand != null) _rightHand.gameObject.SetActive(model.rightHandActive);
         }

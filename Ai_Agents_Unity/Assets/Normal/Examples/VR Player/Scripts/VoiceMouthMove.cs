@@ -10,7 +10,7 @@ namespace Normal.Realtime.Examples {
         private float _mouthSize;
 
         void Awake() {
-            // Get a reference to the RealtimeAvatarVoice component
+            // Get a reference to the CustomRealtimeAvatarVoice component
             _voice = GetComponent<RealtimeAvatarVoice>();
         }
 
