@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using Normal.Realtime.Native;
@@ -12,7 +12,7 @@ namespace NormcoreAvatars
 {
 #if UNITY_EDITOR || !UNITY_WEBGL
     [DefaultExecutionOrder(-1)] // Make sure our Update() runs before the default to ensure _microphoneDbLevel has been calculated for CalculateVoiceVolume()
-    public class RealtimeAvatarVoice : Normal.Realtime.RealtimeComponent<RealtimeAvatarVoiceModel> {
+    public class CustomRealtimeAvatarVoice : Normal.Realtime.RealtimeComponent<CustomRealtimeAvatarVoiceModel> {
         public  float voiceVolume { get; private set; }
 
         private bool _mute = false;
@@ -103,7 +103,7 @@ namespace NormcoreAvatars
             voiceVolume = normalizedVolume;
         }
 
-        protected override void OnRealtimeModelReplaced(RealtimeAvatarVoiceModel previousModel, RealtimeAvatarVoiceModel currentModel) {
+        protected override void OnRealtimeModelReplaced(CustomRealtimeAvatarVoiceModel previousModel, CustomRealtimeAvatarVoiceModel currentModel) {
             if (previousModel != null) {
                 previousModel.clientIDDidChange -= ClientIDUpdated;
                 previousModel.streamIDDidChange -= StreamIDUpdated;
@@ -117,12 +117,12 @@ namespace NormcoreAvatars
             _rebuildAudioStream = true;
         }
 
-        private void ClientIDUpdated(RealtimeAvatarVoiceModel model, int clientID) {
+        private void ClientIDUpdated(CustomRealtimeAvatarVoiceModel model, int clientID) {
             if (isOwnedLocallyInHierarchy) return;
             _rebuildAudioStream = true;
         }
 
-        private void StreamIDUpdated(RealtimeAvatarVoiceModel model, int streamID) {
+        private void StreamIDUpdated(CustomRealtimeAvatarVoiceModel model, int streamID) {
             if (isOwnedLocallyInHierarchy) return;
             _rebuildAudioStream = true;
         }

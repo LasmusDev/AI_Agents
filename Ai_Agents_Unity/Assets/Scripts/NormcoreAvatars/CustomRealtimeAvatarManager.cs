@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 namespace NormcoreAvatars
 {
     [RequireComponent(typeof(Normal.Realtime.Realtime))]
-    public class RealtimeAvatarManager : MonoBehaviour {
+    public class CustomRealtimeAvatarManager : MonoBehaviour {
 #pragma warning disable 0649 // Disable variable is never assigned to warning.
         [FormerlySerializedAs("_avatarPrefab")]
         [SerializeField] private GameObject _localAvatarPrefab;
@@ -23,7 +23,7 @@ namespace NormcoreAvatars
         public RealtimeAvatar                  localAvatar { get; private set; }
         public Dictionary<int, RealtimeAvatar> avatars     { get; private set; }
 
-        public delegate void AvatarCreatedDestroyed(RealtimeAvatarManager avatarManager, RealtimeAvatar avatar, bool isLocalAvatar);
+        public delegate void AvatarCreatedDestroyed(CustomRealtimeAvatarManager avatarManager, RealtimeAvatar avatar, bool isLocalAvatar);
         public event AvatarCreatedDestroyed avatarCreated;
         public event AvatarCreatedDestroyed avatarDestroyed;
 

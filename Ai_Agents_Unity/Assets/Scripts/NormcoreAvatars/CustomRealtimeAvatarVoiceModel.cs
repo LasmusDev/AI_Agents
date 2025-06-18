@@ -1,10 +1,10 @@
-using Normal.Realtime;
+﻿using Normal.Realtime;
 using Normal.Realtime.Serialization;
 
-namespace NormcoreAvatars
-{
+namespace NormcoreAvatars {
+    
     [RealtimeModel]
-    public partial class RealtimeAvatarVoiceModel {
+    public partial class CustomRealtimeAvatarVoiceModel {
         [RealtimeProperty(1, true, true)] private int _clientID = -1;
         [RealtimeProperty(2, true, true)] private int _streamID = -1;
     }
@@ -12,7 +12,7 @@ namespace NormcoreAvatars
 
 #if !UNITY_2021_1_OR_NEWER
 namespace NormcoreAvatars {
-    public partial class RealtimeAvatarVoiceModel : RealtimeModel {
+    public partial class CustomRealtimeAvatarVoiceModel : RealtimeModel {
         public int clientID {
             get {
                 return _clientIDProperty.value;
