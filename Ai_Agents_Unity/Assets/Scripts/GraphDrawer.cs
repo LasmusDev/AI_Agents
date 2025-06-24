@@ -10,7 +10,9 @@ public class GraphDrawer : MonoBehaviour
     public int noOfDisplayedSamples;
     [Tooltip("If there was no sample added since last frame, add a sample with value 0.")]
     public bool addSampleEveryFrame;
+    [Tooltip("Whether the graph has 0 at the bottom, middle or top.")]
     public ZeroAxis axisPosition;
+    [Tooltip("The highest value the graph expects to display. Also the lowest value if the graph-axis is set to mid or top.")]
     public float maxSampleValue;
 
     bool sampleSet;
