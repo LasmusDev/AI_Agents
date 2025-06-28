@@ -15,7 +15,7 @@ namespace NormcoreAvatars{
             manager.avatarCreated += DisableIKFollows;
         }
 
-        private void DisableIKFollows(CustomRealtimeAvatarManager avatarManager, RealtimeAvatar avatar, bool isLocalAvatar)
+        private void DisableIKFollows(CustomRealtimeAvatarManager avatarManager, CustomRealtimeAvatar avatar, bool isLocalAvatar)
         {
             if (!isLocalAvatar)
             {

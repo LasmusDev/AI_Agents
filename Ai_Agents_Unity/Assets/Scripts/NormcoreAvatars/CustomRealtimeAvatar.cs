@@ -5,10 +5,12 @@ using UnityEngine.XR;
 using Normal.Utility;
 using Normal.Realtime;
 using UnityEditor.Animations;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
+using System.Linq;
 
 namespace NormcoreAvatars{
-    [DefaultExecutionOrder(RealtimeAvatar.ExecutionOrder)] // Make sure our Update() runs before the default to so that the avatar positions are as up to date as possible when everyone else's Update() runs.
-    public class RealtimeAvatar : RealtimeComponent<CustomRealtimeAvatarModel> {
+    [DefaultExecutionOrder(CustomRealtimeAvatar.ExecutionOrder)] // Make sure our Update() runs before the default to so that the avatar positions are as up to date as possible when everyone else's Update() runs.
+    public class CustomRealtimeAvatar : RealtimeComponent<CustomRealtimeAvatarModel> {
         public const int ExecutionOrder = -90;
 
         // Local Player
@@ -18,8 +20,6 @@ namespace NormcoreAvatars{
             public Transform head;
             public Transform leftHand;
             public Transform rightHand;
-            public Transform leftFoot;
-            public Transform rightFoot;
         }
 
         public  LocalPlayer  localPlayer => _localPlayer;
@@ -134,6 +134,7 @@ namespace NormcoreAvatars{
             _localPlayer = localPlayer;
 
             if (_localPlayer != null) {
+                GetComponent<UMARigCreator>().AttachToPico();
                 RealtimeTransform      rootRealtimeTransform =                                 GetComponent<RealtimeTransform>();
                 RealtimeTransform      headRealtimeTransform =      _head != null ?      _head.GetComponent<RealtimeTransform>() : null;
                 RealtimeTransform  leftHandRealtimeTransform =  _leftHand != null ?  _leftHand.GetComponent<RealtimeTransform>() : null;
@@ -182,7 +183,6 @@ namespace NormcoreAvatars{
             if (_head != null) {
                 if (_localPlayer.head != null) {
                     model.headActive = _localPlayer.head.gameObject.activeSelf;
-
                     _head.position = _localPlayer.head.position;
                     _head.rotation = _localPlayer.head.rotation;
                 } else {
@@ -194,7 +194,6 @@ namespace NormcoreAvatars{
             if (_leftHand != null) {
                 if (_localPlayer.leftHand != null) {
                     model.leftHandActive = _localPlayer.leftHand.gameObject.activeSelf;
-
                     _leftHand.position = _localPlayer.leftHand.position;
                     _leftHand.rotation = _localPlayer.leftHand.rotation;
                 } else {
@@ -206,7 +205,6 @@ namespace NormcoreAvatars{
             if (_rightHand != null) {
                 if (_localPlayer.rightHand != null) {
                     model.rightHandActive = _localPlayer.rightHand.gameObject.activeSelf;
-
                     _rightHand.position = _localPlayer.rightHand.position;
                     _rightHand.rotation = _localPlayer.rightHand.rotation;
                 } else {

@@ -7,7 +7,7 @@ namespace NormcoreAvatars
     [RealtimeModel]
     public partial class CustomRealtimeAvatarModel {
         // Property 1 bitflag transitioned to 4/5/6 bools
-        [RealtimeProperty(2, true)] private RealtimeAvatar.DeviceType _deviceType;
+        [RealtimeProperty(2, true)] private CustomRealtimeAvatar.DeviceType _deviceType;
         [RealtimeProperty(3, true)] private string _deviceModel;
         [RealtimeProperty(4, true, true)] private bool _headActive;
         [RealtimeProperty(5, true, true)] private bool _leftHandActive;

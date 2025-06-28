@@ -12,7 +12,7 @@ namespace NormcoreAvatars
         [FormerlySerializedAs("_avatarPrefab")]
         [SerializeField] private GameObject _localAvatarPrefab;
 
-        [SerializeField] private RealtimeAvatar.LocalPlayer _localPlayer;
+        [SerializeField] private CustomRealtimeAvatar.LocalPlayer _localPlayer;
 #pragma warning restore 0649
 
         public GameObject localAvatarPrefab {
@@ -20,10 +20,10 @@ namespace NormcoreAvatars
             set => SetLocalAvatarPrefab(value);
         }
 
-        public RealtimeAvatar                  localAvatar { get; private set; }
-        public Dictionary<int, RealtimeAvatar> avatars     { get; private set; }
+        public CustomRealtimeAvatar                  localAvatar { get; private set; }
+        public Dictionary<int, CustomRealtimeAvatar> avatars     { get; private set; }
 
-        public delegate void AvatarCreatedDestroyed(CustomRealtimeAvatarManager avatarManager, RealtimeAvatar avatar, bool isLocalAvatar);
+        public delegate void AvatarCreatedDestroyed(CustomRealtimeAvatarManager avatarManager, CustomRealtimeAvatar avatar, bool isLocalAvatar);
         public event AvatarCreatedDestroyed avatarCreated;
         public event AvatarCreatedDestroyed avatarDestroyed;
 
@@ -34,9 +34,9 @@ namespace NormcoreAvatars
             _realtime.didConnectToRoom += DidConnectToRoom;
 
             if (_localPlayer == null)
-                _localPlayer = new RealtimeAvatar.LocalPlayer();
+                _localPlayer = new CustomRealtimeAvatar.LocalPlayer();
 
-            avatars = new Dictionary<int, RealtimeAvatar>();
+            avatars = new Dictionary<int, CustomRealtimeAvatar>();
         }
 
         private void OnEnable() {
@@ -62,18 +62,18 @@ namespace NormcoreAvatars
             CreateAvatarIfNeeded();
         }
 
-        public static RealtimeAvatar.DeviceType GetRealtimeAvatarDeviceTypeForLocalPlayer() {
+        public static CustomRealtimeAvatar.DeviceType GetRealtimeAvatarDeviceTypeForLocalPlayer() {
             switch (XRSettings.loadedDeviceName) {
                 case "OpenVR":
-                    return RealtimeAvatar.DeviceType.OpenVR;
+                    return CustomRealtimeAvatar.DeviceType.OpenVR;
                 case "Oculus":
-                    return RealtimeAvatar.DeviceType.Oculus;
+                    return CustomRealtimeAvatar.DeviceType.Oculus;
                 default:
-                    return RealtimeAvatar.DeviceType.Unknown;
+                    return CustomRealtimeAvatar.DeviceType.Unknown;
             }
         }
 
-        public void _RegisterAvatar(int clientID, RealtimeAvatar avatar) {
+        public void _RegisterAvatar(int clientID, CustomRealtimeAvatar avatar) {
             if (avatars.ContainsKey(clientID)) {
                 Debug.LogError("RealtimeAvatar registered more than once for the same clientID (" + clientID + "). This is a bug!");
             }
@@ -89,10 +89,10 @@ namespace NormcoreAvatars
             }
         }
 
-        public void _UnregisterAvatar(RealtimeAvatar avatar) {
+        public void _UnregisterAvatar(CustomRealtimeAvatar avatar) {
             // Removing the matching entry (if it still exists in the collection) by value
-            List<KeyValuePair<int, RealtimeAvatar>> matchingAvatars = avatars.Where(keyValuePair => keyValuePair.Value == avatar).ToList();
-            foreach (KeyValuePair<int, RealtimeAvatar> matchingAvatar in matchingAvatars) {
+            List<KeyValuePair<int, CustomRealtimeAvatar>> matchingAvatars = avatars.Where(keyValuePair => keyValuePair.Value == avatar).ToList();
+            foreach (KeyValuePair<int, CustomRealtimeAvatar> matchingAvatar in matchingAvatars) {
                 int avatarClientID = matchingAvatar.Key;
                 avatars.Remove(avatarClientID);
             }
@@ -147,7 +147,7 @@ namespace NormcoreAvatars
                 return;
             }
 
-            localAvatar = avatarGameObject.GetComponent<RealtimeAvatar>();
+            localAvatar = avatarGameObject.GetComponent<CustomRealtimeAvatar>();
             if (localAvatar == null) {
                 Debug.LogError("RealtimeAvatarManager: Successfully instantiated avatar prefab, but could not find the RealtimeAvatar component.");
                 return;

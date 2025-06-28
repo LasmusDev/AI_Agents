@@ -484,14 +484,16 @@ public class UMARigCreator : MonoBehaviour
         {
             rightHand = rightArmConstraint.gameObject.AddComponent<FollowObject>();
         }
-        rightHand.transformToFollow = FindObjectsByType<ControllerInputActionManager>(FindObjectsSortMode.None).Where(x => x.gameObject.name.Contains("Right")).First().transform;
+        rightHand.transformToFollow = FindObjectsByType<ControllerInputActionManager>(FindObjectsInactive.Include, FindObjectsSortMode.None)
+            .Where(x => x.gameObject.name.Contains("Right")).First().transform;
 
         FollowObject leftHand = leftArmConstraint.gameObject.GetComponent<FollowObject>();
         if (leftHand == null)
         {
             leftHand = leftArmConstraint.gameObject.AddComponent<FollowObject>();
         }
-        leftHand.transformToFollow = FindObjectsByType<ControllerInputActionManager>(FindObjectsSortMode.None).Where(x => x.gameObject.name.Contains("Left")).First().transform;
+        leftHand.transformToFollow = FindObjectsByType<ControllerInputActionManager>(FindObjectsInactive.Include, FindObjectsSortMode.None)
+            .Where(x => x.gameObject.name.Contains("Left")).First().transform;
         FollowObject headFollow = headConstraint.data.sourceObjects[0].transform.GetComponent<FollowObject>();
         if (headFollow == null)
         {
@@ -503,8 +505,8 @@ public class UMARigCreator : MonoBehaviour
         {
             bodyFollow = this.gameObject.AddComponent<FollowObject>();
         }
-        bodyFollow.transformToFollow = Camera.main.transform;
-        bodyFollow.positionOffset = headTransform.position - this.transform.position;
+        bodyFollow.transformToFollow = FindObjectsByType<RootCalculator>(FindObjectsInactive.Include, FindObjectsSortMode.None).First().transform; ;
+        
 
     }
     #endregion
