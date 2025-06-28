@@ -25,7 +25,7 @@ namespace NormcoreAvatars{
         public  LocalPlayer  localPlayer => _localPlayer;
 
 #pragma warning disable 0649 // Disable variable is never assigned to warning.
-        private LocalPlayer _localPlayer;
+        public LocalPlayer _localPlayer;
 #pragma warning restore 0649
 
         public  bool        isLocalAvatar { get; private set; } = false;

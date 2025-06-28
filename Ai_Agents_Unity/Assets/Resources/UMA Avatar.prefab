@@ -3904,8 +3904,6 @@ GameObject:
   - component: {fileID: 4235294377165700962}
   - component: {fileID: 4667960018254243743}
   - component: {fileID: 447656829058825663}
-  - component: {fileID: -239342532264025303}
-  - component: {fileID: -8149677083870974416}
   m_Layer: 0
   m_Name: UMA Avatar
   m_TagString: Untagged
@@ -5704,6 +5702,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2926d05091d3b45a126c1dd9c020ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _localPlayer:
+    root: {fileID: 0}
+    head: {fileID: 0}
+    leftHand: {fileID: 0}
+    rightHand: {fileID: 0}
+    leftFoot: {fileID: 0}
+    rightFoot: {fileID: 0}
   toAutoSetAnimatorController: {fileID: 9100000, guid: ae859d58fdf844b73863d3833f955cdf, type: 2}
   _head: {fileID: 1635102152907314890}
   _leftHand: {fileID: 7826909915561848383}
