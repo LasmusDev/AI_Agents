@@ -211,7 +211,7 @@ namespace NormcoreAvatars{
                     updateRightHandWithXRNode = true;
                 }
             }
-
+/*
             // Update head/hands using XRNode APIs if needed
             if (updateHeadWithXRNode || updateLeftHandWithXRNode || updateRightHandWithXRNode) {
                 InputTracking.GetNodeStates(_nodeStates); // the list is cleared by GetNodeStates
@@ -236,7 +236,7 @@ namespace NormcoreAvatars{
                 if (updateHeadWithXRNode)      model.headActive      =      headActive;
                 if (updateLeftHandWithXRNode)  model.leftHandActive  =  leftHandActive;
                 if (updateRightHandWithXRNode) model.rightHandActive = rightHandActive;
-            }
+            } */
         }
 
         private static void UpdateTransformWithNodeState(Transform transform, XRNodeState state) {

@@ -58,12 +58,18 @@ namespace VIVE.OpenXR.Samples.EyeTracker
 
         void Update()
         {
+
             // --- Cleaned up UI Text ---
             m_Text.text = ""; // Start with a clean slate
             XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] out_gazes);
 
             leftGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_LEFT_HTC];
             rightGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_RIGHT_HTC];
+            if (!leftGaze.isValid ||!rightGaze.isValid
+                ||leftGazeTransform == null || rightGazeTransform == null)
+            {
+                return;
+            }
 
             // This code is still needed to update the transform data for the SphereCast logic.
             // But since we disabled the Mesh Renderers, nothing will be visible.
