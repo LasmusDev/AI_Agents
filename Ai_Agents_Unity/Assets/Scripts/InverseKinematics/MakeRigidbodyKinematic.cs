@@ -17,5 +17,11 @@ public class MakeRigidbodyKinematic : MonoBehaviour
         {
             rb.isKinematic = true;
         }
+        Collider attachedCollider = GetComponent<Collider>();
+        if(attachedCollider != null)
+        {
+            attachedCollider.enabled = false;
+        }
+
     }
 }

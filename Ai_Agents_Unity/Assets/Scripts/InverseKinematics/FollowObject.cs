@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FollowObject : MonoBehaviour
 {
+    public string NameOfIntendedFollow;
     public bool localSpace;
     public Transform transformToFollow;
     public bool autoCalcOffset;
