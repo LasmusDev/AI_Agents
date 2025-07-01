@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.XR;
 using Normal.Utility;
 using Normal.Realtime;
-using UnityEditor.Animations;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 using System.Linq;
 
@@ -60,7 +59,7 @@ namespace NormcoreAvatars{
         public Transform leftFoot => _leftFoot;
         public Transform rightFoot => _rightFoot;
 
-        public AnimatorController toAutoSetAnimatorController;
+        public AnimatorOverrideController toAutoSetAnimatorController;
 
 
 #pragma warning disable 0649 // Disable variable is never assigned to warning.

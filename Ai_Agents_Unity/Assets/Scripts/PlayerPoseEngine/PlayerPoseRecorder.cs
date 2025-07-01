@@ -77,10 +77,10 @@ public class PlayerPoseRecorder : MonoBehaviour
             playerPose.limbRequirements.Add(lFootReq);
         }
         //Ignore asset database warning. It wont work outside of the editor, but it wont need to.
-        if(AssetDatabase.AssetPathExists("Assets/Poses/" + poseName + ".asset"))
+       /* if(AssetDatabase.AssetPathExists("Assets/Poses/" + poseName + ".asset"))
         {
             poseName += "_";
-        }
-        AssetDatabase.CreateAsset(playerPose, "Assets/Poses/" + poseName + ".asset");
+        } */
+        //AssetDatabase.CreateAsset(playerPose, "Assets/Poses/" + poseName + ".asset");
     }
 }
