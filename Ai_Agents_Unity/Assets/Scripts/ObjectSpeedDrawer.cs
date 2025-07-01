@@ -9,7 +9,7 @@ public class ObjectSpeedDrawer : MonoBehaviour
     void FixedUpdate()
     {
         float distanceThisFrame = Vector3.Distance(lastPos, this.transform.position);
-        drawingTo.AddSample(distanceThisFrame / Time.fixedDeltaTime);
+        drawingTo.AddSample(distanceThisFrame*50 / Time.fixedDeltaTime);
         Debug.Log(distanceThisFrame / Time.fixedDeltaTime);
         lastPos = this.transform.position;
     }

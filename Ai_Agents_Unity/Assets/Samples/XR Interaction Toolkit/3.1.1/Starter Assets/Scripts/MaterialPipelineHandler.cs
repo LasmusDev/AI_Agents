@@ -16,18 +16,17 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                 pipelineHandler.AutoRefreshPipelineShaders();
         }
 
-        static List<MaterialPipelineHandler> GetAllInstances()
+        static MaterialPipelineHandler[] GetAllInstances()
         {
-            var instances = new List<MaterialPipelineHandler>();
-
             // Find all GUIDs for objects that match the type MaterialPipelineHandler
-            var guids = AssetDatabase.FindAssets("t:MaterialPipelineHandler");
+            string[] guids = AssetDatabase.FindAssets("t:MaterialPipelineHandler");
+
+            MaterialPipelineHandler[] instances = new MaterialPipelineHandler[guids.Length];
+
             for (int i = 0; i < guids.Length; i++)
             {
                 string path = AssetDatabase.GUIDToAssetPath(guids[i]);
-                var asset = AssetDatabase.LoadAssetAtPath<MaterialPipelineHandler>(path);
-                if (asset != null)
-                    instances.Add(asset);
+                instances[i] = AssetDatabase.LoadAssetAtPath<MaterialPipelineHandler>(path);
             }
 
             return instances;
@@ -61,7 +60,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         [SerializeField]
         [Tooltip("List of materials and their associated shaders.")]
         List<ShaderContainer> m_ShaderContainers;
-
+        
         [SerializeField]
         [Tooltip("If true, the shaders will be refreshed automatically when the editor opens and when this scriptable object instance is enabled.")]
         bool m_AutoRefreshShaders = true;
@@ -109,7 +108,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
                     info.material.shader = birpShader;
                     MarkMaterialModified(info.material);
                 }
-                else if (!isBuiltinRenderPipeline && srpShader != null && currentShader != srpShader)
+                else if (!isBuiltinRenderPipeline && srpShader != null && currentShader != srpShader )
                 {
                     info.material.shader = srpShader;
                     MarkMaterialModified(info.material);

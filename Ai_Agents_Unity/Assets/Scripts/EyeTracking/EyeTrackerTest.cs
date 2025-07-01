@@ -12,6 +12,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         void DEBUG(string msg) { Debug.Log(LOG_TAG + " " + msg); }
         public Transform leftGazeTransform = null;
         public Transform rightGazeTransform = null;
+        public Transform XRRig;
 
         // CHANGED: From a single GameObject to a List to hold all our AOIs.
         public List<GameObject> areasOfInterest = new List<GameObject>();
@@ -23,13 +24,13 @@ namespace VIVE.OpenXR.Samples.EyeTracker
 
         public float gazeDetectionRadius = 0.1f;
         private int layerMask;
+        public LayerMask ignoreEyetracking;
 
         private void Awake()
         {
             m_Text = GetComponent<Text>();
 
-            int eyeTrackingLayer = LayerMask.NameToLayer("EyeTrackingIgnore");
-            layerMask = ~(1 << eyeTrackingLayer);
+            layerMask = ~(1 << ignoreEyetracking);
         }
 
         void Start()
@@ -56,27 +57,30 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         private XrSingleEyeGazeDataHTC leftGaze;
         private XrSingleEyeGazeDataHTC rightGaze;
 
-        void Update()
+        void FixedUpdate()
         {
-
             // --- Cleaned up UI Text ---
             m_Text.text = ""; // Start with a clean slate
+          
             XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] out_gazes);
 
             leftGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_LEFT_HTC];
             rightGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_RIGHT_HTC];
-            if (!leftGaze.isValid ||!rightGaze.isValid
-                ||leftGazeTransform == null || rightGazeTransform == null)
-            {
-                return;
-            }
+            /* if (!leftGaze.isValid ||!rightGaze.isValid
+                 ||leftGazeTransform == null || rightGazeTransform == null)
+             {
+                 return;
+             } */
 
             // This code is still needed to update the transform data for the SphereCast logic.
             // But since we disabled the Mesh Renderers, nothing will be visible.
-            leftGazeTransform.position = leftGaze.gazePose.position.ToUnityVector();
-            leftGazeTransform.rotation = leftGaze.gazePose.orientation.ToUnityQuaternion();
-            rightGazeTransform.position = rightGaze.gazePose.position.ToUnityVector();
-            rightGazeTransform.rotation = rightGaze.gazePose.orientation.ToUnityQuaternion();
+            leftGazeTransform.position = Camera.main.transform.position;
+            leftGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(leftGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+            rightGazeTransform.position = Camera.main.transform.position;
+            rightGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(rightGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+
+            
+            
 
             // --- Display Requested Data ---
 
@@ -136,17 +140,18 @@ namespace VIVE.OpenXR.Samples.EyeTracker
                 return;
             }
 
-            Ray gazeRay = new Ray(gazeOrigin, gazeDirection);
-            RaycastHit hit;
+            RaycastHit[] hit =Physics.RaycastAll(gazeOrigin, gazeDirection);
 
-            if (Physics.SphereCast(gazeRay, gazeDetectionRadius, out hit, 100f, layerMask))
+            if (hit.Length > 0)
             {
-                // CHANGED: Check if the hit object is one of our registered AOIs.
-                GameObject hitObject = hit.collider.gameObject;
-                if (gazeTimers.ContainsKey(hitObject))
-                {
-                    // If it is, increment the timer for that specific object.
-                    gazeTimers[hitObject] += Time.deltaTime;
+                foreach (RaycastHit rcHit in hit) {
+                    // CHANGED: Check if the hit object is one of our registered AOIs.
+                    GameObject hitObject = rcHit.collider.gameObject;
+                    if (gazeTimers.ContainsKey(hitObject))
+                    {
+                        // If it is, increment the timer for that specific object.
+                        gazeTimers[hitObject] += Time.deltaTime;
+                    }
                 }
             }
         }
