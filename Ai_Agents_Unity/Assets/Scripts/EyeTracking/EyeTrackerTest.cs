@@ -28,7 +28,12 @@ namespace VIVE.OpenXR.Samples.EyeTracker
 
         // NEW: Gaze visualizer variables
         public GameObject gazePointerPrefab; // Assign a small sphere or crosshair prefab here
+                                            // IMPORTANT: This prefab should NOT have a Collider or Rigidbody component.
+                                            // It is purely for visual representation.
         private GameObject currentGazePointer; // To hold the instantiated gaze pointer
+
+        // NEW: Boolean to control gaze pointer visibility
+        private bool isGazePointerActive = false; // Default to inactive
 
         private void Awake()
         {
@@ -62,7 +67,8 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             if (gazePointerPrefab != null)
             {
                 currentGazePointer = Instantiate(gazePointerPrefab);
-                currentGazePointer.SetActive(false); // Start as inactive
+                // Set initial active state based on isGazePointerActive
+                currentGazePointer.SetActive(isGazePointerActive); 
             }
             else
             {
@@ -77,7 +83,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         {
             // --- Cleaned up UI Text ---
             m_Text.text = ""; // Start with a clean slate
-
+            
             XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] out_gazes);
 
             leftGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_LEFT_HTC];
@@ -108,7 +114,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
                 m_Text.text += "Main Camera not found!\n";
                 return; // Exit FixedUpdate if no main camera
             }
-
+            
             // --- Display Requested Data ---
 
             m_Text.text += "[Eye Status]\n";
@@ -162,13 +168,19 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             }
             else
             {
-                // Deactivate gaze pointer if no valid gaze data
-                if (currentGazePointer != null)
+                // Deactivate gaze pointer if no valid gaze data or if it's meant to be inactive
+                if (currentGazePointer != null && currentGazePointer.activeSelf) // Only deactivate if currently active
                 {
                     currentGazePointer.SetActive(false);
                 }
                 return;
             }
+
+            // --- Debugging Aid: Draw the ray in the Scene view ---
+            // This will help you visualize where the eye gaze ray is going.
+            // You'll see a blue line in the Unity Scene view when running.
+            Debug.DrawRay(gazeOrigin, gazeDirection * 10f, Color.blue);
+
 
             // Reverted to RaycastAll to get all hits along the ray
             RaycastHit[] hits = Physics.RaycastAll(gazeOrigin, gazeDirection, Mathf.Infinity, layerMask);
@@ -180,11 +192,11 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             if (hits.Length > 0)
             {
                 // Position the gaze pointer at the first (closest) hit
-                if (currentGazePointer != null)
+                if (currentGazePointer != null && isGazePointerActive) // Only update position if it should be active
                 {
                     currentGazePointer.transform.position = hits[0].point;
                     currentGazePointer.transform.forward = -hits[0].normal; // Orient towards the camera
-                    currentGazePointer.SetActive(true);
+                    currentGazePointer.SetActive(true); // Ensure it's active if it hits something and isGazePointerActive is true
                 }
                 hitSomething = true;
 
@@ -202,12 +214,23 @@ namespace VIVE.OpenXR.Samples.EyeTracker
 
             if (!hitSomething)
             {
-                // Deactivate gaze pointer if no hit
-                if (currentGazePointer != null)
+                // Deactivate gaze pointer if no hit or if it's meant to be inactive
+                if (currentGazePointer != null && currentGazePointer.activeSelf) // Only deactivate if currently active
                 {
                     currentGazePointer.SetActive(false);
                 }
             }
+        }
+
+        // NEW PUBLIC METHOD: Call this from a UI Button to toggle gaze pointer visibility
+        public void ToggleGazePointerVisibility()
+        {
+            isGazePointerActive = !isGazePointerActive; // Flip the boolean state
+            if (currentGazePointer != null)
+            {
+                currentGazePointer.SetActive(isGazePointerActive); // Apply the new state
+            }
+            DEBUG("Gaze Pointer visibility toggled to: " + isGazePointerActive);
         }
     }
 }
