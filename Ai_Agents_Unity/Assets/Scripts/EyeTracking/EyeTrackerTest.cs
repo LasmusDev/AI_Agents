@@ -26,11 +26,16 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         private int layerMask;
         public LayerMask ignoreEyetracking;
 
+        // NEW: Gaze visualizer variables
+        public GameObject gazePointerPrefab; // Assign a small sphere or crosshair prefab here
+        private GameObject currentGazePointer; // To hold the instantiated gaze pointer
+
         private void Awake()
         {
             m_Text = GetComponent<Text>();
 
-            layerMask = ~(1 << ignoreEyetracking);
+            // Ensure layerMask correctly filters out ignored layers
+            layerMask = ~ignoreEyetracking.value; // Correct way to invert a LayerMask
         }
 
         void Start()
@@ -52,6 +57,17 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             {
                 Debug.LogError(LOG_TAG + " No Areas of Interest have been assigned in the Inspector!");
             }
+
+            // NEW: Instantiate the gaze pointer at the start
+            if (gazePointerPrefab != null)
+            {
+                currentGazePointer = Instantiate(gazePointerPrefab);
+                currentGazePointer.SetActive(false); // Start as inactive
+            }
+            else
+            {
+                Debug.LogWarning(LOG_TAG + " Gaze Pointer Prefab is not assigned. Gaze visualization will not work.");
+            }
         }
 
         private XrSingleEyeGazeDataHTC leftGaze;
@@ -61,26 +77,37 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         {
             // --- Cleaned up UI Text ---
             m_Text.text = ""; // Start with a clean slate
-          
+
             XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] out_gazes);
 
             leftGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_LEFT_HTC];
             rightGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_RIGHT_HTC];
-            /* if (!leftGaze.isValid ||!rightGaze.isValid
-                 ||leftGazeTransform == null || rightGazeTransform == null)
-             {
-                 return;
-             } */
+            /* Removed the early return here to ensure gaze transforms are always updated
+             * and gaze data is displayed, even if transforms are null or gaze is invalid.
+             * The gaze pointer and AOI logic will handle invalid gaze data.
+             */
 
             // This code is still needed to update the transform data for the SphereCast logic.
             // But since we disabled the Mesh Renderers, nothing will be visible.
-            leftGazeTransform.position = Camera.main.transform.position;
-            leftGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(leftGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
-            rightGazeTransform.position = Camera.main.transform.position;
-            rightGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(rightGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
-
-            
-            
+            // Ensure Camera.main is not null before accessing its transform
+            if (Camera.main != null)
+            {
+                leftGazeTransform.position = Camera.main.transform.position;
+                leftGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(leftGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+                rightGazeTransform.position = Camera.main.transform.position;
+                rightGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(rightGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+            }
+            else
+            {
+                Debug.LogWarning(LOG_TAG + " Main Camera not found. Gaze transforms may not update correctly.");
+                // If Camera.main is null, we can't get accurate gaze origin, so deactivate pointer
+                if (currentGazePointer != null)
+                {
+                    currentGazePointer.SetActive(false);
+                }
+                m_Text.text += "Main Camera not found!\n";
+                return; // Exit FixedUpdate if no main camera
+            }
 
             // --- Display Requested Data ---
 
@@ -95,8 +122,6 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             m_Text.text += "[Pupil Dilation]\n";
             m_Text.text += "Left: " + leftPupil.pupilDiameter.ToString("F4") + "mm\n";
             m_Text.text += "Right: " + rightPupil.pupilDiameter.ToString("F4") + "mm\n\n";
-
-            // REMOVED: All other text outputs (gaze position/rotation, geometric data, etc.) have been commented out or deleted.
 
             CheckGazeOnTarget();
 
@@ -137,21 +162,50 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             }
             else
             {
+                // Deactivate gaze pointer if no valid gaze data
+                if (currentGazePointer != null)
+                {
+                    currentGazePointer.SetActive(false);
+                }
                 return;
             }
 
-            RaycastHit[] hit =Physics.RaycastAll(gazeOrigin, gazeDirection);
+            // Reverted to RaycastAll to get all hits along the ray
+            RaycastHit[] hits = Physics.RaycastAll(gazeOrigin, gazeDirection, Mathf.Infinity, layerMask);
 
-            if (hit.Length > 0)
+            // Sort hits by distance to ensure the gaze pointer is placed at the closest hit
+            System.Array.Sort(hits, (x, y) => x.distance.CompareTo(y.distance));
+
+            bool hitSomething = false;
+            if (hits.Length > 0)
             {
-                foreach (RaycastHit rcHit in hit) {
-                    // CHANGED: Check if the hit object is one of our registered AOIs.
+                // Position the gaze pointer at the first (closest) hit
+                if (currentGazePointer != null)
+                {
+                    currentGazePointer.transform.position = hits[0].point;
+                    currentGazePointer.transform.forward = -hits[0].normal; // Orient towards the camera
+                    currentGazePointer.SetActive(true);
+                }
+                hitSomething = true;
+
+                foreach (RaycastHit rcHit in hits)
+                {
+                    // Check if the hit object is one of our registered AOIs.
                     GameObject hitObject = rcHit.collider.gameObject;
                     if (gazeTimers.ContainsKey(hitObject))
                     {
                         // If it is, increment the timer for that specific object.
                         gazeTimers[hitObject] += Time.deltaTime;
                     }
+                }
+            }
+
+            if (!hitSomething)
+            {
+                // Deactivate gaze pointer if no hit
+                if (currentGazePointer != null)
+                {
+                    currentGazePointer.SetActive(false);
                 }
             }
         }

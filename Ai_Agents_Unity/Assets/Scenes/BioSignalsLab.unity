@@ -13226,6 +13226,7 @@ MonoBehaviour:
   ignoreEyetracking:
     serializedVersion: 2
     m_Bits: 64
+  gazePointerPrefab: {fileID: 7188193563967861984, guid: 9debdbb0aceb6a347ae99c30eb782d56, type: 3}
 --- !u!1 &1796635082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1030972540, guid: abc00000000003410865046028794004, type: 3}
