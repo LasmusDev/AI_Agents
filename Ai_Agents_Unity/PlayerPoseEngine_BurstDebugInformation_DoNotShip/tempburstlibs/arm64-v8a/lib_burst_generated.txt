@@ -11,6 +11,7 @@ Library: C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\Bu
 --float-mode=Fast
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\Burst
+--debug=LineOnly
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.48f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Library\Burst
 --output=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
@@ -28,6 +29,7 @@ Library: C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\Bu
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\Burst
+--debug=LineOnly
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.48f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Library\Burst
 --output=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
@@ -143,6 +145,7 @@ Library: C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\Bu
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\Burst
+--debug=LineOnly
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.48f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Library\Burst
 --output=C:\Users\BWL12_admin\Documents\GitHub\AI_Agents\Ai_Agents_Unity\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated

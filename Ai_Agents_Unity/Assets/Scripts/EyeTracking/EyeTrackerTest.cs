@@ -33,7 +33,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         private GameObject currentGazePointer; // To hold the instantiated gaze pointer
 
         // NEW: Boolean to control gaze pointer visibility
-        private bool isGazePointerActive = false; // Default to inactive
+        private bool isGazePointerActive = true; // Default to inactive
 
         private void Awake()
         {
@@ -96,12 +96,16 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             // This code is still needed to update the transform data for the SphereCast logic.
             // But since we disabled the Mesh Renderers, nothing will be visible.
             // Ensure Camera.main is not null before accessing its transform
+        
             if (Camera.main != null)
             {
+                // The gaze origin is always the camera's position
                 leftGazeTransform.position = Camera.main.transform.position;
-                leftGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(leftGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
                 rightGazeTransform.position = Camera.main.transform.position;
-                rightGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(rightGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+
+                // leftGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(leftGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+                // rightGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(rightGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+
             }
             else
             {
@@ -145,26 +149,34 @@ namespace VIVE.OpenXR.Samples.EyeTracker
 
         private void CheckGazeOnTarget()
         {
-            Vector3 gazeOrigin;
-            Vector3 gazeDirection;
+            Vector3 gazeDirection = Vector3.zero;
 
             bool isLeftValid = leftGaze.isValid;
             bool isRightValid = rightGaze.isValid;
 
             if (isLeftValid && isRightValid)
             {
-                gazeOrigin = (leftGazeTransform.position + rightGazeTransform.position) / 2f;
-                gazeDirection = (leftGazeTransform.forward + rightGazeTransform.forward).normalized;
+                // gazeOrigin = (leftGazeTransform.position + rightGazeTransform.position) / 2f;
+                // gazeDirection = (leftGazeTransform.forward + rightGazeTransform.forward).normalized;
+                
+                Quaternion combinedRotation = Quaternion.Slerp(
+                    leftGaze.gazePose.orientation.ToUnityQuaternion(),
+                    rightGaze.gazePose.orientation.ToUnityQuaternion(),
+                    0.5f
+                );
+                gazeDirection = combinedRotation * Vector3.forward;
             }
             else if (isLeftValid)
             {
-                gazeOrigin = leftGazeTransform.position;
-                gazeDirection = leftGazeTransform.forward;
+                // gazeDirection = leftGazeTransform.forward;
+                gazeDirection = leftGaze.gazePose.orientation.ToUnityQuaternion() * Vector3.forward;
+
             }
             else if (isRightValid)
             {
-                gazeOrigin = rightGazeTransform.position;
-                gazeDirection = rightGazeTransform.forward;
+                // gazeDirection = rightGazeTransform.forward;
+                gazeDirection = rightGaze.gazePose.orientation.ToUnityQuaternion() * Vector3.forward;
+
             }
             else
             {
@@ -175,6 +187,8 @@ namespace VIVE.OpenXR.Samples.EyeTracker
                 }
                 return;
             }
+            Vector3 gazeOrigin = Camera.main.transform.position;
+
 
             // --- Debugging Aid: Draw the ray in the Scene view ---
             // This will help you visualize where the eye gaze ray is going.
@@ -188,17 +202,17 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             // Sort hits by distance to ensure the gaze pointer is placed at the closest hit
             System.Array.Sort(hits, (x, y) => x.distance.CompareTo(y.distance));
 
-            bool hitSomething = false;
+            // bool hitSomething = false;
             if (hits.Length > 0)
             {
                 // Position the gaze pointer at the first (closest) hit
                 if (currentGazePointer != null && isGazePointerActive) // Only update position if it should be active
                 {
                     currentGazePointer.transform.position = hits[0].point;
-                    currentGazePointer.transform.forward = -hits[0].normal; // Orient towards the camera
+                    // currentGazePointer.transform.forward = -hits[0].normal; // Orient towards the camera
                     currentGazePointer.SetActive(true); // Ensure it's active if it hits something and isGazePointerActive is true
                 }
-                hitSomething = true;
+                // hitSomething = true;
 
                 foreach (RaycastHit rcHit in hits)
                 {
@@ -211,8 +225,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
                     }
                 }
             }
-
-            if (!hitSomething)
+            else
             {
                 // Deactivate gaze pointer if no hit or if it's meant to be inactive
                 if (currentGazePointer != null && currentGazePointer.activeSelf) // Only deactivate if currently active
