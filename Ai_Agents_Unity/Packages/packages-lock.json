@@ -13,7 +13,7 @@
       "hash": "25a5fd212420688952ead9deba735357656278ec"
     },
     "com.normalvr.normcore": {
-      "version": "2.15.5",
+      "version": "2.16.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {

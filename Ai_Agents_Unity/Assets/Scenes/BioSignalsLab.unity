@@ -5230,6 +5230,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1630345662}
+    - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1630345663}
   m_SourcePrefab: {fileID: 100100000, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
 --- !u!114 &254600242 stripped
 MonoBehaviour:
@@ -5258,6 +5261,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
   m_PrefabInstance: {fileID: 254600241}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &254600245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1748222016861356527, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 254600241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &258465174
 GameObject:
   m_ObjectHideFlags: 0
@@ -34075,6 +34089,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1630345663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630345656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc26079c2742fd4d8b4d3ed4a75ccf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportationProvider: {fileID: 254600245}
 --- !u!1 &1631091335
 GameObject:
   m_ObjectHideFlags: 0
@@ -35236,6 +35263,7 @@ GameObject:
   - component: {fileID: 1795878112}
   - component: {fileID: 1795878111}
   - component: {fileID: 1795878113}
+  - component: {fileID: 1795878114}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -35331,6 +35359,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   gazePointerPrefab: {fileID: 7188193563967861984, guid: 9debdbb0aceb6a347ae99c30eb782d56, type: 3}
+--- !u!114 &1795878114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795878108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b07a2ab5d508bf543aa606e82d47b8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportationProvider: {fileID: 254600245}
+  eyeTrackerTest: {fileID: 1795878113}
 --- !u!1 &1796635082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1030972540, guid: abc00000000003410865046028794004, type: 3}
@@ -37806,7 +37848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2111277613
 MonoBehaviour:
   m_ObjectHideFlags: 0
