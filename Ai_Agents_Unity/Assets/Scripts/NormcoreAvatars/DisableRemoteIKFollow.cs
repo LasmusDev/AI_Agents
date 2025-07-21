@@ -23,6 +23,7 @@ namespace NormcoreAvatars{
                 feetComponents.ForEach(x => x.enabled = false);
                 List<FollowObject> follows = avatar.GetComponentsInChildren<FollowObject>(true).ToList();
                 follows.ForEach(x => x.enabled = false);
+                avatar.GetComponent<CustomRealtimeAvatar>().enabled = false;
             }
         }
     }

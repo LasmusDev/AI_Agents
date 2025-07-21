@@ -11,7 +11,7 @@ public class MakeRigidbodyKinematic : MonoBehaviour
 
     public IEnumerator SetRBKinematic()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         Rigidbody rb = this.GetComponent<Rigidbody>();
         if (rb != null)
         {
