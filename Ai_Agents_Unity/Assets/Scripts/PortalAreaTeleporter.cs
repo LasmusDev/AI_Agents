@@ -24,6 +24,8 @@ public class PortalAreaTeleporter : MonoBehaviour
             var request = new UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest()
             {
                 destinationPosition = linkedPortal.teleportTarget.position,
+                destinationRotation = linkedPortal.teleportTarget.rotation, 
+
             };
 
             // Send the teleport request to the provider

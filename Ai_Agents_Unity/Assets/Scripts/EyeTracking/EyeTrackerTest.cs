@@ -1,9 +1,7 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR;
 using VIVE.OpenXR.EyeTracker;
 
 namespace VIVE.OpenXR.Samples.EyeTracker
@@ -30,8 +28,8 @@ namespace VIVE.OpenXR.Samples.EyeTracker
 
         // NEW: Gaze visualizer variables
         public GameObject gazePointerPrefab; // Assign a small sphere or crosshair prefab here
-                                             // IMPORTANT: This prefab should NOT have a Collider or Rigidbody component.
-                                             // It is purely for visual representation.
+                                            // IMPORTANT: This prefab should NOT have a Collider or Rigidbody component.
+                                            // It is purely for visual representation.
         private GameObject currentGazePointer; // To hold the instantiated gaze pointer
 
         // NEW: Boolean to control gaze pointer visibility
@@ -70,7 +68,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             {
                 currentGazePointer = Instantiate(gazePointerPrefab);
                 // Set initial active state based on isGazePointerActive
-                currentGazePointer.SetActive(isGazePointerActive);
+                currentGazePointer.SetActive(isGazePointerActive); 
             }
             else
             {
@@ -85,7 +83,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         {
             // --- Cleaned up UI Text ---
             m_Text.text = ""; // Start with a clean slate
-
+            
             XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] out_gazes);
 
             leftGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_LEFT_HTC];
@@ -95,44 +93,35 @@ namespace VIVE.OpenXR.Samples.EyeTracker
              * The gaze pointer and AOI logic will handle invalid gaze data.
              */
 
-
-
-            // if (Camera.main != null)
-            // {
-            //     // The gaze origin is always the camera's position
-
-            //     leftGazeTransform.position = Camera.main.transform.position;
-            //     rightGazeTransform.position = Camera.main.transform.position;
-
-            //     // leftGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(leftGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
-            //     // rightGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(rightGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
-
-            // }
-            // else
-            // {
-            //     Debug.LogWarning(LOG_TAG + " Main Camera not found. Gaze transforms may not update correctly.");
-            //     // If Camera.main is null, we can't get accurate gaze origin, so deactivate pointer
-            //     if (currentGazePointer != null)
-            //     {
-            //         currentGazePointer.SetActive(false);
-            //     }
-            //     m_Text.text += "Main Camera not found!\n";
-            //     return; // Exit FixedUpdate if no main camera
-            // }
-
-            if (leftGaze.isValid)
+            // This code is still needed to update the transform data for the SphereCast logic.
+            // But since we disabled the Mesh Renderers, nothing will be visible.
+            // Ensure Camera.main is not null before accessing its transform
+        
+            if (Camera.main != null)
             {
-                leftGazeTransform.position = leftGaze.gazePose.position.ToUnityVector();
-                leftGazeTransform.rotation = leftGaze.gazePose.orientation.ToUnityQuaternion();
+                // The gaze origin is always the camera's position
+                leftGazeTransform.position = Camera.main.transform.position;
+                rightGazeTransform.position = Camera.main.transform.position;
+
+                // leftGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(leftGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+                // rightGazeTransform.rotation = Quaternion.Euler(XRRig.InverseTransformDirection(rightGaze.gazePose.orientation.ToUnityQuaternion().eulerAngles));
+
             }
-            if (rightGaze.isValid)
+            else
             {
-                rightGazeTransform.position = rightGaze.gazePose.position.ToUnityVector();
-                rightGazeTransform.rotation = rightGaze.gazePose.orientation.ToUnityQuaternion();
+                Debug.LogWarning(LOG_TAG + " Main Camera not found. Gaze transforms may not update correctly.");
+                // If Camera.main is null, we can't get accurate gaze origin, so deactivate pointer
+                if (currentGazePointer != null)
+                {
+                    currentGazePointer.SetActive(false);
+                }
+                m_Text.text += "Main Camera not found!\n";
+                return; // Exit FixedUpdate if no main camera
             }
+            
+            // --- Display Requested Data ---
 
-
-                m_Text.text += "[Eye Status]\n";
+            m_Text.text += "[Eye Status]\n";
             m_Text.text += "Left Gaze Valid: " + leftGaze.isValid + "\n";
             m_Text.text += "Right Gaze Valid: " + rightGaze.isValid + "\n\n";
 
@@ -160,40 +149,33 @@ namespace VIVE.OpenXR.Samples.EyeTracker
 
         private void CheckGazeOnTarget()
         {
-            UnityEngine.Vector3 gazeOrigin;
-            UnityEngine.Vector3 gazeDirection;
-            
+            Vector3 gazeDirection = Vector3.zero;
 
             bool isLeftValid = leftGaze.isValid;
             bool isRightValid = rightGaze.isValid;
 
             if (isLeftValid && isRightValid)
             {
-                gazeOrigin = (leftGazeTransform.position + rightGazeTransform.position) / 2f;
-                gazeDirection = ((leftGazeTransform.forward + rightGazeTransform.forward) / 2f).normalized;
-
-                // Quaternion combinedRotation = Quaternion.Slerp(
-                //     leftGaze.gazePose.orientation.ToUnityQuaternion(),
-                //     rightGaze.gazePose.orientation.ToUnityQuaternion(),
-                //     0.5f
-                // );
-                // gazeDirection = combinedRotation * Vector3.forward;
-
+                // gazeOrigin = (leftGazeTransform.position + rightGazeTransform.position) / 2f;
+                // gazeDirection = (leftGazeTransform.forward + rightGazeTransform.forward).normalized;
+                
+                Quaternion combinedRotation = Quaternion.Slerp(
+                    leftGaze.gazePose.orientation.ToUnityQuaternion(),
+                    rightGaze.gazePose.orientation.ToUnityQuaternion(),
+                    0.5f
+                );
+                gazeDirection = combinedRotation * Vector3.forward;
             }
             else if (isLeftValid)
             {
                 // gazeDirection = leftGazeTransform.forward;
-                // gazeDirection = leftGaze.gazePose.orientation.ToUnityQuaternion() * Vector3.forward;
-                gazeOrigin = leftGazeTransform.position;
-                gazeDirection = leftGazeTransform.forward;
+                gazeDirection = leftGaze.gazePose.orientation.ToUnityQuaternion() * Vector3.forward;
 
             }
             else if (isRightValid)
             {
                 // gazeDirection = rightGazeTransform.forward;
-                // gazeDirection = rightGaze.gazePose.orientation.ToUnityQuaternion() * Vector3.forward;
-                gazeOrigin = rightGazeTransform.position;
-                gazeDirection = rightGazeTransform.forward;
+                gazeDirection = rightGaze.gazePose.orientation.ToUnityQuaternion() * Vector3.forward;
 
             }
             else
@@ -205,9 +187,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
                 }
                 return;
             }
-            // Vector3 gazeOrigin = Camera.main.transform.position;
-            
-
+            Vector3 gazeOrigin = Camera.main.transform.position;
 
 
             // --- Debugging Aid: Draw the ray in the Scene view ---
@@ -265,32 +245,5 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             }
             DEBUG("Gaze Pointer visibility toggled to: " + isGazePointerActive);
         }
-        
-    private IEnumerator ResyncAfterDiscontinuousMove()
-    {
-        // 1. Temporarily disable the gaze pointer to prevent it from appearing
-        //     at the incorrect location for a single frame.
-        if (currentGazePointer != null)
-        {
-            currentGazePointer.SetActive(false);
-        }
-
-        // 2. Wait until the end of the current frame. This is the crucial step.
-        //    It gives the entire engine and XR runtime time to process the
-        //    player's new position and rotation.
-        yield return new WaitForEndOfFrame();
-
-        // 3. By the time the next FixedUpdate runs, it will use the now-correct
-        //    player transform, and the gaze data will be interpreted correctly.
-        //    The pointer will be re-enabled automatically when a valid gaze hits a surface.
-        DEBUG("Eye Tracking re-synced after discontinuous movement.");
-    }
-
-// Add this new PUBLIC method that other scripts can call.
-    public void RequestResync()
-    {
-        StartCoroutine(ResyncAfterDiscontinuousMove());
-    }
-
     }
 }
