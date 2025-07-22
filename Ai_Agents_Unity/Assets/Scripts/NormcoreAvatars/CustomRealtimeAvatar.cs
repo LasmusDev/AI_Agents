@@ -7,59 +7,65 @@ using Normal.Realtime;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 using System.Linq;
 
-namespace NormcoreAvatars{
+namespace NormcoreAvatars
+{
     [DefaultExecutionOrder(CustomRealtimeAvatar.ExecutionOrder)] // Make sure our Update() runs before the default to so that the avatar positions are as up to date as possible when everyone else's Update() runs.
-    public class CustomRealtimeAvatar : RealtimeComponent<CustomRealtimeAvatarModel> {
+    public class CustomRealtimeAvatar : RealtimeComponent<CustomRealtimeAvatarModel>
+    {
         public const int ExecutionOrder = -90;
 
         // Local Player
         [Serializable]
-        public class LocalPlayer {
+        public class LocalPlayer
+        {
             public Transform root;
             public Transform head;
             public Transform leftHand;
             public Transform rightHand;
         }
 
-        public  LocalPlayer  localPlayer => _localPlayer;
+        public LocalPlayer localPlayer => _localPlayer;
 
 #pragma warning disable 0649 // Disable variable is never assigned to warning.
         public LocalPlayer _localPlayer;
 #pragma warning restore 0649
 
-        public  bool        isLocalAvatar { get; private set; } = false;
+        public bool isLocalAvatar { get; private set; } = false;
 
         // Device Type
-        public enum DeviceType : uint {
+        public enum DeviceType : uint
+        {
             Unknown = 0,
-            OpenVR  = 1,
-            Oculus  = 2,
+            OpenVR = 1,
+            Oculus = 2,
         }
 
         /// <summary>
         /// The XR device type of the client that owns this avatar. See CustomRealtimeAvatar#DeviceType for values.
         /// </summary>
-        public DeviceType deviceType {
+        public DeviceType deviceType
+        {
             get => model.deviceType;
-            set => model.deviceType  = value;
+            set => model.deviceType = value;
         }
 
         /// <summary>
         /// The XRDevice.model of the client that owns this avatar.
         /// </summary>
-        public string deviceModel {
+        public string deviceModel
+        {
             get => model.deviceModel;
             set => model.deviceModel = value;
         }
 
         // Prefab
-        public Transform head      => _head;
-        public Transform leftHand  => _leftHand;
+        public Transform head => _head;
+        public Transform leftHand => _leftHand;
         public Transform rightHand => _rightHand;
         public Transform leftFoot => _leftFoot;
         public Transform rightFoot => _rightFoot;
 
-        public AnimatorOverrideController toAutoSetAnimatorController;
+
 
 
 #pragma warning disable 0649 // Disable variable is never assigned to warning.
@@ -74,17 +80,22 @@ namespace NormcoreAvatars{
 
         private static List<XRNodeState> _nodeStates = new List<XRNodeState>();
 
-        void Start() {
+        void Start()
+        {
             // Register with CustomRealtimeAvatarManager
-            try {
+            try
+            {
                 _realtimeAvatarManager = realtime.GetComponent<CustomRealtimeAvatarManager>();
                 _realtimeAvatarManager._RegisterAvatar(realtimeView.ownerIDSelf, this);
-            } catch (NullReferenceException) {
+            }
+            catch (NullReferenceException)
+            {
                 Debug.LogError("RealtimeAvatar failed to register with RealtimeAvatarManager component. Was this avatar prefab instantiated by RealtimeAvatarManager?");
             }
         }
 
-        void OnDestroy() {
+        void OnDestroy()
+        {
             // Unregister with CustomRealtimeAvatarManager
             if (_realtimeAvatarManager != null)
                 _realtimeAvatarManager._UnregisterAvatar(this);
@@ -92,80 +103,74 @@ namespace NormcoreAvatars{
             // Unregister for events
             SetLocalPlayer(null);
         }
+       
 
-        void FixedUpdate() {
-            UpdateAvatarTransformsForLocalPlayer();
-        }
-
-        void Update() {
-            UpdateAvatarTransformsForLocalPlayer();
-        }
-
-        void LateUpdate() {
-            UpdateAvatarTransformsForLocalPlayer();
-        }
-
-        protected override void OnRealtimeModelReplaced(CustomRealtimeAvatarModel previousModel, CustomRealtimeAvatarModel currentModel) {
-            if (previousModel != null) {
-                previousModel.headActiveDidChange      -= ActiveStateChanged;
-                previousModel.leftHandActiveDidChange  -= ActiveStateChanged;
+        protected override void OnRealtimeModelReplaced(CustomRealtimeAvatarModel previousModel, CustomRealtimeAvatarModel currentModel)
+        {
+            if (previousModel != null)
+            {
+                previousModel.headActiveDidChange -= ActiveStateChanged;
+                previousModel.leftHandActiveDidChange -= ActiveStateChanged;
                 previousModel.rightHandActiveDidChange -= ActiveStateChanged;
             }
 
-            if (currentModel != null) {
-                currentModel.headActiveDidChange      += ActiveStateChanged;
-                currentModel.leftHandActiveDidChange  += ActiveStateChanged;
+            if (currentModel != null)
+            {
+                currentModel.headActiveDidChange += ActiveStateChanged;
+                currentModel.leftHandActiveDidChange += ActiveStateChanged;
                 currentModel.rightHandActiveDidChange += ActiveStateChanged;
             }
         }
 
-        public void _InitializeLocalAvatar(LocalPlayer localPlayer) {
+        public void _InitializeLocalAvatar(LocalPlayer localPlayer)
+        {
             // Set this value for the eventual _UnregisterAvatar call
             isLocalAvatar = true;
-
             SetLocalPlayer(localPlayer);
         }
 
-        void SetLocalPlayer(LocalPlayer localPlayer) {
+        void SetLocalPlayer(LocalPlayer localPlayer)
+        {
             if (localPlayer == _localPlayer)
                 return;
 
             _localPlayer = localPlayer;
 
-            if (_localPlayer != null) {
+            if (_localPlayer != null)
+            {
                 GetComponent<UMARigCreator>().AttachToPico();
-                RealtimeTransform      rootRealtimeTransform =                                 GetComponent<RealtimeTransform>();
-                RealtimeTransform      headRealtimeTransform =      _head != null ?      _head.GetComponent<RealtimeTransform>() : null;
-                RealtimeTransform  leftHandRealtimeTransform =  _leftHand != null ?  _leftHand.GetComponent<RealtimeTransform>() : null;
+                RealtimeTransform rootRealtimeTransform = GetComponent<RealtimeTransform>();
+                RealtimeTransform headRealtimeTransform = _head != null ? _head.GetComponent<RealtimeTransform>() : null;
+                RealtimeTransform leftHandRealtimeTransform = _leftHand != null ? _leftHand.GetComponent<RealtimeTransform>() : null;
                 RealtimeTransform rightHandRealtimeTransform = _rightHand != null ? _rightHand.GetComponent<RealtimeTransform>() : null;
                 RealtimeTransform lFRealtimeTransform = _leftFoot != null ? _leftFoot.GetComponent<RealtimeTransform>() : null;
                 RealtimeTransform rFRealtimeTransform = _rightFoot != null ? _rightFoot.GetComponent<RealtimeTransform>() : null;
-                if (rootRealtimeTransform != null)           rootRealtimeTransform.RequestOwnership();
-                if (headRealtimeTransform != null)           headRealtimeTransform.RequestOwnership();
-                if (leftHandRealtimeTransform != null)   leftHandRealtimeTransform.RequestOwnership();
+                if (rootRealtimeTransform != null) rootRealtimeTransform.RequestOwnership();
+                if (headRealtimeTransform != null) headRealtimeTransform.RequestOwnership();
+                if (leftHandRealtimeTransform != null) leftHandRealtimeTransform.RequestOwnership();
                 if (rightHandRealtimeTransform != null) rightHandRealtimeTransform.RequestOwnership();
                 if (lFRealtimeTransform != null) leftHandRealtimeTransform.RequestOwnership();
                 if (rFRealtimeTransform != null) rightHandRealtimeTransform.RequestOwnership();
             }
         }
 
-        void ActiveStateChanged(CustomRealtimeAvatarModel model, bool nodeIsActive) {
+        void ActiveStateChanged(CustomRealtimeAvatarModel model, bool nodeIsActive)
+        {
             // Leave the head active so CustomRealtimeAvatarVoice runs even when the head isn't tracking.
-            if (_leftHand != null)  _leftHand.gameObject.SetActive(model.leftHandActive);
+            if (_leftHand != null) _leftHand.gameObject.SetActive(model.leftHandActive);
             if (_rightHand != null) _rightHand.gameObject.SetActive(model.rightHandActive);
         }
 
-        void UpdateAvatarTransformsForLocalPlayer() {
+
+        void UpdateAvatarTransformsForLocalPlayer()
+        {
             // Make sure this avatar is a local player
+            /*
             if (_localPlayer == null)
                 return;
 
-            if(GetComponent<Animator>().runtimeAnimatorController != toAutoSetAnimatorController)
-            {
-                Debug.LogWarning("Exchanged Animator controller on avatar");
-                GetComponent<Animator>().runtimeAnimatorController = toAutoSetAnimatorController;
-            }
-
+          
+            
             // Flags to fetch XRNode position/rotation state
             bool updateHeadWithXRNode      = false;
             bool updateLeftHandWithXRNode  = false;
@@ -184,8 +189,6 @@ namespace NormcoreAvatars{
                     model.headActive = _localPlayer.head.gameObject.activeSelf;
                     _head.position = _localPlayer.head.position;
                     _head.rotation = _localPlayer.head.rotation;
-                } else {
-                    updateHeadWithXRNode = true;
                 }
             }
 
@@ -195,9 +198,7 @@ namespace NormcoreAvatars{
                     model.leftHandActive = _localPlayer.leftHand.gameObject.activeSelf;
                     _leftHand.position = _localPlayer.leftHand.position;
                     _leftHand.rotation = _localPlayer.leftHand.rotation;
-                } else {
-                    updateLeftHandWithXRNode = true;
-                }
+                } 
             }
 
             // Right Hand
@@ -206,44 +207,20 @@ namespace NormcoreAvatars{
                     model.rightHandActive = _localPlayer.rightHand.gameObject.activeSelf;
                     _rightHand.position = _localPlayer.rightHand.position;
                     _rightHand.rotation = _localPlayer.rightHand.rotation;
-                } else {
-                    updateRightHandWithXRNode = true;
-                }
-            }
-/*
-            // Update head/hands using XRNode APIs if needed
-            if (updateHeadWithXRNode || updateLeftHandWithXRNode || updateRightHandWithXRNode) {
-                InputTracking.GetNodeStates(_nodeStates); // the list is cleared by GetNodeStates
+                } 
+            }*/
 
-                bool      headActive = false;
-                bool  leftHandActive = false;
-                bool rightHandActive = false;
-
-                foreach (XRNodeState nodeState in _nodeStates) {
-                    if (nodeState.nodeType == XRNode.Head && updateHeadWithXRNode) {
-                        headActive = nodeState.tracked;
-                        UpdateTransformWithNodeState(_head, nodeState);
-                    } else if (nodeState.nodeType == XRNode.LeftHand && updateLeftHandWithXRNode) {
-                        leftHandActive = nodeState.tracked;
-                        UpdateTransformWithNodeState(_leftHand, nodeState);
-                    } else if (nodeState.nodeType == XRNode.RightHand && updateRightHandWithXRNode) {
-                        rightHandActive = nodeState.tracked;
-                        UpdateTransformWithNodeState(_rightHand, nodeState);
-                    }
-                }
-
-                if (updateHeadWithXRNode)      model.headActive      =      headActive;
-                if (updateLeftHandWithXRNode)  model.leftHandActive  =  leftHandActive;
-                if (updateRightHandWithXRNode) model.rightHandActive = rightHandActive;
-            } */
         }
 
-        private static void UpdateTransformWithNodeState(Transform transform, XRNodeState state) {
-            if (state.TryGetPosition(out Vector3 position)) {
+        private static void UpdateTransformWithNodeState(Transform transform, XRNodeState state)
+        {
+            if (state.TryGetPosition(out Vector3 position))
+            {
                 transform.localPosition = position;
             }
 
-            if (state.TryGetRotation(out Quaternion rotation)) {
+            if (state.TryGetRotation(out Quaternion rotation))
+            {
                 transform.localRotation = rotation;
             }
         }

@@ -78,7 +78,23 @@ namespace NormcoreAvatars
                 Debug.LogError("RealtimeAvatar registered more than once for the same clientID (" + clientID + "). This is a bug!");
             }
             avatars[clientID] = avatar;
-
+            //Disable follow objects as needed
+            if (!avatar.isLocalAvatar)
+            {
+                avatar.gameObject.name = "Remote Avatar";
+                /* List<IK_Feet> feetComponents = avatar.GetComponentsInChildren<IK_Feet>(true).ToList();
+                feetComponents.ForEach(x => x.SetControlState(ControlState.REMOTE_COPY_TAKES_OVER, this));
+                feetComponents.ForEach(x => x.enabled = false); */
+                List<FollowObject> follows = avatar.GetComponentsInChildren<FollowObject>(true).ToList();
+                follows.ForEach(x => x.SetControlState(ControlState.REMOTE_COPY_TAKES_OVER, this));
+                follows.ForEach(x => x.enabled = false);
+                //avatar.enabled = false; //The avatar caused weird issues at some point in the past.
+            }
+            else
+            {
+                avatar.gameObject.name = "Local Avatar";
+            }
+            
             // Fire event
             if (avatarCreated != null) {
                 try {

@@ -19,13 +19,17 @@ namespace NormcoreAvatars{
         {
             if (!isLocalAvatar)
             {
-                List<IK_Feet> feetComponents = avatar.GetComponentsInChildren<IK_Feet>(true).ToList();
+                avatar.gameObject.name = "Remote Avatar";
+                /* List<IK_Feet> feetComponents = avatar.GetComponentsInChildren<IK_Feet>(true).ToList();
                 feetComponents.ForEach(x => x.SetControlState(ControlState.REMOTE_COPY_TAKES_OVER, this));
-                feetComponents.ForEach(x => x.enabled = false);
+                feetComponents.ForEach(x => x.enabled = false); */
                 List<FollowObject> follows = avatar.GetComponentsInChildren<FollowObject>(true).ToList();
                 follows.ForEach(x => x.SetControlState(ControlState.REMOTE_COPY_TAKES_OVER, this));
                 follows.ForEach(x => x.enabled = false);
                 avatar.enabled = false;
+            } else
+            {
+                avatar.gameObject.name = "Local Avatar";
             }
         }
     }

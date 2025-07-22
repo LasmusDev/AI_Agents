@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MakeRigidbodyKinematic : MonoBehaviour
 {
+    public AnimatorOverrideController toAutoSetAnimatorController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,5 +24,14 @@ public class MakeRigidbodyKinematic : MonoBehaviour
             attachedCollider.enabled = false;
         }
 
+    }
+
+    public void Update()
+    {
+        if (GetComponent<Animator>().runtimeAnimatorController != toAutoSetAnimatorController)
+        {
+            Debug.LogWarning("Exchanged Animator controller on avatar");
+            GetComponent<Animator>().runtimeAnimatorController = toAutoSetAnimatorController;
+        }
     }
 }
