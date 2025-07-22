@@ -4582,7 +4582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lHand: {fileID: 1605550059}
   rHand: {fileID: 1860049317}
-  dotTresholdForShift: -0.5
+  dotTresholdForShift: -0.7
 --- !u!4 &143167919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1030971895, guid: abc00000000005246247612125498414, type: 3}
@@ -5514,7 +5514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: near clip plane
-      value: 0.3
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 393207239731357619, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_IsActive
@@ -5612,6 +5612,10 @@ PrefabInstance:
       propertyPath: 'm_StartingGroupMembers.Array.data[2]'
       value: 
       objectReference: {fileID: 254600242}
+    - target: {fileID: 7347985736721345035, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8877177980677234388, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_EnableFarCasting
       value: 0
