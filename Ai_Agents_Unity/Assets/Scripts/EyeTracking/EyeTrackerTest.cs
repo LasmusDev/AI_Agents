@@ -1,4 +1,5 @@
-﻿﻿using System.Collections;
+﻿using NormcoreDataSync;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,10 +15,11 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         public Transform rightGazeTransform = null;
         public Transform XRRig;
 
+        public SynchronizedText textSync;
+
         // CHANGED: From a single GameObject to a List to hold all our AOIs.
         public List<GameObject> areasOfInterest = new List<GameObject>();
 
-        private Text m_Text = null;
 
         // CHANGED: From a single float to a Dictionary to store a timer for each AOI.
         private Dictionary<GameObject, float> gazeTimers;
@@ -37,8 +39,6 @@ namespace VIVE.OpenXR.Samples.EyeTracker
 
         private void Awake()
         {
-            m_Text = GetComponent<Text>();
-
             // Ensure layerMask correctly filters out ignored layers
             layerMask = ~ignoreEyetracking.value; // Correct way to invert a LayerMask
         }
@@ -82,10 +82,13 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         void FixedUpdate()
         {
             // --- Cleaned up UI Text ---
-            m_Text.text = ""; // Start with a clean slate
+            string finalText = ""; // Start with a clean slate
             
             XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] out_gazes);
-
+            if(out_gazes == null)
+            {
+                return;
+            }
             leftGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_LEFT_HTC];
             rightGaze = out_gazes[(int)XrEyePositionHTC.XR_EYE_POSITION_RIGHT_HTC];
             /* Removed the early return here to ensure gaze transforms are always updated
@@ -115,45 +118,43 @@ namespace VIVE.OpenXR.Samples.EyeTracker
                 {
                     currentGazePointer.SetActive(false);
                 }
-                m_Text.text += "Main Camera not found!\n";
+                finalText += "Main Camera not found!\n";
                 return; // Exit FixedUpdate if no main camera
             }
-            
+
             // --- Display Requested Data ---
 
-            m_Text.text += "[Eye Status]\n";
-            m_Text.text += "Left Gaze Valid: " + leftGaze.isValid + "\n";
-            m_Text.text += "Right Gaze Valid: " + rightGaze.isValid + "\n\n";
+            finalText += "[Eye Status]\n";
+            finalText += "Left Gaze Valid: " + leftGaze.isValid + "\n";
+            finalText += "Right Gaze Valid: " + rightGaze.isValid + "\n\n";
 
             XR_HTC_eye_tracker.Interop.GetEyePupilData(out XrSingleEyePupilDataHTC[] out_pupils);
             XrSingleEyePupilDataHTC leftPupil = out_pupils[(int)XrEyePositionHTC.XR_EYE_POSITION_LEFT_HTC];
             XrSingleEyePupilDataHTC rightPupil = out_pupils[(int)XrEyePositionHTC.XR_EYE_POSITION_RIGHT_HTC];
 
-            m_Text.text += "[Pupil Dilation]\n";
-            m_Text.text += "Left: " + leftPupil.pupilDiameter.ToString("F4") + "mm\n";
-            m_Text.text += "Right: " + rightPupil.pupilDiameter.ToString("F4") + "mm\n\n";
+            finalText += "[Pupil Dilation]\n";
+            finalText += "Left: " + leftPupil.pupilDiameter.ToString("F4") + "mm\n";
+            finalText += "Right: " + rightPupil.pupilDiameter.ToString("F4") + "mm\n\n";
 
             CheckGazeOnTarget();
 
             // NEW: Display the gaze time for each AOI.
-            // NEW: Sammle die Gaze-Zeiten für jede AOI in einem String.
-            // Dieser String wird sowohl für m_Text als auch für das Event verwendet.
-            // NEW: Sammle die Gaze-Zeiten für jede AOI in einem String.
-            // Zuerst der Teil, der im HMD-Display angezeigt wird (deine alte Funktionalität):
-            m_Text.text += "[AOI Focus Time]\n"; // Überschrift
-
+            finalText += "[AOI Focus Time]\n";
             if (gazeTimers != null)
             {
                 foreach (var aoiTimerPair in gazeTimers)
                 {
                     // Zeige den Text weiterhin im ursprünglichen m_Text an (HMD-Display).
-                    m_Text.text += aoiTimerPair.Key.name + ": " + aoiTimerPair.Value.ToString("F2") + "s\n";
+                    
 
                     // NEU: Löse für JEDES AOI ein separates Event aus.
                     // Wir senden den Namen des AOIs und seine aktuelle Verweildauer.
+                    // Display the name of the AOI and its formatted timer.
+                    finalText += aoiTimerPair.Key.name + ": " + aoiTimerPair.Value.ToString("F2") + "s\n";
                     GazeDataEvents.TriggerSingleAOITimeUpdated(aoiTimerPair.Key.name, aoiTimerPair.Value);
                 }
             }
+            textSync.SetText(finalText);
         }
 
         private void CheckGazeOnTarget()

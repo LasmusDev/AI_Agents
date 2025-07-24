@@ -206,12 +206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303f7ee732be07e4b8a4086574edfa1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gonioElementUpperArm: {fileID: 0}
-  gonioElementLowerArm: {fileID: 0}
   angleGraphRenderer: {fileID: 8888679686170034588}
-  gonioAnglesMaxSize: 150
-  gonioAngle: 0
-  gonioDistance: 0
+  noOfDisplayedSamples: 0
+  addSampleEveryFrame: 0
+  axisPosition: 0
+  maxSampleValue: 0
 --- !u!222 &3945678654817078313
 CanvasRenderer:
   m_ObjectHideFlags: 0
