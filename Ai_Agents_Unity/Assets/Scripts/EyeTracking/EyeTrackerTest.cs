@@ -136,13 +136,22 @@ namespace VIVE.OpenXR.Samples.EyeTracker
             CheckGazeOnTarget();
 
             // NEW: Display the gaze time for each AOI.
-            m_Text.text += "[AOI Focus Time]\n";
+            // NEW: Sammle die Gaze-Zeiten für jede AOI in einem String.
+            // Dieser String wird sowohl für m_Text als auch für das Event verwendet.
+            // NEW: Sammle die Gaze-Zeiten für jede AOI in einem String.
+            // Zuerst der Teil, der im HMD-Display angezeigt wird (deine alte Funktionalität):
+            m_Text.text += "[AOI Focus Time]\n"; // Überschrift
+
             if (gazeTimers != null)
             {
                 foreach (var aoiTimerPair in gazeTimers)
                 {
-                    // Display the name of the AOI and its formatted timer.
+                    // Zeige den Text weiterhin im ursprünglichen m_Text an (HMD-Display).
                     m_Text.text += aoiTimerPair.Key.name + ": " + aoiTimerPair.Value.ToString("F2") + "s\n";
+
+                    // NEU: Löse für JEDES AOI ein separates Event aus.
+                    // Wir senden den Namen des AOIs und seine aktuelle Verweildauer.
+                    GazeDataEvents.TriggerSingleAOITimeUpdated(aoiTimerPair.Key.name, aoiTimerPair.Value);
                 }
             }
         }
