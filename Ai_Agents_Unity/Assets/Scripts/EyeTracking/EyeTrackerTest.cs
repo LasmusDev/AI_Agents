@@ -35,7 +35,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
         private GameObject currentGazePointer; // To hold the instantiated gaze pointer
 
         // NEW: Boolean to control gaze pointer visibility
-        private bool isGazePointerActive = false; // Default to inactive
+        private bool isGazePointerActive = true; // Default to inactive
 
         private void Awake()
         {

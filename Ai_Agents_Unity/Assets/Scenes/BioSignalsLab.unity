@@ -15620,7 +15620,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899650393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.4}
+  m_LocalPosition: {x: 0, y: 0, z: -16.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15676,7 +15676,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2111277618}
         m_TargetAssemblyTypeName: VIVE.OpenXR.Samples.EyeTracker.EyeTrackerTest,
           Assembly-CSharp
         m_MethodName: ToggleGazePointerVisibility
@@ -34961,8 +34961,8 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 512
+  m_fontSizeMin: 0
+  m_fontSizeMax: 256
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -35637,7 +35637,7 @@ GameObject:
   - component: {fileID: 1873059063}
   - component: {fileID: 1873059062}
   m_Layer: 5
-  m_Name: researchers_counter
+  m_Name: contributions_counter
   m_TagString: plus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35674,7 +35674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50aaa55f312b4024b66e6f27adc3d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetAOIName: AOI_researchers
+  targetAOIName: AOI_contributions
 --- !u!114 &1873059063
 MonoBehaviour:
   m_ObjectHideFlags: 0
