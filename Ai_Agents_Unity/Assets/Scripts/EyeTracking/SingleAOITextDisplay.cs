@@ -61,7 +61,7 @@ public class SingleAOITextDisplay : MonoBehaviour
         {
             if (displayTextMesh != null)
             {
-                displayTextMesh.text = $"{aoiName}: {gazeTime:F2}s";
+                displayTextMesh.text = $"{gazeTime:F2}s";
             }
         }
     }

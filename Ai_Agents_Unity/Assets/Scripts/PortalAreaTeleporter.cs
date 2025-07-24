@@ -24,7 +24,6 @@ public class PortalAreaTeleporter : MonoBehaviour
             var request = new UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest()
             {
                 destinationPosition = linkedPortal.teleportTarget.position,
-                destinationRotation = linkedPortal.teleportTarget.rotation, 
 
             };
 
@@ -32,7 +31,7 @@ public class PortalAreaTeleporter : MonoBehaviour
             teleportationProvider.QueueTeleportRequest(request);
 
             // Activate the cooldown on the portal the player is arriving at
-            linkedPortal.ActivateCooldown(10f);
+            linkedPortal.ActivateCooldown(5f);
         }
     }
 
