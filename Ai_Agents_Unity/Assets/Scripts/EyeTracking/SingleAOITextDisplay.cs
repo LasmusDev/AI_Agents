@@ -9,10 +9,15 @@ using NormcoreDataSync;
 public class SingleAOITextDisplay : MonoBehaviour
 {
     [Tooltip("Der genaue Name des AOI-Objekts, dessen Zeit dieses Textfeld anzeigen soll.")]
-    public string targetAOIName; // Dies wird im Editor zugewiesen!
+    public GameObject targetAOI;
 
     public SynchronizedText toSync; // Die Text-Komponente, die aktualisiert wird.
     // Oder: private Text displayText; falls du UnityEngine.UI.Text verwendest.
+
+    public void Update()
+    {
+       // toSync.SetText(targetAOI.name + "1"); //Debug
+    }
 
     void OnEnable()
     {
@@ -37,7 +42,7 @@ public class SingleAOITextDisplay : MonoBehaviour
     private void HandleAOITimeUpdate(string aoiName, float gazeTime)
     {
         // Prüfen, ob der Event-Name mit dem Namen dieses spezifischen AOI-Displays übereinstimmt.
-        if (aoiName == targetAOIName)
+        if (aoiName == targetAOI.name)
         {         
            toSync.SetText($"{gazeTime:F2}s");
         }

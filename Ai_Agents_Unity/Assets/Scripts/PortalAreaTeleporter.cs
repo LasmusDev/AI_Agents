@@ -15,24 +15,34 @@ public class PortalAreaTeleporter : MonoBehaviour
         teleportationProvider = FindObjectOfType<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Update()
     {
-        // Check if the entering object is the player and this portal is not on cooldown
-        if (other.CompareTag("Player") && !isDeactivated)
+        BoxCollider bc = GetComponent<BoxCollider>();
+        Bounds colliderBounds = bc.bounds;
+        if (IsInXZBounds(Camera.main.transform.position, colliderBounds.min, colliderBounds.max))
         {
+
             // Create the teleport request
             var request = new UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest()
             {
                 destinationPosition = linkedPortal.teleportTarget.position,
 
             };
-
             // Send the teleport request to the provider
             teleportationProvider.QueueTeleportRequest(request);
-
             // Activate the cooldown on the portal the player is arriving at
             linkedPortal.ActivateCooldown(5f);
         }
+    }
+
+    public bool IsInXZBounds(Vector3 obj, Vector3 min, Vector3 max)
+    {
+        return obj.x > min.x && obj.x < max.x && obj.z > min.z && obj.z < max.z;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
     }
 
     // This public method can be called to start the cooldown
