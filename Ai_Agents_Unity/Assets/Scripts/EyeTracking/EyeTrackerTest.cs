@@ -151,7 +151,7 @@ namespace VIVE.OpenXR.Samples.EyeTracker
                     // Wir senden den Namen des AOIs und seine aktuelle Verweildauer.
                     // Display the name of the AOI and its formatted timer.
                     finalText += aoiTimerPair.Key.name + ": " + aoiTimerPair.Value.ToString("F2") + "s\n";
-                    GazeDataEvents.TriggerSingleAOITimeUpdated(aoiTimerPair.Key.name, aoiTimerPair.Value);
+                    GazeDataEvents.TriggerSingleAOITimeUpdated(aoiTimerPair.Key, aoiTimerPair.Value);
                 }
             }
             textSync.SetText(finalText);

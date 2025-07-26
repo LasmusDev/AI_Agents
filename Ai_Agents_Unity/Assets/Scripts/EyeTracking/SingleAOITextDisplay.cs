@@ -39,10 +39,10 @@ public class SingleAOITextDisplay : MonoBehaviour
     /// </summary>
     /// <param name="aoiName">Der Name des AOI, das aktualisiert wurde.</param>
     /// <param name="gazeTime">Die aktuelle Verweildauer auf diesem AOI.</param>
-    private void HandleAOITimeUpdate(string aoiName, float gazeTime)
+    private void HandleAOITimeUpdate(GameObject aoiName, float gazeTime)
     {
         // Prüfen, ob der Event-Name mit dem Namen dieses spezifischen AOI-Displays übereinstimmt.
-        if (aoiName == targetAOI.name)
+        if (aoiName == targetAOI)
         {         
            toSync.SetText($"{gazeTime:F2}s");
         }
