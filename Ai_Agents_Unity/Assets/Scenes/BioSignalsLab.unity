@@ -4706,6 +4706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAOIName: AOI_title
+  toSync: {fileID: 0}
 --- !u!114 &143750232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5737,6 +5738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAOIName: AOI_contributions
+  toSync: {fileID: 0}
 --- !u!114 &214742240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25648,6 +25650,8 @@ GameObject:
   - component: {fileID: 1279032038}
   - component: {fileID: 1279032037}
   - component: {fileID: 1279032036}
+  - component: {fileID: 1279032040}
+  - component: {fileID: 1279032039}
   m_Layer: 5
   m_Name: studyDesign_counter
   m_TagString: plus
@@ -25687,6 +25691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAOIName: AOI_studydesign
+  toSync: {fileID: 1279032039}
 --- !u!114 &1279032037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25787,6 +25792,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279032034}
   m_CullTransparentMesh: 1
+--- !u!114 &1279032039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279032034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513bccdbfc197e4419017b0bad258da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  synchronizedTextElement: {fileID: 1279032037}
+--- !u!114 &1279032040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279032034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: ebae63e7edba59945a994528ada1f7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 0}
+  _sceneViewUUID: 
+  _viewUUID: 81ea7699-905f-4e9d-8a26-1f2e83ccc3ec
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenLastClientLeaves: 1
+  _components:
+  - componentID: 1
+    component: {fileID: 1279032039}
+    isDeprecated: 0
+  _childViews: []
 --- !u!1 &1283073858
 GameObject:
   m_ObjectHideFlags: 0
@@ -26977,6 +27017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAOIName: AOI_picture
+  toSync: {fileID: 0}
 --- !u!114 &1359823803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33522,6 +33563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAOIName: AOI_researchers
+  toSync: {fileID: 0}
 --- !u!114 &1671414846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34457,6 +34499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAOIName: AOI_title
+  toSync: {fileID: 0}
 --- !u!114 &1737464408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35636,6 +35679,8 @@ GameObject:
   - component: {fileID: 1873059064}
   - component: {fileID: 1873059063}
   - component: {fileID: 1873059062}
+  - component: {fileID: 1873059066}
+  - component: {fileID: 1873059065}
   m_Layer: 5
   m_Name: contributions_counter
   m_TagString: plus
@@ -35675,6 +35720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAOIName: AOI_contributions
+  toSync: {fileID: 1873059065}
 --- !u!114 &1873059063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35775,6 +35821,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873059060}
   m_CullTransparentMesh: 1
+--- !u!114 &1873059065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873059060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513bccdbfc197e4419017b0bad258da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  synchronizedTextElement: {fileID: 1873059063}
+--- !u!114 &1873059066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873059060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -363599832, guid: ebae63e7edba59945a994528ada1f7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _realtime: {fileID: 0}
+  _sceneViewUUID: 
+  _viewUUID: 37d9e853-aa54-420b-970a-1ba30444b9db
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenLastClientLeaves: 1
+  _components:
+  - componentID: 1
+    component: {fileID: 1873059065}
+    isDeprecated: 0
+  _childViews: []
 --- !u!1 &1875072001
 GameObject:
   m_ObjectHideFlags: 0
@@ -37484,6 +37565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetAOIName: AOI_motivation_rq
+  toSync: {fileID: 0}
 --- !u!114 &2097746615
 MonoBehaviour:
   m_ObjectHideFlags: 0

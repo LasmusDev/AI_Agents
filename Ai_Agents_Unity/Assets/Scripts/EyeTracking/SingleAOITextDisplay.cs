@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro; // Oder using UnityEngine.UI; falls du das alte UI.Text verwendest
+using NormcoreDataSync;
 
 /// <summary>
 /// Zeigt die Blickzeit für ein SPECIFISCHES Area of Interest an.
@@ -10,29 +11,8 @@ public class SingleAOITextDisplay : MonoBehaviour
     [Tooltip("Der genaue Name des AOI-Objekts, dessen Zeit dieses Textfeld anzeigen soll.")]
     public string targetAOIName; // Dies wird im Editor zugewiesen!
 
-    private TextMeshProUGUI displayTextMesh; // Die Text-Komponente, die aktualisiert wird.
+    public SynchronizedText toSync; // Die Text-Komponente, die aktualisiert wird.
     // Oder: private Text displayText; falls du UnityEngine.UI.Text verwendest.
-
-    void Awake()
-    {
-        displayTextMesh = GetComponent<TextMeshProUGUI>();
-        // Oder: displayText = GetComponent<Text>();
-
-        if (displayTextMesh == null) // Oder displayText == null
-        {
-            Debug.LogError($"SingleAOITextDisplay auf '{gameObject.name}': Keine TextMeshProUGUI-Komponente gefunden!", this);
-            enabled = false; // Deaktiviert das Skript, wenn keine Text-Komponente gefunden wurde.
-            return;
-        }
-
-        if (string.IsNullOrEmpty(targetAOIName))
-        {
-            Debug.LogWarning($"SingleAOITextDisplay auf '{gameObject.name}': 'Target AOI Name' wurde nicht zugewiesen! Dieses Textfeld wird keine Daten anzeigen.", this);
-        }
-
-        // Initialisiere den Text (optional)
-        displayTextMesh.text = $"{targetAOIName}: 0.00s";
-    }
 
     void OnEnable()
     {
@@ -58,11 +38,8 @@ public class SingleAOITextDisplay : MonoBehaviour
     {
         // Prüfen, ob der Event-Name mit dem Namen dieses spezifischen AOI-Displays übereinstimmt.
         if (aoiName == targetAOIName)
-        {
-            if (displayTextMesh != null)
-            {
-                displayTextMesh.text = $"{gazeTime:F2}s";
-            }
+        {         
+           toSync.SetText($"{gazeTime:F2}s");
         }
     }
 }
