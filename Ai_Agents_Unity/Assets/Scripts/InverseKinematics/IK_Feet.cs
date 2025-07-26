@@ -10,6 +10,7 @@ public class IK_Feet : DesynchronizedBehaviour
     public bool autoAdjustMovementParameters = true;
     public float speed = 5, stepDistance = .3f, stepLength = .3f, stepHeight = .3f;
     public Vector3 footPosOffset, footRotOffset;
+  
 
     private float _footSpacing, _stepProgressLerp;
     private Vector3 _oldPos, _currentPos, _nextPos;
@@ -36,7 +37,7 @@ public class IK_Feet : DesynchronizedBehaviour
             _velocity = Mathf.Lerp(_velocity, (body.position - _lastBodyPosition).magnitude / Time.deltaTime, 0.5f);
             _lastBodyPosition = body.position;
             float drf = 10f;
-            stepDistance = Mathf.Clamp(Mathf.Lerp(stepDistance, Mathf.Sqrt(_velocity* drf) / drf, Time.deltaTime * 2), 0, 0.5f);
+            //stepDistance = Mathf.Clamp(Mathf.Lerp(stepDistance, Mathf.Sqrt(_velocity* drf) / drf, Time.deltaTime * 2), 0, 0.5f);
             stepLength = stepDistance * 2;
             speed = Mathf.Clamp(Mathf.Lerp(speed, _velocity *1.5f, Time.deltaTime * 2), 2, 5);
             stepHeight = stepLength / 2;
@@ -64,6 +65,7 @@ public class IK_Feet : DesynchronizedBehaviour
             _stepProgressLerp += Time.deltaTime * speed;
         } else
         {
+            stepDistance = stepDistance / 2;
             _oldPos = _nextPos;
             _oldNormal = _nextNormal;
         }
