@@ -7,6 +7,7 @@ using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
+using XRInteraction;
 
 public class UMARigCreator : MonoBehaviour
 {
