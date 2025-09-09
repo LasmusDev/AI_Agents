@@ -32,6 +32,9 @@ namespace PlayerPoseEngine.Scripts {
             
         }
     
+        /// <summary>
+        /// Automatically finds and assigns references for an UMA-character, provided that UMA-Base is set.
+        /// </summary>
         public void AutoSetupForUMA()
         {
             headObject = UMABase.transform.FindRecursive("Head").gameObject;
@@ -40,7 +43,10 @@ namespace PlayerPoseEngine.Scripts {
             lFootObject = UMABase.transform.FindRecursive("LeftFoot").gameObject;
             rFootObject = UMABase.transform.FindRecursive("RightFoot").gameObject;
         }
-    
+        
+        /// <summary>
+        /// Records the current player pose and stores it in the Poses folder. Intended to be triggered by Editorbutton, but also works in code
+        /// </summary>
         public void RecordPoseSnapshot()
         {
             PlayerPose playerPose = ScriptableObject.CreateInstance<PlayerPose>();

@@ -73,13 +73,21 @@ namespace PlayerPoseEngine.Scripts {
 
         }
     
+        /// <summary>
+        /// Requests the given pose from the player
+        /// </summary>
+        /// <param name="pose">The pose to be validated against</param>
         public void RequestPose(PlayerPose pose)
         {
             ValidatePoseData(pose);
             playerMatrixAtRequest = CalculatePlayerCenter().localToWorldMatrix;
             currentlyRequestedPose = pose;
         }
-    
+
+        /// <summary>
+        /// Requests the given pose from the player
+        /// </summary>
+        /// <param name="pose">The name of the pose to be validated against. Must be in the availablePoses dictionary to work.</param>
         public void RequestPose(string poseName)
         {
             if(!availablePosesDict.TryGetValue(poseName, out currentlyRequestedPose))
@@ -91,6 +99,10 @@ namespace PlayerPoseEngine.Scripts {
             }
         }
     
+        /// <summary>
+        /// Calculates and sets the player center. To be replaced by better root location in the future.
+        /// </summary>
+        /// <returns></returns>
         public Transform CalculatePlayerCenter()
         {
             if(playerCenter == null)
@@ -112,11 +124,19 @@ namespace PlayerPoseEngine.Scripts {
             return playerCenter.transform;
         }
     
+        /// <summary>
+        /// Validates the data of the given pose and throws a Warning into log if the pose seems erroneous.
+        /// </summary>
+        /// <param name="pose"></param>
         public void ValidatePoseData(PlayerPose pose)
         {
             if(pose.limbRequirements.Select(x => x.limb).Distinct().Count() != pose.limbRequirements.Count())
             {
                 Debug.LogWarning("Pose: " + pose.name + "contains the same limb more than once!");
+            }
+            if(pose.limbRequirements.Any(x => x.relativePos.magnitude > 2.5))
+            {
+                Debug.LogWarning("Pose: " + pose.name + "requests position more than 2.5m away from root, this is unlikely to be possible.");
             }
         }
     
@@ -203,6 +223,13 @@ namespace PlayerPoseEngine.Scripts {
         }
     
     
+        /// <summary>
+        /// Calculates the limbs requested world position, based on the players center and the limb positioning mode in the pose.
+        /// </summary>
+        /// <param name="playerCenter">The player center used for assessing repositioning, only relevant in PositioningMode.PLAYER_CORE</param>
+        /// <param name="p">The requested pose</param>
+        /// <param name="lr">The limb requirement</param>
+        /// <returns></returns>
         public Vector3 CalculateAdjustedPositioning(Transform playerCenter, PlayerPose p, LimbRequirement lr)
         {
             switch (p.positioningMode)

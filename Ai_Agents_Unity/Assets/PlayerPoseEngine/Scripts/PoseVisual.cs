@@ -3,6 +3,9 @@
 namespace PlayerPoseEngine.Scripts {
 
   
+    /// <summary>
+    /// Basic pose visual. Atm only used to change colors when fulfilled/not fulfilled.
+    /// </summary>
     public class PoseVisual : MonoBehaviour
     {
         public Material startingMat;
