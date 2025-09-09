@@ -17,9 +17,10 @@ namespace PlayerPoseEngine.Scripts {
         public float poseHeldTime;
         public float playerSize;
         public List<PlayerPose> availablePoses;
-    
-    
+
+
         [Header("Player Objects")]
+
         public GameObject headObject;
         public GameObject lHandObject;
         public GameObject rHandObject;
@@ -27,6 +28,8 @@ namespace PlayerPoseEngine.Scripts {
         public GameObject rFootObject;
        
         [Header("PoseVisualization")]
+        //The root the pose is based on. If this is the player root, it will move with the player.
+        public GameObject poseRoot;
         public GameObject lHandVisSphere;
         public GameObject rHandVisSphere;
         public GameObject lFootVisSphere;
@@ -191,7 +194,7 @@ namespace PlayerPoseEngine.Scripts {
                 CalculatePlayerCenter();
                 Vector3 adjustedPos = CalculateAdjustedPositioning(playerCenter.transform, pose, limbReq);
                 visualizationSphere.SetActive(true);
-                visualizationSphere.transform.localPosition = adjustedPos;
+                visualizationSphere.transform.position = adjustedPos;
                 visualizationSphere.transform.localScale = new Vector3(limbReq.tolerance, limbReq.tolerance, limbReq.tolerance);
                 isFulfilled = isFulfilled && (Vector3.Distance(comparisonObject.transform.position, adjustedPos) < limbReq.tolerance);
                 visualizationSphere.GetComponent<PoseVisual>().ToggleFulfilled(isFulfilled);
