@@ -40,8 +40,6 @@ namespace PlayerPoseEngine.Scripts {
         Dictionary<string, PlayerPose> availablePosesDict;
         //The world matrix of the player core when the current pose was requested
         Matrix4x4 playerMatrixAtRequest;
-        //The players center/core position
-        GameObject playerCenter;
         
     
     
@@ -68,9 +66,6 @@ namespace PlayerPoseEngine.Scripts {
                 playerPoseFulfilled = true;
                 poseHeldTime += Time.deltaTime;           
             }
-            this.transform.position = playerCenter.transform.position;
-            this.transform.rotation = playerCenter.transform.rotation;
-
         }
     
         /// <summary>
@@ -80,7 +75,7 @@ namespace PlayerPoseEngine.Scripts {
         public void RequestPose(PlayerPose pose)
         {
             ValidatePoseData(pose);
-            playerMatrixAtRequest = CalculatePlayerCenter().localToWorldMatrix;
+            playerMatrixAtRequest = poseRoot.transform.localToWorldMatrix;
             currentlyRequestedPose = pose;
         }
 
@@ -97,31 +92,6 @@ namespace PlayerPoseEngine.Scripts {
             {
                 RequestPose(currentlyRequestedPose);
             }
-        }
-    
-        /// <summary>
-        /// Calculates and sets the player center. To be replaced by better root location in the future.
-        /// </summary>
-        /// <returns></returns>
-        public Transform CalculatePlayerCenter()
-        {
-            if(playerCenter == null)
-            {
-                playerCenter = new GameObject();
-            }
-            Vector3 pos = Vector3.zero;
-            if(headObject != null)
-            {
-                pos = headObject.transform.position;
-                if (lHandObject != null && rHandObject != null)
-                {
-                    Vector3 betweenHands = Vector3.Lerp(lHandObject.transform.position, rHandObject.transform.position, 0.5f);
-                    pos = Vector3.Lerp(betweenHands, pos, 0.5f);
-                }
-                playerCenter.transform.position = pos;
-                playerCenter.transform.LookAt(headObject.transform.position);
-            }
-            return playerCenter.transform;
         }
     
         /// <summary>
@@ -161,8 +131,7 @@ namespace PlayerPoseEngine.Scripts {
                     case Limb.LFOOT: comparisonObject = lFootObject; break;
                     default: Debug.LogError("Invalid Limb in LimbRequirement"); return false;
                 }
-                CalculatePlayerCenter();
-                Vector3 adjustedPos = CalculateAdjustedPositioning(playerCenter.transform, pose, limbReq);
+                Vector3 adjustedPos = CalculateAdjustedPositioning(poseRoot.transform, pose, limbReq);
                 isFulfilled = isFulfilled && (Vector3.Distance(comparisonObject.transform.position, adjustedPos) < limbReq.tolerance);
             }
             return isFulfilled;
@@ -211,32 +180,32 @@ namespace PlayerPoseEngine.Scripts {
                         break;
                     default: Debug.LogError("Invalid Limb in LimbRequirement"); return false;
                 }
-                CalculatePlayerCenter();
-                Vector3 adjustedPos = CalculateAdjustedPositioning(playerCenter.transform, pose, limbReq);
+                Vector3 adjustedPos = CalculateAdjustedPositioning(poseRoot.transform, pose, limbReq);
                 visualizationSphere.SetActive(true);
                 visualizationSphere.transform.position = adjustedPos;
                 visualizationSphere.transform.localScale = new Vector3(limbReq.tolerance, limbReq.tolerance, limbReq.tolerance);
-                isFulfilled = isFulfilled && (Vector3.Distance(comparisonObject.transform.position, adjustedPos) < limbReq.tolerance);
-                visualizationSphere.GetComponent<PoseVisual>().ToggleFulfilled(isFulfilled);
+                bool isFulFilledIndividual = (Vector3.Distance(comparisonObject.transform.position, adjustedPos) < limbReq.tolerance);
+                isFulfilled = isFulfilled && isFulFilledIndividual;              
+                visualizationSphere.GetComponent<PoseVisual>().ToggleFulfilled(isFulFilledIndividual);
             }
             return isFulfilled;
         }
-    
-    
+
+
         /// <summary>
         /// Calculates the limbs requested world position, based on the players center and the limb positioning mode in the pose.
         /// </summary>
-        /// <param name="playerCenter">The player center used for assessing repositioning, only relevant in PositioningMode.PLAYER_CORE</param>
+        /// <param name="playerRoot">The player center used for assessing repositioning, only relevant in PositioningMode.PLAYER_CORE</param>
         /// <param name="p">The requested pose</param>
         /// <param name="lr">The limb requirement</param>
         /// <returns></returns>
-        public Vector3 CalculateAdjustedPositioning(Transform playerCenter, PlayerPose p, LimbRequirement lr)
+        public Vector3 CalculateAdjustedPositioning(Transform playerRoot, PlayerPose p, LimbRequirement lr)
         {
             switch (p.positioningMode)
             {
                 case PositioningMode.WORLD: return lr.relativePos; 
                 case PositioningMode.PLAYER_CENTER_AT_REQUEST: return playerMatrixAtRequest.MultiplyPoint3x4(lr.relativePos);
-                case PositioningMode.PLAYER_CORE: return playerCenter.transform.localToWorldMatrix.MultiplyPoint3x4(lr.relativePos); 
+                case PositioningMode.PLAYER_CORE: return playerRoot.transform.localToWorldMatrix.MultiplyPoint3x4(lr.relativePos); 
             }
             return Vector3.zero;
         }

@@ -3356,6 +3356,10 @@ PrefabInstance:
       value: PoseResolver
       objectReference: {fileID: 0}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: poseRoot
+      value: 
+      objectReference: {fileID: 131648011}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: headObject
       value: 
       objectReference: {fileID: 2073955697}
