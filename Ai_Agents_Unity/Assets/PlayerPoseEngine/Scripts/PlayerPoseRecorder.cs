@@ -55,7 +55,7 @@ namespace PlayerPoseEngine.Scripts {
             {
                 LimbRequirement headRequirement = new LimbRequirement();
                 headRequirement.limb = Limb.HEAD;
-                headRequirement.relativePos = headObject.transform.position - root.transform.position;
+                headRequirement.relativePos = root.transform.InverseTransformPoint(headObject.transform.position);
                 headRequirement.tolerance = poseTolerance;
                 playerPose.limbRequirements.Add(headRequirement);
             }
@@ -63,12 +63,12 @@ namespace PlayerPoseEngine.Scripts {
             {
                 LimbRequirement rHandReq = new LimbRequirement();
                 rHandReq.limb = Limb.RHAND;
-                rHandReq.relativePos = rHandObject.transform.position - root.transform.position;
+                rHandReq.relativePos = root.transform.InverseTransformPoint(rHandObject.transform.position);
                 rHandReq.tolerance = poseTolerance;
                 playerPose.limbRequirements.Add(rHandReq);
                 LimbRequirement lHandReq = new LimbRequirement();
                 lHandReq.limb = Limb.LHAND;
-                lHandReq.relativePos = lHandObject.transform.position - root.transform.position;
+                lHandReq.relativePos = root.transform.InverseTransformPoint(lHandObject.transform.position);
                 lHandReq.tolerance = poseTolerance;
                 playerPose.limbRequirements.Add(lHandReq);
             }
@@ -76,12 +76,12 @@ namespace PlayerPoseEngine.Scripts {
             {
                 LimbRequirement rFootReq = new LimbRequirement();
                 rFootReq.limb = Limb.RFOOT;
-                rFootReq.relativePos = lFootObject.transform.position - root.transform.position;
+                rFootReq.relativePos = root.transform.InverseTransformPoint(rFootObject.transform.position);
                 rFootReq.tolerance = poseTolerance;
                 playerPose.limbRequirements.Add(rFootReq);
                 LimbRequirement lFootReq = new LimbRequirement();
                 lFootReq.limb = Limb.LFOOT;
-                lFootReq.relativePos = lFootObject.transform.position - root.transform.position;
+                lFootReq.relativePos = root.transform.InverseTransformPoint(lFootObject.transform.position);
                 lFootReq.tolerance = poseTolerance;
                 playerPose.limbRequirements.Add(lFootReq);
             }
