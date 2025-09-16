@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd8fd46dfcd2c84ba36c97fbfe8ec8e, type: 3}
+  m_Name: TestFourMap
+  m_EditorClassIdentifier: 
+  song: {fileID: 0}
+  poses:
+  - beat: 0
+    pose: {fileID: 11400000, guid: d50f4b4203a0d4745b4cfd0c622d937c, type: 2}
+  - beat: 1
+    pose: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
+  - beat: 2
+    pose: {fileID: 11400000, guid: 1304c26070939984d9b44977e4b40af0, type: 2}
+  - beat: 3
+    pose: {fileID: 11400000, guid: a530ee9323357af4989dd80ed6df83a2, type: 2}
+  repeatOn: 4

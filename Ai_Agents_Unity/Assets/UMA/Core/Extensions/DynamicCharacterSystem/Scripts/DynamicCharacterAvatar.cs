@@ -709,16 +709,26 @@ namespace UMA.CharacterSystem
 #if UNITY_EDITOR
 
         public bool nextBuildSlotsOnly = false;
+        private int generateWait = 0;
+        const int maxWait = 60;
+
         public void GenerateSingleUMA(bool slotsOnly = false)
         {
+            generateWait = 0;
             nextBuildSlotsOnly = slotsOnly;
             EditorApplication.delayCall += InternalGenerateSingleUMA;
         }
 
         private void InternalGenerateSingleUMA()
         {
+            generateWait++;
             if (EditorApplication.isCompiling || EditorApplication.isUpdating)
             {
+                if (generateWait >= maxWait)
+                {
+                    // Don't try anymore.
+                    return; 
+                }
                 // Try again after compiling and updating finished.
                 EditorApplication.delayCall += InternalGenerateSingleUMA;
                 return;
@@ -3115,9 +3125,9 @@ namespace UMA.CharacterSystem
 
             if (RecreateAnimatorOnRaceChange)
             {
-                //GameObject.DestroyImmediate(thisAnimator);
+                GameObject.DestroyImmediate(thisAnimator);
                 // todo.. this sometimes blows up with the component already exists!!!
-                //thisAnimator = gameObject.AddComponent<Animator>();
+                thisAnimator = gameObject.AddComponent<Animator>();
             }
 
             if (controllerToUse != null)
