@@ -61,6 +61,7 @@ MonoBehaviour:
   rHandObject: {fileID: 0}
   lFootObject: {fileID: 0}
   rFootObject: {fileID: 0}
+  poseRoot: {fileID: 114565936152743565}
   lHandVisSphere: {fileID: 3836623137114072036}
   rHandVisSphere: {fileID: 5396944667368458223}
   lFootVisSphere: {fileID: 2270831083488983569}

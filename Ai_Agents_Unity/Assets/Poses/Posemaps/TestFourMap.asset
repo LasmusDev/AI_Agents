@@ -15,7 +15,7 @@ MonoBehaviour:
   song: {fileID: 0}
   poses:
   - beat: 0
-    pose: {fileID: 11400000, guid: d50f4b4203a0d4745b4cfd0c622d937c, type: 2}
+    pose: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
   - beat: 1
     pose: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
   - beat: 2

@@ -704,7 +704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_TagString
@@ -2375,7 +2375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &913678022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2753,7 +2753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1030971908
 Transform:
   m_ObjectHideFlags: 0
@@ -2786,7 +2786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1040559330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,7 +3119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1405653126
 Transform:
   m_ObjectHideFlags: 0
@@ -3152,7 +3152,7 @@ MonoBehaviour:
   from: {x: 0, y: 0, z: 0}
   to: {x: 10, y: 0, z: 0}
   currBeat: 0
-  visibleBeats: 8
+  visibleBeats: 2
   poseSpeed: 0
   timePerBeat: 0
   poseMap: {fileID: 11400000, guid: 88f109761b1d1214ab37c40f2067137d, type: 2}
@@ -3579,6 +3579,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536531098}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1548520229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 114565936152743565, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+  m_PrefabInstance: {fileID: 7358415862347494362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1549744571
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,7 +3815,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
   m_PrefabInstance: {fileID: 7358415862347494362}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1548520229}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b804c766b5bfed428a39fc8e16601dd, type: 3}
@@ -3840,7 +3845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1863651266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4041,7 +4046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1874256222
 Transform:
   m_ObjectHideFlags: 0
@@ -4340,7 +4345,7 @@ PrefabInstance:
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: poseRoot
       value: 
-      objectReference: {fileID: 131648011}
+      objectReference: {fileID: 1548520229}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: headObject
       value: 

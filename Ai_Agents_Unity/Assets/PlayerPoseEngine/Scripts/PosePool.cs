@@ -33,7 +33,7 @@ namespace PlayerPoseEngine.Scripts {
                 currIndex = (currIndex + 1) % inUse.Count;
             }
             inUse[currIndex] = true;
-            pool[currIndex].gameObject.SetActive(false);
+            pool[currIndex].gameObject.SetActive(true);
             return pool[currIndex];
 
         }

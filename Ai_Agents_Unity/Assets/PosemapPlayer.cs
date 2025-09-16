@@ -25,7 +25,7 @@ public class PosemapPlayer : MonoBehaviour
     public void Start()
     {        
         timePerBeat = 60 / BPM;
-        poseSpeed = Vector3.Distance(from, to) / (visibleBeats *timePerBeat);
+        poseSpeed = 1f/(float)visibleBeats *timePerBeat;
         StartPosemapPlayback();
     }
     public void StartPosemapPlayback()
@@ -64,7 +64,7 @@ public class PosemapPlayer : MonoBehaviour
                     activePoseResolvers.Add(res);
                 }
             }
-            Vector3 movement = from - to * poseSpeed * Time.deltaTime;
+            Vector3 movement = (from - to) * poseSpeed * Time.deltaTime;
             PlayerPoseResolver toRemove = null;
             foreach(PlayerPoseResolver resolver in activePoseResolvers)
             {
