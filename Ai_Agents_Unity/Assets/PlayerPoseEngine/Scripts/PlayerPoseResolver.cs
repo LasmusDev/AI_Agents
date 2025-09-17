@@ -45,7 +45,10 @@ namespace PlayerPoseEngine.Scripts {
     
         public void Start()
         {
-            availablePosesDict = availablePoses.ToDictionary(x => x.name, x => x);
+            if (availablePoses != null)
+            {
+                availablePosesDict = availablePoses.ToDictionary(x => x.name, x => x);
+            }
         }
     
         // Update is called once per frame

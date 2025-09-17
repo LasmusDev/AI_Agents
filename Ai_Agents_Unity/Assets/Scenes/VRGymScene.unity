@@ -3148,9 +3148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a071a09fbb646dd43b746c50568c62b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BPM: 60
+  BPM: 120
   from: {x: 0, y: 0, z: 0}
-  to: {x: 10, y: 0, z: 0}
+  to: {x: 0, y: 0, z: 10}
   currBeat: 0
   visibleBeats: 2
   poseSpeed: 0

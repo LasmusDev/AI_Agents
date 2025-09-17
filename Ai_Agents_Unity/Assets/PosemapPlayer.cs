@@ -24,8 +24,8 @@ public class PosemapPlayer : MonoBehaviour
 
     public void Start()
     {        
-        timePerBeat = 60 / BPM;
-        poseSpeed = 1f/(float)visibleBeats *timePerBeat;
+        timePerBeat = 60f / BPM;
+        poseSpeed = (1f/(float)visibleBeats)/timePerBeat;
         StartPosemapPlayback();
     }
     public void StartPosemapPlayback()
