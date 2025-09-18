@@ -12,7 +12,7 @@ namespace PlayerPoseEngine.Scripts {
     public class PlayerPoseResolver : MonoBehaviour
     {
         public PlayerPose currentlyRequestedPose;
-        public Action<PlayerPose> onPlayerPoseFulfilled;
+        public Action<PlayerPoseResolver, PlayerPose> onPlayerPoseFulfilled;
         public bool playerPoseFulfilled;
         public float poseHeldTime;
         public float playerSize;
@@ -64,7 +64,7 @@ namespace PlayerPoseEngine.Scripts {
             {
                 if (!playerPoseFulfilled && onPlayerPoseFulfilled != null)
                 {
-                    onPlayerPoseFulfilled.Invoke(currentlyRequestedPose);
+                    onPlayerPoseFulfilled.Invoke(this,currentlyRequestedPose);
                 }
                 playerPoseFulfilled = true;
                 poseHeldTime += Time.deltaTime;           

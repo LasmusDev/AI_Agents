@@ -13,6 +13,12 @@ public class PosemapPlayer : MonoBehaviour
     public int visibleBeats;
 
     [SerializeField, ReadOnly]
+    public int score = 0;
+
+    [SerializeField, ReadOnly]
+    public int combo = 1;
+
+    [SerializeField, ReadOnly]
     private float poseSpeed;
     [SerializeField, ReadOnly]
     private float timePerBeat;
@@ -21,6 +27,8 @@ public class PosemapPlayer : MonoBehaviour
     public PosePool pool;
 
 
+    List<PlayerPoseResolver> activePoseResolvers = new List<PlayerPoseResolver>();
+
 
     public void Start()
     {        
@@ -28,6 +36,9 @@ public class PosemapPlayer : MonoBehaviour
         poseSpeed = (1f/(float)visibleBeats)/timePerBeat;
         StartPosemapPlayback();
     }
+
+    
+
     public void StartPosemapPlayback()
     {
         StartCoroutine(PlayPosemap(poseMap));
@@ -44,9 +55,17 @@ public class PosemapPlayer : MonoBehaviour
         StopAllCoroutines();
     }
 
+    public void ScorePose(PlayerPoseResolver resolver, PlayerPose p)
+    {
+        activePoseResolvers.Remove(resolver);
+        pool.Release(resolver);
+        score += 100 * combo;
+        combo++;
+    }
+
     public IEnumerator PlayPosemap(Posemap map)
     {
-        List<PlayerPoseResolver> activePoseResolvers = new List<PlayerPoseResolver>();
+        activePoseResolvers = new List<PlayerPoseResolver>();
         float timeSinceLastBeat = 0;
         while (true)
         {
@@ -58,22 +77,25 @@ public class PosemapPlayer : MonoBehaviour
                 PlayerPose next = map.GetPose(currBeat - visibleBeats);
                 if (next != null)
                 {
-                    PlayerPoseResolver res = pool.Get();
+                    PlayerPoseResolver res = pool.Get();                   
                     res.RequestPose(next);
                     res.transform.position = from;
+                    res.transform.LookAt(to);
                     activePoseResolvers.Add(res);
+                    res.onPlayerPoseFulfilled += ScorePose;
                 }
             }
-            Vector3 movement = (from - to) * poseSpeed * Time.deltaTime;
+            Vector3 movement = (to - from) * poseSpeed * Time.deltaTime;
             PlayerPoseResolver toRemove = null;
             foreach(PlayerPoseResolver resolver in activePoseResolvers)
             {
-                resolver.transform.Translate(movement);
+               
+                resolver.transform.position += movement;
                 if(Vector3.Distance(from, to) < Vector3.Distance(from, resolver.transform.position))
                 {
                     pool.Release(resolver);     
                     toRemove = resolver;
-                    //TODO: Failure Event
+                    combo = 1;
                 }
             }
             if(toRemove != null)
