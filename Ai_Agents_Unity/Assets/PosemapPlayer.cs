@@ -80,7 +80,7 @@ public class PosemapPlayer : MonoBehaviour
                     PlayerPoseResolver res = pool.Get();                   
                     res.RequestPose(next);
                     res.transform.position = from;
-                    res.transform.LookAt(to);
+                    res.transform.LookAt(res.transform.position + this.transform.forward);
                     activePoseResolvers.Add(res);
                     res.onPlayerPoseFulfilled += ScorePose;
                 }

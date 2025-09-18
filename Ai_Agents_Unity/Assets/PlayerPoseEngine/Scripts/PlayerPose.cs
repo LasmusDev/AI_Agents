@@ -6,13 +6,7 @@ namespace PlayerPoseEngine.Scripts {
     
     public class PlayerPose : ScriptableObject
     {
-        /// <summary>
-        /// How precise the user has to fit the pose, and whether this is global or defined by each limb
-        /// </summary>
-        public bool enforceTolerance;
-        public float tolerance;
         public List<LimbRequirement> limbRequirements;    
-        public PositioningMode positioningMode;
         public float intendedHeight;
     
         public void Init()

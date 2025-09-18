@@ -18,6 +18,8 @@ namespace PlayerPoseEngine.Scripts {
         public float playerSize;
         public List<PlayerPose> availablePoses;
 
+        public PositioningMode positioningMode;
+
 
         [Header("Player Objects")]
 
@@ -204,7 +206,7 @@ namespace PlayerPoseEngine.Scripts {
         /// <returns></returns>
         public Vector3 CalculateAdjustedPositioning(Transform playerRoot, PlayerPose p, LimbRequirement lr)
         {
-            switch (p.positioningMode)
+            switch (positioningMode)
             {
                 case PositioningMode.WORLD: return lr.relativePos; 
                 case PositioningMode.PLAYER_CENTER_AT_REQUEST: return playerMatrixAtRequest.MultiplyPoint3x4(lr.relativePos);

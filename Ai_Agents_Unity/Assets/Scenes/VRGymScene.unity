@@ -256,6 +256,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1860049317}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
       objectReference: {fileID: 11400000, guid: d50f4b4203a0d4745b4cfd0c622d937c, type: 2}
@@ -399,6 +403,10 @@ PrefabInstance:
       propertyPath: rHandObject
       value: 
       objectReference: {fileID: 1860049317}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
@@ -569,6 +577,10 @@ PrefabInstance:
       propertyPath: rHandObject
       value: 
       objectReference: {fileID: 1860049317}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
@@ -878,6 +890,10 @@ PrefabInstance:
       propertyPath: rHandObject
       value: 
       objectReference: {fileID: 1860049317}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
@@ -1521,6 +1537,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1860049317}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
       objectReference: {fileID: 11400000, guid: d50f4b4203a0d4745b4cfd0c622d937c, type: 2}
@@ -2072,6 +2092,10 @@ PrefabInstance:
       propertyPath: rHandObject
       value: 
       objectReference: {fileID: 1860049317}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
@@ -3187,6 +3211,10 @@ PrefabInstance:
       propertyPath: rHandObject
       value: 
       objectReference: {fileID: 1860049317}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
@@ -4305,6 +4333,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1860049317}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
       objectReference: {fileID: 11400000, guid: d50f4b4203a0d4745b4cfd0c622d937c, type: 2}
@@ -4401,6 +4433,10 @@ PrefabInstance:
       propertyPath: rHandObject
       value: 
       objectReference: {fileID: 1860049317}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
@@ -4551,6 +4587,10 @@ PrefabInstance:
       propertyPath: rHandObject
       value: 
       objectReference: {fileID: 1860049317}
+    - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
+      propertyPath: positioningMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1849926238361451842, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
       propertyPath: currentlyRequestedPose
       value: 
