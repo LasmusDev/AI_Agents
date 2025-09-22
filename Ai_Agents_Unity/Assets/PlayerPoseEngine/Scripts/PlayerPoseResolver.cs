@@ -80,6 +80,8 @@ namespace PlayerPoseEngine.Scripts {
         public void RequestPose(PlayerPose pose)
         {
             ValidatePoseData(pose);
+            playerPoseFulfilled = false;
+            poseHeldTime = 0;
             playerMatrixAtRequest = poseRoot.transform.localToWorldMatrix;
             currentlyRequestedPose = pose;
         }

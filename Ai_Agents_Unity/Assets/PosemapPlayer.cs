@@ -1,6 +1,7 @@
 using PlayerPoseEngine.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
@@ -57,10 +58,25 @@ public class PosemapPlayer : MonoBehaviour
 
     public void ScorePose(PlayerPoseResolver resolver, PlayerPose p)
     {
-        activePoseResolvers.Remove(resolver);
-        pool.Release(resolver);
         combo++;
         score += 100 * combo;
+        ReleaseResolver(resolver);
+    }
+
+    public void ReleaseResolver(PlayerPoseResolver res)
+    {
+        res.onPlayerPoseFulfilled -= ScorePose;
+        pool.Release(res);
+        activePoseResolvers.Remove(res);
+    }
+
+    public PlayerPoseResolver ConnectToResolver(PlayerPoseResolver res)
+    {       
+        res.transform.position = from;
+        res.transform.LookAt(res.transform.position + this.transform.forward);
+        activePoseResolvers.Add(res);
+        res.onPlayerPoseFulfilled += ScorePose;
+        return res;
     }
 
     public IEnumerator PlayPosemap(Posemap map)
@@ -77,12 +93,7 @@ public class PosemapPlayer : MonoBehaviour
                 PlayerPose next = map.GetPose(currBeat - visibleBeats);
                 if (next != null)
                 {
-                    PlayerPoseResolver res = pool.Get();                   
-                    res.RequestPose(next);
-                    res.transform.position = from;
-                    res.transform.LookAt(res.transform.position + this.transform.forward);
-                    activePoseResolvers.Add(res);
-                    res.onPlayerPoseFulfilled += ScorePose;
+                    ConnectToResolver(pool.Get()).RequestPose(next); ;
                 }
             }
             Vector3 movement = (to - from) * poseSpeed * Time.deltaTime;
@@ -92,15 +103,14 @@ public class PosemapPlayer : MonoBehaviour
                
                 resolver.transform.position += movement;
                 if(Vector3.Distance(from, to) < Vector3.Distance(from, resolver.transform.position))
-                {
-                    pool.Release(resolver);     
+                {                     
                     toRemove = resolver;
-                    combo = 0;
                 }
             }
             if(toRemove != null)
             {
-                activePoseResolvers.Remove(toRemove);
+                combo = 0;
+                ReleaseResolver(toRemove);
             }
             yield return null;
         }

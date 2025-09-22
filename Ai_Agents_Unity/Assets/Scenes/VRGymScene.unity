@@ -3695,7 +3695,7 @@ MonoBehaviour:
   combo: 0
   poseSpeed: 0
   timePerBeat: 0
-  poseMap: {fileID: 11400000, guid: 88f109761b1d1214ab37c40f2067137d, type: 2}
+  poseMap: {fileID: 11400000, guid: 98489f79d64efb94b8cd126234b22684, type: 2}
   pool: {fileID: 182110180}
 --- !u!114 &1405653128
 MonoBehaviour:

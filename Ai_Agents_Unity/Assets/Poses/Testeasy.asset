@@ -10,22 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
-  m_Name: Test
+  m_Name: Testeasy
   m_EditorClassIdentifier: 
-  enforceTolerance: 0
-  tolerance: 0
   limbRequirements:
-  - limb: 0
-    tolerance: 0.3
-    relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0, y: 3.2, z: 0}
   - limb: 1
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 1, y: 1.8, z: 0}
+    relativePos: {x: 0.1, y: 1.5, z: 0}
   - limb: 2
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -1, y: 1.8, z: 0}
-  positioningMode: 2
+    relativePos: {x: -0.1, y: 1.5, z: 0}
   intendedHeight: 0
