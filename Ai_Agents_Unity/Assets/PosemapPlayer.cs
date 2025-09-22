@@ -59,8 +59,8 @@ public class PosemapPlayer : MonoBehaviour
     {
         activePoseResolvers.Remove(resolver);
         pool.Release(resolver);
-        score += 100 * combo;
         combo++;
+        score += 100 * combo;
     }
 
     public IEnumerator PlayPosemap(Posemap map)
@@ -95,7 +95,7 @@ public class PosemapPlayer : MonoBehaviour
                 {
                     pool.Release(resolver);     
                     toRemove = resolver;
-                    combo = 1;
+                    combo = 0;
                 }
             }
             if(toRemove != null)
