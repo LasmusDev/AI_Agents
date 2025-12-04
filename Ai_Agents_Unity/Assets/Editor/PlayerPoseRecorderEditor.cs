@@ -1,4 +1,4 @@
-using PlayerPoseEngine.Scripts;
+/* using PlayerPoseEngine.Scripts;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,3 +20,4 @@ public class PlayerPoseRecorderEditor : UnityEditor.Editor
         }
     }
 }
+ */
