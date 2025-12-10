@@ -32020,13 +32020,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863651264}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59c67c57eb6af4aff9f166ed543e67f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maleAvatarPrefab: {fileID: 6717237054586633209, guid: 61d9ca151ac97437a85a7016fe077d47, type: 3}
-  femaleAvatarPrefab: {fileID: 6717237054586633209, guid: 61d9ca151ac97437a85a7016fe077d47, type: 3}
+  maleAvatarPrefab: {fileID: 6142649708478252459, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+  femaleAvatarPrefab: {fileID: 6081650928160350301, guid: 84e8bdfb073e45643a49d7343f91986b, type: 3}
 --- !u!114 &1863651271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32085,7 +32085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b6ae53fe1e66d429cc41bbf5b29cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localAvatarPrefab: {fileID: 6081650928160350301, guid: 84e8bdfb073e45643a49d7343f91986b, type: 3}
+  _localAvatarPrefab: {fileID: 0}
   _localPlayer:
     root: {fileID: 477023317}
     head: {fileID: 196292991}

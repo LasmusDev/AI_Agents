@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/* using UnityEngine;
 using Normal.Realtime;
 
 namespace NormcoreAvatars {
@@ -59,6 +59,79 @@ namespace NormcoreAvatars {
                 _realtimeAvatarManager.localAvatarPrefab = femaleAvatarPrefab;
                 Debug.Log($"Client {localClientID} is odd. Assigning Female avatar.");
             }
+        }
+    }
+} */
+
+using UnityEngine;
+using Normal.Realtime;
+
+namespace NormcoreAvatars
+{
+    public class AvatarPrefabAssigner : MonoBehaviour
+    {
+        [Header("Avatar Prefabs (Resources Ordner!)")]
+        [Tooltip("Prefab für gerade Client-IDs (0, 2, 4...)")]
+        public GameObject maleAvatarPrefab;
+
+        [Tooltip("Prefab für ungerade Client-IDs (1, 3, 5...)")]
+        public GameObject femaleAvatarPrefab;
+
+        private Realtime _realtime;
+   
+        private RealtimeAvatarManager _manager;
+
+        private void Awake()
+        {
+            _realtime = GetComponent<Realtime>();
+            _manager = GetComponent<RealtimeAvatarManager>();
+
+            if (_manager != null)
+            {
+               
+                _manager.enabled = false;
+            }
+            else
+            {
+                Debug.LogError("AvatarPrefabAssigner: RealtimeAvatarManager fehlt!");
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (_realtime != null) _realtime.didConnectToRoom += DidConnectToRoom;
+        }
+
+        private void OnDisable()
+        {
+            if (_realtime != null) _realtime.didConnectToRoom -= DidConnectToRoom;
+        }
+
+        private void DidConnectToRoom(Realtime realtime)
+        {
+           
+            if (_manager == null) return;
+
+           
+            int clientID = realtime.clientID;
+            GameObject selectedPrefab;
+
+            if (clientID % 2 == 0)
+            {
+                selectedPrefab = maleAvatarPrefab;
+                Debug.Log($"Client ID {clientID} ist gerade -> Setze Male Avatar.");
+            }
+            else
+            {
+                selectedPrefab = femaleAvatarPrefab;
+                Debug.Log($"Client ID {clientID} ist ungerade -> Setze Female Avatar.");
+            }
+
+           
+            _manager.localAvatarPrefab = selectedPrefab;
+
+            
+            _manager.enabled = true;
         }
     }
 }
