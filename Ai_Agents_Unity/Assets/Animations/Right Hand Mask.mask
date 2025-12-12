@@ -1,0 +1,359 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Right Hand Mask
+  m_Mask: 00000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Genesis9
+    m_Weight: 1
+  - m_Path: Genesis9/AnjieJeans_6089.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/Bra_5382.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/G9BaseShirt.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/G9EyebrowCards.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/Genesis9.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/Genesis9Eyelashes.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/Genesis9Eyes.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/Genesis9Mouth.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/Genesis9Tear.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/hip
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/CP Parent
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/CP Parent/CP Rivet
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/CP Parent/CP Rivet/CP Rivet.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/BL Rivet
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/BL Rivet/BL Rivet
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/BL Rivet/BL Rivet/BL Rivet.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_metatarsal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_bigtoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_bigtoe1/l_bigtoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_indextoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_indextoe1/l_indextoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_midtoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_midtoe1/l_midtoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_pinkytoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_pinkytoe1/l_pinkytoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_ringtoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_shin/l_foot/l_toes/l_ringtoe1/l_ringtoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_thightwist1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/l_thigh/l_thightwist2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/BR Rivet
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/BR Rivet/BR Rivet
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/BR Rivet/BR Rivet/BR Rivet.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_metatarsal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_bigtoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_bigtoe1/r_bigtoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_indextoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_indextoe1/r_indextoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_midtoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_midtoe1/r_midtoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_pinkytoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_pinkytoe1/r_pinkytoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_ringtoe1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_shin/r_foot/r_toes/r_ringtoe1/r_ringtoe2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_thightwist1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/r_thigh/r_thightwist2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/Snap Parent
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/Snap Parent/Center Snap
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/Snap Parent/Center Snap/Center Snap.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/TL Parent
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/TL Parent/TL Rivet
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/TL Parent/TL Rivet/TL Rivet.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/TR Parent
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/TR Parent/TR Rivet
+    m_Weight: 1
+  - m_Path: Genesis9/hip/pelvis/TR Parent/TR Rivet/TR Rivet.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/l_pectoral
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/r_pectoral
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_forearmtwist1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_forearmtwist2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_hand_anchor
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_indexmetacarpal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_indexmetacarpal/l_index1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_indexmetacarpal/l_index1/l_index2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_indexmetacarpal/l_index1/l_index2/l_index3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_midmetacarpal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_midmetacarpal/l_mid1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_midmetacarpal/l_mid1/l_mid2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_midmetacarpal/l_mid1/l_mid2/l_mid3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_pinkymetacarpal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_pinkymetacarpal/l_pinky1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_pinkymetacarpal/l_pinky1/l_pinky2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_pinkymetacarpal/l_pinky1/l_pinky2/l_pinky3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_ringmetacarpal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_ringmetacarpal/l_ring1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_ringmetacarpal/l_ring1/l_ring2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_ringmetacarpal/l_ring1/l_ring2/l_ring3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_thumb1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_thumb1/l_thumb2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_forearm/l_hand/l_thumb1/l_thumb2/l_thumb3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_upperarmtwist1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/l_shoulder/l_upperarm/l_upperarmtwist2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/l_ear
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/l_eye
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig/chin
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig/l_cheeklower
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig/l_lipcorner
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig/l_liplower
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig/liplowermiddle
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig/r_cheeklower
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig/r_lipcorner
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerfacerig/r_liplower
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerteeth
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerteeth/tongue01
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerteeth/tongue01/tongue02
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerteeth/tongue01/tongue02/tongue03
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerteeth/tongue01/tongue02/tongue03/tongue04
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/lowerjaw/lowerteeth/tongue01/tongue02/tongue03/tongue04/tongue05
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/r_ear
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/r_eye
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/centerbrow
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_browinner
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_browouter
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_cheek
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_eyelidlower
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_eyelidupper
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_infraorbital
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_lipupper
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_nostril
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/l_squint
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/lipuppermiddle
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_browinner
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_browouter
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_cheek
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_eyelidlower
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_eyelidupper
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_infraorbital
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_lipupper
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_nostril
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperfacerig/r_squint
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/neck1/neck2/head/upperteeth
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_forearmtwist1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_forearmtwist2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_hand_anchor
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_indexmetacarpal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_indexmetacarpal/r_index1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_indexmetacarpal/r_index1/r_index2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_indexmetacarpal/r_index1/r_index2/r_index3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_midmetacarpal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_midmetacarpal/r_mid1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_midmetacarpal/r_mid1/r_mid2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_midmetacarpal/r_mid1/r_mid2/r_mid3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_pinkymetacarpal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_pinkymetacarpal/r_pinky1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_pinkymetacarpal/r_pinky1/r_pinky2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_pinkymetacarpal/r_pinky1/r_pinky2/r_pinky3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_ringmetacarpal
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_ringmetacarpal/r_ring1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_ringmetacarpal/r_ring1/r_ring2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_ringmetacarpal/r_ring1/r_ring2/r_ring3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_thumb1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_thumb1/r_thumb2
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_forearm/r_hand/r_thumb1/r_thumb2/r_thumb3
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_upperarmtwist1
+    m_Weight: 1
+  - m_Path: Genesis9/hip/spine1/spine2/spine3/spine4/r_shoulder/r_upperarm/r_upperarmtwist2
+    m_Weight: 1
+  - m_Path: Genesis9/Sneaks_13966.Shape
+    m_Weight: 1
+  - m_Path: Genesis9/Undies_002 UV_4046.Shape
+    m_Weight: 1
