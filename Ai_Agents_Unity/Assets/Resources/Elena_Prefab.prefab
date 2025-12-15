@@ -2660,10 +2660,10 @@ MonoBehaviour:
     m_Bits: 1
   body: {fileID: 2753714960591213741}
   otherFoot: {fileID: 8129445961740128633}
-  speed: 4
+  speed: 3
   stepDistance: 0.2
-  stepLength: 0.2
-  stepHeight: 0.3
+  stepLength: 0.3
+  stepHeight: 0.1
   footOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1593171693155278607
 MonoBehaviour:
@@ -7709,10 +7709,10 @@ MonoBehaviour:
     m_Bits: 1
   body: {fileID: 2753714960591213741}
   otherFoot: {fileID: 2183669743577866304}
-  speed: 4
+  speed: 3
   stepDistance: 0.2
-  stepLength: 0.2
-  stepHeight: 0.3
+  stepLength: 0.3
+  stepHeight: 0.1
   footOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &8834583738400028164
 MonoBehaviour:
