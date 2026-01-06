@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
-  m_Name: Hands Raised
+  m_Name: DiagonalRightDownLeftUp
   m_EditorClassIdentifier: 
   limbRequirements:
   - limb: 1
-    tolerance: 1
+    tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.3, y: 1.8, z: 0}
+    relativePos: {x: -0.35870218, y: 0.9046287, z: -0.844574}
   - limb: 2
-    tolerance: 1
+    tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.3, y: 1.8, z: 0}
+    relativePos: {x: 0.1748178, y: 1.7925419, z: 0.4321823}
   intendedHeight: 0

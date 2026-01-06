@@ -34,9 +34,9 @@ namespace PlayerPoseEngine.Scripts {
     
     public enum PositioningMode
     {
-       WORLD, //Requires the player to stay in a precise world position (still scaled based on player height)
-       PLAYER_CENTER_AT_REQUEST, //Positioning is set around the player center when pose is requested
-       PLAYER_CORE //Positioning is relative to the players center, and moves if the player moves
+       WORLD, 
+       PLAYER_CENTER_AT_REQUEST, 
+       PLAYER_CORE 
     }
     
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b804c766b5bfed428a39fc8e16601dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetBeat: 0
   currentlyRequestedPose: {fileID: 0}
   playerPoseFulfilled: 0
   poseHeldTime: 0
