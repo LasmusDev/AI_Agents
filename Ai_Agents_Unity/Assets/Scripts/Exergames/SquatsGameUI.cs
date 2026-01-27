@@ -1,20 +1,20 @@
-﻿using PlayerPoseEngine.Scripts;
+﻿using UnityEngine;
 using TMPro;
-using UnityEngine;
+using SquatGame; 
 
-namespace Exergames {
-    
+namespace Exergames 
+{
     public class SquatsGameUI : MonoBehaviour
     {
         public TMP_Text scoreText;
         public TMP_Text comboText;
-        public SquatsGame game;
+        public SquatManager game; 
 
         public void Update()
         {
-            scoreText.text = game.score.ToString();
-            comboText.text = game.squats.ToString();
+             if (game == null) return;
+             scoreText.text = game.score.ToString();
+             comboText.text = game.combo.ToString();
         }
     }
-    
 }
