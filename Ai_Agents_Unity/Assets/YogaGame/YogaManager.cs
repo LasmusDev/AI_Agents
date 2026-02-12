@@ -1,161 +1,114 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using PlayerPoseEngine.Scripts; 
-using System.Collections.Generic;
+using System.Collections;
 
 namespace YogaGame
 {
     public class YogaManager : MonoBehaviour
     {
         [Header("Player Setup")]
-        public Transform playerHead;
-        public Transform playerLeftHand;
-        public Transform playerRightHand;
+        public Transform playerHead; // The Main Camera of the XR Origins, used for positioning the poses in front of the player
 
-        [Header("Ghost (Lehrer)")]
-        public Transform ghostRoot; 
-        public Transform ghostHead;
-        public Transform ghostLeftHand;
-        public Transform ghostRightHand;
-        
-        [Header("UI")]
-        public GameObject yogaCanvas;
-        public TextMeshProUGUI instructionText;
-        public TextMeshProUGUI timerText;
-        public Image progressCircle;
+        [Header("Positionierung")]
+        public float spawnDistance = 2.0f; // Value for how far in front of the player the pose should spawn
+        public float spawnHeightOffset = 0f; // Optional height offset for the spawned pose (e.g. to align with the floor)
 
-        [Header("Settings")]
-        public float allowedError = 0.20f; 
-        
+        [Header("Global UI (Optional)")]
+        public GameObject yogaCanvas; // The Yoga Menu
+        public TextMeshProUGUI timerText; // Global timer
+
         private YogaSession currentSession;
         private int currentStepIndex = 0;
         private bool isSessionActive = false;
-        private float currentHoldTimer = 0f;
         
+        // Aktueller Zustand
+        private GameObject currentPoseInstance; // The pose to spawn for the current step
+        private YogaPosePrefab currentPoseScript; 
+        private float currentHoldTimer = 0f;
+
         public void StartSession(YogaSession session)
         {
+            if (session == null || session.steps.Count == 0) return;
+
             currentSession = session;
             currentStepIndex = 0;
             isSessionActive = true;
+            
             if(yogaCanvas) yogaCanvas.SetActive(true);
             
-            ShowStep(currentStepIndex);
+            SpawnStep(currentStepIndex);
         }
 
         public void StopSession()
         {
             isSessionActive = false;
             if(yogaCanvas) yogaCanvas.SetActive(false);
-            HideGhost();
+            if (currentPoseInstance != null) Destroy(currentPoseInstance);
         }
 
-        void ShowStep(int index)
+        void SpawnStep(int index)
         {
+            // Delete previous pose instance
+            if (currentPoseInstance != null) Destroy(currentPoseInstance);
+
+            // Check if session is complete
             if (index >= currentSession.steps.Count)
             {
-                if(instructionText) instructionText.text = "Namaste! Session beendet.";
+                if(timerText) timerText.text = "Session Complete!";
                 isSessionActive = false;
-                HideGhost();
                 return;
             }
 
             YogaStep step = currentSession.steps[index];
-            if(instructionText) instructionText.text = step.instruction;
+
+            // Positioning 
+            // Using player head position to spawn the pose in front of the playrt
+            Vector3 forward = new Vector3(playerHead.forward.x, 0, playerHead.forward.z).normalized;
+            Vector3 spawnPos = playerHead.position + (forward * spawnDistance);
+            
+            spawnPos.y = spawnHeightOffset; 
+
+            
+            currentPoseInstance = Instantiate(step.posePrefab, spawnPos, Quaternion.identity);
+            
+            // Rotation to player
+            Vector3 lookTarget = playerHead.position;
+            lookTarget.y = currentPoseInstance.transform.position.y;
+            currentPoseInstance.transform.LookAt(lookTarget);
+
+            // Get the YogaPosePrefab script from the spawned instance for later use
+            currentPoseScript = currentPoseInstance.GetComponent<YogaPosePrefab>();
             currentHoldTimer = 0;
-
-            //Ghost positioning
-            if (ghostRoot)
-            {
-                Vector3 playerFloorPos = playerHead.position;
-                playerFloorPos.y = 0; //ground level
-                
-                ghostRoot.position = playerFloorPos;
-                //Ghost turn to face player
-                ghostRoot.rotation = Quaternion.LookRotation(new Vector3(playerHead.forward.x, 0, playerHead.forward.z));
-                ghostRoot.gameObject.SetActive(true);
-            }
-
-            // gets porobably changed due to avatar replacement
-            if(ghostHead) 
-            {
-                ghostHead.localPosition = GetLimbPosition(step.pose, Limb.HEAD);
-                ghostHead.gameObject.SetActive(true);
-            }
-            if(ghostLeftHand)
-            {
-                ghostLeftHand.localPosition = GetLimbPosition(step.pose, Limb.LHAND);
-                ghostLeftHand.gameObject.SetActive(true);
-            }
-            if(ghostRightHand)
-            {
-                ghostRightHand.localPosition = GetLimbPosition(step.pose, Limb.RHAND);
-                ghostRightHand.gameObject.SetActive(true);
-            }
-        }
-        
-        
-        Vector3 GetLimbPosition(PlayerPose pose, Limb limbType)
-        {
-           
-            foreach (var req in pose.limbRequirements)
-            {
-                if (req.limb == limbType)
-                {
-                    return req.relativePos;
-                }
-            }
-           
-            return Vector3.zero; 
-        }
-
-        void HideGhost()
-        {
-            if(ghostRoot) ghostRoot.gameObject.SetActive(false);
         }
 
         void Update()
         {
-            if (!isSessionActive) return;
+            if (!isSessionActive || currentPoseScript == null) return;
 
-            YogaStep currentStep = currentSession.steps[currentStepIndex];
-            
-            
-            bool isInPose = CheckPose();
-
-            if (isInPose)
+            // Check if the pose is currently correct
+            if (currentPoseScript.IsPoseValid())
             {
+                // timer counts up
                 currentHoldTimer += Time.deltaTime;
-                if(timerText) timerText.text = (currentStep.holdDuration - currentHoldTimer).ToString("F1") + "s";
-                
-                if (progressCircle) 
-                    progressCircle.fillAmount = currentHoldTimer / currentStep.holdDuration;
+                float remainingTime = currentPoseScript.holdDuration - currentHoldTimer;
 
-                if (currentHoldTimer >= currentStep.holdDuration)
+                // UI Update
+                if(timerText) timerText.text = remainingTime.ToString("F1");
+
+                // if finsihed, go to next step
+                if (currentHoldTimer >= currentPoseScript.holdDuration)
                 {
                     currentStepIndex++;
-                    ShowStep(currentStepIndex);
+                    SpawnStep(currentStepIndex);
                 }
             }
             else
             {
-                if(timerText) timerText.text = "Hold the pose!";
-                if (progressCircle) progressCircle.color = Color.red;
+                // If not in correct pose, reset timer and update UI
+                if(timerText) timerText.text = "Pose einnehmen!";
+                currentHoldTimer = 0; // Timer reset if pose is not correct (optional)
             }
-
-            if (isInPose && progressCircle) progressCircle.color = Color.green;
-        }
-
-        bool CheckPose()
-        {
-            
-            
-            float distL = Vector3.Distance(playerLeftHand.position, ghostLeftHand.position);
-            float distR = Vector3.Distance(playerRightHand.position, ghostRightHand.position);
-         
-            float distHead = Vector3.Distance(playerHead.position, ghostHead.position);
-
-            return distL < allowedError && distR < allowedError && distHead < allowedError;
         }
     }
 }

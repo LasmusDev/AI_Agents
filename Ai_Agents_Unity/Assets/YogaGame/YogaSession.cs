@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using PlayerPoseEngine.Scripts; // Gets changed due to avatar replacement
 
 namespace YogaGame
 {
@@ -8,7 +7,7 @@ namespace YogaGame
     public class YogaStep
     {
         public string stepName;     // Name, e.g. "Krieger 1"
-        public PlayerPose pose;     //Gtes changed due to avatar replacement
+        public GameObject posePrefab;     //The prefab to spawn for this step (with YogaPosePrefab script on it)
         public float holdDuration;  // how long must it be held? (seconds)
         [TextArea] public string instruction; // description/instructions
     }
