@@ -106,9 +106,41 @@ namespace YogaGame
             else
             {
                 // If not in correct pose, reset timer and update UI
-                if(timerText) timerText.text = "Pose einnehmen!";
+                if(timerText) timerText.text = "Take the pose!";
                 currentHoldTimer = 0; // Timer reset if pose is not correct (optional)
             }
+        }
+        // ... (innerhalb der YogaManager Klasse)
+
+        // To cancel the session at any time
+        public void AbortSession()
+        {
+            if (!isSessionActive) return; 
+
+            Debug.Log("Yoga Session cancelled manually.");
+            
+            // Set session to inactive to stop the Update loop and prevent any further processing
+            isSessionActive = false;
+            
+            // Delete any existing pose instance to clean up the scene
+            if (currentPoseInstance != null) 
+            {
+                Destroy(currentPoseInstance);
+            }
+
+            // UI Update: Hide canvas and update timer text to indicate cancellation
+            if (yogaCanvas) yogaCanvas.SetActive(false); 
+            
+            if (timerText) 
+            {
+                timerText.text = "Cancelled!";
+                
+            }
+
+            // Reset internal state to prepare for potential new session
+            currentStepIndex = 0;
+            currentHoldTimer = 0;
+            currentPoseScript = null;
         }
     }
 }

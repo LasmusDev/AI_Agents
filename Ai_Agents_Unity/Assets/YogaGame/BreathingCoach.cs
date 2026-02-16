@@ -62,5 +62,23 @@ namespace YogaGame
                 device.SendHapticImpulse(0, amplitude, 0.05f); 
             }
         }
+        
+
+        //To cancel the breathing exercise 
+        public void AbortSession()
+        {
+            if (!isActive) return;
+
+            Debug.Log("Breathing exercise cancelled manually.");
+            
+            // Flag Session as inactive to stop update loop and haptics
+            isActive = false;
+            
+            // Stop Sphere visuals
+            if (visualSphere) visualSphere.gameObject.SetActive(false);
+            
+            // Reset timer for next session
+            timer = 0;
+        }
     }
 }
