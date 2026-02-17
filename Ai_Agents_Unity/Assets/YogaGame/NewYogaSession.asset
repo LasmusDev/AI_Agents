@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: NewYogaSession
   m_EditorClassIdentifier: 
   sessionName: 
-  steps: []
+  steps:
+  - stepName: nacken links
+    posePrefab: {fileID: 1262146362847590880, guid: fc7623adeedf76940a24fa38eefc6425, type: 3}
+    holdDuration: 5
+    instruction: nacken links
