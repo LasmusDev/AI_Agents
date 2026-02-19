@@ -3463,6 +3463,7 @@ GameObject:
   - component: {fileID: 8975658412824888556}
   - component: {fileID: 2702353359531489761}
   - component: {fileID: 1691070268344209045}
+  - component: {fileID: -7250198501982367619}
   m_Layer: 0
   m_Name: Vorbeuge
   m_TagString: Untagged
@@ -3522,6 +3523,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SourceFBX: {fileID: 919132149155446097, guid: bbbf37828b528aa4982df17c899410f2, type: 3}
   ReplaceOnImport: 1
+--- !u!114 &-7250198501982367619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4516085141617772808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364cdc9322b1f9942927534e89c378b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdDuration: 5
+  instructionTextContent: 
+  instructionLabel: {fileID: 0}
+  triggerZones: []
 --- !u!1 &4592844538112029885
 GameObject:
   m_ObjectHideFlags: 0

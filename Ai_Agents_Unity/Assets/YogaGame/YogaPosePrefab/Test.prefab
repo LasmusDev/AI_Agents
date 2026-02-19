@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 8016259947654696369}
   - component: {fileID: 3131161340947510612}
   m_Layer: 0
-  m_Name: HalsDehnungLinks 1 1
+  m_Name: Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1176413890f299f43b279d91584956e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredPart: 1
+  requiredPart: 0
   isTriggered: 0
   successColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!23 &8438735790915176206
@@ -2124,7 +2124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1176413890f299f43b279d91584956e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredPart: 1
+  requiredPart: 2
   isTriggered: 0
   successColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!23 &681222355389573670
@@ -4055,8 +4055,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5452880675806634790}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0010385513, y: 0.86762524, z: -0.0047802925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0010385513, y: 1.295, z: -0.0047802925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5996,7 +5996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8212499693092878526}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6014,7 +6014,7 @@ Transform:
   - {fileID: 2796332768589841519}
   - {fileID: 7089117023162557167}
   m_Father: {fileID: 3994819488359655589}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8247726665896661691
 GameObject:
   m_ObjectHideFlags: 0
