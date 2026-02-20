@@ -61,7 +61,9 @@ namespace PlayerPoseEngine.Scripts
         }
 
         [ContextMenu("DEBUG START")]
-        public void DebugStart() { StartGame(); }
+        public void DebugStart() { 
+            StartGame(); 
+            }
 
         public void StartGame()
         {
