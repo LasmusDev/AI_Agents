@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using PlayerPoseEngine.Scripts; 
 
 namespace YogaGame
 {
     [System.Serializable]
     public class YogaStep
     {
-        public string stepName;     // Name, e.g. "Krieger 1"
-        public GameObject posePrefab;     //The prefab to spawn for this step (with YogaPosePrefab script on it)
-        public float holdDuration;  // how long must it be held? (seconds)
-        [TextArea] public string instruction; // description/instructions
+        public string stepName;     
+        
+        [Tooltip("The PlayerPose data for this step")]
+        public PlayerPose poseData; 
+        
+        [Tooltip("The visual representation of the teacher for this step")]
+        public GameObject teacherVisualPrefab; 
+        
+        public float holdDuration;  
+        [TextArea] public string instruction; 
     }
 
     [CreateAssetMenu(fileName = "NewYogaSession", menuName = "Yoga/Session")]

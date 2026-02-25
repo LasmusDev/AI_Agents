@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcecb189ac17254db2837776bdadc20, type: 3}
+  m_Name: YogaSession1
+  m_EditorClassIdentifier: 
+  sessionName: 
+  steps:
+  - stepName: Hals Dehnung
+    poseData: {fileID: 11400000, guid: a530ee9323357af4989dd80ed6df83a2, type: 2}
+    teacherVisualPrefab: {fileID: 6735579239169332927, guid: c6b84f1bd5c8d96439e54370fd195d33, type: 3}
+    holdDuration: 5
+    instruction: Den Nacken dehnen

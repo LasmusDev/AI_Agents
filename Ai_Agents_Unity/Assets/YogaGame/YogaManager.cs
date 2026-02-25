@@ -1,146 +1,197 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections;
+using PlayerPoseEngine.Scripts; 
+
 
 namespace YogaGame
 {
     public class YogaManager : MonoBehaviour
     {
-        [Header("Player Setup")]
-        public Transform playerHead; // The Main Camera of the XR Origins, used for positioning the poses in front of the player
+        [Header("Player Tracking")]
+        public Transform playerRoot; 
+        public Transform playerHead;
+        public Transform playerLeftHand;
+        public Transform playerRightHand;
+        
+        [Header("UI")]
+        public GameObject yogaCanvas;
+        public TextMeshProUGUI instructionText;
+        public TextMeshProUGUI timerText;
+        public Image progressCircle;
 
-        [Header("Positionierung")]
-        public float spawnDistance = 2.0f; // Value for how far in front of the player the pose should spawn
-        public float spawnHeightOffset = 0f; // Optional height offset for the spawned pose (e.g. to align with the floor)
-
-        [Header("Global UI (Optional)")]
-        public GameObject yogaCanvas; // The Yoga Menu
-        public TextMeshProUGUI timerText; // Global timer
-
+      
+        [Header("Visual Feedback (Optional)")]
+        public GameObject headTargetSphere;
+        public GameObject lHandTargetSphere;
+        public GameObject rHandTargetSphere;
+     
+        
         private YogaSession currentSession;
         private int currentStepIndex = 0;
         private bool isSessionActive = false;
-        
-        // Aktueller Zustand
-        private GameObject currentPoseInstance; // The pose to spawn for the current step
-        private YogaPosePrefab currentPoseScript; 
         private float currentHoldTimer = 0f;
-
+        private GameObject currentTeacherVisual;
+        
+ 
+        
         public void StartSession(YogaSession session)
         {
             if (session == null || session.steps.Count == 0) return;
-
             currentSession = session;
             currentStepIndex = 0;
             isSessionActive = true;
-            
             if(yogaCanvas) yogaCanvas.SetActive(true);
             
-            SpawnStep(currentStepIndex);
+            ShowStep(currentStepIndex);
         }
 
         public void StopSession()
         {
             isSessionActive = false;
             if(yogaCanvas) yogaCanvas.SetActive(false);
-            if (currentPoseInstance != null) Destroy(currentPoseInstance);
+            if(currentTeacherVisual) Destroy(currentTeacherVisual);
+
+            //If used hide visuals for hands and head
+            if (headTargetSphere) headTargetSphere.SetActive(false);
+            if (lHandTargetSphere) lHandTargetSphere.SetActive(false);
+            if (rHandTargetSphere) rHandTargetSphere.SetActive(false);
         }
 
-        void SpawnStep(int index)
+        void ShowStep(int index)
         {
-            // Delete previous pose instance
-            if (currentPoseInstance != null) Destroy(currentPoseInstance);
+            if (currentTeacherVisual != null) Destroy(currentTeacherVisual);
 
-            // Check if session is complete
             if (index >= currentSession.steps.Count)
             {
-                if(timerText) timerText.text = "Session Complete!";
-                isSessionActive = false;
+                if(instructionText) instructionText.text = "Session complete!";
+                StopSession();
                 return;
             }
 
             YogaStep step = currentSession.steps[index];
-
-            // Positioning 
-            // Using player head position to spawn the pose in front of the playrt
-            Vector3 forward = new Vector3(playerHead.forward.x, 0, playerHead.forward.z).normalized;
-            Vector3 spawnPos = playerHead.position + (forward * spawnDistance);
-            
-            spawnPos.y = spawnHeightOffset; 
-
-            
-            currentPoseInstance = Instantiate(step.posePrefab, spawnPos, Quaternion.identity);
-            
-            // Rotation to player
-            Vector3 lookTarget = playerHead.position;
-            lookTarget.y = currentPoseInstance.transform.position.y;
-            currentPoseInstance.transform.LookAt(lookTarget);
-
-            // Get the YogaPosePrefab script from the spawned instance for later use
-            currentPoseScript = currentPoseInstance.GetComponent<YogaPosePrefab>();
+            if(instructionText) instructionText.text = step.instruction;
             currentHoldTimer = 0;
+
+            if (step.teacherVisualPrefab != null)
+            {
+                Vector3 forwardOnFloor = new Vector3(playerHead.forward.x, 0, playerHead.forward.z).normalized;
+                Vector3 spawnPos = playerRoot.position + (forwardOnFloor * 2.0f);
+                spawnPos.y = playerRoot.position.y; 
+
+                currentTeacherVisual = Instantiate(step.teacherVisualPrefab, spawnPos, Quaternion.identity);
+                currentTeacherVisual.transform.LookAt(playerRoot);
+            }
         }
 
         void Update()
         {
-            if (!isSessionActive || currentPoseScript == null) return;
+            if (!isSessionActive) return;
 
-            // Check if the pose is currently correct
-            if (currentPoseScript.IsPoseValid())
+            YogaStep currentStep = currentSession.steps[currentStepIndex];
+            
+            bool isInPose = CheckPose(currentStep.poseData);
+
+            if (isInPose)
             {
-                // timer counts up
                 currentHoldTimer += Time.deltaTime;
-                float remainingTime = currentPoseScript.holdDuration - currentHoldTimer;
+                float remainingTime = currentStep.holdDuration - currentHoldTimer;
+                if(timerText) timerText.text = remainingTime.ToString("F1") + "s";
+                
+                if (progressCircle) 
+                {
+                    progressCircle.fillAmount = currentHoldTimer / currentStep.holdDuration;
+                    progressCircle.color = Color.green;
+                }
 
-                // UI Update
-                if(timerText) timerText.text = remainingTime.ToString("F1");
-
-                // if finsihed, go to next step
-                if (currentHoldTimer >= currentPoseScript.holdDuration)
+                if (currentHoldTimer >= currentStep.holdDuration)
                 {
                     currentStepIndex++;
-                    SpawnStep(currentStepIndex);
+                    ShowStep(currentStepIndex);
                 }
             }
             else
             {
-                // If not in correct pose, reset timer and update UI
                 if(timerText) timerText.text = "Take the pose!";
-                currentHoldTimer = 0; // Timer reset if pose is not correct (optional)
+                if (progressCircle) 
+                {
+                    progressCircle.fillAmount = 0;
+                    progressCircle.color = Color.red;
+                }
             }
         }
-        // ... (innerhalb der YogaManager Klasse)
 
-        // To cancel the session at any time
-        public void AbortSession()
+        
+        bool CheckPose(PlayerPose pose)
         {
-            if (!isSessionActive) return; 
+            if (pose == null) return false;
+            bool allFulfilled = true;
 
-            Debug.Log("Yoga Session cancelled manually.");
-            
-            // Set session to inactive to stop the Update loop and prevent any further processing
-            isSessionActive = false;
-            
-            // Delete any existing pose instance to clean up the scene
-            if (currentPoseInstance != null) 
-            {
-                Destroy(currentPoseInstance);
-            }
+            //Reset visuals for hands and head
+            if (headTargetSphere) headTargetSphere.SetActive(false);
+            if (lHandTargetSphere) lHandTargetSphere.SetActive(false);
+            if (rHandTargetSphere) rHandTargetSphere.SetActive(false);
 
-            // UI Update: Hide canvas and update timer text to indicate cancellation
-            if (yogaCanvas) yogaCanvas.SetActive(false); 
-            
-            if (timerText) 
+            foreach (var req in pose.limbRequirements)
             {
-                timerText.text = "Cancelled!";
+                Transform playerLimb = GetPlayerLimb(req.limb);
+                GameObject visSphere = GetVisSphere(req.limb);
+
+                if (playerLimb == null) continue;
+
+                //Calculate position of the target in world space
+                Vector3 targetWorldPos = playerRoot.TransformPoint(req.relativePos);
                 
-            }
+                //Calculate distance between player's limb and target position
+                float dist = Vector3.Distance(playerLimb.position, targetWorldPos);
+                bool isLimbCorrect = dist <= req.tolerance;
 
-            // Reset internal state to prepare for potential new session
-            currentStepIndex = 0;
-            currentHoldTimer = 0;
-            currentPoseScript = null;
+                if (!isLimbCorrect) 
+                {
+                    allFulfilled = false; 
+                }
+
+                //Set up visuals for this limb
+                if (visSphere != null)
+                {
+                    visSphere.SetActive(true);
+                    visSphere.transform.position = targetWorldPos;
+                    
+                    //Set scale based on tolerance (optional, for better visibility)
+                    visSphere.transform.localScale = Vector3.one * (req.tolerance * 2);
+
+                    //Color the sphere green if correct, red if not (with some transparency)
+                    Renderer r = visSphere.GetComponent<Renderer>();
+                    if (r != null)
+                    {
+                        //Color the sphere based on whether the limb is correct or not
+                        r.material.color = isLimbCorrect ? new Color(0, 1, 0, 0.4f) : new Color(1, 0, 0, 0.4f);
+                    }
+                }
+            }
+            return allFulfilled;
+        }
+
+        Transform GetPlayerLimb(Limb limbType)
+        {
+            switch(limbType)
+            {
+                case Limb.HEAD: return playerHead;
+                case Limb.LHAND: return playerLeftHand;
+                case Limb.RHAND: return playerRightHand;
+                default: return null;
+            }
+        }
+
+        GameObject GetVisSphere(Limb limbType)
+        {
+            switch(limbType)
+            {
+                case Limb.HEAD: return headTargetSphere;
+                case Limb.LHAND: return lHandTargetSphere;
+                case Limb.RHAND: return rHandTargetSphere;
+                default: return null;
+            }
         }
     }
 }
