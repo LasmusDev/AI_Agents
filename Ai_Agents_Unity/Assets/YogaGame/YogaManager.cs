@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using PlayerPoseEngine.Scripts; 
+using PlayerPoseEngine.Scripts;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 
 
 namespace YogaGame
@@ -32,9 +34,12 @@ namespace YogaGame
         private bool isSessionActive = false;
         private float currentHoldTimer = 0f;
         private GameObject currentTeacherVisual;
+
+        [Header("Yoga Sessions")]
+        public List<YogaSession> availableSessions;
         
  
-        
+        //Start a session by passing in a YogaSession object
         public void StartSession(YogaSession session)
         {
             if (session == null || session.steps.Count == 0) return;
@@ -45,6 +50,35 @@ namespace YogaGame
             
             ShowStep(currentStepIndex);
         }
+        //Overload to start session by name
+        public void StartSession(string sessionName)
+        {
+            YogaSession session = availableSessions.Find(s => 
+                                  s.name == sessionName || 
+                                  s.sessionName == sessionName);
+            if (session != null)
+            {
+                StartSession(session);
+            }
+            else
+                {
+                    Debug.LogWarning("Yoga session not found: " + sessionName);
+                }
+            }
+            //Overload to start session by index in the list
+            public void StartSession(int index)
+            {
+                if (index >= 0 && index < availableSessions.Count)
+                {
+                        StartSession(availableSessions[index]);
+                }
+                else
+                    {
+                        Debug.LogWarning("Yoga session index out of range: " + index);
+                    }
+                
+            }
+        
 
         public void StopSession()
         {

@@ -631,6 +631,8 @@ MonoBehaviour:
   headTargetSphere: {fileID: 0}
   lHandTargetSphere: {fileID: 0}
   rHandTargetSphere: {fileID: 0}
+  availableSessions:
+  - {fileID: 11400000, guid: eef8c10f33f104346ac32db89284646f, type: 2}
 --- !u!4 &70514255
 Transform:
   m_ObjectHideFlags: 0
@@ -1054,10 +1056,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+      - m_Target: {fileID: 70514254}
+        m_TargetAssemblyTypeName: YogaGame.YogaManager, Assembly-CSharp
+        m_MethodName: StartSession
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1065,17 +1067,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+        m_CallState: 0
+      - m_Target: {fileID: 70514254}
+        m_TargetAssemblyTypeName: YogaGame.YogaManager, Assembly-CSharp
+        m_MethodName: StartSession
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: YogaSession1
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 70514254}
@@ -1089,7 +1091,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &115537869
 MonoBehaviour:
   m_ObjectHideFlags: 0
