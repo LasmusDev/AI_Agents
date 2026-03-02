@@ -14,8 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sessionName: 
   steps:
-  - stepName: Hals Dehnung
-    poseData: {fileID: 11400000, guid: a530ee9323357af4989dd80ed6df83a2, type: 2}
+  - stepName: Hals Dehnung Links
+    poseData: {fileID: 11400000, guid: 4810b7b558fdcb648a6d61cf7309f532, type: 2}
     teacherVisualPrefab: {fileID: 6735579239169332927, guid: c6b84f1bd5c8d96439e54370fd195d33, type: 3}
     holdDuration: 5
-    instruction: Den Nacken dehnen
+    instruction: 'Den Hals dehnen '
+  - stepName: Hals Dehnung Rechts
+    poseData: {fileID: 11400000, guid: 7a21fa432fed1cd4db511f903eff8ffd, type: 2}
+    teacherVisualPrefab: {fileID: 3177114307213005341, guid: 95d57bead0ae7bd46a6e0c1bc6b71db9, type: 3}
+    holdDuration: 5
+    instruction: 'Den Hals dehnen '
+  - stepName: Linker Arm
+    poseData: {fileID: 11400000, guid: 8060e2a19aad069468c38748452aece7, type: 2}
+    teacherVisualPrefab: {fileID: 1500603057386084271, guid: 27b9be6fdfef26e4db5728549bf6912f, type: 3}
+    holdDuration: 5
+    instruction: Linker Arm
+  - stepName: 'Rechter Arm '
+    poseData: {fileID: 11400000, guid: e077c8a4afedbac4187bba45aa95a584, type: 2}
+    teacherVisualPrefab: {fileID: 169419453659699117, guid: 90eaf5b70aa6f9e4385857fd1a326b58, type: 3}
+    holdDuration: 5
+    instruction: 'Rechter Arm '
+  - stepName: Nach Links schauen
+    poseData: {fileID: 11400000, guid: ab4026f1b0d44f94294fc4213d2d72f7, type: 2}
+    teacherVisualPrefab: {fileID: 4515410398769082256, guid: 81b7717ec875fee4aab2184777da1453, type: 3}
+    holdDuration: 5
+    instruction: 'Nach Links schauen '

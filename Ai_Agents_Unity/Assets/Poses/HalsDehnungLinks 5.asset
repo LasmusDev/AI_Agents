@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
+  m_Name: HalsDehnungLinks 5
+  m_EditorClassIdentifier: 
+  limbRequirements:
+  - limb: 0
+    tolerance: 0.15
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: 0.0989387, y: 1.5814873, z: -0.0053071976}
+  - limb: 1
+    tolerance: 0.15
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: -0.05704701, y: 1.5423409, z: 0.08393097}
+  - limb: 2
+    tolerance: 0.15
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: 0.16907513, y: 1.1132494, z: 0.5378027}
+  intendedHeight: 1.5814873

@@ -628,9 +628,9 @@ MonoBehaviour:
   instructionText: {fileID: 298207417}
   timerText: {fileID: 579418468}
   progressCircle: {fileID: 0}
-  headTargetSphere: {fileID: 0}
-  lHandTargetSphere: {fileID: 0}
-  rHandTargetSphere: {fileID: 0}
+  headTargetSphere: {fileID: 1799313374}
+  lHandTargetSphere: {fileID: 1891267212}
+  rHandTargetSphere: {fileID: 817057739}
   availableSessions:
   - {fileID: 11400000, guid: eef8c10f33f104346ac32db89284646f, type: 2}
 --- !u!4 &70514255
@@ -5902,14 +5902,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817057739}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.0006981746, z: 0, w: 0.99999976}
+  m_LocalPosition: {x: 0, y: 0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 22037874}
   m_Father: {fileID: 1258224515}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.08, z: 0}
 --- !u!1 &895006600
 GameObject:
   m_ObjectHideFlags: 0
@@ -5939,9 +5939,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf37dc21d5a177d468c3202eddcd6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poseName: test
+  poseName: HalsDehnungLinks
   poseTolerance: 0.15
-  recordHead: 0
+  recordHead: 1
   recordHands: 1
   recordFeet: 0
   root: {fileID: 555173658}
