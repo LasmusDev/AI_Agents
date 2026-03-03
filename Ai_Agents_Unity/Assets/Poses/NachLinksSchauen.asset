@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
-  m_Name: HalsDehnungLinks 6
+  m_Name: NachLinksSchauen
   m_EditorClassIdentifier: 
   limbRequirements:
   - limb: 0
     tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.043825388, y: 1.5915647, z: 0.15831757}
+    relativePos: {x: 0.101032495, y: 1.5732219, z: -0.01010704}
   - limb: 1
     tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.045879483, y: 0.70730555, z: 0.24753475}
+    relativePos: {x: 0.33700776, y: 0.69240636, z: 0.02503109}
   - limb: 2
     tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.017576218, y: 0.61080545, z: -0.12078762}
-  intendedHeight: 1.5915647
+    relativePos: {x: -0.2601745, y: 0.67103016, z: -0.001991272}
+  intendedHeight: 1.5732219
+  recordedLookAngleY: 41.69087

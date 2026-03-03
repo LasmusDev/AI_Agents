@@ -3,8 +3,6 @@ using TMPro;
 using UnityEngine.UI;
 using PlayerPoseEngine.Scripts;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-
 
 namespace YogaGame
 {
@@ -22,24 +20,25 @@ namespace YogaGame
         public TextMeshProUGUI timerText;
         public Image progressCircle;
 
-      
-        [Header("Visual Feedback (Optional)")]
+        [Header("Visual Feedback (Orbs)")]
         public GameObject headTargetSphere;
         public GameObject lHandTargetSphere;
         public GameObject rHandTargetSphere;
-     
+
+        [Header("Yoga Sessions")]
+        public List<YogaSession> availableSessions;
         
         private YogaSession currentSession;
         private int currentStepIndex = 0;
         private bool isSessionActive = false;
         private float currentHoldTimer = 0f;
+        
         private GameObject currentTeacherVisual;
 
-        [Header("Yoga Sessions")]
-        public List<YogaSession> availableSessions;
-        
- 
-        //Start a session by passing in a YogaSession object
+        //The Anchoring Points for the targets
+        private Vector3 lockedFloorPos;
+        private Quaternion lockedLookRot;
+
         public void StartSession(YogaSession session)
         {
             if (session == null || session.steps.Count == 0) return;
@@ -50,35 +49,6 @@ namespace YogaGame
             
             ShowStep(currentStepIndex);
         }
-        //Overload to start session by name
-        public void StartSession(string sessionName)
-        {
-            YogaSession session = availableSessions.Find(s => 
-                                  s.name == sessionName || 
-                                  s.sessionName == sessionName);
-            if (session != null)
-            {
-                StartSession(session);
-            }
-            else
-                {
-                    Debug.LogWarning("Yoga session not found: " + sessionName);
-                }
-            }
-            //Overload to start session by index in the list
-            public void StartSession(int index)
-            {
-                if (index >= 0 && index < availableSessions.Count)
-                {
-                        StartSession(availableSessions[index]);
-                }
-                else
-                    {
-                        Debug.LogWarning("Yoga session index out of range: " + index);
-                    }
-                
-            }
-        
 
         public void StopSession()
         {
@@ -86,7 +56,6 @@ namespace YogaGame
             if(yogaCanvas) yogaCanvas.SetActive(false);
             if(currentTeacherVisual) Destroy(currentTeacherVisual);
 
-            //If used hide visuals for hands and head
             if (headTargetSphere) headTargetSphere.SetActive(false);
             if (lHandTargetSphere) lHandTargetSphere.SetActive(false);
             if (rHandTargetSphere) rHandTargetSphere.SetActive(false);
@@ -107,14 +76,16 @@ namespace YogaGame
             if(instructionText) instructionText.text = step.instruction;
             currentHoldTimer = 0;
 
+            //Anchor of player 
+            lockedFloorPos = new Vector3(playerHead.position.x, playerRoot.position.y, playerHead.position.z);
+            lockedLookRot = Quaternion.Euler(0, playerHead.eulerAngles.y, 0);
+
             if (step.teacherVisualPrefab != null)
             {
-                Vector3 forwardOnFloor = new Vector3(playerHead.forward.x, 0, playerHead.forward.z).normalized;
-                Vector3 spawnPos = playerRoot.position + (forwardOnFloor * 2.0f);
-                spawnPos.y = playerRoot.position.y; 
-
+                //Visual Yoga Prefab Pose 
+                Vector3 spawnPos = lockedFloorPos + (lockedLookRot * Vector3.forward * 2.0f);
                 currentTeacherVisual = Instantiate(step.teacherVisualPrefab, spawnPos, Quaternion.identity);
-                currentTeacherVisual.transform.LookAt(playerRoot);
+                currentTeacherVisual.transform.LookAt(lockedFloorPos);
             }
         }
 
@@ -123,7 +94,6 @@ namespace YogaGame
             if (!isSessionActive) return;
 
             YogaStep currentStep = currentSession.steps[currentStepIndex];
-            
             bool isInPose = CheckPose(currentStep.poseData);
 
             if (isInPose)
@@ -155,16 +125,29 @@ namespace YogaGame
             }
         }
 
-        
         bool CheckPose(PlayerPose pose)
         {
             if (pose == null) return false;
             bool allFulfilled = true;
 
-            //Reset visuals for hands and head
             if (headTargetSphere) headTargetSphere.SetActive(false);
             if (lHandTargetSphere) lHandTargetSphere.SetActive(false);
             if (rHandTargetSphere) rHandTargetSphere.SetActive(false);
+
+            // Head alignment part for pose fixing
+            Vector3 recordedHeadFloorOffset = Vector3.zero;
+            foreach (var req in pose.limbRequirements)
+            {
+                if (req.limb == Limb.HEAD)
+                {
+                    recordedHeadFloorOffset = new Vector3(req.relativePos.x, 0, req.relativePos.z);
+                    break;
+                }
+            }
+
+            
+            //Rotation fix for pose matching
+            Quaternion recordedRot = Quaternion.Euler(0, pose.recordedLookAngleY, 0);
 
             foreach (var req in pose.limbRequirements)
             {
@@ -173,32 +156,32 @@ namespace YogaGame
 
                 if (playerLimb == null) continue;
 
-                //Calculate position of the target in world space
-                Vector3 targetWorldPos = playerRoot.TransformPoint(req.relativePos);
+               Vector3 centeredOriginalPos = req.relativePos - recordedHeadFloorOffset;
                 
-                //Calculate distance between player's limb and target position
-                float dist = Vector3.Distance(playerLimb.position, targetWorldPos);
-                bool isLimbCorrect = dist <= req.tolerance;
+               Vector3 localPos = Quaternion.Inverse(recordedRot) * centeredOriginalPos;
 
-                if (!isLimbCorrect) 
-                {
-                    allFulfilled = false; 
-                }
+               Vector3 finalWorldPos = lockedFloorPos + (lockedLookRot * localPos);
 
-                //Set up visuals for this limb
                 if (visSphere != null)
                 {
                     visSphere.SetActive(true);
-                    visSphere.transform.position = targetWorldPos;
                     
-                    //Set scale based on tolerance (optional, for better visibility)
+                    // Orb spawn position with corretion for head movement and rotation
+                    visSphere.transform.position = finalWorldPos; 
+                    
+                    // Orb rotation to always face the player
+                    visSphere.transform.rotation = lockedLookRot;
+                    
                     visSphere.transform.localScale = Vector3.one * (req.tolerance * 2);
 
-                    //Color the sphere green if correct, red if not (with some transparency)
+                    float dist = Vector3.Distance(playerLimb.position, visSphere.transform.position);
+                    bool isLimbCorrect = dist <= req.tolerance;
+
+                    if (!isLimbCorrect) allFulfilled = false; 
+
                     Renderer r = visSphere.GetComponent<Renderer>();
                     if (r != null)
                     {
-                        //Color the sphere based on whether the limb is correct or not
                         r.material.color = isLimbCorrect ? new Color(0, 1, 0, 0.4f) : new Color(1, 0, 0, 0.4f);
                     }
                 }
@@ -226,6 +209,18 @@ namespace YogaGame
                 case Limb.RHAND: return rHandTargetSphere;
                 default: return null;
             }
+        }
+        
+        //Start Session by Index or Name 
+        public void StartSession(string sessionName)
+        {
+            YogaSession session = availableSessions.Find(s => s.name == sessionName || s.sessionName == sessionName);
+            if (session != null) StartSession(session);
+        }
+
+        public void StartSession(int index)
+        {
+            if (index >= 0 && index < availableSessions.Count) StartSession(availableSessions[index]);
         }
     }
 }

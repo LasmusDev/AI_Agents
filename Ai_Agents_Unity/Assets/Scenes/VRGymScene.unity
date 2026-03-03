@@ -1079,7 +1079,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: YogaSession1
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 70514254}
         m_TargetAssemblyTypeName: YogaGame.YogaManager, Assembly-CSharp
         m_MethodName: StartSession
@@ -1091,7 +1091,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 0
+        m_CallState: 2
 --- !u!114 &115537869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5902,14 +5902,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817057739}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.0006981746, z: 0, w: 0.99999976}
-  m_LocalPosition: {x: 0, y: 0.78, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 22037874}
   m_Father: {fileID: 1258224515}
-  m_LocalEulerAnglesHint: {x: 0, y: 0.08, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &895006600
 GameObject:
   m_ObjectHideFlags: 0
@@ -5950,6 +5950,7 @@ MonoBehaviour:
   rHandObject: {fileID: 1860049317}
   lFootObject: {fileID: 0}
   rFootObject: {fileID: 0}
+  playerHead: {fileID: 196292991}
 --- !u!4 &895006602
 Transform:
   m_ObjectHideFlags: 0

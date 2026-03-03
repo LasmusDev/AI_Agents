@@ -8,7 +8,7 @@ namespace PlayerPoseEngine.Scripts {
     {
         public List<LimbRequirement> limbRequirements;    
         public float intendedHeight;
-    
+        public float recordedLookAngleY;
         public void Init()
         {
             limbRequirements = new List<LimbRequirement>();
@@ -18,9 +18,8 @@ namespace PlayerPoseEngine.Scripts {
     [Serializable]
     public class LimbRequirement
     {
-        /// <summary>
-        /// How precise the user has to fit the pose. 
-        /// </summary>
+        
+        //How precise the user has to fit the pose. 
         public Limb limb;
         public float tolerance;
         public Quaternion relativeRot;

@@ -29,6 +29,7 @@ namespace PlayerPoseEngine.Scripts
         public GameObject rHandObject;
         public GameObject lFootObject;
         public GameObject rFootObject;
+        public Transform playerHead;
 
         
         private bool wasPressedLastFrame = false;
@@ -75,6 +76,7 @@ namespace PlayerPoseEngine.Scripts
             Debug.Log($"<color=green>SNAPSHOT!</color> Speichere Pose: {poseName}");
 
             PlayerPose playerPose = ScriptableObject.CreateInstance<PlayerPose>();
+            playerPose.recordedLookAngleY = playerHead.eulerAngles.y;
             playerPose.Init();
             
             

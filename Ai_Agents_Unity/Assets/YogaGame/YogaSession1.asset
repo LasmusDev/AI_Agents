@@ -25,17 +25,17 @@ MonoBehaviour:
     holdDuration: 5
     instruction: 'Den Hals dehnen '
   - stepName: Linker Arm
-    poseData: {fileID: 11400000, guid: 8060e2a19aad069468c38748452aece7, type: 2}
+    poseData: {fileID: 11400000, guid: b59857cb5461aa04399cdef75eb5385e, type: 2}
     teacherVisualPrefab: {fileID: 1500603057386084271, guid: 27b9be6fdfef26e4db5728549bf6912f, type: 3}
     holdDuration: 5
     instruction: Linker Arm
   - stepName: 'Rechter Arm '
-    poseData: {fileID: 11400000, guid: e077c8a4afedbac4187bba45aa95a584, type: 2}
+    poseData: {fileID: 11400000, guid: 4260d483499358043a30b66cc1e8f578, type: 2}
     teacherVisualPrefab: {fileID: 169419453659699117, guid: 90eaf5b70aa6f9e4385857fd1a326b58, type: 3}
     holdDuration: 5
     instruction: 'Rechter Arm '
   - stepName: Nach Links schauen
-    poseData: {fileID: 11400000, guid: ab4026f1b0d44f94294fc4213d2d72f7, type: 2}
+    poseData: {fileID: 11400000, guid: 95b96e7c228da6449898e6748dbf87bc, type: 2}
     teacherVisualPrefab: {fileID: 4515410398769082256, guid: 81b7717ec875fee4aab2184777da1453, type: 3}
     holdDuration: 5
     instruction: 'Nach Links schauen '

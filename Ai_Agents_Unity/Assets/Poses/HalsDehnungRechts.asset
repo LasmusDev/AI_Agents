@@ -15,14 +15,15 @@ MonoBehaviour:
   limbRequirements:
   - limb: 0
     tolerance: 0.15
-    relativeRot: {x: 0, y: 0.15901968, z: 0, w: 0.9872754}
-    relativePos: {x: 0.025284648, y: 1.6258692, z: 0.12752342}
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: -0.084848404, y: 1.614235, z: -0.054951668}
   - limb: 1
     tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.056560397, y: 0.6762904, z: 0.39608002}
+    relativePos: {x: -0.12461734, y: 0.67651474, z: 0.24034882}
   - limb: 2
     tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.017209291, y: 0.69808185, z: -0.2200222}
-  intendedHeight: 1.6258692
+    relativePos: {x: -0.13967896, y: 0.71002156, z: -0.37020206}
+  intendedHeight: 1.614235
+  recordedLookAngleY: 266.72754
