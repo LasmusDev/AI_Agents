@@ -33,7 +33,8 @@ namespace PlayerPoseEngine.Scripts
         public GameObject playerRightHand;
 
         [Header("UI")]
-        public GameObject startMenuCanvas;    
+        public GameObject startMenuButton;    
+        public GameObject stopMenuButton;
         public TextMeshProUGUI countdownText; 
         public TextMeshProUGUI scoreText;
 
@@ -56,7 +57,7 @@ namespace PlayerPoseEngine.Scripts
 
         public void Start() 
         { 
-            if(startMenuCanvas) startMenuCanvas.SetActive(true); 
+            if(startMenuButton) startMenuButton.SetActive(true); 
             if(countdownText) countdownText.gameObject.SetActive(false);
         }
 
@@ -72,7 +73,7 @@ namespace PlayerPoseEngine.Scripts
 
         IEnumerator StartCountdownRoutine()
         {
-            if(startMenuCanvas) startMenuCanvas.SetActive(false);
+            if(startMenuButton) startMenuButton.SetActive(false);
             foreach(var r in activePoseResolvers) if(r) pool.Release(r);
             activePoseResolvers.Clear();
 
@@ -83,6 +84,8 @@ namespace PlayerPoseEngine.Scripts
                 countdownText.text = "1"; yield return new WaitForSeconds(1);
                 countdownText.text = "GO"; yield return new WaitForSeconds(0.5f);
                 countdownText.gameObject.SetActive(false);
+                stopMenuButton.gameObject.SetActive(true);
+
             }
             StartPosemapPlayback(poseMap);
         }
@@ -111,7 +114,7 @@ namespace PlayerPoseEngine.Scripts
             if (songStarted && !audioSource.isPlaying && (AudioSettings.dspTime - dspSongStartTime) > 2.0f)
             {
                 isPlaying = false;
-                if(startMenuCanvas) startMenuCanvas.SetActive(true);
+                if(startMenuButton) startMenuButton.SetActive(true);
                 return;
             }
 
@@ -199,5 +202,18 @@ namespace PlayerPoseEngine.Scripts
                 device.SendHapticImpulse(0, strength, duration);
             }
         }
+        // Call this to stop the game and return to the start menu
+        public void StopGame()
+        {
+            if (isPlaying)
+            {
+                isPlaying = false;
+                audioSource.Stop();
+                if(startMenuButton) startMenuButton.SetActive(true);
+                foreach(var r in activePoseResolvers) if(r) pool.Release(r);
+                activePoseResolvers.Clear();
+                stopMenuButton.gameObject.SetActive(false);
+            }
+    }
     }
 }
