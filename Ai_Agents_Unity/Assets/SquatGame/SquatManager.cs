@@ -25,7 +25,8 @@ namespace SquatGame
         public float heightOffset; 
 
         [Header("UI")]
-        public GameObject startButtonCanvas; 
+        public GameObject startButton; 
+        public GameObject stopButton;
         public TextMeshProUGUI countdownText; 
         public int score = 0;
         public int combo = 0; 
@@ -73,7 +74,7 @@ namespace SquatGame
             combo = 0;
             timer = 0;
 
-            if(startButtonCanvas) startButtonCanvas.SetActive(false);
+            if(startButton) startButton.SetActive(false);
             
             var walls = FindObjectsByType<SquatWall>(FindObjectsSortMode.None);
             foreach (var w in walls) Destroy(w.gameObject);
@@ -86,6 +87,7 @@ namespace SquatGame
                 countdownText.text = "1"; yield return new WaitForSeconds(1.0f);
                 countdownText.text = "GO!"; yield return new WaitForSeconds(0.5f);
                 countdownText.gameObject.SetActive(false);
+                stopButton.SetActive(true);
             }
 
             
@@ -133,7 +135,7 @@ namespace SquatGame
         {
             Debug.Log("Round finished. Showing start button.");
             isRunning = false; 
-            if(startButtonCanvas) startButtonCanvas.SetActive(true);
+            if(startButton) startButton.SetActive(true);
             
            
         }
@@ -165,5 +167,12 @@ namespace SquatGame
             score -= 50; 
             if (score < 0) score = 0;
         }
+        public void OnStopButtonPressed()
+        {
+            if (!isRunning) return;
+            if (audioSource != null) audioSource.Stop();
+            ShowStartMenu();
+            stopButton.SetActive(false);
+        }
     }
-}
+} 

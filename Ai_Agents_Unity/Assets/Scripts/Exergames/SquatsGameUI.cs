@@ -17,4 +17,4 @@ namespace Exergames
              comboText.text = game.combo.ToString();
         }
     }
-}
+} 
