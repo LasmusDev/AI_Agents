@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/* using UnityEngine;
 using System.Collections;
 using TMPro; 
 
@@ -175,7 +175,220 @@ namespace SquatGame
             stopButton.SetActive(false);
         }
     }
-} 
+}  */
+ 
  
 
 
+using UnityEngine;
+using System.Collections;
+using TMPro; 
+using PlayerPoseEngine.Scripts; 
+
+namespace SquatGame
+{
+    [RequireComponent(typeof(AudioSource))]
+    public class SquatManager : MonoBehaviour
+    {
+        [Header("Debug")]
+        public bool startGameNow = false; 
+
+        [Header("Setup")]
+        public Transform spawnPoint;  
+        
+        [Header("Level Data (Timeline)")]
+        [Tooltip("Drag your created PoseMap file here!")]
+        public SquatPoseMap currentPoseMap;
+
+        [Header("Audio")]
+        public AudioClip gameMusic; 
+
+        [Header("Difficulty")]
+        public float holeHeightMax = 1.6f; 
+        public float holeHeightMin = 1.2f;
+        public float heightOffset = 0f; 
+
+        [Header("UI")]
+        public GameObject startButton; 
+        public GameObject stopButton;
+        public TextMeshProUGUI countdownText; 
+        public int score = 0;
+        public int combo = 0; 
+        
+        public bool isRunning = false;
+        
+        private AudioSource audioSource;
+        
+        // PoseMap Tracking
+        private float timer = 0f;
+        private int currentStepIndex = 0;
+
+        void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        void Start()
+        {
+            ShowStartMenu();
+            if(countdownText) countdownText.gameObject.SetActive(false);
+        }
+
+        public void OnStartButtonPressed()
+        {
+            StartCoroutine(StartGameRoutine());
+        }
+
+        [ContextMenu("▶ START SEQUENCE NOW")]
+        public void DebugStartSequence()
+        {
+            if(Application.isPlaying)
+            {
+                StartCoroutine(StartGameRoutine());
+            }
+            else
+            {
+                Debug.LogWarning("Press play first!");
+            }
+        }
+
+        IEnumerator StartGameRoutine()
+        {
+            isRunning = false;
+            score = 0;
+            combo = 0;
+            
+            // Set timer and index to 0, so we start from the beginning of the PoseMap
+            timer = 0f;
+            currentStepIndex = 0;
+
+            if(startButton) startButton.SetActive(false);
+            
+            var walls = FindObjectsByType<SquatWall>(FindObjectsSortMode.None);
+            foreach (var w in walls) Destroy(w.gameObject);
+
+            if (countdownText != null)
+            {
+                countdownText.gameObject.SetActive(true);
+                countdownText.text = "3"; yield return new WaitForSeconds(1.0f);
+                countdownText.text = "2"; yield return new WaitForSeconds(1.0f);
+                countdownText.text = "1"; yield return new WaitForSeconds(1.0f);
+                countdownText.text = "GO!"; yield return new WaitForSeconds(0.5f);
+                countdownText.gameObject.SetActive(false);
+                stopButton.SetActive(true);
+            }
+
+            // Sort the PoseMap steps by spawn time to ensure correct order
+            if (currentPoseMap != null && currentPoseMap.steps.Count > 0)
+            {
+                currentPoseMap.steps.Sort((a, b) => a.spawnTime.CompareTo(b.spawnTime));
+            }
+
+            if (audioSource != null && gameMusic != null)
+            {
+                audioSource.clip = gameMusic;
+                audioSource.loop = false; 
+                audioSource.Play();
+            }
+
+            isRunning = true;
+        }
+
+        void Update()
+        {
+            if (startGameNow)
+            {
+                startGameNow = false;
+                StartCoroutine(StartGameRoutine());
+            }
+
+            if (!isRunning) return;
+
+            if (audioSource != null && !audioSource.isPlaying)
+            {
+                ShowStartMenu();
+                return;
+            }
+
+            // Play the PoseMap timeline: Check if we have a PoseMap and if there are steps left to spawn
+            if (currentPoseMap != null && currentStepIndex < currentPoseMap.steps.Count)
+            {
+                timer += Time.deltaTime; // Timer synced with the game time
+
+                if (timer >= currentPoseMap.steps[currentStepIndex].spawnTime)
+                {
+                    SquatPoseMapStep step = currentPoseMap.steps[currentStepIndex];
+                    
+                    // Spawn the wall with the associated pose 
+                    SpawnWall(step.wallPrefab, step.poseAsset);
+                    
+                    currentStepIndex++; 
+                }
+            }
+        }
+
+        void ShowStartMenu()
+        {
+            Debug.Log("Round finished. Showing start button.");
+            isRunning = false; 
+            if(startButton) startButton.SetActive(true);
+        }
+
+        // Complete SpawnWall method that takes into account the pose data for dynamic hole heights
+        void SpawnWall(GameObject prefabToSpawn, PlayerPose pose)
+        {
+            if (prefabToSpawn == null) return;
+            
+            // Wall spawn
+            GameObject newWall = Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
+            
+            SquatWall wallScript = newWall.GetComponent<SquatWall>();
+            if (wallScript == null) wallScript = newWall.AddComponent<SquatWall>();
+            wallScript.manager = this;
+
+            // random height as default
+            float targetHeight = Random.Range(holeHeightMin, holeHeightMax);
+
+            // if pose data is available, adjust the target height based on the head position
+            if (pose != null)
+            {
+                foreach (var req in pose.limbRequirements)
+                {
+                    if (req.limb == Limb.HEAD)
+                    {
+                        // If the head is above a certain threshold, we assume
+                        //  the player is standing and set a higher hole, otherwise a lower one for squats
+                        targetHeight = (req.relativePos.y > 1.4f) ? holeHeightMax : holeHeightMin;
+                        break;
+                    }
+                }
+            }
+
+            // Apply height offset and move the wall up
+            newWall.transform.Translate(Vector3.up * (targetHeight + heightOffset), Space.Self);
+        }
+
+        public void AddScore()
+        {
+            if (!isRunning) return;
+            combo++; 
+            score += 10 * combo; 
+        }
+
+        public void PlayerHit()
+        {
+            if (!isRunning) return;
+            combo = 0;
+            score -= 50; 
+            if (score < 0) score = 0;
+        }
+
+        public void OnStopButtonPressed()
+        {
+            if (!isRunning) return;
+            if (audioSource != null) audioSource.Stop();
+            ShowStartMenu();
+            stopButton.SetActive(false);
+        }
+    }
+}
