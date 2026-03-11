@@ -330,11 +330,11 @@ namespace Whisper
                     _param.InferenceParam.InitialPrompt = _originalPrompt + _output;
 
                 // trim old buffer
-                var updBufferLen = _param.KeepSamples;
+                int updBufferLen = _param.KeepSamples;
                 if (updBufferLen > bufferLen)
                     updBufferLen = bufferLen;
 
-                var segment = new ArraySegment<float>(buffer, bufferLen - updBufferLen, updBufferLen);
+                ArraySegment<float> segment = new ArraySegment<float>(buffer, bufferLen - updBufferLen, updBufferLen);
                 _oldBuffer = segment.ToArray();
                 _step = 0;
                 

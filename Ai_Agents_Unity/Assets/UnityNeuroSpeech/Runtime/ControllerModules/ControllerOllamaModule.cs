@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Microsoft.Extensions.AI;
 using OllamaSharp;
+using OllamaSharp.Models.Chat;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -12,28 +13,48 @@ namespace UnityNeuroSpeech.Runtime.Ollama
     internal class ControllerOllamaModule
     {
         private int _responseCount;
-        private IChatClient _chatClient;
+        private OllamaApiClient _chatClient;
         public List<ChatMessage> ChatHistory { get; private set; } = new();
 
         public void InitOllamaModular(string systemPrompt, string modelName, string ollamaURI)
         {
-            _chatClient = new OllamaApiClient(new Uri(ollamaURI), modelName);
+            _chatClient = new OllamaApiClient(new OllamaApiClient.Configuration
+            {
+                Uri = new Uri(ollamaURI),
+                Model = modelName,
+            });
+            
 
-            ChatHistory.Add(new(ChatRole.System, systemPrompt));
+            ChatHistory.Add(new ChatMessage(Microsoft.Extensions.AI.ChatRole.System, systemPrompt));
+            WarmupOllamaModular(modelName);
+        }
+
+        public async Task WarmupOllamaModular(string modelName)
+        {
+            ChatRequest warmup = new ChatRequest
+            {
+                Stream = true,
+                KeepAlive = "1h",
+                Model = modelName,
+            };
+            await foreach (var chunk in _chatClient.ChatAsync(warmup)) ;
         }
 
         public async UniTask<AgentState> SendMessageModular(string userPrompt, string lang, CancellationToken token)
         {
             LogUtils.LogMessage("Sending message to Ollama...");
 
-            ChatHistory.Add(new(ChatRole.User, userPrompt));
+            ChatHistory.Add(new(Microsoft.Extensions.AI.ChatRole.User, userPrompt));
 
             var chatResponse = "";
-            await foreach (var item in _chatClient.GetStreamingResponseAsync(ChatHistory).WithCancellation(token)) chatResponse += item.Text;
+            await foreach (var item in ((Microsoft.Extensions.AI.IChatClient)_chatClient).GetStreamingResponseAsync(ChatHistory).WithCancellation(token))
+            {
+                chatResponse += item.Text;
+            }
             
             LogUtils.LogMessage($"Ollama response: {chatResponse}");
 
-            ChatHistory.Add(new(ChatRole.Assistant, chatResponse));
+            ChatHistory.Add(new(Microsoft.Extensions.AI.ChatRole.Assistant, chatResponse));
             _responseCount++;
 
             var responseWithoutThinking = CleanThinking(chatResponse);

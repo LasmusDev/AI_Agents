@@ -14,6 +14,7 @@ using Whisper;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using LogUtils = UnityNeuroSpeech.Utils.LogUtils;
+using System.Linq;
 #endregion
 
 namespace UnityNeuroSpeech.Runtime
@@ -85,13 +86,16 @@ namespace UnityNeuroSpeech.Runtime
         /// </summary>
         private async UniTask MainCycle(AudioChunk recordedAudio)
         {
+            UnityEngine.Debug.Log("Sending to whisper");
             var whisperResult = await GetWhisperResult(recordedAudio);
-
+            UnityEngine.Debug.Log("Contacting Ollama");
             var llmResponse = await SendMessageToOllama(whisperResult.Result, whisperResult.Language, this.GetCancellationTokenOnDestroy());
 
+            UnityEngine.Debug.Log("Starting TTS");
 #if ENABLE_MONO
             var ttsProcess = _ttsModule.StartTTSProcessMonoModular(llmResponse, whisperResult.Language);
             await MonitorTTSProcess(whisperResult.Language, ttsProcess);
+
 #else
             await _ttsModule.HandleTTSProcessAndOutputIL2CPP(llmResponse, whisperResult.Language);
 
@@ -100,6 +104,7 @@ namespace UnityNeuroSpeech.Runtime
 
             _processingOtherActions = false;
 #endif
+            UnityEngine.Debug.Log("TTS Done");
         }
 
         #endregion
