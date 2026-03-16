@@ -39,10 +39,13 @@ namespace SquatGame
                 Debug.LogError("ERROR: Please assign both an audio track and a target pose map before generating!");
                 return;
             }
-
-            // Clear existing steps in the target pose map to avoid appending to old data
-            targetPoseMap.steps.Clear();
-
+            if(targetPoseMap.steps != null)
+            {
+                targetPoseMap.steps = new List<SquatPoseMapStep>();
+            
+                // Clear existing steps in the target pose map to avoid appending to old data
+                targetPoseMap.steps.Clear();
+            }
             // check audio track settings
             float[] samples = new float[audioTrack.samples * audioTrack.channels];
             audioTrack.GetData(samples, 0);
