@@ -12416,9 +12416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69293dabc67268642beec6191bb76b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGameNow: 0
   spawnPoint: {fileID: 726272679}
-  currentPoseMap: {fileID: 11400000, guid: 858ceb68e194a344f92323ef420884da, type: 2}
+  currentPoseMap: {fileID: 0}
   playerHead: {fileID: 196292991}
   playerRoot: {fileID: 477023317}
   gameMusic: {fileID: 8300000, guid: abe8885c6923c7749aac101211b9da02, type: 3}
@@ -13130,12 +13129,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioTrack: {fileID: 8300000, guid: abe8885c6923c7749aac101211b9da02, type: 3}
-  targetPoseMap: {fileID: 11400000, guid: 648575a52dada1f4db144ee88fa305ff, type: 2}
+  targetPoseMap: {fileID: 0}
   defaultWallPrefab: {fileID: 6404457457982196571, guid: 9db6e0ab31e58454185587621cccfdc6, type: 3}
   randomPosesToPick:
-  - {fileID: 11400000, guid: 07f4ae2e666ed7648be969d67b17453d, type: 2}
-  - {fileID: 11400000, guid: 95b96e7c228da6449898e6748dbf87bc, type: 2}
-  sensitivity: 1
+  - {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
+  sensitivity: 0.5
   minTimeBetweenBlocks: 2
 --- !u!1001 &2144894762
 PrefabInstance:
