@@ -1430,9 +1430,8 @@ MonoBehaviour:
     m_Bits: 8
   body: {fileID: 8031048504175653170}
   otherFoot: {fileID: 1008104607253127026}
-  speed: 3
-  stepDistance: 0.3
-  stepLength: 0.3
+  speed: 7
+  stepDistance: 0.4
   stepHeight: 0.1
   footOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1584158053993673360
@@ -1843,9 +1842,8 @@ MonoBehaviour:
     m_Bits: 8
   body: {fileID: 8031048504175653170}
   otherFoot: {fileID: 5025842678355685104}
-  speed: 3
-  stepDistance: 0.3
-  stepLength: 0.3
+  speed: 7
+  stepDistance: 0.4
   stepHeight: 0.1
   footOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1560248412364963016

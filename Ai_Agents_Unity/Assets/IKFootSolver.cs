@@ -8,8 +8,7 @@ public class IKFootSolver : MonoBehaviour
     [SerializeField] Transform body = default;
     [SerializeField] IKFootSolver otherFoot = default;
     [SerializeField] float speed = 1;
-    [SerializeField] float stepDistance = 4;
-    [SerializeField] float stepLength = 4;
+    [SerializeField] float stepDistance = 0.41f;
     [SerializeField] float stepHeight = 1;
     [SerializeField] Vector3 footOffset = default;
     float footSpacing;
@@ -39,16 +38,18 @@ public class IKFootSolver : MonoBehaviour
         
         transform.rotation = currentRotation;
 
+        //Cast a ray from the right of the body, downwards
         Ray ray = new Ray(body.position + (body.right * footSpacing), Vector3.down);
 
-        if (Physics.Raycast(ray, out RaycastHit info, 10, terrainLayer.value))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 10, terrainLayer.value))
         {
-            if (Vector3.Distance(newPosition, info.point) > stepDistance && !otherFoot.IsMoving() && lerp >= 1)
+            //If our new target position is farther away than stepDistance, our other foot is not moving, and we arent moving either, we start a new step
+            if (Vector3.Distance(newPosition, hitInfo.point) > stepDistance && !otherFoot.IsMoving() && lerp >= 1)
             {
                 lerp = 0;
-                int direction = body.InverseTransformPoint(info.point).z > body.InverseTransformPoint(newPosition).z ? 1 : -1;
-                newPosition = info.point + (body.forward * stepLength * direction) + footOffset;
-                newNormal = info.normal;
+                int direction = body.InverseTransformPoint(hitInfo.point).z > body.InverseTransformPoint(newPosition).z ? 1 : -1;
+                newPosition = hitInfo.point + (body.forward * (stepDistance * 0.9f) * direction) + footOffset;
+                newNormal = hitInfo.normal;
 
                 // neue Zielrotation berechnen: Körper-Forward auf die Bodenebene projizieren
                 Vector3 targetForward = Vector3.ProjectOnPlane(body.forward, newNormal);
