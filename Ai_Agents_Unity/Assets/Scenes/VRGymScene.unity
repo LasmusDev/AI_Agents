@@ -11571,6 +11571,7 @@ GameObject:
   - component: {fileID: 1620642666}
   - component: {fileID: 1620642665}
   - component: {fileID: 1620642664}
+  - component: {fileID: 1620642667}
   m_Layer: 0
   m_Name: LevelChooser
   m_TagString: Untagged
@@ -11702,6 +11703,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620642662}
   m_CullTransparentMesh: 1
+--- !u!114 &1620642667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620642662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b7f1f6666172c4abcd07867e572fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 1405653127}
+  dropdown: {fileID: 1620642664}
+  availableLevels:
+  - {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
 --- !u!1 &1653821445
 GameObject:
   m_ObjectHideFlags: 0
