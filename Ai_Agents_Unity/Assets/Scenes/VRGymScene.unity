@@ -3797,6 +3797,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1620642662}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &423582049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11719,6 +11731,7 @@ MonoBehaviour:
   dropdown: {fileID: 1620642664}
   availableLevels:
   - {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
+  - {fileID: 11400000, guid: 0388654e3f0cede41b64e278b9de4c56, type: 2}
 --- !u!1 &1653821445
 GameObject:
   m_ObjectHideFlags: 0
@@ -11932,6 +11945,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PlayerPoseEngine.Scripts.PosemapPlayer, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1620642662}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
