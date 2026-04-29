@@ -115,6 +115,7 @@ namespace PlayerPoseEngine.Scripts
             {
                 isPlaying = false;
                 if(startMenuButton) startMenuButton.SetActive(true);
+                if(stopMenuButton) stopMenuButton.SetActive(false);
                 return;
             }
 

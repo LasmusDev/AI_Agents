@@ -48,6 +48,18 @@ namespace DancingGame
             dropdown.value = 0;
             OnLevelSelected(0);
         }
+        void Update()
+        {
+            // check if Start Button is visible 
+            if (playerScript != null && playerScript.startMenuButton != null)
+            {
+                // if Strat button is visible reactivate drop down 
+                if (!dropdown.gameObject.activeSelf && playerScript.startMenuButton.activeSelf)
+                {
+                    dropdown.gameObject.SetActive(true); // reactivating drop down 
+                }
+            }
+        }
 
         public void OnLevelSelected(int index)
         {

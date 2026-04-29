@@ -3428,7 +3428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd6dcac6538252419b18835dd1bcad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoseMap: {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
+  targetPoseMap: {fileID: 11400000, guid: f67c32f063758134a9f0c920f1ea00fb, type: 2}
   posePalette:
   - {fileID: 11400000, guid: a530ee9323357af4989dd80ed6df83a2, type: 2}
   - {fileID: 11400000, guid: 6be1edef14066954fb20df894c29f047, type: 2}
@@ -9959,6 +9959,7 @@ GameObject:
   - component: {fileID: 1405653127}
   - component: {fileID: 1405653128}
   - component: {fileID: 1405653129}
+  - component: {fileID: 1405653130}
   m_Layer: 0
   m_Name: DancingGame
   m_TagString: Untagged
@@ -10131,6 +10132,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1405653130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405653125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b7f1f6666172c4abcd07867e572fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 1405653127}
+  dropdown: {fileID: 1620642664}
+  availableLevels:
+  - {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
+  - {fileID: 11400000, guid: f67c32f063758134a9f0c920f1ea00fb, type: 2}
 --- !u!1 &1413198152
 GameObject:
   m_ObjectHideFlags: 0
@@ -11722,7 +11740,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620642662}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26b7f1f6666172c4abcd07867e572fae, type: 3}
   m_Name: 
@@ -11731,7 +11749,7 @@ MonoBehaviour:
   dropdown: {fileID: 1620642664}
   availableLevels:
   - {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
-  - {fileID: 11400000, guid: 0388654e3f0cede41b64e278b9de4c56, type: 2}
+  - {fileID: 11400000, guid: f67c32f063758134a9f0c920f1ea00fb, type: 2}
 --- !u!1 &1653821445
 GameObject:
   m_ObjectHideFlags: 0
