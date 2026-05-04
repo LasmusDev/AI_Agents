@@ -74,9 +74,5 @@ public class PythonMessager : MonoBehaviour
         client.Close();
     }
 
-    void OnApplicationQuit()
-    {
-        stream.Close();
-        client.Close();
-    }
+    
 }
