@@ -3,7 +3,7 @@ import numpy as np
 from kokoro import KPipeline
 
 # Initialize pipeline
-pipeline = KPipeline(lang_code='en')  # change language if needed
+pipeline = KPipeline(lang_code='b')  # change language if needed
 
 def stream_tts(text):
     stream = pipeline(
