@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PythonMessager : MonoBehaviour
+public class PythonMessenger : MonoBehaviour
 {
     TcpClient client;
     NetworkStream stream;
