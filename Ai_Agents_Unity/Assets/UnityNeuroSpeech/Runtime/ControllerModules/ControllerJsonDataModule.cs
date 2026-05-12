@@ -8,7 +8,7 @@ using UnityNeuroSpeech.Utils;
 
 namespace UnityNeuroSpeech.Runtime.JsonData
 {
-    internal class ControllerJsonDataModule
+    public class ControllerJsonDataModule
     {
         private string _jsonDialogHistoryFileName, _encryptionHistoryKey;
 

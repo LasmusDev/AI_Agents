@@ -1,9 +1,12 @@
 import socket
 import struct
-import TTSServer
+import numpy as np
+from kokoro import KPipeline
 
 HOST = '127.0.0.1'
 PORT = 65432
+
+pipeline = KPipeline(lang_code='b')
 
 
 def recv_exact(conn, n):
@@ -41,13 +44,22 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 break
 
             text = payload.decode("utf-8")
-            TTSServer.stream_tts(text)
+            stream = pipeline(
+                text,
+                voice='af_heart',   # example voice
+                speed=1.0,
+                split_pattern=r'\n+'
+            )
 
-            # Process
-            word_count = len(text.strip().split())
+            for i, (graphemes, phonemes, audio) in enumerate(stream):
+                if audio is None:
+                    continue
 
-            # Send response (also length-prefixed)
-            response_bytes = str(word_count).encode("utf-8")
-            response_len = struct.pack('!I', len(response_bytes))
+                # Ensure numpy float32
+                audio = np.array(audio, dtype=np.float32)
+                response_bytes = audio.tobytes()
+                response_len = struct.pack('!I', len(response_bytes))
+                conn.sendall(response_len + response_bytes)
+                print(f"Sent audio chunk {i} with {len(audio)} samples")
 
-            conn.sendall(response_len + response_bytes)
+            

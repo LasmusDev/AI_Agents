@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace UnityNeuroSpeech.Runtime
 {
     [Serializable]
-    internal struct DialogData
+    public struct DialogData
     {
         public string userMessage, llmResponse;
 
@@ -16,7 +16,7 @@ namespace UnityNeuroSpeech.Runtime
     }
 
     [Serializable]
-    internal struct DialogHistoryData
+    public struct DialogHistoryData
     {
         public List<DialogData> dialogHistory;
 

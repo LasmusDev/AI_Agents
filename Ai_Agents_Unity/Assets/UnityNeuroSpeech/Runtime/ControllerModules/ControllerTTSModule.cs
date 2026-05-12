@@ -9,7 +9,7 @@ using UnityNeuroSpeech.Utils;
 
 namespace UnityNeuroSpeech.Runtime.TTS
 {
-    internal class ControllerTTSModule
+    public class ControllerTTSModule
     {
         private AudioSource _ttsAudioSource;
         private int _agentIndex;

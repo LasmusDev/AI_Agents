@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace UnityNeuroSpeech.Utils
 {
-    internal enum LogLevel
+    public enum LogLevel
     {
         None,
         Error,
         All
     }
 
-    internal static class LogUtils
+    public static class LogUtils
     {
         public static LogLevel logLevel;
 

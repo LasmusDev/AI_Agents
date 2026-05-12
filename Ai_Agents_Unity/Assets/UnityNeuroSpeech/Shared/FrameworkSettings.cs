@@ -3,7 +3,7 @@ using UnityNeuroSpeech.Utils;
 namespace UnityNeuroSpeech.Shared
 {
     [System.Serializable]
-    internal struct FrameworkSettings
+    public struct FrameworkSettings
     {
         public LogLevel logLevel;
         public string ollamaURI;

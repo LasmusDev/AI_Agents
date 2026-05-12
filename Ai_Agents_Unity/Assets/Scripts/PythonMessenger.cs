@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,15 +10,17 @@ public class PythonMessenger : MonoBehaviour
     TcpClient client;
     NetworkStream stream;
     public bool shutDownServer = false;
+    public AudioSource src;
+    float[] pendingAudio = null;
+    object lockObj = new object();
     async void Start()
     {
         client = new TcpClient("127.0.0.1", 65432);
         stream = client.GetStream();
-
-        await SendText("Hello, this is a testtext");
+        Task.Run(GetResponses);        
     }
 
-    async Task SendText(string msg)
+    public async Task SendText(string msg)
     {
         byte[] payload = Encoding.UTF8.GetBytes(msg);
 
@@ -27,12 +30,25 @@ public class PythonMessenger : MonoBehaviour
             Array.Reverse(lengthPrefix);
         await stream.WriteAsync(lengthPrefix, 0, 4);
         await stream.WriteAsync(payload, 0, payload.Length);
+    }
 
-        byte[] buffer = new byte[1024];
-        int bytes = await stream.ReadAsync(buffer, 0, buffer.Length);
+    public void Update()
+    {
+        if (pendingAudio != null)
+        {
+            float[] data;
 
-        string response = Encoding.UTF8.GetString(buffer, 0, bytes);
-        Debug.Log("Result from Python: " + response);
+            lock (lockObj)
+            {
+                data = pendingAudio;
+                pendingAudio = null;
+            }
+
+            AudioClip clip = AudioClip.Create("ReceivedAudio", data.Length, 1, 24000, false);
+            clip.SetData(data, 0);
+            src.clip = clip;
+            src.Play();
+        }
     }
 
     async Task GetResponses()
@@ -47,7 +63,14 @@ public class PythonMessenger : MonoBehaviour
 
             // Read response payload
             byte[] responseBuffer = await ReadExact(responseLength);
-            string response = Encoding.UTF8.GetString(responseBuffer);
+            Debug.Log(responseBuffer.Length);
+            float[] floatArray = new float[responseBuffer.Length / 4];
+
+            Buffer.BlockCopy(responseBuffer, 0, floatArray, 0, responseBuffer.Length);
+            lock (lockObj)
+            {
+                pendingAudio = floatArray;
+            }
         }
     }
 

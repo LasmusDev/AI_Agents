@@ -10,7 +10,7 @@ using UnityNeuroSpeech.Utils;
 
 namespace UnityNeuroSpeech.Runtime.Ollama
 {
-    internal class ControllerOllamaModule
+    public class ControllerOllamaModule
     {
         private int _responseCount;
         private OllamaApiClient _chatClient;

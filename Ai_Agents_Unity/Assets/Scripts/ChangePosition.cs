@@ -9,5 +9,6 @@ public class ChangePosition : MonoBehaviour
     {
         Vector3 controllerPosition = RightControllerPosition.action.ReadValue<Vector3>();
         transform.position = controllerPosition;
+        
     }
 }

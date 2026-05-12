@@ -15,15 +15,14 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using LogUtils = UnityNeuroSpeech.Utils.LogUtils;
 using System.Linq;
+using UnityNeuroSpeech.Runtime;
 #endregion
 
-namespace UnityNeuroSpeech.Runtime
-{
-    /// <summary>
-    /// Alex controller
-    
-    /// </summary>
-    public sealed class AlexController : MonoBehaviour, IAgent
+/// <summary>
+/// Alex controller
+
+/// </summary>
+public class AlexController : MonoBehaviour, IAgent
     {
         #region Variables
         // General
@@ -54,7 +53,9 @@ namespace UnityNeuroSpeech.Runtime
         private ControllerOllamaModule _ollamaModule = new();
         private ControllerTTSModule _ttsModule;
         private ControllerJsonDataModule _jsonModule;
-        #endregion
+         
+        
+                #endregion
 
         #region Unity methods
         private void Start()
@@ -93,6 +94,7 @@ namespace UnityNeuroSpeech.Runtime
 
             UnityEngine.Debug.Log("Starting TTS");
 #if ENABLE_MONO
+           
             var ttsProcess = _ttsModule.StartTTSProcessMonoModular(llmResponse, whisperResult.Language);
             await MonitorTTSProcess(whisperResult.Language, ttsProcess);
 
@@ -193,4 +195,4 @@ namespace UnityNeuroSpeech.Runtime
 
         #endregion
     }
-}
+
