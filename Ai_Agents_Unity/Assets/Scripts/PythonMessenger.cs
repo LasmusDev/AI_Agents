@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +13,9 @@ public class PythonMessenger : MonoBehaviour
     NetworkStream stream;
     public bool shutDownServer = false;
     public AudioSource src;
-    float[] pendingAudio = null;
+    List<float> pendingAudio = new List<float>();
     object lockObj = new object();
+    AudioClip clip;
     async void Start()
     {
         client = new TcpClient("127.0.0.1", 65432);
@@ -38,13 +41,20 @@ public class PythonMessenger : MonoBehaviour
         {
             float[] data;
 
+
+            if (src.isPlaying){
+                return;
+            }
             lock (lockObj)
             {
-                data = pendingAudio;
-                pendingAudio = null;
+                data = pendingAudio.ToArray();
+                pendingAudio.Clear();
+            }
+            if(data.Length == 0){
+                return;
             }
 
-            AudioClip clip = AudioClip.Create("ReceivedAudio", data.Length, 1, 24000, false);
+            clip = AudioClip.Create("ReceivedAudio", data.Length, 1, 24000, false);
             clip.SetData(data, 0);
             src.clip = clip;
             src.Play();
@@ -69,7 +79,7 @@ public class PythonMessenger : MonoBehaviour
             Buffer.BlockCopy(responseBuffer, 0, floatArray, 0, responseBuffer.Length);
             lock (lockObj)
             {
-                pendingAudio = floatArray;
+                pendingAudio.AddRange(floatArray);
             }
         }
     }

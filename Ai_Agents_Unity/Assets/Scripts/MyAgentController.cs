@@ -139,8 +139,6 @@ public class MyAgentController : MonoBehaviour, IAgent
 
     private void OnButtonPressed()
     {
-        if (_processingOtherActions) return;
-
         if (!_microphoneRecord.IsRecording)
         {
             _microphoneRecord.StartRecord();
@@ -150,35 +148,8 @@ public class MyAgentController : MonoBehaviour, IAgent
         {
             _microphoneRecord.StopRecord();
             _micButton.image.sprite = _disableMicSprite;
-            _processingOtherActions = true;
         }
     }
-
-    #endregion
-
-    #region TTS
-
-#if ENABLE_MONO
-
-    /// <summary>
-    /// Monitors TTS process. When process exits, will play generated audio and then delete it.
-    /// </summary>
-    private async UniTask MonitorTTSProcess(string lang, Process ttsProcess)
-    {
-        await UniTask.SwitchToThreadPool();
-
-        ttsProcess.WaitForExit();
-
-        await UniTask.SwitchToMainThread();
-
-        //await _ttsModule.CheckTTSProcessMonoModular(lang, ttsProcess);
-
-        LogUtils.LogMessage($"Invoking AfterTTS() for agent");
-        AfterTTS?.Invoke();
-
-        _processingOtherActions = false;
-    }
-#endif
 
     #endregion
 }

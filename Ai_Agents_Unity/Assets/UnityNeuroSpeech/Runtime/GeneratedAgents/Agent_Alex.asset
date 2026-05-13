@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Agent_Alex
   m_EditorClassIdentifier: 
   agentIndex: 0
-  modelName: deepseek-r1:7b
-  agentName: Alex
+  modelName: qwen3-vl:8b
+  agentName: Cora
   systemPrompt: 
