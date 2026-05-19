@@ -20,6 +20,7 @@ namespace DancingGame
 
         // The Audiosource, to later check if the music is playing
         private AudioSource playerAudio;
+        private string savedLevelKey = "SavedDanceLevel";
 
         void Start()
         {
@@ -43,10 +44,15 @@ namespace DancingGame
             
             dropdown.AddOptions(levelNames);
             dropdown.onValueChanged.AddListener(OnLevelSelected);
+            int savedIndex = PlayerPrefs.GetInt(savedLevelKey, 0);
+            if(savedIndex >= availableLevels.Count)
+            {
+                savedIndex = 0;
+            }
 
             // Load first level by default
-            dropdown.value = 0;
-            OnLevelSelected(0);
+            dropdown.value = savedIndex;
+            OnLevelSelected(savedIndex);
         }
         void Update()
         {
@@ -75,6 +81,8 @@ namespace DancingGame
             {
                 playerScript.poseMap = availableLevels[index];
                 Debug.Log("New level loaded into PosemapPlayer: " + availableLevels[index].name);
+                PlayerPrefs.SetInt(savedLevelKey, index);
+                PlayerPrefs.Save();
             }
         }
     }

@@ -22,6 +22,7 @@ namespace SquatGame
 
         [Tooltip("Add Levels")]
         public List<SquatLevel> availableLevels;
+        private string savedLevelName = "SavedSquatLevel";
 
         void Start()
         {
@@ -40,8 +41,14 @@ namespace SquatGame
             
             dropdown.AddOptions(levelNames);
             dropdown.onValueChanged.AddListener(OnLevelSelected);
-            dropdown.value = 0;
-            OnLevelSelected(0);
+            int savedIndex = PlayerPrefs.GetInt(savedLevelName, 0);
+            if(savedIndex >= availableLevels.Count)
+            {
+                savedIndex = 0;
+            }
+
+            dropdown.value = savedIndex;
+            OnLevelSelected(savedIndex);
         }
 
         void Update()
@@ -68,6 +75,8 @@ namespace SquatGame
                 manager.currentPoseMap = availableLevels[index].poseMap;
                 manager.gameMusic = availableLevels[index].song;
                 Debug.Log("New level loaded into SquatManager: " + availableLevels[index].levelName);
+                PlayerPrefs.SetInt(savedLevelName, index);
+                PlayerPrefs.Save();
             }
         }
     }
