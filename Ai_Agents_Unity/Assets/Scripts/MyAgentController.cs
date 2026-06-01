@@ -45,7 +45,6 @@ public class MyAgentController : MonoBehaviour, IAgent
 
     // TTS
     [Header("TTS")]
-    [SerializeField] private AudioSource _ttsAudioSource;
     public Action<AgentState> BeforeTTS { get; set; }
     public Action AfterTTS { get; set; }
 

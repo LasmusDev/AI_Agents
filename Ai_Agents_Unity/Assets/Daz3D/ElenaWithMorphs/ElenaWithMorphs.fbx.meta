@@ -3,7 +3,307 @@ guid: f75f6a3f06d658a4ea06a2d10f4843ec
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arms
+    second: {fileID: 2100000, guid: 0ed3ba148e31784418124689d87f13ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BackPockets
+    second: {fileID: 2100000, guid: f6594091973ba394e88e59fb87b75f2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: effbeccf7fbda39438c13475b25e659a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bra_Heart
+    second: {fileID: 2100000, guid: d68c38850635a6243b14daf2194b68ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bra_Main
+    second: {fileID: 2100000, guid: 3fabda1782096414b9ac2cdf762975de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bra_Straps
+    second: {fileID: 2100000, guid: 0ece3d55ee5bea340bf12f601cf94982, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bra_Underbust
+    second: {fileID: 2100000, guid: 5b2fb0e0fd538604db2dc2e6221b1b86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bra_Upper_Border
+    second: {fileID: 2100000, guid: 50cadb800b18fc6418b85d877ed4bdd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cuff
+    second: {fileID: 2100000, guid: 13291514438bcdd488a2a7d49e0ab2e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye Left
+    second: {fileID: 2100000, guid: 2c56cbe4b86834d4bb93d718c5710dad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye Right
+    second: {fileID: 2100000, guid: 5c803697a5d8b244e95bed65425f820a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EyeMoisture Left
+    second: {fileID: 2100000, guid: 7ae99f1c9dee87244aa6265ea2f8dde6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EyeMoisture Right
+    second: {fileID: 2100000, guid: 16e878c2edbfbbe44a2f3d221a4dc944, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyebrows_Primary
+    second: {fileID: 2100000, guid: 7ac542c09df81c14abbaf42180893c1a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyebrows_Secondary
+    second: {fileID: 2100000, guid: 10e5b23b50a5db44dacefe7754a9ada0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelashes Lower
+    second: {fileID: 2100000, guid: d360d0db05b3ef2469f27550521bb6b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelashes Upper
+    second: {fileID: 2100000, guid: 3083df107e1844b41b45f16cfde7ae0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fingernails
+    second: {fileID: 2100000, guid: b8bb7962e9cda394391b541493035287, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fly
+    second: {fileID: 2100000, guid: 24c0bb4655e41b347bcccbc704f879f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrommetHole
+    second: {fileID: 2100000, guid: 57a187cdb3487bd47ade268193a99063, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grommets
+    second: {fileID: 2100000, guid: 040d93a9bbd64634fae11432c997603f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head
+    second: {fileID: 2100000, guid: d4cf23bddde01ba4e88a2816de50997e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeelCap
+    second: {fileID: 2100000, guid: a22613a7efd93034b9bade9b046abf9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Innersole
+    second: {fileID: 2100000, guid: 48bcb6782157d77468fbbf686e766306, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jeans
+    second: {fileID: 2100000, guid: 86869abd9abecb84da2fa7cadc9b2e6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Laces
+    second: {fileID: 2100000, guid: c8a875a5bb5207c4ba7bdcce7431c7a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LacesTip
+    second: {fileID: 2100000, guid: 64d7c59076c3b4d4495444d0e2b4b96b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Legs
+    second: {fileID: 2100000, guid: 2226d05923af703418f4e70bcd3bee3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Loops
+    second: {fileID: 2100000, guid: 201f30b8353e68b4bb5638bc53034bcf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mouth
+    second: {fileID: 2100000, guid: b004188517f562e4fa71f2d3ac812d34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mouth Cavity
+    second: {fileID: 2100000, guid: 5fcd4f89e29518045825a76d44a056b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Platform
+    second: {fileID: 2100000, guid: 7bf6aec1254f9fc4cadf8c47ecf76ddf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirt
+    second: {fileID: 2100000, guid: 2a96571ec6802cb438571bb75e89dcfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallRivet
+    second: {fileID: 2100000, guid: 471d74113e664ec43bd0a215a2efee4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallRivet_1
+    second: {fileID: 2100000, guid: 245f0d58605e83a4d80815657a9bb957, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallRivet_2
+    second: {fileID: 2100000, guid: 25b62adbb136d72498d2d361400bcf41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallRivet_3
+    second: {fileID: 2100000, guid: 899284605cfac624c9d99d0e110d7fda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmallRivet_4
+    second: {fileID: 2100000, guid: 81373c21aa9bce543b178cfce925dc69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Snap
+    second: {fileID: 2100000, guid: 339fcab86333853408ecf3e4043283e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sole
+    second: {fileID: 2100000, guid: 37f88881b2b2fdb4cb87dadce7c30c6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tear
+    second: {fileID: 2100000, guid: 293d651908ad55144abf8d591f9a23d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Teeth
+    second: {fileID: 2100000, guid: f11c3ba2f766bc148bc4e5a83c8f801e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ToeUpper
+    second: {fileID: 2100000, guid: 108d5d7f546e51140bbc5d7c22151670, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toenails
+    second: {fileID: 2100000, guid: 2c9da42d6f3b89441b1530fc764b36ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tongue
+    second: {fileID: 2100000, guid: 3d1b3a1b8458b62459052a44e8917e58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim
+    second: {fileID: 2100000, guid: 7189245aaa86cb3409b37eb011f2e1b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim_Arms
+    second: {fileID: 2100000, guid: 819b70e0919b1ac4fb01f09301aa22a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim_Hip
+    second: {fileID: 2100000, guid: 0d555a2877eaf4244b64eb235f6c27e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim_Neck
+    second: {fileID: 2100000, guid: 7afeb57bb9ef8fc40b63a5da4c85a9fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Undies_Heart
+    second: {fileID: 2100000, guid: bf23d09b9c4f3f6459eea6af37ee0c1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Undies_Legband
+    second: {fileID: 2100000, guid: 6d4f2a5fa027a114584a3f224ddaf52f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Undies_Main
+    second: {fileID: 2100000, guid: e86a8072a6195254bbd2e46a2fceda1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Undies_Waistband
+    second: {fileID: 2100000, guid: dd59771ac38756048a92f58854a47bac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Upper
+    second: {fileID: 2100000, guid: 2a484ffae2bf65547883df5bbd0a01a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UpperInner
+    second: {fileID: 2100000, guid: 7ba7139b96e84ee4b8364d4c3b9754b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Waistband
+    second: {fileID: 2100000, guid: f1d49859f970a0745a88239da2170e77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yoke
+    second: {fileID: 2100000, guid: f70dc6c323161d846bd486d9d2196f4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bangs
+    second: {fileID: 2100000, guid: b3e4afb3d7fc74b4ea87e47c12a709b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kin Cap
+    second: {fileID: 2100000, guid: 621a6db1ee3dbe7499e18ce131a63845, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kin Hair
+    second: {fileID: 2100000, guid: b4eee11bb64d02b4aa39b3517f1677f4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

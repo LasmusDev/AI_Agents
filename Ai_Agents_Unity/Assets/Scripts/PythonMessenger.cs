@@ -12,12 +12,13 @@ public class PythonMessenger : MonoBehaviour
     TcpClient client;
     NetworkStream stream;
     public bool shutDownServer = false;
-    public AudioSource src;
+    public AudioSource outputSource;
     List<float> pendingAudio = new List<float>();
     object lockObj = new object();
     AudioClip clip;
     async void Start()
     {
+        outputSource.Play();
         client = new TcpClient("127.0.0.1", 65432);
         stream = client.GetStream();
         Task.Run(GetResponses);        
@@ -42,7 +43,7 @@ public class PythonMessenger : MonoBehaviour
             float[] data;
 
 
-            if (src.isPlaying){
+            if (outputSource.isPlaying){
                 return;
             }
             lock (lockObj)
@@ -56,8 +57,8 @@ public class PythonMessenger : MonoBehaviour
 
             clip = AudioClip.Create("ReceivedAudio", data.Length, 1, 24000, false);
             clip.SetData(data, 0);
-            src.clip = clip;
-            src.Play();
+            outputSource.clip = clip;
+            outputSource.Play();
         }
     }
 

@@ -1,0 +1,4 @@
+In the python folder, start UnityBridge.py
+Install plugins as needed, probably requires Python 11.X, since kokoro didn't work with Python 13.
+Agent configuration will be detailed inside the unity project
+Start the unity scene
