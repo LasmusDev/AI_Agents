@@ -4,6 +4,7 @@
   <Project Path="UniTask.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.Hands.csproj" />
   <Project Path="UniTask.Linq.csproj" />
+  <Project Path="Oculus.LipSync.csproj" />
   <Project Path="HTC.VIVE.OPENXR.SceneUnderstandingSample.csproj" />
   <Project Path="UnityNeuroSpeech.Editor.csproj" />
   <Project Path="Unity.XR.Hands.Samples.VisualizerSample.csproj" />
@@ -22,5 +23,6 @@
   <Project Path="VIVE.TMPCheck.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj" />
   <Project Path="UniTask.Editor.csproj" />
+  <Project Path="Oculus.LipSync.Editor.csproj" />
   <Project Path="UniTask.DOTween.csproj" />
 </Solution>
