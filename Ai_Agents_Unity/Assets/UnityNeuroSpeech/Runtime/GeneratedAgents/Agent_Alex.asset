@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Agent_Alex
   m_EditorClassIdentifier: 
   agentIndex: 0
-  modelName: qwen3-vl:8b
+  modelName: wizardlm2:7b
   agentName: Cora
   systemPrompt: 

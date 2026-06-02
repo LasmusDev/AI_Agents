@@ -73,12 +73,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eyebrows_Primary
-    second: {fileID: 2100000, guid: 7ac542c09df81c14abbaf42180893c1a, type: 2}
+    second: {fileID: 2100000, guid: 4e78fed47601e7045abe0088de57bc46, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eyebrows_Secondary
-    second: {fileID: 2100000, guid: 10e5b23b50a5db44dacefe7754a9ada0, type: 2}
+    second: {fileID: 2100000, guid: 9e752a42efef4144c8cf4f23e30600c4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

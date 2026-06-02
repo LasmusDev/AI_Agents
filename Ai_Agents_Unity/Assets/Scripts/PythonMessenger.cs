@@ -18,7 +18,6 @@ public class PythonMessenger : MonoBehaviour
     AudioClip clip;
     async void Start()
     {
-        outputSource.Play();
         client = new TcpClient("127.0.0.1", 65432);
         stream = client.GetStream();
         Task.Run(GetResponses);        
@@ -58,6 +57,8 @@ public class PythonMessenger : MonoBehaviour
             clip = AudioClip.Create("ReceivedAudio", data.Length, 1, 24000, false);
             clip.SetData(data, 0);
             outputSource.clip = clip;
+            outputSource.Stop();
+            outputSource.time = 0;
             outputSource.Play();
         }
     }
