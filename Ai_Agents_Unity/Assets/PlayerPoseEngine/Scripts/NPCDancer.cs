@@ -42,6 +42,10 @@ namespace DancingGame
         
         //Velocity variables for SmoothDamp
         private Vector3 headVel, lHandVel, rHandVel, rootVel, lHintVel, rHintVel;
+        //For dance movement
+        public float bounceAmount = 0.04f;
+        public float swayAmount = 0.05f;
+        private Vector3 currentDanceOffset;
 
         void Start()
         {
@@ -84,6 +88,10 @@ namespace DancingGame
                 float songPos = playerAudio.time;
                 float secPerBeat = 60f / playerManager.BPM;
                 float currentBeat = songPos / secPerBeat;
+                //Avatar bounce effect based on the beat
+                float bounce = -Mathf.Cos(currentBeat * Mathf.PI * 2f) * bounceAmount;
+                float sway = Mathf.Sin(currentBeat * Mathf.PI) * swayAmount;
+                currentDanceOffset = (anchorRot * Vector3.up * bounce) + (anchorRot * Vector3.right * sway);
 
                 BeatToPose? nextPoseData = null;
                 foreach (var bp in playerManager.poseMap.poses)
@@ -126,6 +134,11 @@ namespace DancingGame
                     }
                 }
             }
+            else
+                {
+                    currentDanceOffset = Vector3.Lerp(currentDanceOffset, Vector3.zero, Time.deltaTime * 5f);
+                }
+            
 
             UpdateHeadTarget(ref currentHeadPos, ref currentHeadRot, ref headVel, headTarget, targetHeadPos, targetHeadRot);
             UpdateHandTarget(ref currentLHandPos, ref lHandVel, lHandTarget, targetLHandPos);
@@ -138,7 +151,7 @@ namespace DancingGame
         void UpdateHeadTarget(ref Vector3 currentPos, ref Quaternion currentRot, ref Vector3 velocity, Transform ikTarget, Vector3 localTargetPos, Quaternion localTargetRot)
         {
             if (ikTarget == null) return;
-            Vector3 worldTargetPos = anchorPos + (anchorRot * localTargetPos);
+            Vector3 worldTargetPos = anchorPos + currentDanceOffset + (anchorRot * localTargetPos);
             Quaternion worldTargetRot = anchorRot * localTargetRot;
             
             currentPos = Vector3.SmoothDamp(currentPos, worldTargetPos, ref velocity, smoothTime);
@@ -151,7 +164,7 @@ namespace DancingGame
         void UpdateHandTarget(ref Vector3 currentPos, ref Vector3 velocity, Transform ikTarget, Vector3 localTargetPos)
         {
             if (ikTarget == null) return;
-            Vector3 worldTargetPos = anchorPos + (anchorRot * localTargetPos);
+            Vector3 worldTargetPos = anchorPos + currentDanceOffset + (anchorRot * localTargetPos);
 
             Vector3 shoulderPos = npcRoot.position + (npcRoot.up * shoulderHeight);
             Vector3 reachDir = worldTargetPos - shoulderPos;
@@ -170,8 +183,8 @@ namespace DancingGame
             if (headTarget != null && npcRoot != null)
             {
                 Vector3 targetRootPos = currentHeadPos + headBodyOffset;
-                targetRootPos.x = anchorPos.x;
-                targetRootPos.z = anchorPos.z;
+                targetRootPos.x = anchorPos.x + currentDanceOffset.x;
+                targetRootPos.z = anchorPos.z + currentDanceOffset.z;
                 npcRoot.position = Vector3.SmoothDamp(npcRoot.position, targetRootPos, ref rootVel, smoothTime);
             }
         }
