@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limbRequirements:
   - limb: 2
-    tolerance: 1
+    tolerance: 0.1
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
     relativePos: {x: 0.61630726, y: 0.8015032, z: -0.32367897}
   - limb: 1
-    tolerance: 1
+    tolerance: 0.1
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
     relativePos: {x: -0.62233496, y: 1.827179, z: 0.1272459}
   intendedHeight: 0
+  recordedLookAngleY: 0
