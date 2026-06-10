@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PythonMessenger : MonoBehaviour
@@ -16,6 +17,7 @@ public class PythonMessenger : MonoBehaviour
     List<float> pendingAudio = new List<float>();
     object lockObj = new object();
     AudioClip clip;
+    public Animator animator;
     async void Start()
     {
         client = new TcpClient("127.0.0.1", 65432);
@@ -43,7 +45,17 @@ public class PythonMessenger : MonoBehaviour
 
 
             if (outputSource.isPlaying){
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Talking"))
+                {
+                    Debug.Log("Switching to Talking");
+                    animator.Play("Talking");
+                }
                 return;
+            }
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                Debug.Log("Switching to Idle");
+                animator.Play("Idle");
             }
             lock (lockObj)
             {
