@@ -14,7 +14,8 @@ public class FollowObject : DesynchronizedBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(autoCalcOffset)
+        this.EnsureComponentReference<Transform>(ref transformToFollow, NameOfIntendedFollow);
+        if (autoCalcOffset)
         {
             if (localSpace)
             {

@@ -9,7 +9,7 @@ public static class FindReferenceExtensionMethods
     /// </summary>
     /// <param name="mb">Self-ref</param>
     /// <param name="reference">The object to be ensured</param>
-    /// <param name="expectedName">The expected name of the Object if its null</param>
+    /// <param name="expectedName">The expected name of the Object</param>
     public static void EnsureObjectReference(this MonoBehaviour mb, ref GameObject reference, string expectedName)
     {
         if(reference == null)
@@ -44,7 +44,7 @@ public static class FindReferenceExtensionMethods
     /// </summary>
     /// <param name="mb">Self-ref</param>
     /// <param name="reference">The object to be ensured</param>
-    /// <param name="expectedName">The expected name of the Object if its null</param>
+    /// <param name="expectedName">The expected name of the Object</param>
     public static void EnsureComponentReferenceInChildren<T>(this MonoBehaviour mb, ref T reference, string expectedName) where T : Component
     {
         if (reference == null)
@@ -58,11 +58,11 @@ public static class FindReferenceExtensionMethods
     }
 
     /// <summary>
-    /// 
+    /// If the reference is null, sets it to the Component of the same type attached to this components GameObject
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="mb"></param>
-    /// <param name="reference"></param>
+    /// <typeparam name="T">The type of the searched component</typeparam>
+    /// <param name="mb">self-ref</param>
+    /// <param name="reference">The variable to be set</param>
     public static void EnsureComponentReference<T>(this MonoBehaviour mb, ref T reference) where T: Component
     {
         if (reference == null)

@@ -52,6 +52,7 @@ public class VRMap
     public Transform ikTarget; 
     public Vector3 trackingPositionOffset;
     public Vector3 trackingRotationOffset;
+    
 
     public void Map()
     {
@@ -74,6 +75,7 @@ public class IKTargetFollowVRRig : MonoBehaviour
     public VRMap head;
     public VRMap leftHand;
     public VRMap rightHand;
+    public GameObject VRRig;
 
     public Vector3 headBodyPositionOffset;
     public float headBodyYawOffset;
@@ -109,15 +111,17 @@ public class IKTargetFollowVRRig : MonoBehaviour
 
     void FindHardware()
     {
-        
+        this.EnsureObjectReference(ref VRRig, "XR Origin (XR Rig)");
+
         if (Camera.main != null) 
             head.vrTarget = Camera.main.transform;
-
         
-        GameObject leftController = GameObject.Find("Left Controller");
-        if (leftController != null) leftHand.vrTarget = leftController.transform;
-
-        GameObject rightController = GameObject.Find("Right Controller");
-        if (rightController != null) rightHand.vrTarget = rightController.transform;
+        if (rightHand.vrTarget == null)        {
+            leftHand.vrTarget = VRRig.transform.FindRecursive("Left Controller IK Base");
+        }
+        if (rightHand.vrTarget == null)       {
+            rightHand.vrTarget = VRRig.transform.FindRecursive("Right Controller IK Base");
+        }
+        
     }
 }

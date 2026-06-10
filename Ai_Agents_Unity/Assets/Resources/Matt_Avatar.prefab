@@ -4215,8 +4215,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5012836301178554883}
   - {fileID: 7062427620306462865}
+  - {fileID: 5012836301178554883}
   m_Father: {fileID: 9049967991286586899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &782717463771337971
@@ -4425,7 +4425,7 @@ GameObject:
   - component: {fileID: 6073445664020892990}
   - component: {fileID: 8264151255538785408}
   m_Layer: 0
-  m_Name: Matt_Prefab
+  m_Name: Matt_Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4691,6 +4691,7 @@ MonoBehaviour:
     ikTarget: {fileID: 1168708408108570803}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
+  VRRig: {fileID: 0}
   headBodyPositionOffset: {x: 0, y: -0.6, z: 0}
   headBodyYawOffset: 0
 --- !u!114 &614463434655891472
