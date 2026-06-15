@@ -26,7 +26,7 @@ namespace DancingGame
         // Limits for pose targets to keep the NPC movement natural
         public float minChestDistance = 0.25f; 
         public float maxArmReach = 0.65f;
-        public float shoulderHeight = 1.3f;
+        public float shoulderHeight = 0f;
 
         // Offset for elbow hint positions
         public Vector3 elbowHintOffset = new Vector3(0.5f, -0.5f, 0f);

@@ -2144,7 +2144,7 @@ MonoBehaviour:
   headBodyOffset: {x: 0, y: -0.82, z: 0}
   minChestDistance: 0.3
   maxArmReach: 0.75
-  shoulderHeight: 1.3
+  shoulderHeight: 0
   elbowHintOffset: {x: 0.5, y: -0.5, z: 0}
   bounceAmount: 0.04
   swayAmount: 0.05
