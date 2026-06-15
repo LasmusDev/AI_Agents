@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 3873034634045809482}
   - component: {fileID: 4227360653687074253}
   m_Layer: 0
-  m_Name: rHand
+  m_Name: poseRHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 3835398670769904939}
   - component: {fileID: 3599925362121412101}
   m_Layer: 0
-  m_Name: lFootVis
+  m_Name: poseLFootVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 1295996187595552717}
   - component: {fileID: 769619771558304271}
   m_Layer: 0
-  m_Name: head
+  m_Name: poseHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 6293700748390350879}
   - component: {fileID: 3246871894802264995}
   m_Layer: 0
-  m_Name: lHandVis
+  m_Name: poseLHandVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 5797959181097632660}
   - component: {fileID: 1023115852578238812}
   m_Layer: 0
-  m_Name: rHandVis
+  m_Name: poseRHandVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 2763676111105461575}
   - component: {fileID: 1190454785715025667}
   m_Layer: 0
-  m_Name: rFootVis
+  m_Name: poseRFootVis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -899,7 +899,7 @@ GameObject:
   - component: {fileID: 2990551290670159491}
   - component: {fileID: 6134770638899876795}
   m_Layer: 0
-  m_Name: lHand
+  m_Name: poseLHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
