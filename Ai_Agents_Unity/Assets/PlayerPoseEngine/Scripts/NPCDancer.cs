@@ -17,10 +17,11 @@ namespace DancingGame
         public Transform lArmHint;
         public Transform rArmHint;
 
-        // Helper variables for pose interpolation
+        // Helper variables for pose interpolation/Correction
         public float smoothTime = 0.2f; 
         public float anticipationBeats = 2f; 
-        public bool mirrorPose = true;
+        public bool swapHands = true;
+        public bool invertXAxis = false;
         public Vector3 headBodyOffset = new Vector3(0, -0.6f, 0);
 
         // Limits for pose targets to keep the NPC movement natural
@@ -110,7 +111,10 @@ namespace DancingGame
                     {
                         Vector3 poseLocalPos = req.relativePos;
 
-                        if (mirrorPose) poseLocalPos.x *= -1f;
+                        if (invertXAxis)
+                        {
+                          poseLocalPos.x *= -1f;  
+                        } 
 
                         // keep hand targets in front of the chest to avoid unnatural poses
                         if (req.limb == Limb.LHAND || req.limb == Limb.RHAND)
@@ -125,11 +129,26 @@ namespace DancingGame
                         {
                             case Limb.HEAD: targetHeadPos = poseLocalPos; break;
                             case Limb.LHAND: 
-                                if (mirrorPose) targetRHandPos = poseLocalPos; else targetLHandPos = poseLocalPos; 
-                                break;
+                            if (swapHands)
+                                {
+                                  targetRHandPos = poseLocalPos;   
+                                }
+                                else
+                                {
+                                  targetLHandPos = poseLocalPos;   
+                                } 
+                            break;
+                            
                             case Limb.RHAND: 
-                                if (mirrorPose) targetLHandPos = poseLocalPos; else targetRHandPos = poseLocalPos; 
-                                break;
+                            if (swapHands)
+                                {
+                                  targetLHandPos = poseLocalPos;  
+                                }
+                                else
+                                {
+                                  targetRHandPos = poseLocalPos;   
+                                } 
+                            break;
                         }
                     }
                 }
