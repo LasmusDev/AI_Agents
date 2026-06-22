@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
-  m_Name: DiagonalLeftDownRightUp
-  m_EditorClassIdentifier: 
+  m_Name: TestX
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.PlayerPose
   limbRequirements:
-  - limb: 2
-    tolerance: 0.15
-    relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.83632374, y: 2.1388052, z: -0.226717}
   - limb: 1
     tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.55339, y: 1.2531488, z: 0.0032587051}
-  intendedHeight: 0
-  recordedLookAngleY: 0
+    relativePos: {x: -0.13157558, y: 0.654652, z: -0.3151369}
+  - limb: 2
+    tolerance: 0.15
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: 0.05390978, y: 1.5459208, z: 0.41850662}
+  intendedHeight: 1.574544
+  recordedLookAngleY: 86.24361

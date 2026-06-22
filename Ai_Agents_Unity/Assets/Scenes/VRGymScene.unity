@@ -2140,7 +2140,8 @@ MonoBehaviour:
   rArmHint: {fileID: 1302389656}
   smoothTime: 0.2
   anticipationBeats: 2
-  mirrorPose: 1
+  swapHands: 1
+  invertXAxis: 0
   headBodyOffset: {x: 0, y: -0.82, z: 0}
   minChestDistance: 0.3
   maxArmReach: 0.75
@@ -4155,7 +4156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &390717333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4168,14 +4169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd6dcac6538252419b18835dd1bcad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoseMap: {fileID: 11400000, guid: f67c32f063758134a9f0c920f1ea00fb, type: 2}
+  targetPoseMap: {fileID: 11400000, guid: 8fbba7b0a29322247b5aff3e69445bfa, type: 2}
   posePalette:
-  - {fileID: 11400000, guid: a530ee9323357af4989dd80ed6df83a2, type: 2}
-  - {fileID: 11400000, guid: 6be1edef14066954fb20df894c29f047, type: 2}
   - {fileID: 11400000, guid: 074437b84c243884baa2ea43c33be3df, type: 2}
   - {fileID: 11400000, guid: 21b52cec2ea6e434eb063e79099780ab, type: 2}
-  - {fileID: 11400000, guid: 514a0d6bb557bb84f8100e7d0282e696, type: 2}
-  - {fileID: 11400000, guid: e8938c8bd5770ae4488c713a2317318c, type: 2}
   bpm: 180
   globalOffset: 0.05
   sensitivity: 1.01
@@ -8354,9 +8351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf37dc21d5a177d468c3202eddcd6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poseName: HalsDehnungLinks
+  poseName: TestX
   poseTolerance: 0.15
-  recordHead: 1
+  recordHead: 0
   recordHands: 1
   recordFeet: 0
   root: {fileID: 555173658}
@@ -12050,6 +12047,7 @@ MonoBehaviour:
   availableLevels:
   - {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
   - {fileID: 11400000, guid: f67c32f063758134a9f0c920f1ea00fb, type: 2}
+  - {fileID: 11400000, guid: f6702594174bdb045bfa974f9aac323b, type: 2}
 --- !u!1 &1413198152
 GameObject:
   m_ObjectHideFlags: 0
