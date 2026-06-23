@@ -22,7 +22,7 @@ namespace Whisper
         
         [SerializeField]
         [Tooltip("Determines whether the StreamingAssets folder should be prepended to the model path")]
-        private bool isModelPathInStreamingAssets = true;
+        private bool AttachStreamingAssetsToModelPath = true;
         
         [SerializeField] 
         [Tooltip("Should model weights be loaded on awake?")]
@@ -118,7 +118,7 @@ namespace Whisper
         
         public bool IsModelPathInStreamingAssets
         {
-            get => isModelPathInStreamingAssets;
+            get => AttachStreamingAssetsToModelPath;
             set
             {
                 if (IsLoaded || IsLoading)
@@ -126,7 +126,7 @@ namespace Whisper
                     throw new InvalidOperationException("Cannot change model path after loading the model");
                 }
 
-                isModelPathInStreamingAssets = value;
+                AttachStreamingAssetsToModelPath = value;
             }
         }
         
@@ -181,7 +181,7 @@ namespace Whisper
             IsLoading = true;
             try
             {
-                var path = isModelPathInStreamingAssets
+                var path = AttachStreamingAssetsToModelPath
                     ? Path.Combine(Application.streamingAssetsPath, modelPath)
                     : modelPath;
 
