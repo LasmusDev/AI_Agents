@@ -4156,7 +4156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &390717333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4171,8 +4171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPoseMap: {fileID: 11400000, guid: 8fbba7b0a29322247b5aff3e69445bfa, type: 2}
   posePalette:
-  - {fileID: 11400000, guid: 074437b84c243884baa2ea43c33be3df, type: 2}
-  - {fileID: 11400000, guid: 21b52cec2ea6e434eb063e79099780ab, type: 2}
+  - {fileID: 11400000, guid: d1fff29ff9bc724409032a04b1c42332, type: 2}
   bpm: 180
   globalOffset: 0.05
   sensitivity: 1.01
@@ -8338,7 +8337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &895006601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8351,8 +8350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf37dc21d5a177d468c3202eddcd6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poseName: TestX
-  poseTolerance: 0.15
+  poseName: DiagonalLDownRUp_okSpiegel
+  poseTolerance: 0.3
   recordHead: 0
   recordHands: 1
   recordFeet: 0
