@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
-  m_Name: RightUpLeftDownND
-  m_EditorClassIdentifier: 
+  m_Name: LDownRUp
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.PlayerPose
   limbRequirements:
-  - limb: 1
-    tolerance: 0.3
-    relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.2555518, y: 1.942435, z: -0.12687016}
   - limb: 2
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.2555518, y: 0.7137941, z: 0.44490814}
-  intendedHeight: 0
-  recordedLookAngleY: 0
+    relativePos: {x: 0.32242298, y: 0.6117034, z: -0.06869793}
+  - limb: 1
+    tolerance: 0.3
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: -0.16718483, y: 1.9421118, z: 0.12952137}
+  intendedHeight: 1.5703466
+  recordedLookAngleY: 353.9402

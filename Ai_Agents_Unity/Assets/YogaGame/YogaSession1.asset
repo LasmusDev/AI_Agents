@@ -44,11 +44,6 @@ MonoBehaviour:
     teacherVisualPrefab: {fileID: 7762214676520135523, guid: ccfa9bd7f37573044bed37c80b91d609, type: 3}
     holdDuration: 5
     instruction: Nach Rechts schauen
-  - stepName: Schneidersitz
-    poseData: {fileID: 11400000, guid: 07f4ae2e666ed7648be969d67b17453d, type: 2}
-    teacherVisualPrefab: {fileID: 5263786837491100113, guid: 1acab1345c272464aae4bcb99787daa3, type: 3}
-    holdDuration: 5
-    instruction: Schneidersitz
   - stepName: Vorbeuge
     poseData: {fileID: 11400000, guid: ac662db01d1d0b744aaf195667c43451, type: 2}
     teacherVisualPrefab: {fileID: 4516085141617772808, guid: b75861319a12425408f7ceeeadb8bd44, type: 3}
