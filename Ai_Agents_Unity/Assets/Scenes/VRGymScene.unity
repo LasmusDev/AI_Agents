@@ -8382,6 +8382,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1405653126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &895917537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2341855287625719292, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+  m_PrefabInstance: {fileID: 1504066737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &895917539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895917537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0ff3d6930ea3a4e934798657ab2519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DancingGame.DanceFootStepper
+  bodyRoot: {fileID: 241603414}
+  stepDistance: 0
+  stepHeight: 0.3
+  stepSpeed: 1
+  otherFoot: {fileID: 0}
 --- !u!1 &912829581
 GameObject:
   m_ObjectHideFlags: 0
@@ -12848,6 +12870,10 @@ PrefabInstance:
       value: c83c629f-7cae-493c-86b6-2fcc869db1a5
       objectReference: {fileID: 0}
     - target: {fileID: 1008104607253127026, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008104607253127026, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
       propertyPath: stepDistance
       value: 0.4
       objectReference: {fileID: 0}
@@ -12890,6 +12916,10 @@ PrefabInstance:
     - target: {fileID: 2851644668228155937, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
       propertyPath: _components.Array.data[0].isDeprecated
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025842678355685104, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5025842678355685104, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
       propertyPath: stepDistance
@@ -12989,6 +13019,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1321743548800935733, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1541169578}
+    - targetCorrespondingSourceObject: {fileID: 2341855287625719292, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 895917539}
+    - targetCorrespondingSourceObject: {fileID: 1683743415025273380, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1806381774}
   m_SourcePrefab: {fileID: 100100000, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
 --- !u!1 &1512813633
 GameObject:
@@ -15356,6 +15392,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803894462}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1806381772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1683743415025273380, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+  m_PrefabInstance: {fileID: 1504066737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1806381774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806381772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0ff3d6930ea3a4e934798657ab2519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  bodyRoot: {fileID: 241603414}
+  stepDistance: 0
+  stepHeight: 0.3
+  stepSpeed: 1
+  otherFoot: {fileID: 0}
 --- !u!4 &1809649278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3708140312102309088, guid: eda8b4ace9667d1428aa7157bc1a02bc, type: 3}
