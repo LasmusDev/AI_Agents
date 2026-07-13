@@ -12929,6 +12929,10 @@ PrefabInstance:
       propertyPath: _viewUUID
       value: 322904f5-4a2f-475b-a7c9-0d33ceefa63c
       objectReference: {fileID: 0}
+    - target: {fileID: 5621992077826304746, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6142649708478252459, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
       propertyPath: m_Name
       value: Dancer
@@ -12944,6 +12948,10 @@ PrefabInstance:
     - target: {fileID: 7226901717263150670, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
       propertyPath: _components.Array.data[0].isDeprecated
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631527745703720030, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8031048504175653170, guid: c8fbd459c7dc3b64299fabb2cdfe8a2f, type: 3}
       propertyPath: m_LocalPosition.x

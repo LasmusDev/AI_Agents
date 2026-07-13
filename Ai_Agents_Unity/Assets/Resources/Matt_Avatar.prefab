@@ -1048,6 +1048,7 @@ GameObject:
   - component: {fileID: 1168708408108570803}
   - component: {fileID: 7226901717263150670}
   - component: {fileID: 4543837198045092750}
+  - component: {fileID: 5621992077826304746}
   m_Layer: 0
   m_Name: Right Arm IK_target
   m_TagString: Untagged
@@ -1110,6 +1111,23 @@ MonoBehaviour:
   _syncScale: 1
   _syncVelocity: 1
   _maintainOwnershipWhileSleeping: 0
+--- !u!114 &5621992077826304746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321743548800935733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ec8a2c8b4e3e740bc4afee11182de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRArmStretcher
+  shoulderBone: {fileID: 0}
+  elbowBone: {fileID: 0}
+  handBone: {fileID: 0}
+  ikTarget: {fileID: 0}
+  isLeftArm: 0
 --- !u!1 &1398552960361593907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3168,6 +3186,7 @@ GameObject:
   - component: {fileID: 5012836301178554883}
   - component: {fileID: 2851644668228155937}
   - component: {fileID: 3978331159047328681}
+  - component: {fileID: 7631527745703720030}
   m_Layer: 0
   m_Name: Left Arm IK_target
   m_TagString: Untagged
@@ -3230,6 +3249,23 @@ MonoBehaviour:
   _syncScale: 1
   _syncVelocity: 1
   _maintainOwnershipWhileSleeping: 0
+--- !u!114 &7631527745703720030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4507036387883223944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ec8a2c8b4e3e740bc4afee11182de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  shoulderBone: {fileID: 0}
+  elbowBone: {fileID: 0}
+  handBone: {fileID: 0}
+  ikTarget: {fileID: 0}
+  isLeftArm: 1
 --- !u!1 &4523641901709979915
 GameObject:
   m_ObjectHideFlags: 0
