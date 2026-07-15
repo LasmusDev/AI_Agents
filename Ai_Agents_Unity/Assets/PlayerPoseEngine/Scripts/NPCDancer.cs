@@ -17,6 +17,14 @@ namespace DancingGame
         public Transform lArmHint;
         public Transform rArmHint;
 
+        // Helper variables for pose interpolation/Correction for side stepping
+        public bool enableTwoStep = true;
+        public float twoStepDistance = 0.4f;
+        public float twoStepSpeed = 0.3f;
+        public int beatsPerStep = 2;
+        private float currentSideStep;
+        private float sideStepVelocity;
+
         // Helper variables for pose interpolation/Correction
         public float smoothTime = 0.2f; 
         public float anticipationBeats = 2f; 
@@ -50,11 +58,21 @@ namespace DancingGame
 
         void Start()
         {
-            CharacterController cc = GetComponent<CharacterController>();
+             CharacterController cc = GetComponent<CharacterController>();
             if (cc != null) Destroy(cc);
 
-            anchorPos = npcRoot.position;
-            anchorRot = npcRoot.rotation;
+            this.EnsureComponentReference(ref npcRoot);
+            this.EnsureComponentReferenceInChildren(ref headTarget, "Head Target");
+            this.EnsureComponentReferenceInChildren(ref lHandTarget, "Left Arm IK_target");
+            this.EnsureComponentReferenceInChildren(ref rHandTarget, "Right Arm IK_target");
+            this.EnsureComponentReferenceInChildren(ref lArmHint, "Left Arm IK_hint");
+            this.EnsureComponentReferenceInChildren(ref rArmHint, "Right Arm IK_hint");
+
+            if (npcRoot != null)
+            {
+                anchorPos = npcRoot.position;
+                anchorRot = npcRoot.rotation;
+            }
 
             if (headTarget != null) 
             {
@@ -92,8 +110,19 @@ namespace DancingGame
                 //Avatar bounce effect based on the beat
                 float bounce = -Mathf.Cos(currentBeat * Mathf.PI * 2f) * bounceAmount;
                 float sway = Mathf.Sin(currentBeat * Mathf.PI) * swayAmount;
-                currentDanceOffset = (anchorRot * Vector3.up * bounce) + (anchorRot * Vector3.right * sway);
 
+                if (enableTwoStep)
+                {
+                    float sideDirection = (Mathf.FloorToInt(currentBeat / beatsPerStep) % 2 == 0) ? 1f : -1f;
+                    float targetSideStep = sideDirection * twoStepDistance;
+                    currentSideStep = Mathf.SmoothDamp(currentSideStep, targetSideStep, ref sideStepVelocity, twoStepSpeed);
+                }
+                else 
+                {
+                    currentSideStep = Mathf.SmoothDamp(currentSideStep, 0f, ref sideStepVelocity, twoStepSpeed);
+                }
+
+                currentDanceOffset = (anchorRot * Vector3.up * bounce) + (anchorRot * Vector3.right * (sway + currentSideStep));
                 BeatToPose? nextPoseData = null;
                 foreach (var bp in playerManager.poseMap.poses)
                 {
@@ -156,6 +185,7 @@ namespace DancingGame
             else
                 {
                     currentDanceOffset = Vector3.Lerp(currentDanceOffset, Vector3.zero, Time.deltaTime * 5f);
+                    currentSideStep = Mathf.Lerp(currentSideStep, 0f, Time.deltaTime * 5f);
                 }
             
 
@@ -223,7 +253,4 @@ namespace DancingGame
             }
         }
     }
-} 
-
-
-
+}  
