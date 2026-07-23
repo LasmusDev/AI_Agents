@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 012582751ece8e74087752fd42e7a71c, type: 3}
-  m_Name: Whatdoyousee_SquatGame
+  m_Name: See_SquatGame
   m_EditorClassIdentifier: Assembly-CSharp::SquatGame.SquatPoseMap
   steps:
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
