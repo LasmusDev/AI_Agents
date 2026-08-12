@@ -37,6 +37,7 @@ namespace PlayerPoseEngine.Scripts
         public GameObject stopMenuButton;
         public TextMeshProUGUI countdownText; 
         public TextMeshProUGUI scoreText;
+        public Exergames.DanceGameUI danceUI;
 
         [Header("Stats")]
         [SerializeField] public int score = 0;
@@ -140,14 +141,26 @@ namespace PlayerPoseEngine.Scripts
                 float t = 1f - (remaining / visibleBeats);
                 res.transform.position = Vector3.LerpUnclamped(from, to, t);
 
-                
+                // Check if the pose has been missed
                 if (remaining < -1.0f) 
                 {
+                    if (danceUI != null)
+                    {
+                        danceUI.ShowComboMessage("MISS", Color.gray);
+                    }
+
                     if(combo > 0) 
                     {
                         combo = 0;
                       
                         TriggerHaptics(missStrength, missDuration);
+
+
+
+                        if (danceUI != null)
+                        {
+                            danceUI.ShowComboMessage("MISS", Color.gray);
+                        }
                     }
                     
                     res.onPlayerPoseFulfilled -= ScorePose;
@@ -178,6 +191,15 @@ namespace PlayerPoseEngine.Scripts
         {
             combo++; 
             score += 100 * combo;
+
+            // Show combo messages based on the current combo count
+            if (danceUI != null)
+            {
+                if (combo == 10) danceUI.ShowComboMessage("GREAT!", Color.green);
+                else if (combo == 20) danceUI.ShowComboMessage("MASTER!", Color.yellow);
+                else if (combo == 50) danceUI.ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
+                else if (combo == 100) danceUI.ShowComboMessage("GODLIKE!!!", Color.cyan);
+            }
             
             
             TriggerHaptics(hitStrength, hitDuration);
