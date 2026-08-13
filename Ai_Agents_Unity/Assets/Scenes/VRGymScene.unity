@@ -4818,14 +4818,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd6dcac6538252419b18835dd1bcad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoseMap: {fileID: 11400000, guid: ddb9b3a13731b894db8e293355e82bec, type: 2}
+  targetPoseMap: {fileID: 11400000, guid: 77f445812fb6be140833bf4b3358e091, type: 2}
   posePalette:
   - {fileID: 11400000, guid: a530ee9323357af4989dd80ed6df83a2, type: 2}
-  - {fileID: 11400000, guid: 6be1edef14066954fb20df894c29f047, type: 2}
-  - {fileID: 11400000, guid: 5a1e3cab33ae6ac4eb7e8951f976ba5f, type: 2}
-  - {fileID: 11400000, guid: af704ed8588637b4b968cb5260db10f9, type: 2}
-  - {fileID: 11400000, guid: cbed337b4155d7d46ab9db884b98a1e7, type: 2}
-  - {fileID: 11400000, guid: 7b12404f7d693ef458e56f0a30d86d46, type: 2}
   bpm: 180
   globalOffset: 0.05
   sensitivity: 1.01
@@ -13751,7 +13746,7 @@ MonoBehaviour:
   comboText: {fileID: 1173845398}
   player: {fileID: 1405653127}
   comboMessageText: {fileID: 580911074}
-  displayTime: 1.5
+  displayTime: 100
   floatSpeed: 50
   popScale: 1.5
   scaleSpeed: 10
@@ -13873,6 +13868,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0460cad5a8f734547a2c2d5d230e12d0, type: 2}
   - {fileID: 11400000, guid: cb16c0ac860b51f49b48d799c89de39b, type: 2}
   - {fileID: 11400000, guid: ddb9b3a13731b894db8e293355e82bec, type: 2}
+  - {fileID: 11400000, guid: 77f445812fb6be140833bf4b3358e091, type: 2}
 --- !u!1 &1413198152
 GameObject:
   m_ObjectHideFlags: 0
