@@ -32,13 +32,14 @@ namespace SquatGame
         public TextMeshProUGUI countdownText; 
         public int score = 0;
         public int combo = 0; 
+        public Exergames.SquatsGameUI squatUI;
         
         public bool isRunning = false;
         
         private AudioSource audioSource;
         private float timer = 0f;
         private int currentStepIndex = 0;
-        
+        private float startingFloorY = 0f;
         // saving the measured headset height to adjust wall spawn heights accordingly
         private float measuredHeadsetHeight = 1.6f;
 
@@ -79,12 +80,14 @@ namespace SquatGame
             if (playerHead != null && playerRoot != null)
             {
                 measuredHeadsetHeight = playerHead.position.y - playerRoot.position.y;
+                startingFloorY = playerRoot.position.y;
                 Debug.LogWarning($"Headset measured at: {measuredHeadsetHeight}m.");
             }
             else
             {
                 Debug.LogWarning("WARNING: PlayerHead or PlayerRoot missing! Using 1.6m as default.");
                 measuredHeadsetHeight = 1.6f;
+                startingFloorY = 0f;
             }
 
             if(startButton) startButton.SetActive(false);
@@ -161,10 +164,13 @@ namespace SquatGame
             // height based on pose data
             float targetHeight = measuredHeadsetHeight - highWallOffset;
             // spawn the wall at the calculated height
-            Vector3 finalPosition = spawnPoint.position;
-            float floorY = (playerRoot != null) ? playerRoot.position.y : 0f;
+            //Vector3 finalPosition = spawnPoint.position;
+           // float floorY = (playerRoot != null) ? playerRoot.position.y : 0f;
             
-            finalPosition.y = floorY + targetHeight;
+           // finalPosition.y = floorY + targetHeight;
+
+           Vector3 finalPosition = spawnPoint.position;
+           finalPosition.y = startingFloorY + targetHeight;
 
             newWall.transform.position = finalPosition;
         }
@@ -174,11 +180,26 @@ namespace SquatGame
             if (!isRunning) return;
             combo++; 
             score += 50 + (25 * combo); 
+
+            // Show combo messages based on the current combo count
+            if (squatUI != null)
+            {
+                if (combo == 10) squatUI.ShowComboMessage("GREAT!", Color.green);
+                else if (combo == 20) squatUI.ShowComboMessage("MASTER!", Color.yellow);
+                else if (combo == 50) squatUI.ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
+                else if (combo == 100) squatUI.ShowComboMessage("GODLIKE!!!", Color.cyan);
+            }
         }
 
         public void PlayerHit()
         {
             if (!isRunning) return;
+
+            if (squatUI != null)
+            {
+                squatUI.ShowComboMessage("MISS", Color.gray);
+            }
+
             combo = 0;
             score -= 100; 
             if (score < 0) score = 0;

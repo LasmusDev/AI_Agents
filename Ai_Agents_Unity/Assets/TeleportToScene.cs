@@ -6,6 +6,9 @@ public class TeleportToScene : MonoBehaviour
     public string sceneName;
     void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(sceneName); 
+        if (other.CompareTag("Player") || other.CompareTag("MainCamera"))
+        {
+          SceneManager.LoadScene(sceneName); 
+        }
     }
 }
