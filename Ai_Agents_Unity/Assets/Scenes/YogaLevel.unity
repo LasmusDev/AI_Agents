@@ -3626,6 +3626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 352858260}
+  - component: {fileID: 352858261}
   m_Layer: 0
   m_Name: Left Arm IK_target
   m_TagString: Untagged
@@ -3648,6 +3649,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1758130865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &352858261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352858259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ec8a2c8b4e3e740bc4afee11182de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.VRArmStretcher
+  shoulderBone: {fileID: 0}
+  elbowBone: {fileID: 0}
+  handBone: {fileID: 0}
+  ikTarget: {fileID: 0}
+  isLeftArm: 1
 --- !u!4 &355850146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5780545108056687457, guid: 189457b8a8df4454e955c74118b57a4d, type: 3}
@@ -11367,6 +11385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1030503620}
+  - component: {fileID: 1030503621}
   m_Layer: 0
   m_Name: Right Arm IK_target
   m_TagString: Untagged
@@ -11389,6 +11408,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 42729809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1030503621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030503619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ec8a2c8b4e3e740bc4afee11182de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.VRArmStretcher
+  shoulderBone: {fileID: 0}
+  elbowBone: {fileID: 0}
+  handBone: {fileID: 0}
+  ikTarget: {fileID: 0}
+  isLeftArm: 0
 --- !u!4 &1035021577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3725357996703936898, guid: 998726d594f3974448944c3da201330b, type: 3}
@@ -12221,6 +12257,7 @@ MonoBehaviour:
     ikTarget: {fileID: 1030503620}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
+  VRRig: {fileID: 0}
   headBodyPositionOffset: {x: 0, y: -0.6, z: 0}
   headBodyYawOffset: 0
 --- !u!114 &1184131828

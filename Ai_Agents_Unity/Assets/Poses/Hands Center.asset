@@ -22,3 +22,4 @@ MonoBehaviour:
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
     relativePos: {x: -0.1, y: 1.5, z: 0}
   intendedHeight: 0
+  recordedLookAngleY: 0
