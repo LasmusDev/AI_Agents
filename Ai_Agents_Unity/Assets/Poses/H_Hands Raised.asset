@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
-  m_Name: DiagonalLDownRUp
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.PlayerPose
+  m_Name: H_Hands Raised
+  m_EditorClassIdentifier: 
   limbRequirements:
   - limb: 2
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.38711, y: 1.6673789, z: 0.058742523}
+    relativePos: {x: 0.3, y: 1.8, z: 0}
   - limb: 1
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.726295, y: 0.78940326, z: 0.042574883}
-  intendedHeight: 1.5702717
-  recordedLookAngleY: 359.3833
+    relativePos: {x: -0.3, y: 1.8, z: 0}
+  intendedHeight: 0
+  recordedLookAngleY: 0
