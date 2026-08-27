@@ -15,8 +15,6 @@ MonoBehaviour:
   song: {fileID: 8300000, guid: f08cc8037eefee84b9ee62c446e4cd47, type: 3}
   bpm: 180
   poses:
-  - beat: 1.5
-    pose: {fileID: 11400000, guid: cb05e79f6a01a7b4c9d2d136421cf47e, type: 2}
   - beat: 2.75
     pose: {fileID: 11400000, guid: 4bf69b22cd803d24c90e0e7076579ddb, type: 2}
   - beat: 4.25
