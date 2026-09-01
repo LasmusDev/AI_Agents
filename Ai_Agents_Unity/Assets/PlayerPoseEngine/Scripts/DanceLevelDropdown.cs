@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using PlayerPoseEngine.Scripts; 
@@ -22,6 +23,15 @@ namespace DancingGame
         public List<Posemap> easyLevels;
         public List<Posemap> mediumLevels;
         public List<Posemap> hardLevels;
+
+        [Header("Button Highlights")]
+        public Button easyButton;
+        public Button mediumButton;
+        public Button hardButton;
+        [Tooltip("Die normale Farbe der nicht-ausgewählten Buttons")]
+        public Color normalColor = Color.black;
+        [Tooltip("Die Farbe, wenn der Button aktiv ist")]
+        public Color activeColor = Color.green;
 
         // The Audiosource, to later check if the music is playing
         private AudioSource playerAudio;
@@ -95,6 +105,11 @@ namespace DancingGame
                return;  
             } 
             PlayerPrefs.SetInt(savedDiffKey, difficultyIndex);
+            // Update button colors based on the selected difficulty
+            if (easyButton != null) easyButton.image.color = (difficultyIndex == 0) ? activeColor : normalColor;
+            if (mediumButton != null) mediumButton.image.color = (difficultyIndex == 1) ? activeColor : normalColor;
+            if (hardButton != null) hardButton.image.color = (difficultyIndex == 2) ? activeColor : normalColor;
+            
             switch (difficultyIndex)
             {
                 case 0: // Easy
