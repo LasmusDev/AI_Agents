@@ -50,6 +50,7 @@ namespace UnityNeuroSpeech.Runtime.Ollama
             await foreach (var item in ((Microsoft.Extensions.AI.IChatClient)_chatClient).GetStreamingResponseAsync(ChatHistory).WithCancellation(token))
             {
                 chatResponse += item.Text;
+                LogUtils.LogMessage($"Ollama response currently: {chatResponse}");
             }
             
             LogUtils.LogMessage($"Ollama response: {chatResponse}");

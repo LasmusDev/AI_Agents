@@ -4,6 +4,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 // ReSharper disable RedundantCast
 
 namespace Whisper.Utils
@@ -64,11 +65,8 @@ namespace Whisper.Utils
         [Tooltip("After how many seconds of silence microphone will stop record")]
         public float vadStopTime = 3f;
 
-        [Header("Microphone selection (optional)")] 
-        [Tooltip("Optional UI dropdown with all available microphone inputs")]
-        [CanBeNull] public Dropdown microphoneDropdown;
-        [Tooltip("The label of default microphone input in dropdown")]
-        public string microphoneDefaultLabel = "Default microphone";
+        [Tooltip("Select microphones with this name in order")]
+        public List<string> microphoneSelectionPriorities;
 
         /// <summary>
         /// Raised when VAD status changed.
@@ -93,6 +91,7 @@ namespace Whisper.Utils
         private int _lastMicPos;
         private bool _madeLoopLap;
 
+        [ReadOnly]
         private string _selectedMicDevice;
 
         public string SelectedMicDevice
@@ -116,15 +115,14 @@ namespace Whisper.Utils
 
         private void Awake()
         {
-            if(microphoneDropdown != null)
+            SelectedMicDevice = microphoneSelectionPriorities
+                .FirstOrDefault(d => AvailableMicDevices.Contains(d)) 
+                ?? AvailableMicDevices.FirstOrDefault();
+
+            if (!microphoneSelectionPriorities.Contains(SelectedMicDevice))
             {
-                microphoneDropdown.options = AvailableMicDevices
-                    .Prepend(microphoneDefaultLabel)
-                    .Select(text => new Dropdown.OptionData(text))
-                    .ToList();
-                microphoneDropdown.value = microphoneDropdown.options
-                    .FindIndex(op => op.text == microphoneDefaultLabel);
-                microphoneDropdown.onValueChanged.AddListener(OnMicrophoneChanged);
+                Debug.LogWarning($"Selected microphone device '{SelectedMicDevice}' is not in the selection priorities list. " +
+                                 $"Picking first available microphone.");
             }
         }
 
@@ -241,13 +239,6 @@ namespace Whisper.Utils
                 var dropTime = dropVadPart ? vadStopTime : 0f;
                 StopRecord(dropTime);
             }
-        }
-
-        private void OnMicrophoneChanged(int ind)
-        {
-            if (microphoneDropdown == null) return;
-            var opt = microphoneDropdown.options[ind];
-            SelectedMicDevice = opt.text == microphoneDefaultLabel ? null : opt.text;
         }
 
         /// <summary>

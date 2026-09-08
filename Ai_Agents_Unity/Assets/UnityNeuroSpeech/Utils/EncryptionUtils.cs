@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnityNeuroSpeech.Utils
 {
-    internal static class EncryptionUtils
+    public static class EncryptionUtils
     {
         private static byte[] _encryptedData;
 

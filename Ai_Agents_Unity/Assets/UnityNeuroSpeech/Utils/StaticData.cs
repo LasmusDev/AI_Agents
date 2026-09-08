@@ -3,7 +3,7 @@ using System.IO;
 
 namespace UnityNeuroSpeech.Utils
 {
-    internal static class StaticData
+    public static class StaticData
     {
         #region STT
         public static string WHISPER_MODELS_LOCATION_FULL_PATH => Path.Combine(Application.streamingAssetsPath, "UnityNeuroSpeech", "Whisper");

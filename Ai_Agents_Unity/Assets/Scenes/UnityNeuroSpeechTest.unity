@@ -2560,16 +2560,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264332525}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.84543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2014694766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.33339, y: 0.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &264332528
@@ -9953,7 +9953,7 @@ RectTransform:
   m_Children:
   - {fileID: 1115399049}
   - {fileID: 1496795109}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2014694766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11774,6 +11774,7 @@ MonoBehaviour:
   stopMenuButton: {fileID: 423582046}
   countdownText: {fileID: 111082427}
   scoreText: {fileID: 0}
+  danceUI: {fileID: 0}
   score: 0
   combo: 0
   poseMap: {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
@@ -11793,6 +11794,11 @@ MonoBehaviour:
   scoreText: {fileID: 106169224}
   comboText: {fileID: 1173845398}
   player: {fileID: 1405653127}
+  comboMessageText: {fileID: 0}
+  displayTime: 1.5
+  floatSpeed: 50
+  popScale: 1.5
+  scaleSpeed: 10
 --- !u!82 &1405653129
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11904,9 +11910,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScript: {fileID: 1405653127}
   dropdown: {fileID: 1620642664}
-  availableLevels:
-  - {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
-  - {fileID: 11400000, guid: f67c32f063758134a9f0c920f1ea00fb, type: 2}
+  difficultyButtonsContainer: {fileID: 0}
+  easyLevels: []
+  mediumLevels: []
+  hardLevels: []
 --- !u!1 &1413198152
 GameObject:
   m_ObjectHideFlags: 0
@@ -12316,6 +12323,11 @@ MonoBehaviour:
   scoreText: {fileID: 1598346232}
   comboText: {fileID: 1320615815}
   game: {fileID: 0}
+  comboMessageText: {fileID: 0}
+  displayTime: 1.5
+  floatSpeed: 50
+  popScale: 1.5
+  scaleSpeed: 10
 --- !u!114 &1464424630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13105,12 +13117,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525847096}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.33339, y: 0.1, z: -2.84543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2014694766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1529291132
 GameObject:
@@ -16152,6 +16164,7 @@ MonoBehaviour:
   countdownText: {fileID: 1791241897}
   score: 0
   combo: 0
+  squatUI: {fileID: 0}
   isRunning: 0
 --- !u!82 &1915781115
 AudioSource:
@@ -16265,6 +16278,11 @@ MonoBehaviour:
   scoreText: {fileID: 1598346232}
   comboText: {fileID: 1320615815}
   game: {fileID: 1915781114}
+  comboMessageText: {fileID: 0}
+  displayTime: 1.5
+  floatSpeed: 50
+  popScale: 1.5
+  scaleSpeed: 10
 --- !u!114 &1915781117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16805,6 +16823,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b804c766b5bfed428a39fc8e16601dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2014694765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2014694766}
+  m_Layer: 0
+  m_Name: --- AI AGENT ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2014694766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014694765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.33339, y: -0.1, z: 2.84543}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1525847099}
+  - {fileID: 6347780377484782112}
+  - {fileID: 264332527}
+  - {fileID: 1166678798}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2019850357
 GameObject:
   m_ObjectHideFlags: 0
@@ -21956,13 +22009,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6006685020467277978}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -8}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -2.33339, y: 0.1, z: -10.84543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5917734834921955978}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2014694766}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &6352867161812373516
 Transform:
@@ -24968,12 +25021,9 @@ SceneRoots:
   - {fileID: 1026376765}
   - {fileID: 1225343726}
   - {fileID: 291041333}
-  - {fileID: 1166678798}
-  - {fileID: 1525847099}
-  - {fileID: 264332527}
   - {fileID: 1874256222}
   - {fileID: 1405653126}
   - {fileID: 1915781113}
   - {fileID: 70514255}
   - {fileID: 1641535241}
-  - {fileID: 6347780377484782112}
+  - {fileID: 2014694766}

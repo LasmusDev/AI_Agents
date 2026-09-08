@@ -55,7 +55,6 @@ namespace UnityNeuroSpeech.Editor
                 var mr = managerObj.AddComponent<MicrophoneRecord>();
                 mr.useVad = false;
                 mr.echo = false;
-                mr.microphoneDropdown = _microphoneDropdown;
             }
         }
     }
