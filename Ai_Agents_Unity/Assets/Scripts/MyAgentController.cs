@@ -52,6 +52,9 @@ public class MyAgentController : MonoBehaviour, IAgent
     private ControllerOllamaModule _ollamaModule = new();
     public PythonMessenger _ttsModule;
     private ControllerJsonDataModule _jsonModule;
+
+
+    
     
 
 
