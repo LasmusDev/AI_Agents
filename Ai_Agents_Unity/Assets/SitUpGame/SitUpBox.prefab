@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2745864894823315210}
   - component: {fileID: 1156717057115459106}
   - component: {fileID: 1426358525449667601}
-  - component: {fileID: 1435128306580642035}
+  - component: {fileID: 3339976336086792651}
   m_Layer: 0
-  m_Name: SitUpBoxTop
+  m_Name: SitUpBoxBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 70c04ba2da6699f4f98485a06ae60477, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1435128306580642035
+--- !u!54 &3339976336086792651
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,9 +152,9 @@ GameObject:
   - component: {fileID: 2924285527874648762}
   - component: {fileID: 8953494536263000983}
   - component: {fileID: 6160488349963915004}
-  - component: {fileID: 3022118256677730673}
+  - component: {fileID: 7895189411800232783}
   m_Layer: 0
-  m_Name: SitUpBoxBottom
+  m_Name: SitUpBoxTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 70c04ba2da6699f4f98485a06ae60477, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -253,7 +253,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &3022118256677730673
+--- !u!54 &7895189411800232783
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,7 +290,8 @@ GameObject:
   m_Component:
   - component: {fileID: 680234294880190452}
   - component: {fileID: 3441651138319623573}
-  - component: {fileID: 6309460533618878517}
+  - component: {fileID: 7871420256610282622}
+  - component: {fileID: 7726450623654479853}
   m_Layer: 0
   m_Name: SitUpBox
   m_TagString: Untagged
@@ -327,20 +328,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d2936a471b5614dbffac2e49267d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SitupWallLogic
-  topBlock: {fileID: 1426358525449667601}
-  bottomBlock: {fileID: 6160488349963915004}
-  passDistance: 1
---- !u!114 &6309460533618878517
-MonoBehaviour:
+  topBlock: {fileID: 6160488349963915004}
+  bottomBlock: {fileID: 1426358525449667601}
+--- !u!65 &7871420256610282622
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2185386068951683042}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eeb6802b66431b47a9a813bb09abf47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SquatGame.SquatWall
-  speed: 5
-  manager: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 0.9999998, y: 1, z: 0.9611421}
+  m_Center: {x: 0, y: 0, z: -0.019428939}
+--- !u!54 &7726450623654479853
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185386068951683042}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
