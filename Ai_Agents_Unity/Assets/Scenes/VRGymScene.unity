@@ -2596,9 +2596,24 @@ MonoBehaviour:
   manager: {fileID: 136077514}
   dropdown: {fileID: 1540376641}
   availableLevels:
-  - levelName: test
-    poseMap: {fileID: 11400000, guid: f2f3e5d3a7798f94984832d845d7130c, type: 2}
+  - levelName: Level_Samurai
+    poseMap: {fileID: 11400000, guid: 1bb88c11950d42c408ae7975f8b12718, type: 2}
+    song: {fileID: 8300000, guid: abe8885c6923c7749aac101211b9da02, type: 3}
+  - levelName: Level_Voyage
+    poseMap: {fileID: 11400000, guid: 6fcffa82d6f5c3d4eaa1bddb6be5ca90, type: 2}
+    song: {fileID: 8300000, guid: b353e144177fcd442b8595f67b4d37d0, type: 3}
+  - levelName: Level_See
+    poseMap: {fileID: 11400000, guid: efe2fdb741a30044fb403cfbfb42b7d6, type: 2}
+    song: {fileID: 8300000, guid: f08cc8037eefee84b9ee62c446e4cd47, type: 3}
+  - levelName: Level_Ascend
+    poseMap: {fileID: 11400000, guid: e1be491695505f84982bd1cf21a0edf9, type: 2}
+    song: {fileID: 8300000, guid: a1fd26acc34c1ee44818ab2c6a671afa, type: 3}
+  - levelName: Level_Eyes
+    poseMap: {fileID: 11400000, guid: d17bfb48a98dfa34bbca58e8afab67ad, type: 2}
     song: {fileID: 8300000, guid: 535fb6a5c1cdc3c468a4221ca346f35c, type: 3}
+  - levelName: Level_Recall
+    poseMap: {fileID: 11400000, guid: d55629d3e665f0e469afece477397d66, type: 2}
+    song: {fileID: 8300000, guid: 2058151449582b04e9f3a90cd4a07e08, type: 3}
 --- !u!114 &136077512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23488,8 +23503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf24bef735bcf50409e1fbfa614a3683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioTrack: {fileID: 8300000, guid: 535fb6a5c1cdc3c468a4221ca346f35c, type: 3}
-  targetPoseMap: {fileID: 11400000, guid: f2f3e5d3a7798f94984832d845d7130c, type: 2}
+  audioTrack: {fileID: 8300000, guid: b353e144177fcd442b8595f67b4d37d0, type: 3}
+  targetPoseMap: {fileID: 11400000, guid: 6fcffa82d6f5c3d4eaa1bddb6be5ca90, type: 2}
   defaultWallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
   randomPosesToPick:
   - {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
