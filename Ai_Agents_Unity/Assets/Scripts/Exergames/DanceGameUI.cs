@@ -1,5 +1,6 @@
 ﻿using PlayerPoseEngine.Scripts;
 using TMPro;
+using UI;
 using UnityEngine;
 
 namespace Exergames {
@@ -13,7 +14,7 @@ namespace Exergames {
         // New fields for the floating combo message
         public TMP_Text comboMessageText; 
         public float displayTime = 1.5f;
-        public float floatSpeed = 50f;
+        public float floatSpeed = 2f;
         public float popScale = 1.5f;
         public float scaleSpeed = 10f;
         //helper variables to manage the floating message
@@ -43,7 +44,7 @@ namespace Exergames {
                 if (comboText != null) comboText.text = player.combo.ToString();
             }
             
-
+            /* 
             //Animate the floating combo message if it's currently active
             if (currentTimer > 0 && comboMessageText != null)
             {
@@ -63,7 +64,7 @@ namespace Exergames {
                 {
                     comboMessageText.gameObject.SetActive(false);
                 }
-            }
+            }*/
         }
 
         // Method to show the combo message with a specific text and color
@@ -73,11 +74,10 @@ namespace Exergames {
 
             comboMessageText.text = message;
             comboMessageText.color = textColor;
-            comboMessageText.gameObject.SetActive(true);
-            
-            comboMessageText.rectTransform.localPosition = startLocalPos;
-            comboMessageText.rectTransform.localScale = Vector3.one * popScale;
-            
+            UiAnimationManager.Instance.PlayComboAnimation(comboMessageText.gameObject, floatSpeed, popScale);
+
+
+
             currentTimer = displayTime;
         }
     }
