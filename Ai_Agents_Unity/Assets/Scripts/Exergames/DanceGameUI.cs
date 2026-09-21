@@ -42,6 +42,7 @@ namespace Exergames {
                 if (scoreText != null) scoreText.text = player.score.ToString();
                 if (comboText != null) comboText.text = player.combo.ToString();
             }
+            
 
             //Animate the floating combo message if it's currently active
             if (currentTimer > 0 && comboMessageText != null)
