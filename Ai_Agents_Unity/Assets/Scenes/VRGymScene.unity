@@ -23540,7 +23540,7 @@ MonoBehaviour:
   randomPosesToPick:
   - {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
   sensitivity: 0.5
-  minTimeBetweenBlocks: 2
+  minTimeBetweenBlocks: 5
 --- !u!1 &1319772980
 GameObject:
   m_ObjectHideFlags: 0

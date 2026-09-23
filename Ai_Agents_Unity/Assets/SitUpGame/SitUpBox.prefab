@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 3441651138319623573}
   - component: {fileID: 7871420256610282622}
   - component: {fileID: 7726450623654479853}
+  - component: {fileID: -3480575507342697826}
   m_Layer: 0
   m_Name: SitUpBox
   m_TagString: Untagged
@@ -378,3 +379,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3480575507342697826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185386068951683042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eeb6802b66431b47a9a813bb09abf47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SquatGame.SquatWall
+  speed: 2
+  manager: {fileID: 0}
