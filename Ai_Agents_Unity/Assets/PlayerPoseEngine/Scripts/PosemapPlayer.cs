@@ -42,6 +42,8 @@ namespace PlayerPoseEngine.Scripts
         [Header("Stats")]
         [SerializeField] public int score = 0;
         [SerializeField] public int combo = 0;
+        //particle Effect
+        public GameObject dancingGameParticlePrefab;
 
         public Posemap poseMap;
         public PosePool pool;
@@ -203,6 +205,20 @@ namespace PlayerPoseEngine.Scripts
             
             
             TriggerHaptics(hitStrength, hitDuration);
+
+            //Logic for the particle effect
+            if(dancingGameParticlePrefab != null)
+            {
+                // Find all child renderers of the resolved pose
+               Renderer[] targetSpheres = res.GetComponentsInChildren<Renderer>();
+               foreach (Renderer sphere in targetSpheres)
+               { 
+                // Instantiate the particle effect at the position of the sphere
+                GameObject particles = Instantiate(dancingGameParticlePrefab, sphere.transform.position, Quaternion.identity);
+                // Destroy the particle effect after 2 seconds to clean up
+                Destroy(particles, 2.0f);
+                }
+            }
             
             res.onPlayerPoseFulfilled -= ScorePose;
             activePoseResolvers.Remove(res);

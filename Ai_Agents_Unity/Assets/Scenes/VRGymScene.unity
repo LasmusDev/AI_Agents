@@ -25011,6 +25011,7 @@ MonoBehaviour:
   danceUI: {fileID: 1405653128}
   score: 0
   combo: 0
+  dancingGameParticlePrefab: {fileID: 8976456962411439273, guid: 87daac52727cbb8429232cf66a9cefb7, type: 3}
   poseMap: {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
   pool: {fileID: 182110180}
 --- !u!114 &1405653128
