@@ -2633,7 +2633,6 @@ MonoBehaviour:
   displayTime: 1.5
   floatSpeed: 50
   popScale: 1.5
-  scaleSpeed: 10
 --- !u!82 &136077513
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5782,7 +5781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &299567308
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5822,7 +5821,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Text
+  m_text: MISS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5831,8 +5830,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286611584
+  m_fontColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9453,7 +9452,6 @@ MonoBehaviour:
   displayTime: 1.5
   floatSpeed: 50
   popScale: 1.5
-  scaleSpeed: 10
 --- !u!114 &497048087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25043,6 +25041,7 @@ MonoBehaviour:
   comboText: {fileID: 1173845398}
   player: {fileID: 1405653127}
   comboMessageText: {fileID: 580911074}
+  displayTime: 1.5
   floatSpeed: 5
   popScale: 1.5
 --- !u!82 &1405653129
@@ -26212,12 +26211,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1598346232}
   comboText: {fileID: 1320615815}
-  game: {fileID: 0}
-  comboMessageText: {fileID: 0}
-  displayTime: 1.5
-  floatSpeed: 50
+  game: {fileID: 1915781114}
+  comboMessageText: {fileID: 299567309}
+  displayTime: 0.25
+  floatSpeed: 2
   popScale: 1.5
-  scaleSpeed: 10
 --- !u!114 &1464424630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34303,7 +34301,6 @@ MonoBehaviour:
   displayTime: 1.5
   floatSpeed: 50
   popScale: 1.5
-  scaleSpeed: 10
 --- !u!114 &1915781117
 MonoBehaviour:
   m_ObjectHideFlags: 0

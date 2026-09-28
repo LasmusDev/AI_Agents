@@ -7,20 +7,17 @@ namespace UI {
     
     public class UiAnimationManager : MonoBehaviour
     {
-
-
-        public static UiAnimationManager Instance { get; private set; }
-
-
-        public void Start()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this.gameObject);
+        private static UiAnimationManager _instance;
+        public static UiAnimationManager Instance {
+            get {
+                if (_instance == null)
+                {
+                    Instance = GameObject.FindFirstObjectByType<UiAnimationManager>();
+                }
+                return _instance;
             }
-            else
-            {
-                Instance = this;
+            set {
+                _instance = value;
             }
         }
         
