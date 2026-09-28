@@ -1,4 +1,5 @@
-﻿using PlayerPoseEngine.Scripts;
+﻿using AIAgent;
+using PlayerPoseEngine.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq; 
@@ -197,13 +198,29 @@ namespace PlayerPoseEngine.Scripts
             // Show combo messages based on the current combo count
             if (danceUI != null)
             {
-                if (combo == 10) danceUI.ShowComboMessage("GREAT!", Color.green);
-                else if (combo == 20) danceUI.ShowComboMessage("MASTER!", Color.yellow);
-                else if (combo == 50) danceUI.ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
-                else if (combo == 100) danceUI.ShowComboMessage("GODLIKE!!!", Color.cyan);
+                if (combo == 10)
+                {
+                    danceUI.ShowComboMessage("GREAT!", Color.green);
+                    PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
+                }
+                else if (combo == 20)
+                {
+                    danceUI.ShowComboMessage("MASTER!", Color.yellow);
+                    PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
+                }
+                else if (combo == 50)
+                {
+                    danceUI.ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
+                    PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
+                }
+                else if (combo == 100)
+                {
+                    danceUI.ShowComboMessage("GODLIKE!!!", Color.cyan);
+                    PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
+                }
             }
-            
-            
+
+
             TriggerHaptics(hitStrength, hitDuration);
 
             //Logic for the particle effect

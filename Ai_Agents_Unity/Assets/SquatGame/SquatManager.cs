@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro; 
 using PlayerPoseEngine.Scripts;
+using AIAgent;
 
 namespace SquatGame
 {
@@ -184,10 +185,26 @@ namespace SquatGame
             // Show combo messages based on the current combo count
             if (squatUI != null)
             {
-                if (combo == 10) squatUI.ShowComboMessage("GREAT!", Color.green);
-                else if (combo == 20) squatUI.ShowComboMessage("MASTER!", Color.yellow);
-                else if (combo == 50) squatUI.ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
-                else if (combo == 100) squatUI.ShowComboMessage("GODLIKE!!!", Color.cyan);
+                if (combo == 10)
+                {
+                    squatUI.ShowComboMessage("GREAT!", Color.green);
+                    PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Squats");
+                }
+                else if (combo == 20)
+                {
+                    squatUI.ShowComboMessage("MASTER!", Color.yellow);
+                    PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Squats");
+                }
+                else if (combo == 50)
+                {
+                    squatUI.ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
+                    PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Squats");
+                }
+                else if (combo == 100)
+                {
+                    squatUI.ShowComboMessage("GODLIKE!!!", Color.cyan);
+                    PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Squats");
+                }
             }
         }
 
