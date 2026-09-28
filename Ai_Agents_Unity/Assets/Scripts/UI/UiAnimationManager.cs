@@ -7,24 +7,64 @@ namespace UI {
     
     public class UiAnimationManager : MonoBehaviour
     {
+
+
         public static UiAnimationManager Instance { get; private set; }
 
 
-        public IEnumerator PlayComboAnimation(GameObject go, float moveSpeed, float scaleSize)
+        public void Start()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
+        
+
+        public IEnumerator PlayComboAnimation(GameObject go, float moveSpeed = 5, float animationDuration = 0.5f, float scaleSize = 1.5f, bool wobble = true)
+        {
+            go.SetActive(true);
+            Vector3 startPos = go.transform.position;
+            Vector3 startScale = go.transform.localScale;
+            Vector3 movementVector = go.transform.position + Vector3.up * moveSpeed * animationDuration; 
+            movementVector = wobble ? movementVector + new Vector3(Random.Range(-0.2f, 0.2f), 0, 0) : movementVector;   
+            Sequence moveSeq = DOTween.Sequence()
+                .Append(go.transform.DOMove(movementVector, animationDuration));
+            moveSeq.Play();
+            Sequence scaleSeq = DOTween.Sequence()
+                .Append(go.transform.DOScale(new Vector3(scaleSize, scaleSize, scaleSize), animationDuration));
+            scaleSeq.Play();
+            yield return moveSeq.WaitForCompletion();
+            yield return scaleSeq.WaitForCompletion();
+            Sequence  fadeSeq = DOTween.Sequence()
+                .Append(go.GetComponent<TMP_Text>().DOFade(0, animationDuration));
+            fadeSeq.Play();
+            yield return fadeSeq.WaitForCompletion();
+            go.SetActive(false);
+            go.transform.position = startPos;
+            go.transform.localScale = startScale;
+            go.GetComponent<TMP_Text>().color = new Color(go.GetComponent<TMP_Text>().color.r, go.GetComponent<TMP_Text>().color.g, go.GetComponent<TMP_Text>().color.b, 1);
+        }
+
+        public IEnumerator PlayComboAnimation(GameObject go, Vector3 posChange, float animationDuration, float scaleSize)
         {
             go.SetActive(true);
             Vector3 startPos = go.transform.position;
             Vector3 startScale = go.transform.localScale;
             Sequence moveSeq = DOTween.Sequence()
-                .Append(go.transform.DOMove(go.transform.position + Vector3.up * 0.5f + new Vector3(Random.Range(-0.2f, 0.2f), 0, 0), 1/moveSpeed));
+                .Append(go.transform.DOMove(go.transform.position + posChange, animationDuration));
             moveSeq.Play();
             Sequence scaleSeq = DOTween.Sequence()
-                .Append(go.transform.DOScale(new Vector3(scaleSize, scaleSize, scaleSize), 1/moveSpeed));
+                .Append(go.transform.DOScale(new Vector3(scaleSize, scaleSize, scaleSize), animationDuration));
             scaleSeq.Play();
             yield return moveSeq.WaitForCompletion();
             yield return scaleSeq.WaitForCompletion();
-            Sequence  fadeSeq = DOTween.Sequence()
-                .Append(go.GetComponent<TMP_Text>().DOFade(0, 0.5f/moveSpeed));
+            Sequence fadeSeq = DOTween.Sequence()
+                .Append(go.GetComponent<TMP_Text>().DOFade(0, animationDuration/2));
             fadeSeq.Play();
             yield return fadeSeq.WaitForCompletion();
             go.SetActive(false);

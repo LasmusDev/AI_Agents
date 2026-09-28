@@ -1,6 +1,8 @@
 ﻿using PlayerPoseEngine.Scripts;
+using System.Collections;
 using TMPro;
 using UI;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 namespace Exergames {
@@ -13,13 +15,9 @@ namespace Exergames {
 
         // New fields for the floating combo message
         public TMP_Text comboMessageText; 
-        public float displayTime = 1.5f;
         public float floatSpeed = 2f;
         public float popScale = 1.5f;
-        public float scaleSpeed = 10f;
         //helper variables to manage the floating message
-        private float currentTimer = 0f;
-        private Vector3 startLocalPos;
         private Color startColor;
 
         void Start()
@@ -27,9 +25,7 @@ namespace Exergames {
             // Initialize the combo message text to be only visible when the Dancing Game is running
             if (comboMessageText != null)
             {
-                startLocalPos = comboMessageText.rectTransform.localPosition;
-                startColor = comboMessageText.color;
-                
+                startColor = comboMessageText.color;              
                 comboMessageText.color = new Color(startColor.r, startColor.g, startColor.b, 0);
                 comboMessageText.gameObject.SetActive(false);
             }
@@ -43,42 +39,34 @@ namespace Exergames {
                 if (scoreText != null) scoreText.text = player.score.ToString();
                 if (comboText != null) comboText.text = player.combo.ToString();
             }
-            
-            /* 
-            //Animate the floating combo message if it's currently active
-            if (currentTimer > 0 && comboMessageText != null)
-            {
-                currentTimer -= Time.deltaTime;
-                // Floating upwards
-                comboMessageText.rectTransform.localPosition += Vector3.up * floatSpeed * Time.deltaTime;
-                // Scaling effect (pop effect)
-                comboMessageText.rectTransform.localScale = Vector3.Lerp(comboMessageText.rectTransform.localScale, Vector3.one, Time.deltaTime * scaleSpeed);
-                // Fade-Out
-                if (currentTimer < 0.5f)
-                {
-                    float alpha = currentTimer / 0.5f;
-                    comboMessageText.color = new Color(comboMessageText.color.r, comboMessageText.color.g, comboMessageText.color.b, alpha);
-                }
-                
-                if (currentTimer <= 0)
-                {
-                    comboMessageText.gameObject.SetActive(false);
-                }
-            }*/
+        }
+        [ContextMenu("DebugCombo")]
+        public void StartDebugCombo()
+        {
+            StartCoroutine(DebugCombo());
+        }
+
+
+        public IEnumerator DebugCombo()
+        {
+            yield return ShowComboMessage("GREAT!", Color.green);
+            yield return ShowComboMessage("MASTER!", Color.yellow);
+            yield return ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
+            yield return ShowComboMessage("GODLIKE!!!", Color.cyan);
+            yield return ShowComboMessage("MISS", Color.grey);
         }
 
         // Method to show the combo message with a specific text and color
-        public void ShowComboMessage(string message, Color textColor)
+        public IEnumerator ShowComboMessage(string message, Color textColor)
         {
-            if (comboMessageText == null) return;
+            if (comboMessageText == null)
+            {
+                yield break;
+            }
 
             comboMessageText.text = message;
             comboMessageText.color = textColor;
-            UiAnimationManager.Instance.PlayComboAnimation(comboMessageText.gameObject, floatSpeed, popScale);
-
-
-
-            currentTimer = displayTime;
+            yield return StartCoroutine(UiAnimationManager.Instance.PlayComboAnimation(comboMessageText.gameObject, floatSpeed, 0.25f, popScale));
         }
     }
 }

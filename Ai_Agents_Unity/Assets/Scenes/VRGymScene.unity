@@ -3380,6 +3380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 167672651}
+  - component: {fileID: 167672652}
   m_Layer: 0
   m_Name: UIAnimationManager
   m_TagString: Untagged
@@ -3402,6 +3403,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &167672652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167672650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809877072e181984c87aad4803983cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.UiAnimationManager
 --- !u!1 &169892009
 GameObject:
   m_ObjectHideFlags: 0
@@ -25030,10 +25043,8 @@ MonoBehaviour:
   comboText: {fileID: 1173845398}
   player: {fileID: 1405653127}
   comboMessageText: {fileID: 580911074}
-  displayTime: 100
-  floatSpeed: 50
+  floatSpeed: 5
   popScale: 1.5
-  scaleSpeed: 10
 --- !u!82 &1405653129
 AudioSource:
   m_ObjectHideFlags: 0
