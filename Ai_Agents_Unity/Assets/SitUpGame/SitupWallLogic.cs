@@ -85,4 +85,4 @@ public class SitupWallLogic : MonoBehaviour
             hasEvaluated = true;
         }
     }
-} 
+}  

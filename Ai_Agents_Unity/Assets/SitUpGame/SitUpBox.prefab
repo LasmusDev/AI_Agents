@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 602761444208882273}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 4.63}
+  m_LocalPosition: {x: 0, y: -0.3, z: 4.63}
   m_LocalScale: {x: 6.4328, y: 1, z: 0.7430512}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 3441651138319623573}
   - component: {fileID: 7871420256610282622}
   - component: {fileID: 7726450623654479853}
-  - component: {fileID: -3480575507342697826}
+  - component: {fileID: -5012690421780406478}
   m_Layer: 0
   m_Name: SitUpBox
   m_TagString: Untagged
@@ -379,7 +379,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3480575507342697826
+--- !u!114 &-5012690421780406478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
