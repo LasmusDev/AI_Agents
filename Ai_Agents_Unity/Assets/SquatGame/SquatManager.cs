@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro; 
 using PlayerPoseEngine.Scripts;
 using AIAgent;
+using Unity.XR.CoreUtils;
 
 namespace SquatGame
 {
@@ -42,7 +43,9 @@ namespace SquatGame
         private int currentStepIndex = 0;
         private float startingFloorY = 0f;
         // saving the measured headset height to adjust wall spawn heights accordingly
-        private float measuredHeadsetHeight = 1.6f;
+        private float measuredHeadsetHeight = 1.6f; //TODO: I dont like measured headset height overall, maybe just create a small menu to
+                                                    //set/calibrate height beforehand?
+        private bool spawnHighWallNext;
 
         void Awake()
         {
@@ -87,7 +90,7 @@ namespace SquatGame
             else
             {
                 Debug.LogWarning("WARNING: PlayerHead or PlayerRoot missing! Using 1.6m as default.");
-                measuredHeadsetHeight = 1.6f;
+                measuredHeadsetHeight = 1.6f; 
                 startingFloorY = 0f;
             }
 
@@ -155,23 +158,21 @@ namespace SquatGame
         void SpawnWall(GameObject prefabToSpawn, PlayerPose pose)
         {
             if (prefabToSpawn == null) return;
-            
-            GameObject newWall = Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
-            
+            GameObject newWall = Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);       
             SquatWall wallScript = newWall.GetComponent<SquatWall>();
             if (wallScript == null) wallScript = newWall.AddComponent<SquatWall>();
             wallScript.manager = this;
-
-            // height based on pose data
             float targetHeight = measuredHeadsetHeight - highWallOffset;
-            // spawn the wall at the calculated height
-            //Vector3 finalPosition = spawnPoint.position;
-           // float floorY = (playerRoot != null) ? playerRoot.position.y : 0f;
-            
-           // finalPosition.y = floorY + targetHeight;
 
            Vector3 finalPosition = spawnPoint.position;
            finalPosition.y = startingFloorY + targetHeight;
+            if (!spawnHighWallNext)
+            {
+                finalPosition.y -= measuredHeadsetHeight * 0.75f; //TODO: Finetune values
+                newWall.transform.localScale = newWall.transform.localScale.Multiply(new Vector3(1, 1.5f, 1));
+            }
+
+            spawnHighWallNext = !spawnHighWallNext; 
 
             newWall.transform.position = finalPosition;
         }
