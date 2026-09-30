@@ -8,7 +8,7 @@ namespace PlayerPoseEngine.Scripts {
 
     public class PosePool : MonoBehaviour
     {
-        public List<PlayerPoseResolver> pool;
+        public List<PoseResolver> pool;
         public List<bool> inUse;
         public int currIndex;
         public GameObject poolPrefab;
@@ -22,7 +22,7 @@ namespace PlayerPoseEngine.Scripts {
             }         
         }
 
-        public PlayerPoseResolver Get()
+        public PoseResolver Get()
         {
             if (inUse.All(x => x))
             {
@@ -44,7 +44,7 @@ namespace PlayerPoseEngine.Scripts {
             pool[index].gameObject.SetActive(false);
         }
 
-        public void Release(PlayerPoseResolver resolver)
+        public void Release(PoseResolver resolver)
         {
             resolver.gameObject.SetActive(false);
             inUse[pool.IndexOf(resolver)] = false;            
@@ -53,7 +53,7 @@ namespace PlayerPoseEngine.Scripts {
         public void ExpandPool()
         {
             inUse.Add(false);
-            pool.Add(Instantiate(poolPrefab, this.transform).GetComponent<PlayerPoseResolver>());
+            pool.Add(Instantiate(poolPrefab, this.transform).GetComponent<PoseResolver>());
         }
     }
 }

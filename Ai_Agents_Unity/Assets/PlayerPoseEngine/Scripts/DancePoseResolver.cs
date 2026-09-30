@@ -3,36 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace PlayerPoseEngine.Scripts {
+namespace PlayerPoseEngine.Scripts{
     
-    public class PlayerPoseResolver : MonoBehaviour
+    public class DancePoseResolver : PoseResolver
     {
-        
-        public float targetBeat; 
 
+
+        
         public PlayerPose currentlyRequestedPose;
-        public Action<PlayerPoseResolver, PlayerPose> onPlayerPoseFulfilled;
-        public bool playerPoseFulfilled;
+        public bool dancePoseFulfilled;
         public float poseHeldTime;
-        public float playerSize;
         public List<PlayerPose> availablePoses;
 
         public PositioningMode positioningMode;
 
-        [Header("Player Objects")]
-        public GameObject headObject;
-        public GameObject lHandObject;
-        public GameObject rHandObject;
-        public GameObject lFootObject;
-        public GameObject rFootObject;
-       
-        [Header("PoseVisualization")]
-        public GameObject poseRoot;
-        public GameObject lHandVisSphere;
-        public GameObject rHandVisSphere;
-        public GameObject lFootVisSphere;
-        public GameObject rFootVisSphere;
-        public GameObject headVisSphere;
+
         public bool visualizePose;
     
         Dictionary<string, PlayerPose> availablePosesDict;
@@ -50,29 +35,39 @@ namespace PlayerPoseEngine.Scripts {
         {
             if(currentlyRequestedPose == null)
             {
-                playerPoseFulfilled = false;
+                dancePoseFulfilled = false;
                 poseHeldTime = 0;
-            }
+                timeAlive = 0;
+            }         
             
-            
-            bool poseFulfilled = visualizePose ? CheckAndVisualizePoseRequest(currentlyRequestedPose) : IsPoseRequestFulfilled(currentlyRequestedPose);
-            
+            bool poseFulfilled = visualizePose ? CheckAndVisualizePoseRequest(currentlyRequestedPose) : IsPoseRequestFulfilled(currentlyRequestedPose);           
             if (poseFulfilled)
             {
-                if (!playerPoseFulfilled && onPlayerPoseFulfilled != null)
+                if (!dancePoseFulfilled && onPoseFulfilled != null)
                 {
-                    onPlayerPoseFulfilled.Invoke(this, currentlyRequestedPose);
+                    onPoseFulfilled.Invoke(this, currentlyRequestedPose);
                 }
-                playerPoseFulfilled = true;
+                dancePoseFulfilled = true;
                 poseHeldTime += Time.deltaTime;           
+            }
+
+            if(timeAlive > timeToDespawn)
+            {
+                if (!dancePoseFulfilled && onPoseFailed != null)
+                {
+                    onPoseFailed.Invoke(this, currentlyRequestedPose);
+                }
+                poseHeldTime = 0;
+                dancePoseFulfilled = false;
             }
         }
     
-        public void RequestPose(PlayerPose pose)
+        public override void RequestPose(PlayerPose pose)
         {
             
-            playerPoseFulfilled = false;
+            dancePoseFulfilled = false;
             poseHeldTime = 0;
+            timeAlive = 0;
             playerMatrixAtRequest = poseRoot.transform.localToWorldMatrix;
             currentlyRequestedPose = pose;
         }
@@ -97,7 +92,7 @@ namespace PlayerPoseEngine.Scripts {
             foreach (LimbRequirement limbReq in pose.limbRequirements)
             {
                 GameObject comparisonObject = GetLimbObject(limbReq.limb);
-                if(comparisonObject == null) return false;
+                if (comparisonObject == null) return false;
 
                 Vector3 adjustedPos = CalculateAdjustedPositioning(poseRoot.transform, pose, limbReq);
                 isFulfilled &= (Vector3.Distance(comparisonObject.transform.position, adjustedPos) < limbReq.tolerance);

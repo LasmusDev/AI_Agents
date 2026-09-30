@@ -12,9 +12,7 @@ namespace SquatGame
             if (other.GetComponent<SquatWall>())
             {
                 
-                if(manager != null) manager.AddScore();
-                
-                
+                if(manager != null) manager.AddScore();            
                 Destroy(other.gameObject); 
             }
         }

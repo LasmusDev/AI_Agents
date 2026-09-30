@@ -51,11 +51,12 @@ namespace PlayerPoseEngine.Scripts
         
         private AudioSource audioSource;
         private float secPerBeat;
+        private float currentBeat;
         private float dspSongStartTime;
         private int nextIndexToSpawn = 0;
         private bool isPlaying = false; 
         private bool songStarted = false; 
-        private List<PlayerPoseResolver> activePoseResolvers = new List<PlayerPoseResolver>();
+        private List<PoseResolver> activePoseResolvers = new List<PoseResolver>();
 
         private void Awake() { audioSource = GetComponent<AudioSource>(); }
 
@@ -124,12 +125,12 @@ namespace PlayerPoseEngine.Scripts
             }
 
             float songPos = (float)(AudioSettings.dspTime - dspSongStartTime - spawnOffset);
-            float songBeats = songPos / secPerBeat;
+            currentBeat = songPos / secPerBeat;
             
             if (scoreText) scoreText.text = $"Score: {score}\nCombo: {combo}x";
 
            
-            float lookAhead = songBeats + visibleBeats;
+            float lookAhead = currentBeat + visibleBeats;
             while (nextIndexToSpawn < poseMap.poses.Length && poseMap.poses[nextIndexToSpawn].beat < lookAhead)
             {
                 SpawnPose(poseMap.poses[nextIndexToSpawn]);
@@ -139,46 +140,19 @@ namespace PlayerPoseEngine.Scripts
             
             for (int i = activePoseResolvers.Count - 1; i >= 0; i--)
             {
-                PlayerPoseResolver res = activePoseResolvers[i];
-                float remaining = res.targetBeat - songBeats;
+                PoseResolver res = activePoseResolvers[i];
+                float remaining = activePoseResolvers[i].timeToDespawn - activePoseResolvers[i].timeAlive;
                 float t = 1f - (remaining / visibleBeats);
                 res.transform.position = Vector3.LerpUnclamped(from, to, t);
-
-                // Check if the pose has been missed
-                if (remaining < -1.0f) 
-                {
-                    if (danceUI != null)
-                    {
-                        danceUI.ShowComboMessage_CR("MISS", Color.gray);
-                    }
-
-                    if(combo > 0) 
-                    {
-                        combo = 0;
-                      
-                        TriggerHaptics(missStrength, missDuration);
-
-
-
-                        if (danceUI != null)
-                        {
-                            danceUI.ShowComboMessage_CR("MISS", Color.gray);
-                        }
-                    }
-                    
-                    res.onPlayerPoseFulfilled -= ScorePose;
-                    activePoseResolvers.Remove(res);
-                    pool.Release(res);
-                }
             }
         }
 
         void SpawnPose(BeatToPose beatData)
         {
-            PlayerPoseResolver r = pool.Get();
+            PoseResolver r = pool.Get();
             r.transform.position = from; 
-            r.transform.LookAt(to); 
-            r.targetBeat = beatData.beat; 
+            r.transform.LookAt(to);
+            r.timeToDespawn = beatData.beat + visibleBeats + 1 - currentBeat * secPerBeat;
             
             r.headObject = playerHead;
             r.lHandObject = playerLeftHand;
@@ -186,11 +160,17 @@ namespace PlayerPoseEngine.Scripts
             if(playerHead) r.playerSize = playerHead.transform.position.y;
 
             r.RequestPose(beatData.pose);
-            r.onPlayerPoseFulfilled += ScorePose;
+            r.onPoseFulfilled += ScorePose;
+            r.onPoseFailed += FailPose;
             activePoseResolvers.Add(r);
         }
 
-        public void ScorePose(PlayerPoseResolver res, PlayerPose p)
+        public void FailPose(PoseResolver res, PlayerPose p)
+        {
+
+        }
+
+        public void ScorePose(PoseResolver res, PlayerPose p)
         {
             combo++; 
             score += 100 * combo;
@@ -236,8 +216,8 @@ namespace PlayerPoseEngine.Scripts
                 Destroy(particles, 2.0f);
                 }
             }
-            
-            res.onPlayerPoseFulfilled -= ScorePose;
+            res.onPoseFailed -= FailPose;
+            res.onPoseFulfilled -= ScorePose;
             activePoseResolvers.Remove(res);
             pool.Release(res);
         }
