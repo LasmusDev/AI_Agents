@@ -168,8 +168,8 @@ namespace SquatGame
            finalPosition.y = startingFloorY + targetHeight;
             if (!spawnHighWallNext)
             {
-                finalPosition.y -= measuredHeadsetHeight * 0.75f; //TODO: Finetune values
-                newWall.transform.localScale = newWall.transform.localScale.Multiply(new Vector3(1, 1.5f, 1));
+                //finalPosition.y -= measuredHeadsetHeight * 0.75f; //TODO: Finetune values
+                //newWall.transform.localScale = newWall.transform.localScale.Multiply(new Vector3(1, 1.5f, 1));
             }
 
             spawnHighWallNext = !spawnHighWallNext; 
