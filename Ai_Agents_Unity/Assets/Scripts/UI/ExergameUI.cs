@@ -14,14 +14,14 @@ namespace UI {
 
         public virtual IEnumerator DebugCombo()
         {
-            yield return ShowComboMessage("GREAT!", Color.green);
-            yield return ShowComboMessage("MASTER!", Color.yellow);
-            yield return ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
-            yield return ShowComboMessage("GODLIKE!!!", Color.cyan);
-            yield return ShowComboMessage("MISS", Color.grey);
+            yield return ShowComboMessage_CR("GREAT!", Color.green);
+            yield return ShowComboMessage_CR("MASTER!", Color.yellow);
+            yield return ShowComboMessage_CR("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
+            yield return ShowComboMessage_CR("GODLIKE!!!", Color.cyan);
+            yield return ShowComboMessage_CR("MISS", Color.grey);
         }
 
-        public abstract IEnumerator ShowComboMessage(string text, Color color);
+        public abstract IEnumerator ShowComboMessage_CR(string text, Color color);
     }
     
 }

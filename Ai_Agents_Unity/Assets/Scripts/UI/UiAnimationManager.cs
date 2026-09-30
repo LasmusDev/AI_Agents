@@ -22,7 +22,7 @@ namespace UI {
         }
         
 
-        public IEnumerator PlayComboAnimation(GameObject go, float moveSpeed = 5, float animationDuration = 0.5f, float scaleSize = 1.5f, bool wobble = true)
+        public IEnumerator PlayComboAnimation_CR(GameObject go, float moveSpeed = 5, float animationDuration = 0.5f, float scaleSize = 1.5f, bool wobble = true)
         {
             go.SetActive(true);
             Vector3 startPos = go.transform.position;
@@ -47,7 +47,7 @@ namespace UI {
             go.GetComponent<TMP_Text>().color = new Color(go.GetComponent<TMP_Text>().color.r, go.GetComponent<TMP_Text>().color.g, go.GetComponent<TMP_Text>().color.b, 1);
         }
 
-        public IEnumerator PlayComboAnimation(GameObject go, Vector3 posChange, float animationDuration, float scaleSize)
+        public IEnumerator PlayComboAnimation_CR(GameObject go, Vector3 posChange, float animationDuration, float scaleSize)
         {
             go.SetActive(true);
             Vector3 startPos = go.transform.position;

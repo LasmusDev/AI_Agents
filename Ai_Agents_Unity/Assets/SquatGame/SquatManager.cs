@@ -188,22 +188,22 @@ namespace SquatGame
             {
                 if (combo == 10)
                 {
-                    squatUI.ShowComboMessage("GREAT!", Color.green);
+                    StartCoroutine(squatUI.ShowComboMessage_CR("GREAT!", Color.green));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Squats");
                 }
                 else if (combo == 20)
                 {
-                    squatUI.ShowComboMessage("MASTER!", Color.yellow);
+                    StartCoroutine(squatUI.ShowComboMessage_CR("MASTER!", Color.yellow));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Squats");
                 }
                 else if (combo == 50)
                 {
-                    squatUI.ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
+                    StartCoroutine(squatUI.ShowComboMessage_CR("INSANE!!!", new Color(1f, 0.5f, 0f))); // Orange
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Squats");
                 }
                 else if (combo == 100)
                 {
-                    squatUI.ShowComboMessage("GODLIKE!!!", Color.cyan);
+                    StartCoroutine(squatUI.ShowComboMessage_CR("GODLIKE!!!", Color.cyan));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Squats");
                 }
             }
@@ -215,7 +215,7 @@ namespace SquatGame
 
             if (squatUI != null)
             {
-                squatUI.ShowComboMessage("MISS", Color.gray);
+                squatUI.ShowComboMessage_CR("MISS", Color.gray);
             }
 
             combo = 0;

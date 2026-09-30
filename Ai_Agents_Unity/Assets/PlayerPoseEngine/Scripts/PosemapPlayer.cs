@@ -149,7 +149,7 @@ namespace PlayerPoseEngine.Scripts
                 {
                     if (danceUI != null)
                     {
-                        danceUI.ShowComboMessage("MISS", Color.gray);
+                        danceUI.ShowComboMessage_CR("MISS", Color.gray);
                     }
 
                     if(combo > 0) 
@@ -162,7 +162,7 @@ namespace PlayerPoseEngine.Scripts
 
                         if (danceUI != null)
                         {
-                            danceUI.ShowComboMessage("MISS", Color.gray);
+                            danceUI.ShowComboMessage_CR("MISS", Color.gray);
                         }
                     }
                     
@@ -200,22 +200,22 @@ namespace PlayerPoseEngine.Scripts
             {
                 if (combo == 10)
                 {
-                    danceUI.ShowComboMessage("GREAT!", Color.green);
+                    StartCoroutine(danceUI.ShowComboMessage_CR("GREAT!", Color.green));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
                 }
                 else if (combo == 20)
                 {
-                    danceUI.ShowComboMessage("MASTER!", Color.yellow);
+                    StartCoroutine(danceUI.ShowComboMessage_CR("MASTER!", Color.yellow));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
                 }
                 else if (combo == 50)
                 {
-                    danceUI.ShowComboMessage("INSANE!!!", new Color(1f, 0.5f, 0f)); // Orange
+                    StartCoroutine(danceUI.ShowComboMessage_CR("INSANE!!!", new Color(1f, 0.5f, 0f))); // Orange
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
                 }
                 else if (combo == 100)
                 {
-                    danceUI.ShowComboMessage("GODLIKE!!!", Color.cyan);
+                    StartCoroutine(danceUI.ShowComboMessage_CR("GODLIKE!!!", Color.cyan));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
                 }
             }

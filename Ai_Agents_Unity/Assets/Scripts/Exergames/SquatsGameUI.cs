@@ -38,7 +38,7 @@ namespace Exergames
 
         }
         // Method to show the combo message with a specific text and color
-        public override IEnumerator ShowComboMessage(string message, Color textColor)
+        public override IEnumerator ShowComboMessage_CR(string message, Color textColor)
         {
             if (comboMessageText == null)
             {
@@ -46,7 +46,7 @@ namespace Exergames
             }
             comboMessageText.text = message;
             comboMessageText.color = textColor;
-            yield return StartCoroutine(UiAnimationManager.Instance.PlayComboAnimation(comboMessageText.gameObject, floatSpeed, displayTime, popScale));
+            yield return StartCoroutine(UiAnimationManager.Instance.PlayComboAnimation_CR(comboMessageText.gameObject, floatSpeed, displayTime, popScale));
         }
     }
 } 
