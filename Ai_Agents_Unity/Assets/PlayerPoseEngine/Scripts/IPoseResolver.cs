@@ -5,8 +5,8 @@ namespace PlayerPoseEngine.Scripts {
     
     public abstract class PoseResolver : MonoBehaviour
     {
-        public Action<DancePoseResolver, PlayerPose> onPoseFulfilled;
-        public Action<DancePoseResolver, PlayerPose> onPoseFailed;
+        public Action<PoseResolver, PlayerPose> onPoseFulfilled;
+        public Action<PoseResolver, PlayerPose> onPoseFailed;
 
         [Header("Player Objects")]
         public GameObject headObject;
@@ -21,7 +21,7 @@ namespace PlayerPoseEngine.Scripts {
         public GameObject rHandVisSphere;
         public GameObject lFootVisSphere;
         public GameObject rFootVisSphere;
-        public GameObject headVisSphere;
+        public GameObject headVisObject;
 
         public float playerSize;
 

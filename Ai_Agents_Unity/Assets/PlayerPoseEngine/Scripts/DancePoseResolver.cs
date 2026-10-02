@@ -111,7 +111,7 @@ namespace PlayerPoseEngine.Scripts{
             if(rHandVisSphere) rHandVisSphere.SetActive(false);
             if(lFootVisSphere) lFootVisSphere.SetActive(false);
             if(rFootVisSphere) rFootVisSphere.SetActive(false);
-            if(headVisSphere) headVisSphere.SetActive(false);
+            if(headVisObject) headVisObject.SetActive(false);
 
             foreach (LimbRequirement limbReq in pose.limbRequirements)
             {
@@ -149,7 +149,7 @@ namespace PlayerPoseEngine.Scripts{
         
         GameObject GetVisObject(Limb limb) {
             switch(limb) {
-                case Limb.HEAD: return headVisSphere;
+                case Limb.HEAD: return headVisObject;
                 case Limb.RHAND: return rHandVisSphere;
                 case Limb.LHAND: return lHandVisSphere;
                 case Limb.RFOOT: return rFootVisSphere;
