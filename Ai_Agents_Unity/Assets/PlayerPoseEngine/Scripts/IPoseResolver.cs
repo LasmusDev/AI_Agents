@@ -25,7 +25,8 @@ namespace PlayerPoseEngine.Scripts {
 
         public float playerSize;
 
-        public float timeToDespawn;
+        //Also represents despawn time, which is twice this
+        public float timeToPlayer;
 
         public float timeAlive = 0f;
 

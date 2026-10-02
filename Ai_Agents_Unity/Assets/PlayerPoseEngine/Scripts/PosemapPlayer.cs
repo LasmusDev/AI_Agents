@@ -141,8 +141,8 @@ namespace PlayerPoseEngine.Scripts
             for (int i = activePoseResolvers.Count - 1; i >= 0; i--)
             {
                 PoseResolver res = activePoseResolvers[i];
-                float remaining = activePoseResolvers[i].timeToDespawn - activePoseResolvers[i].timeAlive;
-                float t = 1f - (remaining / visibleBeats);
+                float remaining = activePoseResolvers[i].timeToPlayer - activePoseResolvers[i].timeAlive;
+                float t = 1f - remaining;
                 res.transform.position = Vector3.LerpUnclamped(from, to, t);
             }
         }
@@ -152,7 +152,7 @@ namespace PlayerPoseEngine.Scripts
             PoseResolver r = pool.Get();
             r.transform.position = from; 
             r.transform.LookAt(to);
-            r.timeToDespawn = beatData.beat + visibleBeats + 1 - currentBeat * secPerBeat;
+            r.timeToPlayer = visibleBeats * secPerBeat;
             
             r.headObject = playerHead;
             r.lHandObject = playerLeftHand;
@@ -167,7 +167,9 @@ namespace PlayerPoseEngine.Scripts
 
         public void FailPose(PoseResolver res, PlayerPose p)
         {
-
+            StartCoroutine(danceUI.ShowComboMessage_CR("MISS!", Color.gray));
+            combo = 0;
+            pool.Release(res);
         }
 
         public void ScorePose(PoseResolver res, PlayerPose p)

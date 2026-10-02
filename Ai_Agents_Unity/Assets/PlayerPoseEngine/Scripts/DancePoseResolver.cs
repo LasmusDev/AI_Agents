@@ -38,7 +38,8 @@ namespace PlayerPoseEngine.Scripts{
                 dancePoseFulfilled = false;
                 poseHeldTime = 0;
                 timeAlive = 0;
-            }         
+            }
+            timeAlive += Time.deltaTime;
             
             bool poseFulfilled = visualizePose ? CheckAndVisualizePoseRequest(currentlyRequestedPose) : IsPoseRequestFulfilled(currentlyRequestedPose);           
             if (poseFulfilled)
@@ -51,7 +52,7 @@ namespace PlayerPoseEngine.Scripts{
                 poseHeldTime += Time.deltaTime;           
             }
 
-            if(timeAlive > timeToDespawn)
+            if(timeAlive > timeToPlayer * 2)
             {
                 if (!dancePoseFulfilled && onPoseFailed != null)
                 {
