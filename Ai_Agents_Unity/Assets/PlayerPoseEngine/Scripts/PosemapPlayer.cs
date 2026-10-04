@@ -159,6 +159,7 @@ namespace PlayerPoseEngine.Scripts
             r.rHandObject = playerRightHand;
             if(playerHead) r.playerSize = playerHead.transform.position.y;
 
+            
             r.RequestPose(beatData.pose);
             r.onPoseFulfilled += ScorePose;
             r.onPoseFailed += FailPose;

@@ -14,10 +14,8 @@ namespace PlayerPoseEngine.Scripts{
         public bool squatPoseFailed;
         public List<PlayerPose> availablePoses;
         public Vector3 startingPoint;
-        public float hitBoxDepth = 0.5f;
-        public float hitBoxHeight = 0.5f;
-
-        public bool visualizePose;
+        public float hitBoxDepth = 0.2f;
+        public float hitBoxHeight = 0.2f;
     
         Dictionary<string, PlayerPose> availablePosesDict;
         
@@ -59,7 +57,7 @@ namespace PlayerPoseEngine.Scripts{
         public void CheckPoseFailure()
         {
             Vector3 targetPos = headObject.transform.position;
-            if (Mathf.Abs(targetPos.x - this.transform.position.x) > hitBoxDepth && Mathf.Abs(targetPos.y - this.transform.position.y) > hitBoxHeight)
+            if (Mathf.Abs(targetPos.x - this.transform.position.x) < hitBoxDepth && Mathf.Abs(targetPos.y - this.transform.position.y) < hitBoxHeight)
             {
                 if (!squatPoseFailed && onPoseFailed != null)
                 {
@@ -71,10 +69,28 @@ namespace PlayerPoseEngine.Scripts{
     
         public override void RequestPose(PlayerPose pose)
         {
-            
+            VisualizePoseRequest(pose);
             squatPoseFailed = false;
             timeAlive = 0;
             currentlyRequestedPose = pose;
+        }
+
+        public void VisualizePoseRequest(PlayerPose pose)
+        {
+            if (pose == null || headVisObject == null) return;
+            headVisObject.SetActive(true);
+
+            //Pose should only ever have head
+            headVisObject.transform.localPosition = pose.limbRequirements[0].relativePos;
+
+            if (headVisObject.transform.localPosition.y > 1.5f) //TODO Fix magic number to determine low or high head
+            {
+                headVisObject.transform.localScale = new Vector3(2, hitBoxHeight, hitBoxDepth);
+            } else
+            {
+                headVisObject.transform.localScale = new Vector3(2, hitBoxHeight * 5, hitBoxDepth);
+            }
+           
         }
 
         public void RequestPose(string poseName)

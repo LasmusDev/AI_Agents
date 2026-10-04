@@ -14,7 +14,19 @@ namespace PlayerPoseEngine.Scripts {
         
         public BeatToPose[] poses;
 
-        
+        [ContextMenu("Add Loop")]
+        public void LoopArray()
+        {
+            BeatToPose[] copy = new BeatToPose[poses.Length * 2];
+            Array.Copy(poses, copy, poses.Length);
+            float lastPoseBeat = poses[poses.Length - 1].beat;
+            for(int i = 0; i < poses.Length; i++)
+            {
+                copy[poses.Length+ i].pose = poses[i].pose;
+                copy[poses.Length + i].beat = poses[i].beat + lastPoseBeat;
+            }
+            poses = copy;
+        }
     }
     
     [Serializable]
