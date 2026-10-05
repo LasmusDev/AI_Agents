@@ -4583,7 +4583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.632
+      value: -2.62
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22677,9 +22677,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SquatGame.SquatManager, Assembly-CSharp
-        m_MethodName: OnStartButtonPressed
+      - m_Target: {fileID: 1915781118}
+        m_TargetAssemblyTypeName: PlayerPoseEngine.Scripts.PosemapPlayer, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33923,7 +33923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b591a08f4f7fc134fa7efed5a5a66fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquatGame.SquatLevelDropdown
-  player: {fileID: 0}
+  player: {fileID: 1915781118}
   dropdown: {fileID: 1515146963}
   gameUI: {fileID: 1915781116}
   availableLevels:

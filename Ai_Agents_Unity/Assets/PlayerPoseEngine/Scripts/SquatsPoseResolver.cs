@@ -15,7 +15,7 @@ namespace PlayerPoseEngine.Scripts{
         public List<PlayerPose> availablePoses;
         public Vector3 startingPoint;
         public float defaultHitBoxHeight = 0.2f;
-        public float hitBoxDepth = 0.2f;
+        public float hitBoxDepth = 0.5f;
         private float hitBoxHeight = 0.2f;
 
         public Vector2 closestDistance = new Vector2(100f, 100f);
@@ -46,11 +46,11 @@ namespace PlayerPoseEngine.Scripts{
             }
 
 
-            if(timeAlive > timeToPlayer * 2)
+            if(timeAlive > timeToPlayer * 1.2)
             {
                 if (!squatPoseFailed && onPoseFailed != null)
                 {
-                    //If this goes past the playing without failing, we consider it a success
+                    //If this goes past the player without failing, we consider it a success
                     Debug.Log(closestDistance);
                     onPoseFulfilled.Invoke(this, currentlyRequestedPose);
                 }
@@ -98,7 +98,7 @@ namespace PlayerPoseEngine.Scripts{
                 hitBoxHeight = defaultHitBoxHeight;
             } else
             {
-                hitBoxHeight = defaultHitBoxHeight * 5;
+                hitBoxHeight = defaultHitBoxHeight * 4;
             }
             headVisObject.transform.localScale = new Vector3(2, hitBoxHeight, hitBoxDepth);
 
