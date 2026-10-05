@@ -14,9 +14,12 @@ namespace PlayerPoseEngine.Scripts{
         public bool squatPoseFailed;
         public List<PlayerPose> availablePoses;
         public Vector3 startingPoint;
+        public float defaultHitBoxHeight = 0.2f;
         public float hitBoxDepth = 0.2f;
-        public float hitBoxHeight = 0.2f;
-    
+        private float hitBoxHeight = 0.2f;
+
+        public Vector2 closestDistance = new Vector2(100f, 100f);
+
         Dictionary<string, PlayerPose> availablePosesDict;
         
         public void Start()
@@ -48,6 +51,7 @@ namespace PlayerPoseEngine.Scripts{
                 if (!squatPoseFailed && onPoseFailed != null)
                 {
                     //If this goes past the playing without failing, we consider it a success
+                    Debug.Log(closestDistance);
                     onPoseFulfilled.Invoke(this, currentlyRequestedPose);
                 }
                 squatPoseFailed = false;
@@ -57,7 +61,13 @@ namespace PlayerPoseEngine.Scripts{
         public void CheckPoseFailure()
         {
             Vector3 targetPos = headObject.transform.position;
-            if (Mathf.Abs(targetPos.x - this.transform.position.x) < hitBoxDepth && Mathf.Abs(targetPos.y - this.transform.position.y) < hitBoxHeight)
+            Vector2 currDistance = new Vector2(Mathf.Abs(targetPos.x - headVisObject.transform.position.x), Mathf.Abs(targetPos.y - headVisObject.transform.position.y));
+            if(currDistance.magnitude < closestDistance.magnitude)
+            {
+                closestDistance = currDistance;
+            }
+            if (Mathf.Abs(targetPos.x - headVisObject.transform.position.x) < hitBoxDepth && 
+                Mathf.Abs(targetPos.y - headVisObject.transform.position.y) < hitBoxHeight)
             {
                 if (!squatPoseFailed && onPoseFailed != null)
                 {
@@ -85,12 +95,14 @@ namespace PlayerPoseEngine.Scripts{
 
             if (headVisObject.transform.localPosition.y > 1.5f) //TODO Fix magic number to determine low or high head
             {
-                headVisObject.transform.localScale = new Vector3(2, hitBoxHeight, hitBoxDepth);
+                hitBoxHeight = defaultHitBoxHeight;
             } else
             {
-                headVisObject.transform.localScale = new Vector3(2, hitBoxHeight * 5, hitBoxDepth);
+                hitBoxHeight = defaultHitBoxHeight * 5;
             }
-           
+            headVisObject.transform.localScale = new Vector3(2, hitBoxHeight, hitBoxDepth);
+
+
         }
 
         public void RequestPose(string poseName)

@@ -3,7 +3,8 @@ using PlayerPoseEngine.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq; 
-using TMPro; 
+using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.XR; 
 
@@ -38,7 +39,7 @@ namespace PlayerPoseEngine.Scripts
         public GameObject stopMenuButton;
         public TextMeshProUGUI countdownText; 
         public TextMeshProUGUI scoreText;
-        public Exergames.DanceGameUI danceUI;
+        public ExergameUI gameUI;
 
         [Header("Stats")]
         [SerializeField] public int score = 0;
@@ -168,7 +169,7 @@ namespace PlayerPoseEngine.Scripts
 
         public void FailPose(PoseResolver res, PlayerPose p)
         {
-            StartCoroutine(danceUI.ShowComboMessage_CR("MISS!", Color.gray));
+            StartCoroutine(gameUI.ShowComboMessage_CR("MISS!", Color.gray));
             combo = 0;
             pool.Release(res);
         }
@@ -179,26 +180,26 @@ namespace PlayerPoseEngine.Scripts
             score += 100 * combo;
 
             // Show combo messages based on the current combo count
-            if (danceUI != null)
+            if (gameUI != null)
             {
                 if (combo == 10)
                 {
-                    StartCoroutine(danceUI.ShowComboMessage_CR("GREAT!", Color.green));
+                    StartCoroutine(gameUI.ShowComboMessage_CR("GREAT!", Color.green));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
                 }
                 else if (combo == 20)
                 {
-                    StartCoroutine(danceUI.ShowComboMessage_CR("MASTER!", Color.yellow));
+                    StartCoroutine(gameUI.ShowComboMessage_CR("MASTER!", Color.yellow));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
                 }
                 else if (combo == 50)
                 {
-                    StartCoroutine(danceUI.ShowComboMessage_CR("INSANE!!!", new Color(1f, 0.5f, 0f))); // Orange
+                    StartCoroutine(gameUI.ShowComboMessage_CR("INSANE!!!", new Color(1f, 0.5f, 0f))); // Orange
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
                 }
                 else if (combo == 100)
                 {
-                    StartCoroutine(danceUI.ShowComboMessage_CR("GODLIKE!!!", Color.cyan));
+                    StartCoroutine(gameUI.ShowComboMessage_CR("GODLIKE!!!", Color.cyan));
                     PlayerEventStorage.Instance.AddPlayerEvent(PlayerEventType.PLAYERSCOREDCOMBO, combo, $"Game: Dance");
                 }
             }

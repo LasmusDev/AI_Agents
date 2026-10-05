@@ -65,8 +65,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ac00d28aba0c26419e90669a81c3d21, type: 2}
   - {fileID: 11400000, guid: 267b63cc52e326d4fa6e8467bcb2cf6e, type: 2}
   startingPoint: {x: 0, y: 0, z: 0}
+  defaultHitBoxHeight: 0.2
   hitBoxDepth: 0.3
-  hitBoxHeight: 0.3
+  closestDistance: 100
 --- !u!1 &5970043081736855559
 GameObject:
   m_ObjectHideFlags: 0

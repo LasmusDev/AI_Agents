@@ -2654,27 +2654,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b591a08f4f7fc134fa7efed5a5a66fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquatGame.SquatLevelDropdown
-  manager: {fileID: 136077514}
+  player: {fileID: 0}
   dropdown: {fileID: 1540376641}
+  gameUI: {fileID: 0}
   availableLevels:
   - levelName: Level_Samurai
-    poseMap: {fileID: 11400000, guid: 1bb88c11950d42c408ae7975f8b12718, type: 2}
-    song: {fileID: 8300000, guid: abe8885c6923c7749aac101211b9da02, type: 3}
+    poseMap: {fileID: 0}
   - levelName: Level_Voyage
-    poseMap: {fileID: 11400000, guid: 6fcffa82d6f5c3d4eaa1bddb6be5ca90, type: 2}
-    song: {fileID: 8300000, guid: b353e144177fcd442b8595f67b4d37d0, type: 3}
+    poseMap: {fileID: 0}
   - levelName: Level_See
-    poseMap: {fileID: 11400000, guid: efe2fdb741a30044fb403cfbfb42b7d6, type: 2}
-    song: {fileID: 8300000, guid: f08cc8037eefee84b9ee62c446e4cd47, type: 3}
+    poseMap: {fileID: 0}
   - levelName: Level_Ascend
-    poseMap: {fileID: 11400000, guid: e1be491695505f84982bd1cf21a0edf9, type: 2}
-    song: {fileID: 8300000, guid: a1fd26acc34c1ee44818ab2c6a671afa, type: 3}
+    poseMap: {fileID: 0}
   - levelName: Level_Eyes
-    poseMap: {fileID: 11400000, guid: d17bfb48a98dfa34bbca58e8afab67ad, type: 2}
-    song: {fileID: 8300000, guid: 535fb6a5c1cdc3c468a4221ca346f35c, type: 3}
+    poseMap: {fileID: 0}
   - levelName: Level_Recall
-    poseMap: {fileID: 11400000, guid: d55629d3e665f0e469afece477397d66, type: 2}
-    song: {fileID: 8300000, guid: 2058151449582b04e9f3a90cd4a07e08, type: 3}
+    poseMap: {fileID: 0}
 --- !u!114 &136077512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2689,7 +2684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1255041117}
   comboText: {fileID: 642339184}
-  game: {fileID: 136077514}
+  game: {fileID: 0}
   comboMessageText: {fileID: 1367189462}
   displayTime: 1.5
   floatSpeed: 50
@@ -4803,7 +4798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe0d99f9a9ca9841821a14dcf7435d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1915781114}
+  manager: {fileID: 0}
 --- !u!65 &256286247
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11014,7 +11009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Text
+  m_text: MISS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11023,8 +11018,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286611584
+  m_fontColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -22095,7 +22090,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1915781114}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SquatGame.SquatManager, Assembly-CSharp
         m_MethodName: OnStopButtonPressed
         m_Mode: 1
@@ -22682,7 +22677,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1915781114}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SquatGame.SquatManager, Assembly-CSharp
         m_MethodName: OnStartButtonPressed
         m_Mode: 1
@@ -24569,7 +24564,7 @@ MonoBehaviour:
   stopMenuButton: {fileID: 423582046}
   countdownText: {fileID: 111082427}
   scoreText: {fileID: 0}
-  danceUI: {fileID: 1405653128}
+  gameUI: {fileID: 0}
   score: 0
   combo: 0
   dancingGameParticlePrefab: {fileID: 8976456962411439273, guid: 87daac52727cbb8429232cf66a9cefb7, type: 3}
@@ -25761,7 +25756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1598346232}
   comboText: {fileID: 1320615815}
-  game: {fileID: 1915781114}
+  game: {fileID: 0}
   comboMessageText: {fileID: 299567309}
   displayTime: 0.25
   floatSpeed: 2
@@ -33769,7 +33764,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1915781113}
-  - component: {fileID: 1915781114}
   - component: {fileID: 1915781115}
   - component: {fileID: 1915781116}
   - component: {fileID: 1915781117}
@@ -33801,31 +33795,6 @@ Transform:
   - {fileID: 2089096715}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1915781114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915781111}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69293dabc67268642beec6191bb76b43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 726272679}
-  currentPoseMap: {fileID: 0}
-  playerHead: {fileID: 196292991}
-  playerRoot: {fileID: 477023317}
-  gameMusic: {fileID: 8300000, guid: abe8885c6923c7749aac101211b9da02, type: 3}
-  highWallOffset: -0.45
-  startButton: {fileID: 1298267960}
-  stopButton: {fileID: 1264024627}
-  countdownText: {fileID: 1791241897}
-  score: 0
-  combo: 0
-  squatUI: {fileID: 1915781116}
-  isRunning: 0
 --- !u!82 &1915781115
 AudioSource:
   m_ObjectHideFlags: 0
@@ -33937,7 +33906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1598346232}
   comboText: {fileID: 1320615815}
-  game: {fileID: 1915781114}
+  game: {fileID: 1915781118}
   comboMessageText: {fileID: 299567309}
   displayTime: 1.5
   floatSpeed: 50
@@ -33954,27 +33923,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b591a08f4f7fc134fa7efed5a5a66fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquatGame.SquatLevelDropdown
-  manager: {fileID: 1915781114}
+  player: {fileID: 0}
   dropdown: {fileID: 1515146963}
+  gameUI: {fileID: 1915781116}
   availableLevels:
-  - levelName: Level_Samurai
-    poseMap: {fileID: 11400000, guid: ea8f1e4d0e77fc1499607ac81cb35c24, type: 2}
-    song: {fileID: 8300000, guid: abe8885c6923c7749aac101211b9da02, type: 3}
-  - levelName: Level_Voyage
-    poseMap: {fileID: 11400000, guid: a788779e6753bbf47933c01be7c30ebd, type: 2}
-    song: {fileID: 8300000, guid: b353e144177fcd442b8595f67b4d37d0, type: 3}
-  - levelName: Level_See
-    poseMap: {fileID: 11400000, guid: bcc7dbd6cf68b144c9926d9c069951eb, type: 2}
-    song: {fileID: 8300000, guid: f08cc8037eefee84b9ee62c446e4cd47, type: 3}
-  - levelName: Level_Ascend
-    poseMap: {fileID: 11400000, guid: aac086ea097d5864cb6e1151fc743209, type: 2}
-    song: {fileID: 8300000, guid: a1fd26acc34c1ee44818ab2c6a671afa, type: 3}
-  - levelName: Level_Eyes
-    poseMap: {fileID: 11400000, guid: 8f75612ba8ea2fc4fa8f4fa5636062a8, type: 2}
-    song: {fileID: 8300000, guid: 535fb6a5c1cdc3c468a4221ca346f35c, type: 3}
-  - levelName: Level_Recall
-    poseMap: {fileID: 11400000, guid: 1c4b3f14c97525748aa8dafc338858b0, type: 2}
-    song: {fileID: 8300000, guid: 2058151449582b04e9f3a90cd4a07e08, type: 3}
+  - levelName: Default Squats
+    poseMap: {fileID: 11400000, guid: 67099e84904750945a0166919f4039b9, type: 2}
 --- !u!114 &1915781118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34003,7 +33957,7 @@ MonoBehaviour:
   stopMenuButton: {fileID: 1264024627}
   countdownText: {fileID: 1791241897}
   scoreText: {fileID: 1598346232}
-  danceUI: {fileID: 1405653128}
+  gameUI: {fileID: 1915781116}
   score: 0
   combo: 0
   dancingGameParticlePrefab: {fileID: 8976456962411439273, guid: 87daac52727cbb8429232cf66a9cefb7, type: 3}

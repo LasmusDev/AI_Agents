@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using PlayerPoseEngine.Scripts;
+using Exergames;
 
 namespace SquatGame
 {
@@ -8,17 +10,18 @@ namespace SquatGame
     public class SquatLevel
     {
         public string levelName = "New Level";
-        public SquatPoseMap poseMap;
-        public AudioClip song;
+        public Posemap poseMap;
     }
 
     public class SquatLevelDropdown : MonoBehaviour
     {
         [Tooltip("Drag your SquatManager here")]
-        public SquatManager manager;
+        public PosemapPlayer player;
         
         [Tooltip("Drag your Dropdown here")]
         public TMP_Dropdown dropdown;
+
+        public SquatsGameUI gameUI;
 
         [Tooltip("Add Levels")]
         public List<SquatLevel> availableLevels;
@@ -26,7 +29,7 @@ namespace SquatGame
 
         void Start()
         {
-            if (manager == null || dropdown == null || availableLevels.Count == 0)
+            if (player == null || dropdown == null || availableLevels.Count == 0)
             {
                 Debug.LogWarning("Missing references ");
                 return;
@@ -54,9 +57,9 @@ namespace SquatGame
         void Update()
         {
             // Set dropdown back to active if the start button is active again
-            if (manager != null && manager.startButton != null)
+            if (player != null && player.startMenuButton != null)
             {
-                if (!dropdown.gameObject.activeSelf && manager.startButton.activeSelf)
+                if (!dropdown.gameObject.activeSelf && player.startMenuButton.activeSelf)
                 {
                     dropdown.gameObject.SetActive(true); 
                 }
@@ -65,19 +68,12 @@ namespace SquatGame
 
         public void OnLevelSelected(int index)
         {
-            if (manager != null && manager.isRunning) 
-            {
-                Debug.Log("Game is running. Cannot change level now.");
-                return;
-            }
-            if (index >= 0 && index < availableLevels.Count)
-            {
-                manager.currentPoseMap = availableLevels[index].poseMap;
-                manager.gameMusic = availableLevels[index].song;
-                Debug.Log("New level loaded into SquatManager: " + availableLevels[index].levelName);
-                PlayerPrefs.SetInt(savedLevelName, index);
-                PlayerPrefs.Save();
-            }
+
+            player.poseMap = availableLevels[index].poseMap;
+            Debug.Log("New level loaded into SquatManager: " + availableLevels[index].levelName);
+            PlayerPrefs.SetInt(savedLevelName, index);
+            PlayerPrefs.Save();
+           
         }
     }
 }

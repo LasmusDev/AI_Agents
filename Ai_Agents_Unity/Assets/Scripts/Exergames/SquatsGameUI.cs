@@ -3,6 +3,7 @@ using TMPro;
 using SquatGame;
 using System.Collections;
 using UI;
+using PlayerPoseEngine.Scripts;
 
 namespace Exergames 
 {
@@ -10,7 +11,7 @@ namespace Exergames
     {
         public TMP_Text scoreText;
         public TMP_Text comboText;
-        public SquatManager game; 
+        public PosemapPlayer game; 
         // New fields for the floating combo message
         public TMP_Text comboMessageText; 
         public float displayTime = 0.25f;
