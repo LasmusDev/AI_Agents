@@ -10,120 +10,126 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 012582751ece8e74087752fd42e7a71c, type: 3}
-  m_Name: Voyage_SitUpGame
-  m_EditorClassIdentifier: Assembly-CSharp::SquatGame.SquatPoseMap
+  m_Name: Samurai_SitUpGameOld
+  m_EditorClassIdentifier: 
   steps:
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 0.023219954
+    spawnTime: 0.27863947
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 5.02712
+    spawnTime: 5.28254
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 10.03102
+    spawnTime: 10.28644
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 15.046531
+    spawnTime: 15.29034
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 20.05043
+    spawnTime: 20.329071
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 25.05433
+    spawnTime: 25.33297
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 30.058231
+    spawnTime: 30.33687
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 35.06213
+    spawnTime: 35.34077
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 40.066032
+    spawnTime: 40.34467
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 45.06993
+    spawnTime: 45.34857
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 50.073833
+    spawnTime: 50.35247
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 55.077732
+    spawnTime: 55.356373
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 60.081635
+    spawnTime: 60.36027
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 65.08553
+    spawnTime: 65.364174
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 70.08943
+    spawnTime: 70.36807
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 75.09333
+    spawnTime: 75.37197
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 80.09724
+    spawnTime: 80.37587
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 85.101135
+    spawnTime: 85.379776
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 90.105034
+    spawnTime: 90.383675
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 95.10893
+    spawnTime: 95.38757
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 100.11283
+    spawnTime: 100.39147
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 105.12834
+    spawnTime: 105.39537
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 110.13225
+    spawnTime: 110.39928
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 115.13615
+    spawnTime: 115.403175
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 120.140045
+    spawnTime: 120.407074
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 125.14394
+    spawnTime: 125.41097
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 130.14784
+    spawnTime: 130.41487
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 135.15175
+    spawnTime: 135.41878
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 140.15564
+    spawnTime: 140.42267
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 145.15955
+    spawnTime: 145.42657
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 150.16345
+    spawnTime: 150.43048
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 155.16734
+    spawnTime: 155.43437
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 160.17125
+    spawnTime: 160.43828
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 165.17514
+    spawnTime: 165.44218
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 170.17905
+    spawnTime: 170.44608
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 175.20616
+    spawnTime: 175.44998
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 180.21007
+    spawnTime: 180.45387
   - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
     wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
-    spawnTime: 185.27202
+    spawnTime: 185.45778
+  - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
+    wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
+    spawnTime: 190.46169
+  - poseAsset: {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
+    wallPrefab: {fileID: 2185386068951683042, guid: 048f3ff25eef41c4bbe12a759ea7c829, type: 3}
+    spawnTime: 195.46558
