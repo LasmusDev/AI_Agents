@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ebd3c8804ab4895479e60aa4885de0dd
+timeCreated: 1448359202
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Prefabs/SportLadder01b.prefab
+  uploadId: 912932

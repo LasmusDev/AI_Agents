@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 558274fe9ab152642ad77272af6c2546
+timeCreated: 1446477097
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Models/Materials/ConcreteWall6d.mat
+  uploadId: 912932

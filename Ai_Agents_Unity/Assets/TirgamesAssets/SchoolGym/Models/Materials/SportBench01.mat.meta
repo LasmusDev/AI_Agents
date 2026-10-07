@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 259e3d75db4c6d84e9fffaa02d8f27f8
+timeCreated: 1484627332
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Models/Materials/SportBench01.mat
+  uploadId: 912932

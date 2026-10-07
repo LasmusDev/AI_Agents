@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 312fe918298578f4b815c47245a79fdf
+timeCreated: 1485418933
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Prefabs/Door02_OpenedWood2.prefab
+  uploadId: 912932

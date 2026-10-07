@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e5f4772cc5719fa4bb1653a56e931715
+timeCreated: 1507869422
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Models/Materials/PingPong01Net.mat
+  uploadId: 912932

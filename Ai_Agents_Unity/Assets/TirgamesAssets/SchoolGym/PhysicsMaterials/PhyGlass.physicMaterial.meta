@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3978225c83e484740a2806f497f646ce
+timeCreated: 1441636982
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/PhysicsMaterials/PhyGlass.physicMaterial
+  uploadId: 912932

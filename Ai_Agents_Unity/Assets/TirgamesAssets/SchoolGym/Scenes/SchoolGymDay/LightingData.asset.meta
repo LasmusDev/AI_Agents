@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e40d116b8702c8945811d8a5a5793277
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Scenes/SchoolGymDay/LightingData.asset
+  uploadId: 912932

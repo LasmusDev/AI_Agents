@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f5b56b18870112e4eb0e67113aa67046
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Scenes/SchoolGymNightSettings.lighting
+  uploadId: 912932

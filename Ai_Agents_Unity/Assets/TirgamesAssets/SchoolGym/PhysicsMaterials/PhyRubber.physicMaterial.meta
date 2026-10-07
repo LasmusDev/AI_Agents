@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 94414ecd3c8451a4eb4f67faa85f7b49
+timeCreated: 1485363978
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/PhysicsMaterials/PhyRubber.physicMaterial
+  uploadId: 912932

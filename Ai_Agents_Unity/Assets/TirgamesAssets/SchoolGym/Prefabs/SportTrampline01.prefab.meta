@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a09dde12db5109441bec81a1258898a1
+timeCreated: 1463492185
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Prefabs/SportTrampline01.prefab
+  uploadId: 912932

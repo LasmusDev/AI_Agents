@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5591d1faa8f6b7a4a95579525150f38d
+timeCreated: 1441628392
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/PhysicsMaterials/PhyLeather.physicMaterial
+  uploadId: 912932

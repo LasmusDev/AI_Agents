@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5cdfa7b9300c2f141970a124fe081bf3
+timeCreated: 1463428000
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 81500
+  packageName: School Gym
+  packageVersion: 1.2
+  assetPath: Assets/TirgamesAssets/SchoolGym/Models/Materials/SportGatesLinesRed.mat
+  uploadId: 912932
