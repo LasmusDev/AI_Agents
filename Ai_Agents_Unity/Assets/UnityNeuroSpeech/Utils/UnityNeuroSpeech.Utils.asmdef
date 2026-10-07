@@ -2,10 +2,7 @@
     "name": "UnityNeuroSpeech.Utils",
     "rootNamespace": "",
     "references": [],
-    "includePlatforms": [
-        "Editor",
-        "WindowsStandalone64"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

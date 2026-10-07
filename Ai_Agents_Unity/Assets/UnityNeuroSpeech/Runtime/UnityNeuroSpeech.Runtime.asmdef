@@ -7,10 +7,7 @@
         "UnityNeuroSpeech.Shared",
         "UniTask"
     ],
-    "includePlatforms": [
-        "Editor",
-        "WindowsStandalone64"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

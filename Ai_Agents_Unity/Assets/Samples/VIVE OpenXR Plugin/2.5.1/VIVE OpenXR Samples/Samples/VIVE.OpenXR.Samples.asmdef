@@ -10,12 +10,7 @@
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:fe685ec1767f73d42b749ea8045bfe43"
     ],
-    "includePlatforms": [
-        "Android",
-        "Editor",
-        "WSA",
-        "WindowsStandalone64"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
