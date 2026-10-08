@@ -9,10 +9,10 @@
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.XR.Hands.Samples.VisualizerSample.csproj" />
   <Project Path="UniTask.Addressables.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
   <Project Path="sc.terrain.painter.editor.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="UnityNeuroSpeech.Utils.csproj" />
-  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
   <Project Path="UniTask.TextMeshPro.csproj" />
   <Project Path="ParrelSync.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.csproj" />
@@ -20,8 +20,8 @@
   <Project Path="UnityNeuroSpeech.Runtime.csproj" />
   <Project Path="UnityNeuroSpeech.Shared.csproj" />
   <Project Path="VIVE.TMPCheck.csproj" />
-  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj" />
   <Project Path="UniTask.Editor.csproj" />
   <Project Path="Oculus.LipSync.Editor.csproj" />
   <Project Path="UniTask.DOTween.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj" />
 </Solution>
