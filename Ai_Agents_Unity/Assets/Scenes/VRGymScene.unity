@@ -10361,6 +10361,7 @@ MonoBehaviour:
         m_Action: Toggle Button
         m_Flags: 0
       m_Flags: 0
+      m_Priority: 0
     m_Reference: {fileID: 0}
   playerHead: {fileID: 196292991}
   distanceFromPlayer: 1.5
@@ -17153,6 +17154,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
+      m_Priority: 0
     m_InputActionReference: {fileID: 0}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualValue: {x: 0, y: 0}
@@ -17167,6 +17169,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
+      m_Priority: 0
     m_InputActionReference: {fileID: -8525429354371678379, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualValue: {x: 0, y: 0}
@@ -35702,6 +35705,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fac33a86826664ba6f83ee6316c55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.SquatsPoseResolver
+--- !u!1001 &4516047421714093341
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 858784231523257319, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_Name
+      value: MattLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403468348833683234, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b95a7125ca734424d926fbd5df6c3109, type: 3}
 --- !u!1001 &7358415862347494362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35838,3 +35898,4 @@ SceneRoots:
   - {fileID: 136077515}
   - {fileID: 765799177}
   - {fileID: 167672651}
+  - {fileID: 4516047421714093341}
