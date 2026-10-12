@@ -24,12 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186926743287067871}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1186926743637852147}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1186926743287067869
 MonoBehaviour:
@@ -47,7 +48,7 @@ MonoBehaviour:
   allowUntrackedPose: 0
   pointColor: {r: 0, g: 1, b: 0, a: 1}
   linkColor: {r: 1, g: 1, b: 1, a: 1}
-  material: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
 --- !u!1 &1186926743637852149
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,14 +72,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186926743637852149}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1186926744933601316}
   - {fileID: 1186926743287067868}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1186926744933601319
 GameObject:
@@ -104,12 +106,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186926744933601319}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1186926743637852147}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1186926744933601317
 MonoBehaviour:
@@ -127,4 +130,4 @@ MonoBehaviour:
   allowUntrackedPose: 0
   pointColor: {r: 0, g: 1, b: 0, a: 1}
   linkColor: {r: 1, g: 1, b: 1, a: 1}
-  material: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
