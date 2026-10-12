@@ -663,6 +663,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7531922561415386849, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3596,6 +3600,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7531922561415386849, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4490,6 +4498,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6503814610504904623, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531922561415386849, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6133,6 +6145,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6503814610504904623, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531922561415386849, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14870,7 +14886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 96}
+  m_AnchoredPosition: {x: 0, y: 84}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &779800624
@@ -22614,7 +22630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1298267961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25651,7 +25667,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464424627}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddb88428c894247478d733101d5b1335, type: 3}
   m_Name: 
@@ -28389,7 +28405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29010,6 +29026,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6503814610504904623, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531922561415386849, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -31325,9 +31345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '3
-
-'
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -33829,8 +33847,18 @@ MonoBehaviour:
   dropdown: {fileID: 1515146963}
   gameUI: {fileID: 1915781116}
   availableLevels:
-  - levelName: Default Squats
-    poseMap: {fileID: 11400000, guid: 67099e84904750945a0166919f4039b9, type: 2}
+  - levelName: Level Samurai
+    poseMap: {fileID: 11400000, guid: 7a6fc1db575c54247b4e182ede81523f, type: 2}
+  - levelName: Level Voyage
+    poseMap: {fileID: 11400000, guid: cd77eeb6fde0341458a60b4a5fc006a6, type: 2}
+  - levelName: Level See
+    poseMap: {fileID: 11400000, guid: b36f969f05f227d44b4ce44493d087bf, type: 2}
+  - levelName: Level Ascend
+    poseMap: {fileID: 11400000, guid: 20ed01c258b1d00428bf7032940e9af2, type: 2}
+  - levelName: Level Eyes
+    poseMap: {fileID: 11400000, guid: 85cb8a681bebcdc46b485461c2da0ee0, type: 2}
+  - levelName: Level Recall
+    poseMap: {fileID: 11400000, guid: 4758f8a4b1fb3cc46b1e558ce65d6804, type: 2}
 --- !u!114 &1915781118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35480,7 +35508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2089096715}
-  - component: {fileID: 2089096716}
+  - component: {fileID: 2089096717}
   m_Layer: 0
   m_Name: '[BEAT DETECTOR]'
   m_TagString: Untagged
@@ -35503,7 +35531,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1915781113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2089096716
+--- !u!114 &2089096717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35512,16 +35540,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2089096714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf24bef735bcf50409e1fbfa614a3683, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dd6dcac6538252419b18835dd1bcad1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  audioTrack: {fileID: 8300000, guid: 535fb6a5c1cdc3c468a4221ca346f35c, type: 3}
-  targetPoseMap: {fileID: 11400000, guid: 8f75612ba8ea2fc4fa8f4fa5636062a8, type: 2}
-  defaultWallPrefab: {fileID: 6404457457982196571, guid: 9db6e0ab31e58454185587621cccfdc6, type: 3}
-  randomPosesToPick:
-  - {fileID: 11400000, guid: d612704af03af6542b773780d9318c56, type: 2}
-  sensitivity: 0.5
-  minTimeBetweenBlocks: 2
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.AdvancedBeatDetector
+  targetPoseMap: {fileID: 11400000, guid: cd77eeb6fde0341458a60b4a5fc006a6, type: 2}
+  posePalette:
+  - {fileID: 11400000, guid: 267b63cc52e326d4fa6e8467bcb2cf6e, type: 2}
+  - {fileID: 11400000, guid: 3ac00d28aba0c26419e90669a81c3d21, type: 2}
+  bpm: 180
+  globalOffset: 0.05
+  sensitivity: 1.3
+  sampleWindow: 1024
+  quantization: 4
+  minBeatsBetweenPoses: 5
 --- !u!1 &2122908020
 GameObject:
   m_ObjectHideFlags: 0
@@ -35682,6 +35713,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6503814610504904623, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531922561415386849, guid: b8acb8abf52a8d249a3fad64a2c1f7b6, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
