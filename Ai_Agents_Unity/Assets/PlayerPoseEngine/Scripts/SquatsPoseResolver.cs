@@ -13,7 +13,6 @@ namespace PlayerPoseEngine.Scripts{
         public PlayerPose currentlyRequestedPose;
         public bool squatPoseFailed;
         public List<PlayerPose> availablePoses;
-        public Vector3 startingPoint;
         public float defaultHitBoxHeight = 0.2f;
         public float hitBoxDepth = 0.5f;
         private float hitBoxHeight = 0.2f;
@@ -66,8 +65,8 @@ namespace PlayerPoseEngine.Scripts{
             {
                 closestDistance = currDistance;
             }
-            if (Mathf.Abs(targetPos.x - headVisObject.transform.position.x) < hitBoxDepth && 
-                Mathf.Abs(targetPos.y - headVisObject.transform.position.y) < hitBoxHeight)
+            if (Mathf.Abs(targetPos.x - headVisObject.transform.position.x) < (hitBoxDepth / 2) && 
+                Mathf.Abs(targetPos.y - headVisObject.transform.position.y) < (hitBoxHeight / 2))
             {
                 if (!squatPoseFailed && onPoseFailed != null)
                 {
@@ -95,14 +94,12 @@ namespace PlayerPoseEngine.Scripts{
 
             if (headVisObject.transform.localPosition.y > 1.5f) //TODO Fix magic number to determine low or high head
             {
-                hitBoxHeight = defaultHitBoxHeight;
+                hitBoxHeight = defaultHitBoxHeight * 2;
             } else
             {
                 hitBoxHeight = defaultHitBoxHeight * 4;
             }
             headVisObject.transform.localScale = new Vector3(2, hitBoxHeight, hitBoxDepth);
-
-
         }
 
         public void RequestPose(string poseName)
