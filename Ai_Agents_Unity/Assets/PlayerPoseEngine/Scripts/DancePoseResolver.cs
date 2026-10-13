@@ -19,6 +19,7 @@ namespace PlayerPoseEngine.Scripts{
 
 
         public bool visualizePose;
+        public bool dancePoseFailed;
     
         Dictionary<string, PlayerPose> availablePosesDict;
         Matrix4x4 playerMatrixAtRequest;
@@ -45,7 +46,7 @@ namespace PlayerPoseEngine.Scripts{
             if (poseFulfilled)
             {
                 if (!dancePoseFulfilled && onPoseFulfilled != null)
-                {
+                {           
                     onPoseFulfilled.Invoke(this, currentlyRequestedPose);
                 }
                 dancePoseFulfilled = true;
@@ -57,9 +58,11 @@ namespace PlayerPoseEngine.Scripts{
                 if (!dancePoseFulfilled && onPoseFailed != null)
                 {
                     onPoseFailed.Invoke(this, currentlyRequestedPose);
+                    dancePoseFailed = true;
                 }
                 poseHeldTime = 0;
                 dancePoseFulfilled = false;
+                
             }
         }
     

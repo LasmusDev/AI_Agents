@@ -38,7 +38,6 @@ namespace PlayerPoseEngine.Scripts
         public GameObject startMenuButton;    
         public GameObject stopMenuButton;
         public TextMeshProUGUI countdownText; 
-        public TextMeshProUGUI scoreText;
         public ExergameUI gameUI;
 
         [Header("Stats")]
@@ -128,9 +127,6 @@ namespace PlayerPoseEngine.Scripts
             float songPos = (float)(AudioSettings.dspTime - dspSongStartTime - spawnOffset);
             currentBeat = songPos / secPerBeat;
             
-            if (scoreText) scoreText.text = $"Score: {score}\nCombo: {combo}x";
-
-           
             float lookAhead = currentBeat + visibleBeats;
             while (nextIndexToSpawn < poseMap.poses.Length && poseMap.poses[nextIndexToSpawn].beat < lookAhead)
             {
@@ -171,6 +167,8 @@ namespace PlayerPoseEngine.Scripts
         {
             StartCoroutine(gameUI.ShowComboMessage_CR("MISS!", Color.gray));
             combo = 0;
+            res.onPoseFailed -= FailPose;
+            res.onPoseFulfilled -= ScorePose;
             pool.Release(res);
         }
 
