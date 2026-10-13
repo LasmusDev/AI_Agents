@@ -5,8 +5,9 @@ using UI;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 
-namespace Exergames {
-    
+namespace Exergames
+{
+
     public class DanceGameUI : ExergameUI
     {
         public TMP_Text scoreText;
@@ -14,7 +15,7 @@ namespace Exergames {
         public PosemapPlayer player;
 
         // New fields for the floating combo message
-        public TMP_Text comboMessageText; 
+        public TMP_Text comboMessageText;
         public float displayTime = 0.25f;
         public float floatSpeed = 2f;
         public float popScale = 1.5f;
@@ -37,7 +38,7 @@ namespace Exergames {
                 if (comboText != null) comboText.text = player.combo.ToString();
             }
         }
-        
+
 
         // Method to show the combo message with a specific text and color
         public override IEnumerator ShowComboMessage_CR(string message, Color textColor)

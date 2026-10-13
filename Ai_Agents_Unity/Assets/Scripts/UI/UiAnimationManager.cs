@@ -20,13 +20,13 @@ namespace UI {
                 _instance = value;
             }
         }
-        
 
-        public IEnumerator PlayComboAnimation_CR(GameObject go, float moveSpeed = 5, float animationDuration = 0.5f, float scaleSize = 1.5f, bool wobble = true)
+
+        public IEnumerator PlayComboAnimation_CR(GameObject basis, float moveSpeed = 5, float animationDuration = 0.5f, float scaleSize = 1.5f, bool wobble = true)
         {
+
+            GameObject go = Instantiate(basis, basis.transform.parent);
             go.SetActive(true);
-            Vector3 startPos = go.transform.position;
-            Vector3 startScale = go.transform.localScale;
             Vector3 movementVector = go.transform.position + Vector3.up * moveSpeed * animationDuration; 
             movementVector = wobble ? movementVector + new Vector3(Random.Range(-0.2f, 0.2f), 0, 0) : movementVector;   
             Sequence moveSeq = DOTween.Sequence()
@@ -41,14 +41,21 @@ namespace UI {
                 .Append(go.GetComponent<TMP_Text>().DOFade(0, animationDuration));
             fadeSeq.Play();
             yield return fadeSeq.WaitForCompletion();
-            go.SetActive(false);
-            go.transform.position = startPos;
-            go.transform.localScale = startScale;
-            go.GetComponent<TMP_Text>().color = new Color(go.GetComponent<TMP_Text>().color.r, go.GetComponent<TMP_Text>().color.g, go.GetComponent<TMP_Text>().color.b, 1);
+            Destroy(go);
+
         }
 
-        public IEnumerator PlayComboAnimation_CR(GameObject go, Vector3 posChange, float animationDuration, float scaleSize)
+        /// <summary>
+        /// Variant using speed and anim duration instead of move distance. Currently not in use and therefore not being updated
+        /// </summary>
+        /// <param name="go"></param>
+        /// <param name="posChange"></param>
+        /// <param name="animationDuration"></param>
+        /// <param name="scaleSize"></param>
+        /// <returns></returns>
+        public IEnumerator PlayComboAnimation_CR(GameObject basis, Vector3 posChange, float animationDuration, float scaleSize)
         {
+            GameObject go = Instantiate(basis, basis.transform.parent);
             go.SetActive(true);
             Vector3 startPos = go.transform.position;
             Vector3 startScale = go.transform.localScale;
@@ -64,10 +71,7 @@ namespace UI {
                 .Append(go.GetComponent<TMP_Text>().DOFade(0, animationDuration/2));
             fadeSeq.Play();
             yield return fadeSeq.WaitForCompletion();
-            go.SetActive(false);
-            go.transform.position = startPos;
-            go.transform.localScale = startScale;
-            go.GetComponent<TMP_Text>().color = new Color(go.GetComponent<TMP_Text>().color.r, go.GetComponent<TMP_Text>().color.g, go.GetComponent<TMP_Text>().color.b, 1);
+            Destroy(go);
         }
     }
     
