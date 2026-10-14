@@ -1,5 +1,6 @@
 ﻿using AIAgent;
 using PlayerPoseEngine.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq; 
@@ -58,6 +59,10 @@ namespace PlayerPoseEngine.Scripts
         private bool songStarted = false; 
         private List<PoseResolver> activePoseResolvers = new List<PoseResolver>();
 
+        public Action OnGameStarted;
+
+        public Action OnGameEnded;
+
         private void Awake() { audioSource = GetComponent<AudioSource>(); }
 
         public void Start() 
@@ -92,6 +97,7 @@ namespace PlayerPoseEngine.Scripts
                 stopMenuButton.gameObject.SetActive(true);
 
             }
+            OnGameStarted?.Invoke();
             StartPosemapPlayback(poseMap);
         }
 
@@ -251,6 +257,7 @@ namespace PlayerPoseEngine.Scripts
                 foreach(var r in activePoseResolvers) if(r) pool.Release(r);
                 activePoseResolvers.Clear();
                 stopMenuButton.gameObject.SetActive(false);
+                OnGameEnded?.Invoke();
             }
     }
     }
