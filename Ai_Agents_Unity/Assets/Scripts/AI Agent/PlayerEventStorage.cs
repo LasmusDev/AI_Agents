@@ -15,7 +15,7 @@ namespace AIAgent{
             {
                 if (_instance == null)
                 {
-                    Instance = GameObject.FindFirstObjectByType<PlayerEventStorage>();
+                    Instance = GameObject.FindFirstObjectByType<PlayerEventStorage>(FindObjectsInactive.Include);
                 }
                 return _instance;
             }
