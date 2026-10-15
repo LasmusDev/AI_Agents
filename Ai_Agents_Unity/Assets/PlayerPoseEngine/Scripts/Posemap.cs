@@ -10,7 +10,10 @@ namespace PlayerPoseEngine.Scripts {
         public AudioClip song;
         
         [Tooltip("The song speed. IMPORTANT: Must be correct (e.g. 180 for Samurai).")]
-        public float bpm; 
+        public float bpm;
+
+        //The posemap to attach when the add posemap function is called. This is used to build posemaps from building blocks
+        public Posemap toAttach_EditorOnly;
         
         public BeatToPose[] poses;
 
@@ -24,6 +27,20 @@ namespace PlayerPoseEngine.Scripts {
             {
                 copy[poses.Length+ i].pose = poses[i].pose;
                 copy[poses.Length + i].beat = poses[i].beat + lastPoseBeat;
+            }
+            poses = copy;
+        }
+
+        [ContextMenu("Add attached posemap")]
+        public void AddPosemap()
+        {
+            BeatToPose[] copy = new BeatToPose[poses.Length + toAttach_EditorOnly.poses.Length];
+            Array.Copy(poses, copy, poses.Length);
+            float lastPoseBeat = poses[poses.Length - 1].beat;
+            for (int i = 0; i < toAttach_EditorOnly.poses.Length; i++)
+            {
+                copy[poses.Length + i].pose = toAttach_EditorOnly.poses[i].pose;
+                copy[poses.Length + i].beat = toAttach_EditorOnly.poses[i].beat + lastPoseBeat;
             }
             poses = copy;
         }

@@ -51,7 +51,7 @@ namespace PlayerPoseEngine.Scripts
         void CheckVRInput()
         {
             
-            UnityEngine.XR.InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+            UnityEngine.XR.InputDevice device = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
 
             if (device.isValid)
             {

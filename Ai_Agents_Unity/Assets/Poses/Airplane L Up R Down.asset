@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
+  m_Name: Airplane L Up R Down
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.PlayerPose
+  limbRequirements:
+  - limb: 0
+    tolerance: 1
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: -0.29784876, y: 1.7077149, z: -0.42729577}
+  - limb: 1
+    tolerance: 1
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: -0.9498278, y: 1.0105307, z: -0.50103927}
+  - limb: 2
+    tolerance: 1
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: 0.32565722, y: 2.0975337, z: -0.3645507}
+  intendedHeight: 1.7
+  recordedLookAngleY: 0

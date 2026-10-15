@@ -4896,6 +4896,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5895826684305351068, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6232745470614056090, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Height
       value: 2
@@ -4930,6 +4934,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8877177980677234388, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_EnableFarCasting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173983156334026967, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6859,31 +6867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47298bb9934d545b11d4b5f6276101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.SitupPoseResolver
-  headObject: {fileID: 2073955697}
-  lHandObject: {fileID: 0}
-  rHandObject: {fileID: 0}
-  lFootObject: {fileID: 0}
-  rFootObject: {fileID: 0}
-  poseRoot: {fileID: 328728907}
-  lHandVisSphere: {fileID: 0}
-  rHandVisSphere: {fileID: 0}
-  lFootVisSphere: {fileID: 0}
-  rFootVisSphere: {fileID: 0}
-  headVisObject: {fileID: 295612240}
-  playerSize: 0
-  timeToPlayer: 0
-  timeAlive: 0
-  currentlyRequestedPose: {fileID: 0}
-  situpPoseFailed: 0
-  availablePoses:
-  - {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
-  - {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
-  wallWidth: 2.5
-  wallHeight: 0.4
-  wallDepth: 1.5
-  lowBlockFloorHeight: 0.25
-  isHighBlock: 0
-  hasBeenHit: 0
 --- !u!1 &329356627
 GameObject:
   m_ObjectHideFlags: 0
@@ -16595,31 +16578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47298bb9934d545b11d4b5f6276101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.SitupPoseResolver
-  headObject: {fileID: 2073955697}
-  lHandObject: {fileID: 0}
-  rHandObject: {fileID: 0}
-  lFootObject: {fileID: 0}
-  rFootObject: {fileID: 0}
-  poseRoot: {fileID: 833738392}
-  lHandVisSphere: {fileID: 0}
-  rHandVisSphere: {fileID: 0}
-  lFootVisSphere: {fileID: 0}
-  rFootVisSphere: {fileID: 0}
-  headVisObject: {fileID: 687964638}
-  playerSize: 0
-  timeToPlayer: 0
-  timeAlive: 0
-  currentlyRequestedPose: {fileID: 0}
-  situpPoseFailed: 0
-  availablePoses:
-  - {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
-  - {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
-  wallWidth: 2.5
-  wallHeight: 0.4
-  wallDepth: 1.5
-  lowBlockFloorHeight: 0.25
-  isHighBlock: 0
-  hasBeenHit: 0
 --- !u!1 &847576947
 GameObject:
   m_ObjectHideFlags: 0
@@ -24396,31 +24354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47298bb9934d545b11d4b5f6276101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.SitupPoseResolver
-  headObject: {fileID: 2073955697}
-  lHandObject: {fileID: 0}
-  rHandObject: {fileID: 0}
-  lFootObject: {fileID: 0}
-  rFootObject: {fileID: 0}
-  poseRoot: {fileID: 1322984749}
-  lHandVisSphere: {fileID: 0}
-  rHandVisSphere: {fileID: 0}
-  lFootVisSphere: {fileID: 0}
-  rFootVisSphere: {fileID: 0}
-  headVisObject: {fileID: 50067644}
-  playerSize: 0
-  timeToPlayer: 0
-  timeAlive: 0
-  currentlyRequestedPose: {fileID: 0}
-  situpPoseFailed: 0
-  availablePoses:
-  - {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
-  - {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
-  wallWidth: 2.5
-  wallHeight: 0.4
-  wallDepth: 1.5
-  lowBlockFloorHeight: 0.25
-  isHighBlock: 0
-  hasBeenHit: 0
 --- !u!1 &1323351530
 GameObject:
   m_ObjectHideFlags: 0
@@ -26028,31 +25961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47298bb9934d545b11d4b5f6276101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.SitupPoseResolver
-  headObject: {fileID: 2073955697}
-  lHandObject: {fileID: 0}
-  rHandObject: {fileID: 0}
-  lFootObject: {fileID: 0}
-  rFootObject: {fileID: 0}
-  poseRoot: {fileID: 1421149143}
-  lHandVisSphere: {fileID: 0}
-  rHandVisSphere: {fileID: 0}
-  lFootVisSphere: {fileID: 0}
-  rFootVisSphere: {fileID: 0}
-  headVisObject: {fileID: 2040496204}
-  playerSize: 0
-  timeToPlayer: 0
-  timeAlive: 0
-  currentlyRequestedPose: {fileID: 0}
-  situpPoseFailed: 0
-  availablePoses:
-  - {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
-  - {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
-  wallWidth: 2.5
-  wallHeight: 0.4
-  wallDepth: 1.5
-  lowBlockFloorHeight: 0.25
-  isHighBlock: 0
-  hasBeenHit: 0
 --- !u!1 &1425144535
 GameObject:
   m_ObjectHideFlags: 0
@@ -27824,31 +27732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47298bb9934d545b11d4b5f6276101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.SitupPoseResolver
-  headObject: {fileID: 2073955697}
-  lHandObject: {fileID: 0}
-  rHandObject: {fileID: 0}
-  lFootObject: {fileID: 0}
-  rFootObject: {fileID: 0}
-  poseRoot: {fileID: 1503564579}
-  lHandVisSphere: {fileID: 0}
-  rHandVisSphere: {fileID: 0}
-  lFootVisSphere: {fileID: 0}
-  rFootVisSphere: {fileID: 0}
-  headVisObject: {fileID: 1325082012}
-  playerSize: 0
-  timeToPlayer: 0
-  timeAlive: 0
-  currentlyRequestedPose: {fileID: 0}
-  situpPoseFailed: 0
-  availablePoses:
-  - {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
-  - {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
-  wallWidth: 2.5
-  wallHeight: 0.4
-  wallDepth: 1.5
-  lowBlockFloorHeight: 0.25
-  isHighBlock: 0
-  hasBeenHit: 0
 --- !u!1001 &1504066737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33828,31 +33711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47298bb9934d545b11d4b5f6276101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.SitupPoseResolver
-  headObject: {fileID: 2073955697}
-  lHandObject: {fileID: 0}
-  rHandObject: {fileID: 0}
-  lFootObject: {fileID: 0}
-  rFootObject: {fileID: 0}
-  poseRoot: {fileID: 1860145102}
-  lHandVisSphere: {fileID: 0}
-  rHandVisSphere: {fileID: 0}
-  lFootVisSphere: {fileID: 0}
-  rFootVisSphere: {fileID: 0}
-  headVisObject: {fileID: 1033782127}
-  playerSize: 0
-  timeToPlayer: 0
-  timeAlive: 0
-  currentlyRequestedPose: {fileID: 0}
-  situpPoseFailed: 0
-  availablePoses:
-  - {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
-  - {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
-  wallWidth: 2.5
-  wallHeight: 0.4
-  wallDepth: 1.5
-  lowBlockFloorHeight: 0.25
-  isHighBlock: 0
-  hasBeenHit: 0
 --- !u!1 &1863264716
 GameObject:
   m_ObjectHideFlags: 0
