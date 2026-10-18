@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Demo_Squats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.Posemap
   song: {fileID: 8300000, guid: abe8885c6923c7749aac101211b9da02, type: 3}
-  bpm: 60
+  bpm: 120
   toAttach_EditorOnly: {fileID: 0}
   poses:
   - beat: 2

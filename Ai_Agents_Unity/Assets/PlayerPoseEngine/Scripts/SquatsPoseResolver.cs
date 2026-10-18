@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -70,10 +72,20 @@ namespace PlayerPoseEngine.Scripts{
             {
                 if (!squatPoseFailed && onPoseFailed != null)
                 {
-                    onPoseFailed.Invoke(this, currentlyRequestedPose);
+                    squatPoseFailed = true;
+                    StartCoroutine(AnimateFailure());
                 }
-                squatPoseFailed = true;
+                
             }
+        }
+
+        public IEnumerator AnimateFailure()
+        {           
+            Sequence moveSeq = DOTween.Sequence()
+                .Append(this.transform.DOShakePosition(0.25f, 0.5f, 10, 90f));
+            moveSeq.Play();
+            yield return moveSeq.WaitForCompletion();
+            onPoseFailed.Invoke(this, currentlyRequestedPose);
         }
     
         public override void RequestPose(PlayerPose pose)
