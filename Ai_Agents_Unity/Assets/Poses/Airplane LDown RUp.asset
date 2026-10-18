@@ -25,5 +25,5 @@ MonoBehaviour:
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
     relativePos: {x: 0.3231676, y: 0.93628854, z: -0.49611166}
-  intendedHeight: 1.53
+  intendedHeight: 1.7
   recordedLookAngleY: 0

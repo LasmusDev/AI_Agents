@@ -30,11 +30,18 @@ namespace PlayerPoseEngine.Scripts {
 
         public float timeAlive = 0f;
 
+        public float forcedTreshold;
+
 
         public virtual void RequestPose(PlayerPose pose)
         {
 
         }
+
+        public void EnforceTreshold(float treshold){
+            forcedTreshold = treshold;
+        }
+
 
 
     }

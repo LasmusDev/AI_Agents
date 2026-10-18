@@ -153,9 +153,14 @@ namespace PlayerPoseEngine.Scripts
         void SpawnPose(BeatToPose beatData)
         {
             PoseResolver r = pool.Get();
+            if (poseMap.forceTreshold)
+            {
+                r.EnforceTreshold(poseMap.forcedTreshold);
+            }
             r.transform.position = from; 
             r.transform.LookAt(to);
             r.timeToPlayer = visibleBeats * secPerBeat;
+
             
             r.headObject = playerHead;
             r.lHandObject = playerLeftHand;

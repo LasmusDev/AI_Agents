@@ -17,6 +17,8 @@ namespace PlayerPoseEngine.Scripts{
 
         public PositioningMode positioningMode;
 
+        public float forcedTreshold;
+
 
         public bool visualizePose;
         public bool dancePoseFailed;
@@ -126,7 +128,14 @@ namespace PlayerPoseEngine.Scripts{
                     Vector3 adjustedPos = CalculateAdjustedPositioning(poseRoot.transform, pose, limbReq);
                     visualizationSphere.SetActive(true);
                     visualizationSphere.transform.position = adjustedPos;
-                    visualizationSphere.transform.localScale = Vector3.one * limbReq.tolerance;
+                    if (forcedTreshold != 0)
+                    {
+                        visualizationSphere.transform.localScale = Vector3.one * forcedTreshold;
+                    }
+                    else
+                    {
+                        visualizationSphere.transform.localScale = Vector3.one * limbReq.tolerance;
+                    }
                     
                     bool individualCheck = (Vector3.Distance(comparisonObject.transform.position, adjustedPos) < limbReq.tolerance);
                     isFulfilled &= individualCheck;              

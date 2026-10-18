@@ -11,6 +11,7 @@ namespace PlayerPoseEngine.Scripts
         public List<LimbRequirement> limbRequirements;
         public float intendedHeight;
         public float recordedLookAngleY;
+
         public void Init()
         {
             limbRequirements = new List<LimbRequirement>();

@@ -16,6 +16,9 @@ namespace PlayerPoseEngine.Scripts {
         public Posemap toAttach_EditorOnly;
         
         public BeatToPose[] poses;
+        
+        public float forcedTreshold;
+        public bool forceTreshold;
 
         [ContextMenu("Add Loop")]
         public void LoopArray()
