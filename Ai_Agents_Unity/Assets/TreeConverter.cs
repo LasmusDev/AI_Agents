@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TreeConverter : MonoBehaviour
 {
+#if UNITY_EDITOR
     [ContextMenu("Convert")]
     public void ConvertTrees()
     {
@@ -24,5 +25,6 @@ public class TreeConverter : MonoBehaviour
             PrefabUtility.SaveAsPrefabAsset(newTreeRoot, "Assets/Realistic Tree/Prefabs/URP/URP Trees for Terrain/" + newTreeRoot.name + ".prefab");
         }
     }
+#endif
 }
 
