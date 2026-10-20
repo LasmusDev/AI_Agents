@@ -16,13 +16,12 @@ namespace PlayerPoseEngine.Scripts{
         public List<PlayerPose> availablePoses;
 
         public PositioningMode positioningMode;
-
-        public float forcedTreshold;
-
-
         public bool visualizePose;
         public bool dancePoseFailed;
-    
+
+        public float playerHeightFactor = 1;
+
+
         Dictionary<string, PlayerPose> availablePosesDict;
         Matrix4x4 playerMatrixAtRequest;
         
@@ -33,6 +32,7 @@ namespace PlayerPoseEngine.Scripts{
                 availablePosesDict = availablePoses.ToDictionary(x => x.name, x => x);
             }
         }
+
     
         void Update()
         {
@@ -67,10 +67,15 @@ namespace PlayerPoseEngine.Scripts{
                 
             }
         }
+
+        public override void CalcHeightFactor(float heightEstimate)
+        {
+            playerHeightFactor = heightEstimate / this.currentlyRequestedPose.intendedHeight;
+        }
     
         public override void RequestPose(PlayerPose pose)
         {
-            
+            playerHeightFactor = 1;
             dancePoseFulfilled = false;
             poseHeldTime = 0;
             timeAlive = 0;
@@ -110,6 +115,7 @@ namespace PlayerPoseEngine.Scripts{
         {
             if (pose == null) return false;
             bool isFulfilled = true;
+            this.gameObject.transform.localScale = new Vector3(playerHeightFactor, playerHeightFactor, playerHeightFactor);
             
        
             if(lHandVisSphere) lHandVisSphere.SetActive(false);
@@ -130,11 +136,11 @@ namespace PlayerPoseEngine.Scripts{
                     visualizationSphere.transform.position = adjustedPos;
                     if (forcedTreshold != 0)
                     {
-                        visualizationSphere.transform.localScale = Vector3.one * forcedTreshold;
+                        visualizationSphere.transform.localScale = Vector3.one * forcedTreshold / playerHeightFactor;
                     }
                     else
                     {
-                        visualizationSphere.transform.localScale = Vector3.one * limbReq.tolerance;
+                        visualizationSphere.transform.localScale = Vector3.one * limbReq.tolerance / playerHeightFactor;
                     }
                     
                     bool individualCheck = (Vector3.Distance(comparisonObject.transform.position, adjustedPos) < limbReq.tolerance);

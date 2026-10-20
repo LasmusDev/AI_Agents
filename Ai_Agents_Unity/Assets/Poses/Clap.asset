@@ -16,14 +16,14 @@ MonoBehaviour:
   - limb: 0
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.32009688, y: 1.707969, z: 0.154165}
+    relativePos: {x: 0, y: 1.707969, z: 0}
   - limb: 1
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.40002328, y: 1.6146548, z: 0.73645526}
+    relativePos: {x: 0.0799264, y: 1.6146548, z: 0.5822903}
   - limb: 2
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.21697459, y: 1.6227959, z: 0.74418944}
+    relativePos: {x: -0.103122294, y: 1.6227959, z: 0.5900245}
   intendedHeight: 1.707969
   recordedLookAngleY: 0

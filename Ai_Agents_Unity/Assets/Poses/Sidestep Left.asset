@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
-  m_Name: H_Hands Raised
-  m_EditorClassIdentifier: 
+  m_Name: Sidestep Left
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.PlayerPose
   limbRequirements:
-  - limb: 2
+  - limb: 0
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.3, y: 1.8, z: 0}
+    relativePos: {x: -0.93227583, y: 1.6577466, z: 0}
   - limb: 1
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.3, y: 1.8, z: 0}
-  intendedHeight: 0
+    relativePos: {x: -0.73546726, y: 0.81862724, z: 0.14965996}
+  - limb: 2
+    tolerance: 0.3
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: -1.1822736, y: 1.5484703, z: 0.5749625}
+  intendedHeight: 1.6577466
   recordedLookAngleY: 0

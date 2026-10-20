@@ -130,5 +130,10 @@ namespace PlayerPoseEngine.Scripts
             headVisObject.transform.localPosition = new Vector3(relPos.x, calculatedY, relPos.z);
             headVisObject.transform.localScale = new Vector3(wallWidth, wallHeight, wallDepth);
         }
+
+        public override void CalcHeightFactor(float heightEstimate)
+        {
+            Debug.Log("Currently (and likely permanently) ignores height");
+        }
     }
 }

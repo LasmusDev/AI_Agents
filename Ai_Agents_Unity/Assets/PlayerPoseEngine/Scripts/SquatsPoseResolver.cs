@@ -124,6 +124,11 @@ namespace PlayerPoseEngine.Scripts{
                 RequestPose(currentlyRequestedPose);
             }
         }
+
+        public override void CalcHeightFactor(float heightEstimate)
+        {
+            Debug.Log("Currently ignores height");
+        }
     }
 } 
 

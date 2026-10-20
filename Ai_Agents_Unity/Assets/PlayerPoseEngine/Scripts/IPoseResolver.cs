@@ -32,7 +32,6 @@ namespace PlayerPoseEngine.Scripts {
 
         public float forcedTreshold;
 
-
         public virtual void RequestPose(PlayerPose pose)
         {
 
@@ -41,6 +40,8 @@ namespace PlayerPoseEngine.Scripts {
         public void EnforceTreshold(float treshold){
             forcedTreshold = treshold;
         }
+
+        public abstract void CalcHeightFactor(float heightEstimate);
 
 
 

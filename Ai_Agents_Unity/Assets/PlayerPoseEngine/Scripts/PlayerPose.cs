@@ -25,6 +25,58 @@ namespace PlayerPoseEngine.Scripts
             }
             recordedLookAngleY = 0;
         }
+
+        [ContextMenu("Zero X Movement")]
+        public void ZeroHeadX()
+        {
+            if (recordedLookAngleY != 0)
+            {
+                Debug.Log("DONT ZERO OUT POSITION WITHOUT CORRECTING LOOKING ANGLE FIRST!");
+                return;
+            }
+            float movementDiff = 0;
+            foreach (LimbRequirement lr in limbRequirements)
+            {
+                if(lr.limb == Limb.HEAD)
+                {
+                    movementDiff = lr.relativePos.x;
+                }
+            }
+            foreach (LimbRequirement lr in limbRequirements)
+            {
+                lr.relativePos = new Vector3(lr.relativePos.x - movementDiff, lr.relativePos.y, lr.relativePos.z);
+            }
+        }
+
+        [ContextMenu("Zero Z Movement")]
+        public void ZeroHeadZ()
+        {
+            if(recordedLookAngleY != 0)
+            {
+                Debug.Log("DONT ZERO OUT POSITION WITHOUT CORRECTING LOOKING ANGLE FIRST!");
+                return;
+            }
+            float movementDiff = 0;
+            foreach (LimbRequirement lr in limbRequirements)
+            {
+                if (lr.limb == Limb.HEAD)
+                {
+                    movementDiff = lr.relativePos.z;
+                }
+            }
+            foreach (LimbRequirement lr in limbRequirements)
+            {
+               lr.relativePos = new Vector3(lr.relativePos.x, lr.relativePos.y, lr.relativePos.z - movementDiff);
+            }
+        }
+
+        [ContextMenu("Full Correction Pass")]
+        public void FullCorrection()
+        {
+            CorrectRotation();
+            ZeroHeadX();
+            ZeroHeadZ();
+        }
     }
 
    

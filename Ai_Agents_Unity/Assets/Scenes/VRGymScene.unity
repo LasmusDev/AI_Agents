@@ -2999,6 +2999,8 @@ MonoBehaviour:
   dancingGameParticlePrefab: {fileID: 8976456962411439273, guid: 87daac52727cbb8429232cf66a9cefb7, type: 3}
   poseMap: {fileID: 11400000, guid: 30f659cd54145614dbde9f194ddc3608, type: 2}
   pool: {fileID: 1691400030}
+  playerHeightEstimate: 0
+  correctForHeight: 0
 --- !u!1 &140599861
 GameObject:
   m_ObjectHideFlags: 0
@@ -25867,6 +25869,8 @@ MonoBehaviour:
   dancingGameParticlePrefab: {fileID: 8976456962411439273, guid: 87daac52727cbb8429232cf66a9cefb7, type: 3}
   poseMap: {fileID: 11400000, guid: aff2068a466f63646a26c2b48e9f3998, type: 2}
   pool: {fileID: 182110180}
+  playerHeightEstimate: 0
+  correctForHeight: 1
 --- !u!114 &1405653128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35435,6 +35439,8 @@ MonoBehaviour:
   dancingGameParticlePrefab: {fileID: 8976456962411439273, guid: 87daac52727cbb8429232cf66a9cefb7, type: 3}
   poseMap: {fileID: 11400000, guid: 67099e84904750945a0166919f4039b9, type: 2}
   pool: {fileID: 1392863208}
+  playerHeightEstimate: 0
+  correctForHeight: 0
 --- !u!1001 &1917833816
 PrefabInstance:
   m_ObjectHideFlags: 0

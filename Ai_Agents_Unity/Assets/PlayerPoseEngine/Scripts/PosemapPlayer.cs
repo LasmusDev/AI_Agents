@@ -14,6 +14,7 @@ namespace PlayerPoseEngine.Scripts
     [RequireComponent(typeof(AudioSource))]
     public class PosemapPlayer : MonoBehaviour
     {
+        #region fields
         [Header("Settings")]
         public float BPM = 120f; 
         public Vector3 from;
@@ -59,9 +60,19 @@ namespace PlayerPoseEngine.Scripts
         private bool songStarted = false; 
         private List<PoseResolver> activePoseResolvers = new List<PoseResolver>();
 
+        
         public Action OnGameStarted;
 
         public Action OnGameEnded;
+
+        [Header("Player Height Correction")]
+        public float playerHeightEstimate;
+
+        public bool correctForHeight;
+        #endregion
+
+
+
 
         private void Awake() { audioSource = GetComponent<AudioSource>(); }
 
@@ -103,6 +114,7 @@ namespace PlayerPoseEngine.Scripts
 
         public void StartPosemapPlayback(Posemap map)
         {
+            playerHeightEstimate = Camera.main.transform.position.y;
             poseMap = map;
             if (poseMap.bpm > 0) this.BPM = poseMap.bpm;
             secPerBeat = 60f / BPM;
@@ -157,6 +169,7 @@ namespace PlayerPoseEngine.Scripts
             {
                 r.EnforceTreshold(poseMap.forcedTreshold);
             }
+            if(correctForHeight)
             r.transform.position = from; 
             r.transform.LookAt(to);
             r.timeToPlayer = visibleBeats * secPerBeat;
@@ -169,6 +182,7 @@ namespace PlayerPoseEngine.Scripts
 
             
             r.RequestPose(beatData.pose);
+            r.CalcHeightFactor(playerHeightEstimate);
             r.onPoseFulfilled += ScorePose;
             r.onPoseFailed += FailPose;
             activePoseResolvers.Add(r);

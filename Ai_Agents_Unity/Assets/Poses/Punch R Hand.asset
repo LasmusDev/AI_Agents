@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb4ad2c0bc10794182e80966ca14026, type: 3}
-  m_Name: E_Hands Raised
-  m_EditorClassIdentifier: 
+  m_Name: Punch R Hand
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.PlayerPose
   limbRequirements:
-  - limb: 2
-    tolerance: 1
+  - limb: 0
+    tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.3, y: 1.8, z: 0}
+    relativePos: {x: 0, y: 1.6474876, z: 0}
   - limb: 1
-    tolerance: 1
+    tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.3, y: 1.8, z: 0}
-  intendedHeight: 0
+    relativePos: {x: -0.035055064, y: 1.4882884, z: 0.64703226}
+  - limb: 2
+    tolerance: 0.3
+    relativeRot: {x: 0, y: 0, z: 0, w: 0}
+    relativePos: {x: -0.30670774, y: 1.0964773, z: -0.12545513}
+  intendedHeight: 1.6474876
   recordedLookAngleY: 0
