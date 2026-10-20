@@ -18,6 +18,7 @@ namespace PlayerPoseEngine.Scripts{
         public float defaultHitBoxHeight = 0.2f;
         public float hitBoxDepth = 0.5f;
         private float hitBoxHeight = 0.2f;
+        public Material failureMaterial;
 
         public Vector2 closestDistance = new Vector2(100f, 100f);
 
@@ -80,12 +81,16 @@ namespace PlayerPoseEngine.Scripts{
         }
 
         public IEnumerator AnimateFailure()
-        {           
+        {
+            Renderer rend = this.GetComponentInChildren<Renderer>();
+            Material defaultMat = rend.material;
+            rend.material = failureMaterial;
             Sequence moveSeq = DOTween.Sequence()
                 .Append(this.transform.DOShakePosition(0.25f, 0.5f, 10, 90f));
             moveSeq.Play();
             yield return moveSeq.WaitForCompletion();
             onPoseFailed.Invoke(this, currentlyRequestedPose);
+            rend.material = defaultMat;
         }
     
         public override void RequestPose(PlayerPose pose)

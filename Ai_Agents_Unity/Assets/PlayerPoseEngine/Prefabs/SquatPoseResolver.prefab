@@ -59,14 +59,15 @@ MonoBehaviour:
   playerSize: 0
   timeToPlayer: 0
   timeAlive: 0
+  forcedTreshold: 0
   currentlyRequestedPose: {fileID: 0}
   squatPoseFailed: 0
   availablePoses:
   - {fileID: 11400000, guid: 3ac00d28aba0c26419e90669a81c3d21, type: 2}
   - {fileID: 11400000, guid: 267b63cc52e326d4fa6e8467bcb2cf6e, type: 2}
-  startingPoint: {x: 0, y: 0, z: 0}
   defaultHitBoxHeight: 0.3
   hitBoxDepth: 1
+  failureMaterial: {fileID: 2100000, guid: d859ff0236f4e774dbe9a2b9c8a063e6, type: 2}
   closestDistance: {x: 100, y: 100}
 --- !u!1 &5970043081736855559
 GameObject:
