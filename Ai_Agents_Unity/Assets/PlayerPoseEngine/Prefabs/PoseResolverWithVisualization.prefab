@@ -63,6 +63,7 @@ MonoBehaviour:
   playerSize: 0
   timeToPlayer: 0
   timeAlive: 0
+  forcedTreshold: 0
   currentlyRequestedPose: {fileID: 0}
   dancePoseFulfilled: 0
   poseHeldTime: 0
@@ -70,6 +71,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a530ee9323357af4989dd80ed6df83a2, type: 2}
   positioningMode: 0
   visualizePose: 1
+  dancePoseFailed: 0
+  playerHeightFactor: 1
 --- !u!1 &2062109737547091848
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,14 +408,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3836623137114072036}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.975, y: -0.744, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6516058062631187336}
   m_Father: {fileID: 3708140312102309088}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5141227469588750760
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -533,14 +536,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5396944667368458223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.918, y: -0.866, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5317007486314803130}
   m_Father: {fileID: 3708140312102309088}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2392177074395976553
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -788,14 +791,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6265619504614516876}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5631872240214404300}
   m_Father: {fileID: 3708140312102309088}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8471377958236962216
 MeshFilter:
   m_ObjectHideFlags: 0

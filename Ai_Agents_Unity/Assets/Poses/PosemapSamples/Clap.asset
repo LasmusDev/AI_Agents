@@ -16,9 +16,11 @@ MonoBehaviour:
   bpm: 0
   toAttach_EditorOnly: {fileID: 0}
   poses:
-  - beat: 1
-    pose: {fileID: 11400000, guid: 31977ffb85be1a547be691cf8bf435fc, type: 2}
   - beat: 2
+    pose: {fileID: 11400000, guid: 31977ffb85be1a547be691cf8bf435fc, type: 2}
+  - beat: 4
     pose: {fileID: 11400000, guid: 20a6254ff01437d48ad142321fb80b94, type: 2}
-  - beat: 3
+  - beat: 6
     pose: {fileID: 11400000, guid: 378ebb1d3f4413a4fae29b3c7f7b5296, type: 2}
+  forcedTreshold: 0
+  forceTreshold: 0

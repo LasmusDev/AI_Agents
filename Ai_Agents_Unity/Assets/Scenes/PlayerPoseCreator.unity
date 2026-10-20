@@ -485,11 +485,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf37dc21d5a177d468c3202eddcd6ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poseName: Airplane L Up R Down
+  poseName: NewPose
   poseTolerance: 0.3
   recordHead: 1
   recordHands: 1
-  recordFeet: 1
+  recordFeet: 0
   root: {fileID: 1233561277}
   headObject: {fileID: 1233561281}
   lHandObject: {fileID: 1233561279}

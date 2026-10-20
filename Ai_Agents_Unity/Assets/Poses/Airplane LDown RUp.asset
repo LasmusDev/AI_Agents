@@ -20,10 +20,10 @@ MonoBehaviour:
   - limb: 1
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: -0.66877294, y: 2.024508, z: -0.17249745}
+    relativePos: {x: 0.6687729, y: 2.024508, z: -0.17249745}
   - limb: 2
     tolerance: 0.3
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0.5283261, y: 0.93628854, z: 0.30107537}
-  intendedHeight: 1.7
+    relativePos: {x: -0.5283261, y: 0.93628854, z: 0.30107537}
+  intendedHeight: 1.8
   recordedLookAngleY: 0

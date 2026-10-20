@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd8fd46dfcd2c84ba36c97fbfe8ec8e, type: 3}
+  m_Name: FullCheerReverse
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.Posemap
+  song: {fileID: 8300000, guid: c080a43439910fd4187301b9c4a240d1, type: 3}
+  bpm: 60
+  toAttach_EditorOnly: {fileID: 0}
+  poses:
+  - beat: 2
+    pose: {fileID: 11400000, guid: ad0e76a0739f3334fb18644b5c2a189f, type: 2}
+  - beat: 4
+    pose: {fileID: 11400000, guid: 29ab01356a6baa84c8c8971b0f8a548f, type: 2}
+  - beat: 6
+    pose: {fileID: 11400000, guid: a17ed786e110b4f4bb65fd7d94fba842, type: 2}
+  - beat: 8
+    pose: {fileID: 11400000, guid: 17e39145d96513c4b8e7d59e170fb4a1, type: 2}
+  forcedTreshold: 0
+  forceTreshold: 0

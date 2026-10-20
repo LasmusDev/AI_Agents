@@ -3,11 +3,11 @@ using PlayerPoseEngine.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq; 
+using System.Linq;
 using TMPro;
 using UI;
 using UnityEngine;
-using UnityEngine.XR; 
+using UnityEngine.XR;
 
 namespace PlayerPoseEngine.Scripts
 {
@@ -16,7 +16,7 @@ namespace PlayerPoseEngine.Scripts
     {
         #region fields
         [Header("Settings")]
-        public float BPM = 120f; 
+        public float BPM = 120f;
         public Vector3 from;
         public Vector3 to;
         public float visibleBeats = 4f;
@@ -25,11 +25,11 @@ namespace PlayerPoseEngine.Scripts
         [Header("Haptic Feedback (Vibration)")]
         [Tooltip("Short and hard on hit")]
         public float hitDuration = 0.1f;
-        [Range(0,1)] public float hitStrength = 1.0f;
-        
+        [Range(0, 1)] public float hitStrength = 1.0f;
+
         [Tooltip("Long and soft on miss")]
         public float missDuration = 0.5f;
-        [Range(0,1)] public float missStrength = 0.3f;
+        [Range(0, 1)] public float missStrength = 0.3f;
 
         [Header("Player Tracking")]
         public GameObject playerHead;
@@ -37,9 +37,9 @@ namespace PlayerPoseEngine.Scripts
         public GameObject playerRightHand;
 
         [Header("UI")]
-        public GameObject startMenuButton;    
+        public GameObject startMenuButton;
         public GameObject stopMenuButton;
-        public TextMeshProUGUI countdownText; 
+        public TextMeshProUGUI countdownText;
         public ExergameUI gameUI;
 
         [Header("Stats")]
@@ -50,17 +50,17 @@ namespace PlayerPoseEngine.Scripts
 
         public Posemap poseMap;
         public PosePool pool;
-        
+
         private AudioSource audioSource;
         private float secPerBeat;
         private float currentBeat;
         private float dspSongStartTime;
         private int nextIndexToSpawn = 0;
-        private bool isPlaying = false; 
-        private bool songStarted = false; 
+        private bool isPlaying = false;
+        private bool songStarted = false;
         private List<PoseResolver> activePoseResolvers = new List<PoseResolver>();
 
-        
+
         public Action OnGameStarted;
 
         public Action OnGameEnded;
@@ -76,16 +76,17 @@ namespace PlayerPoseEngine.Scripts
 
         private void Awake() { audioSource = GetComponent<AudioSource>(); }
 
-        public void Start() 
-        { 
-            if(startMenuButton) startMenuButton.SetActive(true); 
-            if(countdownText) countdownText.gameObject.SetActive(false);
+        public void Start()
+        {
+            if (startMenuButton) startMenuButton.SetActive(true);
+            if (countdownText) countdownText.gameObject.SetActive(false);
         }
 
         [ContextMenu("DEBUG START")]
-        public void DebugStart() { 
-            StartGame(); 
-            }
+        public void DebugStart()
+        {
+            StartGame();
+        }
 
         public void StartGame()
         {
@@ -94,11 +95,12 @@ namespace PlayerPoseEngine.Scripts
 
         IEnumerator StartCountdownRoutine()
         {
-            if(startMenuButton) startMenuButton.SetActive(false);
-            foreach(var r in activePoseResolvers) if(r) pool.Release(r);
+            if (startMenuButton) startMenuButton.SetActive(false);
+            foreach (var r in activePoseResolvers) if (r) pool.Release(r);
             activePoseResolvers.Clear();
 
-            if(countdownText) {
+            if (countdownText)
+            {
                 countdownText.gameObject.SetActive(true);
                 countdownText.text = "3"; yield return new WaitForSeconds(1);
                 countdownText.text = "2"; yield return new WaitForSeconds(1);
@@ -120,10 +122,10 @@ namespace PlayerPoseEngine.Scripts
             secPerBeat = 60f / BPM;
 
             if (poseMap.song != null) { audioSource.clip = poseMap.song; }
-            
+
             poseMap.poses = poseMap.poses.OrderBy(x => x.beat).ToArray();
             nextIndexToSpawn = 0; combo = 0; score = 0;
-            
+
             dspSongStartTime = (float)AudioSettings.dspTime + 0.1f;
             audioSource.PlayScheduled(dspSongStartTime);
             isPlaying = true; songStarted = true;
@@ -133,26 +135,26 @@ namespace PlayerPoseEngine.Scripts
         {
             if (!isPlaying) return;
 
-            
+
             if (songStarted && !audioSource.isPlaying && (AudioSettings.dspTime - dspSongStartTime) > 2.0f)
             {
                 isPlaying = false;
-                if(startMenuButton) startMenuButton.SetActive(true);
-                if(stopMenuButton) stopMenuButton.SetActive(false);
+                if (startMenuButton) startMenuButton.SetActive(true);
+                if (stopMenuButton) stopMenuButton.SetActive(false);
                 return;
             }
 
             float songPos = (float)(AudioSettings.dspTime - dspSongStartTime - spawnOffset);
             currentBeat = songPos / secPerBeat;
-            
+
             float lookAhead = currentBeat + visibleBeats;
             while (nextIndexToSpawn < poseMap.poses.Length && poseMap.poses[nextIndexToSpawn].beat < lookAhead)
             {
                 SpawnPose(poseMap.poses[nextIndexToSpawn]);
                 nextIndexToSpawn++;
             }
-            
-            
+
+
             for (int i = activePoseResolvers.Count - 1; i >= 0; i--)
             {
                 PoseResolver res = activePoseResolvers[i];
@@ -164,25 +166,34 @@ namespace PlayerPoseEngine.Scripts
 
         void SpawnPose(BeatToPose beatData)
         {
-            PoseResolver r = pool.Get();
+            //Skip waiting poses
+            if (beatData.pose == null)
+            {
+                return;
+            } 
+            PoseResolver r = pool.Get();    
             if (poseMap.forceTreshold)
             {
                 r.EnforceTreshold(poseMap.forcedTreshold);
             }
-            if(correctForHeight)
-            r.transform.position = from; 
-            r.transform.LookAt(to);
+
+            r.transform.position = from;
+            //r.transform.LookAt(to);
             r.timeToPlayer = visibleBeats * secPerBeat;
 
-            
+
             r.headObject = playerHead;
             r.lHandObject = playerLeftHand;
             r.rHandObject = playerRightHand;
-            if(playerHead) r.playerSize = playerHead.transform.position.y;
+            if (playerHead) r.playerSize = playerHead.transform.position.y;
 
-            
+
             r.RequestPose(beatData.pose);
-            r.CalcHeightFactor(playerHeightEstimate);
+            if (correctForHeight)
+            {
+                r.CalcHeightFactor(playerHeightEstimate);
+            }
+
             r.onPoseFulfilled += ScorePose;
             r.onPoseFailed += FailPose;
             activePoseResolvers.Add(r);
@@ -199,7 +210,7 @@ namespace PlayerPoseEngine.Scripts
 
         public void ScorePose(PoseResolver res, PlayerPose p)
         {
-            combo++; 
+            combo++;
             score += 100 * combo;
 
             // Show combo messages based on the current combo count
@@ -231,16 +242,16 @@ namespace PlayerPoseEngine.Scripts
             TriggerHaptics(hitStrength, hitDuration);
 
             //Logic for the particle effect
-            if(dancingGameParticlePrefab != null)
+            if (dancingGameParticlePrefab != null)
             {
                 // Find all child renderers of the resolved pose
-               Renderer[] targetSpheres = res.GetComponentsInChildren<Renderer>();
-               foreach (Renderer sphere in targetSpheres)
-               { 
-                // Instantiate the particle effect at the position of the sphere
-                GameObject particles = Instantiate(dancingGameParticlePrefab, sphere.transform.position, Quaternion.identity);
-                // Destroy the particle effect after 2 seconds to clean up
-                Destroy(particles, 2.0f);
+                Renderer[] targetSpheres = res.GetComponentsInChildren<Renderer>();
+                foreach (Renderer sphere in targetSpheres)
+                {
+                    // Instantiate the particle effect at the position of the sphere
+                    GameObject particles = Instantiate(dancingGameParticlePrefab, sphere.transform.position, Quaternion.identity);
+                    // Destroy the particle effect after 2 seconds to clean up
+                    Destroy(particles, 2.0f);
                 }
             }
             res.onPoseFailed -= FailPose;
@@ -251,7 +262,7 @@ namespace PlayerPoseEngine.Scripts
 
         void TriggerHaptics(float strength, float duration)
         {
-          
+
             SendImpulseToHand(XRNode.RightHand, strength, duration);
             SendImpulseToHand(XRNode.LeftHand, strength, duration);
         }
@@ -261,7 +272,7 @@ namespace PlayerPoseEngine.Scripts
             InputDevice device = InputDevices.GetDeviceAtXRNode(node);
             if (device.isValid)
             {
-                
+
                 device.SendHapticImpulse(0, strength, duration);
             }
         }
@@ -272,12 +283,12 @@ namespace PlayerPoseEngine.Scripts
             {
                 isPlaying = false;
                 audioSource.Stop();
-                if(startMenuButton) startMenuButton.SetActive(true);
-                foreach(var r in activePoseResolvers) if(r) pool.Release(r);
+                if (startMenuButton) startMenuButton.SetActive(true);
+                foreach (var r in activePoseResolvers) if (r) pool.Release(r);
                 activePoseResolvers.Clear();
                 stopMenuButton.gameObject.SetActive(false);
                 OnGameEnded?.Invoke();
             }
-    }
+        }
     }
 }
