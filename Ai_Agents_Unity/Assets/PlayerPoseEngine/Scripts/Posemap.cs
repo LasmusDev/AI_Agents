@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 
 namespace PlayerPoseEngine.Scripts {
@@ -14,7 +15,12 @@ namespace PlayerPoseEngine.Scripts {
 
         //The posemap to attach when the add posemap function is called. This is used to build posemaps from building blocks
         public Posemap toAttach_EditorOnly;
-        
+
+        public List<PlayerPose> replaceThese_EditorOnly;
+
+        public List<PlayerPose> replaceTo_EditorOnly;
+
+
         public BeatToPose[] poses;
         
         public float forcedTreshold;
@@ -46,6 +52,19 @@ namespace PlayerPoseEngine.Scripts {
                 copy[poses.Length + i].beat = toAttach_EditorOnly.poses[i].beat + lastPoseBeat;
             }
             poses = copy;
+        }
+
+        [ContextMenu("Apply Replacement")]
+        public void ApplyReplacement()
+        {
+            for (int i = 0; i < poses.Length; i++)
+            {
+                int Idx = replaceThese_EditorOnly.IndexOf(poses[i].pose);
+                if (Idx >= 0)
+                {
+                    poses[i].pose = replaceTo_EditorOnly[Idx];
+                }
+            }
         }
     }
     

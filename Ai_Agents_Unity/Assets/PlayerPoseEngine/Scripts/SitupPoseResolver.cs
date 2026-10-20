@@ -127,7 +127,7 @@ namespace PlayerPoseEngine.Scripts
                 calculatedY = lowBlockFloorHeight;
             }
 
-            headVisObject.transform.localPosition = new Vector3(relPos.x, calculatedY, relPos.z);
+            headVisObject.transform.localPosition = new Vector3(relPos.x, relPos.y, relPos.z);
             headVisObject.transform.localScale = new Vector3(wallWidth, wallHeight, wallDepth);
         }
 

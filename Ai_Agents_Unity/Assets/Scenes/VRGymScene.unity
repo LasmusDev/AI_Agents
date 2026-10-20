@@ -2814,22 +2814,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b591a08f4f7fc134fa7efed5a5a66fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquatGame.SquatLevelDropdown
-  player: {fileID: 0}
+  player: {fileID: 136077516}
   dropdown: {fileID: 1540376641}
-  gameUI: {fileID: 0}
+  gameUI: {fileID: 1915781116}
   availableLevels:
-  - levelName: Level_Samurai
-    poseMap: {fileID: 0}
-  - levelName: Level_Voyage
-    poseMap: {fileID: 0}
-  - levelName: Level_See
-    poseMap: {fileID: 0}
-  - levelName: Level_Ascend
-    poseMap: {fileID: 0}
-  - levelName: Level_Eyes
-    poseMap: {fileID: 0}
-  - levelName: Level_Recall
-    poseMap: {fileID: 0}
+  - levelName: Demo Situp
+    poseMap: {fileID: 11400000, guid: 0564e7921de8c564190e67ecdcdc629e, type: 2}
 --- !u!114 &136077512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2844,7 +2834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1255041117}
   comboText: {fileID: 642339184}
-  game: {fileID: 0}
+  game: {fileID: 136077516}
   comboMessageText: {fileID: 1367189462}
   displayTime: 1.5
   floatSpeed: 50
@@ -9939,7 +9929,6 @@ GameObject:
   - component: {fileID: 497048089}
   - component: {fileID: 497048088}
   - component: {fileID: 497048087}
-  - component: {fileID: 497048086}
   - component: {fileID: 497048085}
   m_Layer: 0
   m_Name: Canvas
@@ -9994,25 +9983,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
---- !u!114 &497048086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497048083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb88428c894247478d733101d5b1335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1255041117}
-  comboText: {fileID: 642339184}
-  game: {fileID: 0}
-  comboMessageText: {fileID: 0}
-  displayTime: 1.5
-  floatSpeed: 50
-  popScale: 1.5
 --- !u!114 &497048087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15992,9 +15962,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SquatGame.SquatManager, Assembly-CSharp
-        m_MethodName: OnStartButtonPressed
+      - m_Target: {fileID: 136077516}
+        m_TargetAssemblyTypeName: PlayerPoseEngine.Scripts.PosemapPlayer, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
