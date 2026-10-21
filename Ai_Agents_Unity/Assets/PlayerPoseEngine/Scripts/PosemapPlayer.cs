@@ -16,6 +16,7 @@ namespace PlayerPoseEngine.Scripts
     {
         #region fields
         [Header("Settings")]
+        public GameType gameType;
         public float BPM = 120f;
         public Vector3 from;
         public Vector3 to;
@@ -238,8 +239,10 @@ namespace PlayerPoseEngine.Scripts
                 }
             }
 
-
-            TriggerHaptics(hitStrength, hitDuration);
+            if (gameType == GameType.DANCE)
+            {
+                TriggerHaptics(hitStrength, hitDuration);
+            }
 
             //Logic for the particle effect
             if (dancingGameParticlePrefab != null)
@@ -290,5 +293,10 @@ namespace PlayerPoseEngine.Scripts
                 OnGameEnded?.Invoke();
             }
         }
+    }
+
+    public enum GameType
+    {
+        DANCE, SITUP, SQUAT
     }
 }

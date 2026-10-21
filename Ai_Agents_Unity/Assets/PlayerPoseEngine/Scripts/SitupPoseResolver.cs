@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,6 +25,10 @@ namespace PlayerPoseEngine.Scripts
         private bool isHighBlock = false;
         private bool hasBeenHit = false;
 
+        public GameObject arrowHint;
+        public Material failureMaterial;
+        public bool animationStarted;
+
         
         private Dictionary<string, PlayerPose> availablePosesDict = new Dictionary<string, PlayerPose>();
 
@@ -46,6 +52,11 @@ namespace PlayerPoseEngine.Scripts
 
             CheckPoseCollision();
 
+            if (timeAlive > timeToPlayer / 2 && !animationStarted && !isHighBlock)
+            {
+                StartCoroutine(AnimateHint());
+            }
+
             // Check if the player has failed or fulfilled the pose after a certain time
             if (timeAlive > timeToPlayer * 1.2f)
             {
@@ -61,6 +72,7 @@ namespace PlayerPoseEngine.Scripts
                     {
                         //Player has fulfilled the pose
                         if (onPoseFulfilled != null) onPoseFulfilled.Invoke(this, currentlyRequestedPose);
+                        StopAllCoroutines(); //Hacky, meant to stop the arrow hint animation
                     }
                 }
                 situpPoseFailed = false;
@@ -93,12 +105,28 @@ namespace PlayerPoseEngine.Scripts
             }
         }
 
+        public IEnumerator AnimateFailure()
+        {
+            Renderer rend = this.GetComponentInChildren<Renderer>();
+            Material defaultMat = rend.material;
+            rend.material = failureMaterial;
+            Sequence moveSeq = DOTween.Sequence()
+                .Append(this.transform.DOShakePosition(0.25f, 0.5f, 10, 90f));
+            moveSeq.Play();
+            yield return moveSeq.WaitForCompletion();
+            onPoseFailed.Invoke(this, currentlyRequestedPose);
+            rend.material = defaultMat;
+            StopAllCoroutines(); //Hacky, meant to stop the arrow hint animation
+        }
+
         public override void RequestPose(PlayerPose pose)
         {
             situpPoseFailed = false;
             hasBeenHit = false;
             timeAlive = 0;
             currentlyRequestedPose = pose;
+            arrowHint.SetActive(false);
+            animationStarted = false;
             VisualizePoseRequest(pose);
         }
 
@@ -124,12 +152,36 @@ namespace PlayerPoseEngine.Scripts
             else
             {
                 
+
                 calculatedY = lowBlockFloorHeight;
             }
 
             headVisObject.transform.localPosition = new Vector3(relPos.x, relPos.y, relPos.z);
             headVisObject.transform.localScale = new Vector3(wallWidth, wallHeight, wallDepth);
         }
+
+        public IEnumerator AnimateHint()
+        {
+            if (animationStarted)
+            {
+                yield break;
+            }
+            animationStarted = true;
+            arrowHint.SetActive(true);
+            Vector3 initialPosition = Camera.main.transform.position + (Vector3.up * 0.5f);
+            while (true)
+            {
+                arrowHint.transform.position = initialPosition;
+                Sequence moveSeq = DOTween.Sequence()
+                    .Append(arrowHint.transform.DOMove(initialPosition + Vector3.up, 0.5f));
+                moveSeq.Play();
+                yield return moveSeq.WaitForCompletion();
+            }
+
+
+        }
+
+
 
         public override void CalcHeightFactor(float heightEstimate)
         {
