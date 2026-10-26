@@ -16,6 +16,6 @@ MonoBehaviour:
   - limb: 0
     tolerance: 0.15
     relativeRot: {x: 0, y: 0, z: 0, w: 0}
-    relativePos: {x: 0, y: 0.3, z: 0}
+    relativePos: {x: 0, y: 0.5, z: 0}
   intendedHeight: 1.7
   recordedLookAngleY: 0
