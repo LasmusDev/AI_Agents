@@ -2783,8 +2783,10 @@ MonoBehaviour:
   dropdown: {fileID: 1540376641}
   gameUI: {fileID: 1915781116}
   availableLevels:
-  - levelName: Demo Situp
-    poseMap: {fileID: 11400000, guid: 0564e7921de8c564190e67ecdcdc629e, type: 2}
+  - levelName: Level Samurai
+    poseMap: {fileID: 11400000, guid: bf26499ff7e2b4241aa66c6dd0a0dbdb, type: 2}
+  - levelName: Level Recall
+    poseMap: {fileID: 11400000, guid: f6fa60086e8948444a793d25a04afcfd, type: 2}
 --- !u!114 &136077512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,7 +2955,7 @@ MonoBehaviour:
   score: 0
   combo: 0
   dancingGameParticlePrefab: {fileID: 8976456962411439273, guid: 87daac52727cbb8429232cf66a9cefb7, type: 3}
-  poseMap: {fileID: 11400000, guid: 30f659cd54145614dbde9f194ddc3608, type: 2}
+  poseMap: {fileID: 11400000, guid: 0564e7921de8c564190e67ecdcdc629e, type: 2}
   pool: {fileID: 1691400030}
   playerHeightEstimate: 0
   correctForHeight: 0
@@ -23957,7 +23959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd6dcac6538252419b18835dd1bcad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.AdvancedBeatDetector
-  targetPoseMap: {fileID: 11400000, guid: 30f659cd54145614dbde9f194ddc3608, type: 2}
+  targetPoseMap: {fileID: 11400000, guid: f6fa60086e8948444a793d25a04afcfd, type: 2}
   posePalette:
   - {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
   - {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
@@ -23966,7 +23968,7 @@ MonoBehaviour:
   sensitivity: 1.3
   sampleWindow: 1024
   quantization: 4
-  minBeatsBetweenPoses: 1
+  minBeatsBetweenPoses: 8
 --- !u!1 &1319772980
 GameObject:
   m_ObjectHideFlags: 0

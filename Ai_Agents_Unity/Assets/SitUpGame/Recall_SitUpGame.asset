@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd8fd46dfcd2c84ba36c97fbfe8ec8e, type: 3}
+  m_Name: Recall_SitUpGame
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.Posemap
+  song: {fileID: 8300000, guid: 2058151449582b04e9f3a90cd4a07e08, type: 3}
+  bpm: 60
+  toAttach_EditorOnly: {fileID: 0}
+  replaceThese_EditorOnly:
+  - {fileID: 11400000, guid: 267b63cc52e326d4fa6e8467bcb2cf6e, type: 2}
+  - {fileID: 11400000, guid: 3ac00d28aba0c26419e90669a81c3d21, type: 2}
+  replaceTo_EditorOnly:
+  - {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  poses:
+  - beat: -0
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 6.75
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 9
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 11.25
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 13.5
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 16.25
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 18.5
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 25.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 27.75
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 30
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 32.5
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 56.75
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 111.25
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 113.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 119.75
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 122.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 124.75
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 134
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 136.25
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 142.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 145.25
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 153
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 155.25
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 159.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 161.75
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 165.25
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 169.5
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 171.75
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 175
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 180.75
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 185
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 193.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 198.5
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 230.25
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 243
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 288.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 294.25
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 298.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 304
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 307
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 311.75
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 324.5
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 327.5
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 330.25
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 334.5
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 336.75
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 341.5
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 344
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  - beat: 351
+    pose: {fileID: 11400000, guid: bbc4e175848b80746a7225018151b588, type: 2}
+  - beat: 355
+    pose: {fileID: 11400000, guid: da184426127b0734ca41820b4ac08db8, type: 2}
+  forcedTreshold: 0
+  forceTreshold: 0
