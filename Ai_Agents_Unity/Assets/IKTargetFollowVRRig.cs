@@ -43,7 +43,6 @@ public class IKTargetFollowVRRig : MonoBehaviour
 
 //Normcore version
 using UnityEngine;
-using Normal.Realtime;
 
 [System.Serializable]
 public class VRMap
@@ -65,8 +64,7 @@ public class VRMap
 
 public class IKTargetFollowVRRig : MonoBehaviour
 {
-    [Header("Normcore Setup")]
-    public RealtimeView realtimeView; 
+
 
     [Header("Settings")]
     [Range(0, 1)]
@@ -80,20 +78,10 @@ public class IKTargetFollowVRRig : MonoBehaviour
     public Vector3 headBodyPositionOffset;
     public float headBodyYawOffset;
 
-    
-    void Start()
-    {
-      
-        if (realtimeView != null && realtimeView.isOwnedLocallyInHierarchy)
-        {
-            FindHardware();
-        }
-    }
 
     void LateUpdate()
     {
        
-        if (realtimeView != null && !realtimeView.isOwnedLocallyInHierarchy) return;
         if (head.vrTarget == null) FindHardware();
         if (head.vrTarget == null) return; 
 

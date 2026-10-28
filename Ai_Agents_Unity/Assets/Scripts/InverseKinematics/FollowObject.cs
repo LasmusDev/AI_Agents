@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NormcoreAvatars;
 
-public class FollowObject : DesynchronizedBehaviour
+public class FollowObject : MonoBehaviour
 {
     public string NameOfIntendedFollow;
     public bool localSpace;

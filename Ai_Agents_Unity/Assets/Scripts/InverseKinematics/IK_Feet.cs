@@ -1,9 +1,8 @@
-using NormcoreAvatars;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IK_Feet : DesynchronizedBehaviour
+public class IK_Feet : MonoBehaviour
 {
     public Transform body;
     public IK_Feet otherFoot;
