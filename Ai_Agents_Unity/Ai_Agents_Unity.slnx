@@ -14,7 +14,6 @@
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="UnityNeuroSpeech.Utils.csproj" />
   <Project Path="UniTask.TextMeshPro.csproj" />
-  <Project Path="ParrelSync.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.csproj" />
   <Project Path="sc.terrain.painter.runtime.csproj" />
   <Project Path="UnityNeuroSpeech.Runtime.csproj" />
