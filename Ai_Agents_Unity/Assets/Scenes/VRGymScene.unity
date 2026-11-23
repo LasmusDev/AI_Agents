@@ -8996,37 +8996,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8771091787928289351, guid: e054deff09901ca4189213a2446b66fd, type: 3}
   m_PrefabInstance: {fileID: 1289316440}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &450694677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 450694676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 315275e0cbb3e8f4aa375fc0b5a1f003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IKTargetFollowVRRig
-  turnSmoothness: 0.1
-  head:
-    vrTarget: {fileID: 0}
-    ikTarget: {fileID: 0}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 0, z: 0}
-  leftHand:
-    vrTarget: {fileID: 0}
-    ikTarget: {fileID: 0}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 0, z: 0}
-  rightHand:
-    vrTarget: {fileID: 0}
-    ikTarget: {fileID: 0}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
-    trackingRotationOffset: {x: 0, y: 0, z: 0}
-  VRRig: {fileID: 0}
-  headBodyPositionOffset: {x: 0, y: 0, z: 0}
-  headBodyYawOffset: 0
 --- !u!114 &450694680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9135,6 +9104,37 @@ MonoBehaviour:
   - {fileID: 340200069}
   - {fileID: 329915783}
   - {fileID: 1658358823}
+--- !u!114 &450694687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450694676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315275e0cbb3e8f4aa375fc0b5a1f003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IKTargetFollowVRRig
+  turnSmoothness: 0.1
+  head:
+    vrTarget: {fileID: 196292991}
+    ikTarget: {fileID: 837986106}
+    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 0, y: 0, z: 0}
+  leftHand:
+    vrTarget: {fileID: 1234228727}
+    ikTarget: {fileID: 809873261}
+    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 0, y: 0, z: 0}
+  rightHand:
+    vrTarget: {fileID: 1153505839}
+    ikTarget: {fileID: 234744059}
+    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingRotationOffset: {x: 0, y: 0, z: 0}
+  VRRig: {fileID: 0}
+  headBodyPositionOffset: {x: 0, y: 0, z: 0}
+  headBodyYawOffset: 0
 --- !u!1 &451555744
 GameObject:
   m_ObjectHideFlags: 0
@@ -24926,13 +24926,13 @@ PrefabInstance:
       addedObject: {fileID: 450694680}
     - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: e054deff09901ca4189213a2446b66fd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 450694677}
-    - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: e054deff09901ca4189213a2446b66fd, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 450694685}
     - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: e054deff09901ca4189213a2446b66fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 450694684}
+    - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: e054deff09901ca4189213a2446b66fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 450694687}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: e054deff09901ca4189213a2446b66fd, type: 3}
 --- !u!4 &1290042876 stripped
 Transform:
