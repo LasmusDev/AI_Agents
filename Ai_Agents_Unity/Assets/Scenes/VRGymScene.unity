@@ -4665,6 +4665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234744059}
+  - component: {fileID: 234744060}
   m_Layer: 0
   m_Name: Right Arm IK_target
   m_TagString: Untagged
@@ -4687,6 +4688,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1397192460}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &234744060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234744058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ec8a2c8b4e3e740bc4afee11182de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.VRArmStretcher
+  shoulderBone: {fileID: 1212232657}
+  elbowBone: {fileID: 864765990}
+  handBone: {fileID: 1800978942}
+  ikTarget: {fileID: 0}
+  isLeftArm: 0
 --- !u!1001 &240472579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9008,8 +9026,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479fbd747da61f14da19b74941ca2433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimateOnInput
-  animationInputs: []
-  animator: {fileID: 0}
+  animationInputs:
+  - animationPropertyName: Right Pinch
+    action:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Action
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: 171cb9fd-4c35-473f-a3dd-1bc960378c82
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+        m_Priority: 0
+      m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - animationPropertyName: Right Grab
+    action:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Action
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: 171cb9fd-4c35-473f-a3dd-1bc960378c82
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+        m_Priority: 0
+      m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - animationPropertyName: Left Pinch
+    action:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Action
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: 171cb9fd-4c35-473f-a3dd-1bc960378c82
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+        m_Priority: 0
+      m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  - animationPropertyName: Left Grab
+    action:
+      m_UseReference: 1
+      m_Action:
+        m_Name: Action
+        m_Type: 0
+        m_ExpectedControlType: 
+        m_Id: 171cb9fd-4c35-473f-a3dd-1bc960378c82
+        m_Processors: 
+        m_Interactions: 
+        m_SingletonActionBindings: []
+        m_Flags: 0
+        m_Priority: 0
+      m_Reference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  animator: {fileID: 450694688}
 --- !u!4 &450694682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3910990755373119420, guid: e054deff09901ca4189213a2446b66fd, type: 3}
@@ -9120,7 +9194,7 @@ MonoBehaviour:
   head:
     vrTarget: {fileID: 196292991}
     ikTarget: {fileID: 837986106}
-    trackingPositionOffset: {x: 0, y: 0, z: 0}
+    trackingPositionOffset: {x: 0, y: 0, z: -0.16}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   leftHand:
     vrTarget: {fileID: 1234228727}
@@ -9133,8 +9207,13 @@ MonoBehaviour:
     trackingPositionOffset: {x: 0, y: 0, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   VRRig: {fileID: 0}
-  headBodyPositionOffset: {x: 0, y: 0, z: 0}
+  headBodyPositionOffset: {x: 0, y: -0.69, z: 0}
   headBodyYawOffset: 0
+--- !u!95 &450694688 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -4748361991329772099, guid: e054deff09901ca4189213a2446b66fd, type: 3}
+  m_PrefabInstance: {fileID: 1289316440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &451555744
 GameObject:
   m_ObjectHideFlags: 0
@@ -16458,6 +16537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 809873261}
+  - component: {fileID: 809873262}
   m_Layer: 0
   m_Name: Left Arm IK_target
   m_TagString: Untagged
@@ -16480,6 +16560,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1166509943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &809873262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809873260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ec8a2c8b4e3e740bc4afee11182de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPoseEngine.Scripts.VRArmStretcher
+  shoulderBone: {fileID: 1049500773}
+  elbowBone: {fileID: 1416974203}
+  handBone: {fileID: 632976184}
+  ikTarget: {fileID: 0}
+  isLeftArm: 1
 --- !u!1 &810714230
 GameObject:
   m_ObjectHideFlags: 0
@@ -22378,13 +22475,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153505838}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.6403416, y: -0.05602265, z: -0.06676521, w: 0.7631295}
-  m_LocalPosition: {x: 0.028, y: -0.047, z: -0.143}
+  m_LocalRotation: {x: 0.55737066, y: -0.053307556, z: 0.04642907, w: 0.8272489}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1860049318}
-  m_LocalEulerAnglesHint: {x: -80, y: 0, z: -10}
+  m_LocalEulerAnglesHint: {x: 67.99, y: -5.58, z: 2.66}
 --- !u!1 &1156451173
 GameObject:
   m_ObjectHideFlags: 0
@@ -23424,13 +23521,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234228726}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.6403416, y: 0.05602265, z: 0.06676521, w: 0.7631295}
-  m_LocalPosition: {x: -0.03, y: -0.047, z: -0.143}
+  m_LocalRotation: {x: 0.7384355, y: -0.08349906, z: 0.087994434, w: 0.66332334}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1605550064}
-  m_LocalEulerAnglesHint: {x: -80, y: 0, z: 10}
+  m_LocalEulerAnglesHint: {x: 96.1, y: -10.4, z: 3.55}
 --- !u!1 &1242178875
 GameObject:
   m_ObjectHideFlags: 0
